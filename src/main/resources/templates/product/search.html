@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/search.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+   
+    <title>Document</title>
+  </head>
+  <body>
+  <header class="bg on scroll-active">
+    <div style="background:#000; text-align:center"><img src="./img/info_top_bn.jpg"></div>
+    <!-- <input type="hidden" id="freeIsNew" name="freeIsNew" value="Y"> -->
+      
+      <div class="gnb_wrap">
+        <h1><a href="#"><img src="./img/KakaoTalk_20231129_125738230_02.jpg" alt=""></a></h1>
+        <ul class="gnb">
+          <li class="gnb_item">
+            <a class= "menu1 " href="#" style="font-weight: bold;">우리술 정보&amp;리뷰</a>
+            <ul class="lnb1" style="display: none;">
+              <li><a href="#">우리술 전체보기</a></li>
+              <li><a href="#">양조장 탐방기</a></li>
+              <li><a href="#">술 취향 테스트</a></li>					
+              <li><a href="#">나에게 맞는 술 찾기</a></li>
+            </ul>
+     
+          </li>
+          <li class="gnb_item">
+            <a class="menu2" href="/board/list#" style="font-weight: bold;">백술 NEWS</a>
+            <ul class="lnb2" style="display: none;">
+              <li><a href="/board/list#">주막 NEWS</a></li>
+			  <li><a href="/board/list#">주막 새상품</a></li> 	
+			  <li><a href="/board/list#">주막 소식</a></li>
+			  <li><a href="/board/list#">주막 수상한 상품</a></li>
+			</ul>
+          </li>
+          <li class="gnb_item">
+            <a class="menu3" href="/board/#" style="font-weight: bold;">우리술 빚기</a>
+            <ul class="lnb3" style="display: none;">
+              <li><a href="/board/list#">주막의 술비책</a></li>
+              <!--<li><a href="/board/list.php?bdId=myrecipe">나의 술비책</a></li>-->
+            </ul>
+          </li>
+          <li class="gnb_item">
+             <a class="menu4" href="/board/list#" style="font-weight: bold;">커뮤니티<!--<img src="#">--></a> 
+            <ul class="lnb4" style="display: none;">
+              <li><a href="/board/#">백술놀이터</a><img src="#" style="margin-top: 5px;margin-left: 4px;"></li>
+              <li><a href="/board/#">모임공지</a></li>
+             
+            </ul>
+      
+          </li>
+    
+          <li class="gnb_item">
+            <a class="menu5" href="#" style="font-weight: bold;">우리술 장터</a>
+            <ul class="lnb5" style="display: none;">
+              <li><a href="#">크리스마스 우리술🎄</a></li>
+              <li><a href="#">전체상품</a></li>
+              <li><a href="#">술빚기용품</a></li>
+              <li><a href="#">막걸리/탁주</a></li>
+              <li><a href="#">증류주/리큐르</a></li>
+              <li><a href="#">약주/청주</a></li>
+              <li><a href="#">와인/과실주</a></li>
+              <li><a href="#">기타주류/기타</a></li>
+              <li><a href="#">선물하기 좋은 우리술🎁</a></li>
+              <li><a href="#"">통합배송🚚</a></li>
+            </ul>
+          </li>
+        
+        <div class="side">
+          <button id="btnSearchTop" class="btn_search">검색</button>
+          
+          <a href="#" class="btn_cart"><img src="./img/ico_top_cart.png" alt="장바구니" title="장바구니">
+            <!-- <span>0</span> -->
+          </a>
+          
+          <div class="login_before">
+            <button>사용자</button>
+            <div class="mn">
+              <ul class="lnb" style="display: none;">
+                <li><a href="#">로그인</a></li>
+                <li><a href="#">회원가입..</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+      
+      <div class="lnb_bg" style="display: none;"></div>
+    </header>
+  
+    <div class="woori">
+      <div class="goodsinfo_top">
+        <h4><strong>궁금한 우리술 정보</strong><br />지금 검색해보세요!</h4>
+        <div class="search_box">
+          <form name="frmSearch" id="frmSearch" action="#" method="get">
+            <input
+              type="search"
+              name="keyword"
+              id="keyword"
+              placeholder="우리술과 관련된 키워드를 검색해 보세요."
+            />
+            <a href="javascript:searchSend();" class="btn_search">검색</a>
+          </form>
+          <script>
+            function searchSend() {
+              if ($("#keyword").val() == "") {
+                alert("검색어를 입력하세요");
+                return false;
+              } else {
+                $("#frmSearch").submit();
+              }
+            }
+          </script>
+        </div>
+        <div class="txt_popular">
+          <ul>
+            <li><a href="#">상큼한</a></li>
+            <li><a href="#">시원한</a></li>
+            <li><a href="#">추천술</a></li>
+            <li><a href="#">선물하기좋은</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+		<script src="./js/search.js"></script>
+			
+		
+  </body>
+</html>
