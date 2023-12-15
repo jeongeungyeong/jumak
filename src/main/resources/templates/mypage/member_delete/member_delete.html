@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/delete.css" />
+  </head>
+  <header class="header">
+    <h1>수상한주막</h1>
+  </header>
+  <body>
+    <div class="my_page">
+      <!-- 사이드 메뉴 시작 -->
+      <div class="sub_menu_box">
+        <div class="sub_menu_content">
+          <h2>마이페이지</h2>
+          <ul class="sub_menu_list">
+            <li>
+              <h2>쇼핑정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 주문목록/배송조회</a>
+                </li>
+                <li>
+                  <a href="">- 취소/반품/교환 내역</a>
+                </li>
+                <li>
+                  <a href="">- 환불/입금 내역</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>고객샌터</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 1:1 문의</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>회원정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 회원정보 변경</a>
+                </li>
+                <li>
+                  <a href="">- 회원 탈퇴</a>
+                </li>
+                <li>
+                  <a href="">- 배송지 관리</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>커뮤니티</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 작성글 확인</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 사이드 메뉴 끝 -->
+      <!-- 메인 시작 -->
+      <div class="mypage_main_box">
+        <div class="mypage_main_content_box_1">
+          <!-- 회원탈퇴 시작 -->>
+          <div class="delete_info_title">
+            <h1>회원탈퇴</h1>
+          </div>
+          <div class="info_title">
+            <h2>01.회원탈퇴 안내</h2>
+            <div class="info_box">
+              <h3>수상한주막 탈퇴안내</h3>
+              <h3>
+                회원님께서 회원 탈퇴를 원하신다니 저희 사이트가 많이 부족하고
+                미흡했나 봅니다.
+              </h3>
+              <h3>
+                불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서 고객님의
+                불편함을 해결해 드리도록 노력하겠습니다.
+              </h3>
+              <br />
+              <h3>★ 아울러 회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다.</h3>
+              <h3>
+                1.회원 탈퇴 시 회원님의 정보는 상품 반품 및 A/S를 위해
+                전자상거래 등에서의 소비자 보호에 관한 벌률에 의거한 고객정보
+                보호정책에따라 관리 됩니다.
+              </h3>
+              <h3>2.탈퇴 시 회원님께서 작성하신 모든 내용들은 삭제 됩니다.</h3>
+              <h3>3.탈퇴 시 30일간 재가입이 불가능합니다.</h3>
+            </div>
+          </div>
+          <div class="detail_title">
+            <h2>02.회원탈퇴 하기</h2>
+          </div>
+          <form action="">
+            <div>
+              <table>
+                <colgroup>
+                  <col style="width: 15%" />
+                  <col style="width: 80%" />
+                </colgroup>
+                <tbody>
+                  <tr>
+                    <th>비밀번호</th>
+                    <td>
+                      <input type="password" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="reason_content">탈퇴 사유</th>
+                    <td class="reason_content" id="checkbox">
+                      <ul class="reason_list">
+                        <li>
+                          <label
+                            ><input type="checkbox" name="reason" />이용빈도
+                            낮음</label
+                          >
+                        </li>
+                        <li>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="reason"
+                            />재가입</label
+                          >
+                        </li>
+                        <li>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="reason"
+                            />콘텐츠/제품정보/상품부족</label
+                          >
+                        </li>
+                        <li>
+                          <label
+                            ><input
+                              type="checkbox"
+                              name="reason"
+                            />회원특혜/쇼핑해택 부족</label
+                          >
+                        </li>
+                        <li>
+                          <label
+                            ><input type="checkbox" name="reason" />기타</label
+                          >
+                        </li>
+                        <li>
+                          <label
+                            ><input type="checkbox" name="reason" />없음</label
+                          >
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th class="detail_content">남기실 말씀</th>
+                    <td class="detail_content">
+                      <input type="text" id="detail_msg" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="button_content">
+              <a href="" id="cancel">이전으로</a>
+              <button type="submit" id="button">탈퇴</button>
+            </div>
+          </form>
+          <!-- 회원탈퇴 끝 -->
+          <!-- 날짜 선택 시작 -->
+          <!-- 날짜 선택 끝 -->
+          <!-- 조회 시작 -->
+          <!-- 조회 끝 -->
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h3>footer</h3>
+    </footer>
+  </body>
+</html>
