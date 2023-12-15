@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/mian.css" />
+  </head>
+  <header class="header">
+    <h1>수상한주막</h1>
+  </header>
+  <body>
+    <div class="my_page">
+      <!-- 사이드 메뉴 시작 -->
+      <div class="sub_menu_box">
+        <div class="sub_menu_content">
+          <h2>마이페이지</h2>
+          <ul class="sub_menu_list">
+            <li>
+              <h2>쇼핑정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 주문목록/배송조회</a>
+                </li>
+                <li>
+                  <a href="">- 취소/반품/교환 내역</a>
+                </li>
+                <li>
+                  <a href="">- 환불/입금 내역</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>고객샌터</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 1:1 문의</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>회원정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 회원정보 변경</a>
+                </li>
+                <li>
+                  <a href="">- 회원 탈퇴</a>
+                </li>
+                <li>
+                  <a href="">- 배송지 관리</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>커뮤니티</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 작성글 확인</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 사이드 메뉴 끝 -->
+      <!-- 메인 시작 -->
+      <div class="mypage_main_box">
+        <div class="mypage_main_content_box_1">
+          <!-- 유저 등급 -->
+          <div class="mypage_main_content_box_user_grade">
+            <div class="mypage_main_content_box_user_grade_1">
+              <p>유지수님의</p>
+              <p>회원등급은 일반회원등급 입니다.</p>
+              <span>
+                <select name="" id="">
+                  <option value="">등급해택보기</option>
+                </select>
+              </span>
+            </div>
+            <div class="mypage_main_content_box_user_grade_2">
+              <span>
+                <img
+                  src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/icon/mypage/icon_balance.png"
+                  alt="작성글"
+                />
+              </span>
+              <span class="board_comment">
+                <em>작성글 / 댓글</em>
+                <a href="" class="user_comment">
+                  <strong>0 / 0</strong>
+                </a>
+              </span>
+            </div>
+          </div>
+          <!-- 진행주문 타이틀 시작-->
+          <div class="shipping_title">
+            <h3>
+              진행 중인 주문
+              <span class="shipping_title_1">최근 30일 내에 진행중인 주문정보입니다.</span>
+            </h3>
+          </div>
+          <!-- 진행주문 타이틀 끝-->
+          <!-- 진행주문상태-->
+          <div class="shipping_order_box">
+            <ol class="shipping_order_list">
+              <li>
+                <b>입금대기</b>
+                <strong>0</strong>
+              </li>
+              <li>
+                <b>결재완료</b>
+                <strong>0</strong>
+              </li>
+              <li>
+                <b>상품준비중</b>
+                <strong>0</strong>
+              </li>
+              <li>
+                <b>배송중</b>
+                <strong>0</strong>
+              </li>
+              <li>
+                <b>배송완료</b>
+                <strong>0</strong>
+              </li>
+              <li>
+                <b>구매확정</b>
+                <strong>0</strong>
+              </li>
+            </ol>
+            <div class="shipping_order_state">
+              <ul class="shipping_order_state_content">
+                <li>
+                  <b>• 취소</b>
+                  <span>0건</span>
+                </li>
+                <li>
+                  <b>• 교환</b>
+                  <span>0건</span>
+                </li>
+                <li>
+                  <b>• 반품</b>
+                  <span>0건</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="shipping_title">
+            <h3>
+              최근 주문 정보
+              <span class="shipping_title_1">최근 30일 내에 주문하신 내역입니다.</span>
+            </h3>
+          </div>
+          <!-- 진행주문상태 끝-->
+          <!-- 진행주문상태 리스트-->
+          <div>
+            <table>
+              <colgroup>
+                <col style="width: 183px;">
+                <col style="width: 263px;">
+                <col style="width: 200px;">
+                <col style="width: 183px;">
+                <col style="width: 183px;">
+              </colgroup>
+              <thead>
+                <tr>
+                  <th>날짜/주문번호</th>
+                  <th>상품명/옵션</th>
+                  <th>상품금액/수량</th>
+                  <th>주문상태</th>
+                  <th>확인/리뷰</th>
+                </tr>
+              </thead>
+              <tbody class="order_list_table">
+                <tr class="order_list_table_1">
+                  <td>
+                    20221201/1234
+                  </td>
+                  <td>
+                    상품1/기본옵션
+                  </td>
+                  <td>
+                    20000원/1개
+                  </td>
+                  <td>
+                    배송중
+                  </td>
+                  <td>
+                    리뷰없음
+                  </td>
+                </tr>
+                <tr class="order_list_table_1">
+                  <td>
+                    20221201/1234
+                  </td>
+                  <td>
+                    상품1/기본옵션
+                  </td>
+                  <td>
+                    20000원/1개
+                  </td>
+                  <td>
+                    배송중
+                  </td>
+                  <td>
+                    리뷰없음
+                  </td>
+                </tr>
+                <tr class="order_list_table_1">
+                  <td>
+                    20221201/1234
+                  </td>
+                  <td>
+                    상품1/기본옵션
+                  </td>
+                  <td>
+                    20000원/1개
+                  </td>
+                  <td>
+                    배송중
+                  </td>
+                  <td>
+                    리뷰없음
+                  </td>
+                </tr>
+                <tr class="order_list_table_1">
+                  <td>
+                    20221201/1234
+                  </td>
+                  <td>
+                    상품1/기본옵션
+                  </td>
+                  <td>
+                    20000원/1개
+                  </td>
+                  <td>
+                    배송중
+                  </td>
+                  <td>
+                    리뷰없음
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- 진행주문상태 리스트 끝-->
+          <!-- 최근 본상품 타이틀-->
+          <div class="shipping_title">
+            <h3>
+              최근 본 상품
+              <span class="shipping_title_1">유지수님꼐서 본 최근 상품입니다.</span>
+            </h3>
+          </div>
+          <!-- 최근 본상품 타이틀 끝-->
+          <!-- 최근 본상품-->
+          <div class="show_product">
+             <ul class="show_product_list">
+              <li class="product_list">
+                <a href="../goods/goods_view.php?goodsNo=100004711">
+                  <div class="box_img">
+                    <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004711/100004711_detail_05.jpg">
+                  </div>
+                  <div class="txt_box">
+                    <div class="pro_info_wrap">
+                    </div>
+                    <p class="name ellipsis">
+                      오연가 오연 25도 360ml 홍시증류주
+                    </p>
+                    <p class="price_box">
+                      <span>11,400원</span>
+                      <del>12,000원</del>
+                    </p>
+                  </div>
+                </a>
+              </li>
+             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h3>footer</h3>
+    </footer>
+  </body>
+</html>

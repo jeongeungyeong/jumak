@@ -1,0 +1,73 @@
+body{
+    font-family: sans-serif;
+   }
+   
+   .header_{
+       background-color: #f0c864;
+       height: 200px;
+   }
+
+   dl, ul, ol, menu, li{
+       list-style: none;
+   }
+   
+   a{
+       text-decoration: none;
+       color: inherit;
+   }
+   
+   .sub_content{
+       min-height: 600px;
+       width: 100%;
+       min-width: 1200px;
+       overflow: hidden;
+       width: 1220px;
+       margin: 0 auto;
+   
+   }
+   
+   .side_cont{
+       display: block;
+       float: left;
+       width: 170px;
+       margin-top: 40px;
+       border-right: 1px solid #ececec;
+   }
+   
+   .content{
+       float: right;
+       width: 1020px;
+   }
+   
+   .sub_menu_box > h2{
+       padding: 0 0 14px 10px;
+       border-bottom: 1px solid #ececec;
+       font-size: 18px;
+   }
+   
+   .sub_menu_mypage, .sub_depth{
+       padding-inline-start: 15px;
+   }
+   
+   .sub_menu_mypage > li{
+       padding: 20px 0 20px 0;
+       font-size: 18px;
+       font-weight: bold;
+       background: url('../img/lnb_tit.png') no-repeat top left;
+   
+   }
+   
+   .sub_menu_mypage > li:first-child{
+       margin: 30px 0 0 0;
+   }
+   
+   .sub_depth > li{
+       position: relative;
+       font-weight: normal;
+       display: list-item;
+       padding: 20px 0 0 0;
+       font-size: 15px;
+       text-align: -webkit-match-parents;
+   }
+   
+   

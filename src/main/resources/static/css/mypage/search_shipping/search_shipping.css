@@ -1,0 +1,149 @@
+.header {
+    height: 100px;
+    background-color: rgb(173, 27, 27);
+  }
+  
+  .my_page {
+    justify-content: left;
+    display: flex;
+    width: 1220px;
+    margin: 0 auto;
+  }
+  
+  /* 사이드 메뉴 */
+  .sub_menu_box {
+    width: 200px;
+  }
+  
+  .sub_menu_content > h2 {
+    padding: 0 0 14px 10px;
+    border-bottom: 1px solid #ececec;
+    font-size: 18px;
+  }
+  
+  .sub_menu_list {
+    list-style: none;
+    margin: 7px 0 0 0;
+    padding: 0;
+  }
+  
+  .sub_menu_list > li {
+    background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/lnb_tit.png)
+      no-repeat top left;
+  }
+  
+  .sub_menu_list > li > h2 {
+    margin: 30px 0 0 0;
+  }
+  
+  .sub_menu_samll_list {
+    list-style: none;
+    margin: 5px 0 25px 0;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .sub_menu_samll_list > li {
+    height: 30px;
+  }
+  
+  .sub_menu_samll_list > li > a {
+    text-decoration: none;
+    color: rgba(80, 80, 80);
+  }
+  
+  /* 유저 등급 */
+  
+  .mypage_main_content_box_user_grade {
+    display: flex;
+    width: 100%;
+    border: 1px solid black;
+  }
+  
+  .mypage_main_content_box_user_grade_1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    height: 200px;
+    background-color: rgba(128, 128, 128, 0.351);
+  }
+  
+  .mypage_main_content_box_user_grade_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 700px;
+    height: 200px;
+  }
+  
+  .board_comment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .user_comment{
+    text-decoration-line: none;
+    color: black;
+  }
+
+  /* 날짜 박스 */
+  .date_name_box{
+    margin-top: 70px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  .date_cheak_box{
+    border: 3px solid #eeeeee;
+    width: 100%;
+  }
+
+  .date_cheak_content{
+    display: flex;
+    align-items: center;
+    margin: 0px 30px;
+  }
+
+  .date_cheak_content>div {
+    padding: 0px 10px;
+  }
+
+
+  .search_button{
+    background-color: rgb(240, 200, 100);
+    border: 0px;
+    color: white;
+    width: 70px;
+    height: 30px;
+  }
+
+
+
+  .search_icon{
+    width: 10px;
+    height: 10px;
+  }
+
+  
+  /* 배솢 조회 박스 */
+  #shipping_total_search{
+    color: rgb(240, 200, 100);
+  }
+
+  .table_head>th{
+    padding: 9px 10px 10px 10px;
+    border-top: 1px solid #999999;
+    border-bottom: 1px solid #dbdbdb;
+    background: #f7f7f7;
+    font-size: 15px;
+  }
+
+  .table_data{
+    text-align: center;
+    margin: 10px 0;
+  }

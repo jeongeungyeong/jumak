@@ -1,0 +1,142 @@
+.header {
+    height: 100px;
+    background-color: rgb(173, 27, 27);
+  }
+  
+  .my_page {
+    justify-content: left;
+    display: flex;
+    width: 1220px;
+    margin: 0 auto;
+  }
+  
+  /* 사이드 메뉴 */
+  .sub_menu_box {
+    width: 200px;
+  }
+  
+  .sub_menu_content > h2 {
+    padding: 0 0 14px 10px;
+    border-bottom: 1px solid #ececec;
+    font-size: 18px;
+  }
+  
+  .sub_menu_list {
+    list-style: none;
+    margin: 7px 0 0 0;
+    padding: 0;
+  }
+  
+  .sub_menu_list > li {
+    background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/lnb_tit.png)
+      no-repeat top left;
+  }
+  
+  .sub_menu_list > li > h2 {
+    margin: 30px 0 0 0;
+  }
+  
+  .sub_menu_samll_list {
+    list-style: none;
+    margin: 5px 0 25px 0;
+    text-align: left;
+    padding: 0;
+  }
+  
+  .sub_menu_samll_list > li {
+    height: 30px;
+  }
+  
+  .sub_menu_samll_list > li > a {
+    text-decoration: none;
+    color: rgba(80, 80, 80);
+  }
+
+  /*  보드 */
+.mypage_main_box{
+  margin: 30px;
+  width: 80%;
+}
+
+.board_zone_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+  .board_zone_table{
+    margin: 50px 0;
+  }
+
+  .deail_table{
+    width: 100%;
+  }
+
+  colgroup{
+    display: table-column-group;
+  }
+
+  tbody{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+  }
+
+  td {
+    height: 50px;
+    border-top: 1px solid gray;
+  }
+
+  th{
+    border-top: 1px solid gray;
+  }
+
+  .table_main_content{
+    height: 300px;
+  }
+
+  .table_text{
+    width: 85%;
+    height: 70%;
+  }
+
+  .table_text_box{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .filebox .upload-name {
+    display: inline-block;
+    height: 40px;
+    padding: 0 10px;
+    vertical-align: middle;
+    border: 1px solid #dddddd;
+    width: 78%;
+    color: #999999;
+}
+
+.file_lable{
+  display: inline-block;
+  padding: .5em .75em;
+  color: black;
+  font-size: inherit;
+  line-height: normal;
+  vertical-align: middle;
+  background-color: rgb(240, 200, 100);
+  cursor: pointer;
+  border-radius: .25em;
+}
+
+.file_content_box {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip:rect(0,0,0,0);
+  border: 0;
+}
