@@ -102,7 +102,7 @@ header .gnb_wrap .side {
 header .gnb_wrap .side .login_before button {
   width: 25px;
   height: 25px;
-  background: url(../img/ico_top_user.png) center no-repeat;
+  background: url(../../../static/imgs/product/ico_top_user.png) center no-repeat;
   text-indent: -9999em;
   margin-right: 20px;
 }
@@ -111,13 +111,16 @@ header .gnb_wrap .side .login_before button {
 
 }
 header > div {
-	vertical-align: middle;
+	
 }
 
 header > div > h5 {
 	height : 60px;
 	background-color: black;
 	color: white;
+	display: flex;
+    align-items: center;
+    justify-content: center;
 	
 } 
 
@@ -185,7 +188,7 @@ header .gnb_wrap .side .btn_search {
   width: 25px;
   height: 25px;
   margin-right: 0px;
-  background: url(../img/ico_top_search.png) center no-repeat;
+  background: url(../../../static/imgs/product/ico_top_search.png) center no-repeat;
   text-indent: -9999em;
   margin-right: 10px;
 }
@@ -408,7 +411,7 @@ header {
 .woori .goodsinfo_top {
   
   height: 1151px;
-  background: url(../img/bg_goodsinfo.jpg) center top no-repeat;
+  background: url(../../../static/imgs/product/bg_goodsinfo.jpg) center top no-repeat;
   text-align: center;
 }
 input {
@@ -497,14 +500,14 @@ input {
 .woori .goodsinfo_top .best ul li .txt_box 
 .review span:nth-child(1) {
     padding-left: 23px;
-    background: url(../img/ico_star4.png) no-repeat 0 center;
+    background: url(../../../templates/product/img/ico_star4.png) no-repeat 0 center;
     margin-right: 12px;
 }
 
 .woori .goodsinfo_top .best ul li .txt_box 
 .review span:nth-child(2) {
     padding-left: 25px;
-    background: url(../img/ico_bubble.png) no-repeat 0 center;
+    background: url(../../../templates/product/img/ico_bubble.png) no-repeat 0 center;
 }
 
 .woori .goodsinfo_top .best ul li .txt_box .name {
