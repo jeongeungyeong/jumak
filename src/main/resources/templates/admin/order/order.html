@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자페이지</title>
+    
+    <link rel="stylesheet" href="/css/contentLeft.css">
+    <link rel="stylesheet" href="/css/order/order.css">
+</head>
+
+<body>
+    <header>
+        <div class="header_">
+            <img src="" alt="">
+        </div>
+    </header>
+    <div>
+        <div></div>
+        <div class="sub_content">
+            <div class="side_cont">
+                <div class="sub_menu_box">
+                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
+                     <ul class="sub_menu_mypage">
+                        <li>
+                            <a href="../user/user.html">
+                                회원관리</a>
+                        </li>
+                        <li>
+                            <a href="../product/product.html">
+                                상품관리</a>
+                        </li>
+                        <li>
+                            <a href="../order/order.html">
+                                주문관리
+                            </a>
+                        </li>
+                        <li>게시글관리
+                            <ul class="sub_depth">
+                                <li><a href="../board/board1.html">수상한소식</a> </li>
+                                <li><a href="../board/board2.html">수상한마당</a></li>
+                                <li><a href="../board/board3.html">우리술칵테일</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="../qa/adminQa.html">
+                            고객센터
+                        </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ----------------------------------------- -->
+            <div class="content">
+                <div>
+                    <h1>주문관리</h1>
+                </div>
+                <div class="user_search">
+                    <select>
+                        <option value="prdName">주문번호</option>
+                        <option value="prdNumber">아이디</option>
+                    </select>
+                    <input type="text" id="" placeholder>
+                    <button>검색</button>
+                </div>
+                <div>
+                    <div class="admin_user_table">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col style="width:15%;">
+                                <col>
+                                <col style="width:13%;">
+                                <col style="width:13%;">                               
+                                <col style="width:13%;">
+                                <col style="width:13%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>주문번호</th>
+                                    <th>주문일</th>
+                                    <th>구매자아이디</th>
+                                    <th>금액</th>
+                                    <th>배송상태</th>
+                                    <th>주문상태</th>
+                                    <th>주문상세</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>2023-01-01</td>
+                                    <td>asdfasdf</td>
+                                    <td>3,300</td>  
+                                    <td>
+                                        <select>
+                                            <option value="">배송준비</option>
+                                            <option value="">배송중</option>
+                                            <option value="">배송완료</option>
+                                        </select>
+                                    </td>     
+                                    <td>
+                                        <select>
+                                            <option value="">주문확정</option>
+                                            <option value="">부분취소</option>
+                                            <option value="">전체취소</option>
+                                        </select>
+                                    </td>     
+                                    <td>
+                                        <button>
+                                            주문상세 
+                                            <!-- 주문상세에 상품-주문테이블 정보 -->
+                                        </button>
+                                    </td>                         
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
