@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/detail.css" />
+  </head>
+  <header class="header">
+    <h1>수상한주막</h1>
+  </header>
+  <body>
+    <div class="my_page">
+      <!-- 사이드 메뉴 시작 -->
+      <div class="sub_menu_box">
+        <div class="sub_menu_content">
+          <h2>마이페이지</h2>
+          <ul class="sub_menu_list">
+            <li>
+              <h2>쇼핑정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 주문목록/배송조회</a>
+                </li>
+                <li>
+                  <a href="">- 취소/반품/교환 내역</a>
+                </li>
+                <li>
+                  <a href="">- 환불/입금 내역</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>고객샌터</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 1:1 문의</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>회원정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 회원정보 변경</a>
+                </li>
+                <li>
+                  <a href="">- 회원 탈퇴</a>
+                </li>
+                <li>
+                  <a href="">- 배송지 관리</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>커뮤니티</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 작성글 확인</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 사이드 메뉴 끝 -->
+      <!-- 메인 시작 -->
+      <div class="mypage_main_box">
+        <div class="board_zone_title">
+          <h1>1:1문의</h1>
+        </div>
+        <div class="board_zone_table">
+          <form action="">
+            <table class="deail_table">
+              <colgroup>
+                <col style="width: 15%" />
+                <col style="width: 85%" />
+              </colgroup>
+              <tbody>
+                <tr>
+                  <th scope="row">말머리</th>
+                  <td>
+                    <div class="table_text_box">
+                      <select name="category" class="table_text">
+                        <option value="">문의내용</option>
+                        <option value="">회원/정보관리</option>
+                        <option value="">주문/결제</option>
+                        <option value="">배송</option>
+                        <option value="">반품/환불/교환</option>
+                        <option value="">영수증/증빙서류</option>
+                        <option value="">상품/이벤트</option>
+                        <option value="">기타</option>
+                      </select>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">작성자</th>
+                  <td>회원닉네임넣기!</td>
+                </tr>
+                <tr>
+                  <th scope="row">주문번호</th>
+                  <td>
+                    <div class="table_text_box">
+                      <input
+                        type="text"
+                        class="table_text"
+                        maxlength="13"
+                        placeholder="주문번호 13자리를 '-' 없이 입력하여 주세요"
+                      />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">제목</th>
+                  <td>
+                    <input type="text" class="table_text" />
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">본문</th>
+                  <td class="table_main_content">
+                    <div class="table_text_box">
+                      <input type="text" class="table_text" />
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th scope="row">첨부파일</th>
+                  <td class="main_file_content">
+                    <div class="file_box">
+                      <input
+                        class="upload-name"
+                        value="첨부파일"
+                        placeholder="첨부파일"
+                        readonly
+                      />
+                      <label for="file" class="file_lable">파일찾기</label>
+                      <input type="file" id="file" class="file_content_box" />
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h3>footer</h3>
+    </footer>
+  </body>
+</html>

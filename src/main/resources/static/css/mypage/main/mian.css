@@ -1,0 +1,207 @@
+.header {
+  height: 100px;
+  background-color: rgb(173, 27, 27);
+}
+
+.my_page {
+  justify-content: left;
+  display: flex;
+  width: 1220px;
+  margin: 0 auto;
+}
+
+/* 사이드 메뉴 */
+.sub_menu_box {
+  width: 200px;
+}
+
+.sub_menu_content > h2 {
+  padding: 0 0 14px 10px;
+  border-bottom: 1px solid #ececec;
+  font-size: 18px;
+}
+
+.sub_menu_list {
+  list-style: none;
+  margin: 7px 0 0 0;
+  padding: 0;
+}
+
+.sub_menu_list > li {
+  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/lnb_tit.png)
+    no-repeat top left;
+}
+
+.sub_menu_list > li > h2 {
+  margin: 30px 0 0 0;
+}
+
+.sub_menu_samll_list {
+  list-style: none;
+  margin: 5px 0 25px 0;
+  text-align: left;
+  padding: 0;
+}
+
+.sub_menu_samll_list > li {
+  height: 30px;
+}
+
+.sub_menu_samll_list > li > a {
+  text-decoration: none;
+  color: rgba(80, 80, 80);
+}
+
+/* 유저 등급 */
+
+.mypage_main_content_box_user_grade {
+  display: flex;
+  width: 100%;
+  border: 1px solid black;
+}
+
+.mypage_main_content_box_user_grade_1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: 200px;
+  background-color: rgba(128, 128, 128, 0.351);
+}
+
+.mypage_main_content_box_user_grade_2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 700px;
+  height: 200px;
+}
+
+.board_comment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user_comment{
+  text-decoration-line: none;
+  color: black;
+}
+
+/* 주문 타이틀 */
+.shipping_title {
+  font-size: 16px;
+  display: inline-block;
+  border-bottom: 1px solid #777777;
+  width: 100%;
+}
+
+.shipping_title_1 {
+  font-size: 12px;
+  color: #777777;
+  padding: 0 0 0 5px;
+  font-weight: normal;
+}
+
+/* 주문 상태 */
+.shipping_order_box {
+  margin: 0 0 30px 0;
+  padding: 35px 0 35px 0;
+  font-size: 16px;
+  border: 1px solid #e3e3e3;
+  border-top: 1px solid #999999;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.shipping_order_list {
+  display: flex;
+  margin: 0 auto;
+}
+
+.shipping_order_list > li {
+  background-image: url(../../icon/free-icon-right-arrow-929761.png);
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px 0 30px;
+}
+
+.shipping_order_list > li > strong {
+  background-color: #77777779;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+  color: white;
+}
+
+.shipping_order_state {
+  width: 20%;
+  border-left: 1px solid #77777740;
+}
+
+.shipping_order_state_content {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.shipping_order_state_content > li {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #77777740;
+  padding: 5px 0;
+}
+
+.shipping_order_state_content > li:first-child {
+  border-top: none;
+}
+
+/* 최근 주문 정보 */
+
+.order_list_table_1 > td {
+  height: 31px;
+  padding: 15px 10px 14px 10px;
+  color: #777777;
+  text-align: center;
+  border-bottom: 1px solid #77777740;
+}
+
+/* 최근 본 상품 */
+.show_product {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.product_list {
+  list-style: none;
+}
+
+.product_list > a {
+  margin: 0;
+  text-decoration-line: none;
+}
+
+.box_img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box_img > img {
+  height: 200px;
+}
+
+.txt_box {
+  text-align: center;
+  color: black;
+}
