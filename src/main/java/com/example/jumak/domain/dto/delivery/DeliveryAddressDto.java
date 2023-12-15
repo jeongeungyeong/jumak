@@ -17,5 +17,4 @@ public class DeliveryAddressDto {
     private String addressCellphoneNumber;
     private String addressPhoneNumber;
     private String addressDefault;
-    private Long userNumber;
 }

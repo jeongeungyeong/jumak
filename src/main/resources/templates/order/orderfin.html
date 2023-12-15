@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" th:href="@{/css/order/order.css}" />
+  <title>수상한 주막</title>
+</head>
+<body
+        id="blContents"
+        class="body-order body-order-end pc"
+        oncontextmenu="return false"
+        cz-shortcut-listen="true"
+>
+
+
+<div id="container" onclick="clickBody()">
+  <div id="contents">
+    <!-- 본문 시작 -->
+
+
+    <div class="sub_content">
+      <!-- //side_cont -->
+      <div class="content_box">
+        <div class="order_wrap">
+          <div class="order_tit">
+            <h2>주문완료</h2>
+            <ol>
+              <li>
+                <span>01</span> 장바구니
+                <span
+                ><img
+                        src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                        alt="장바구니완료"
+                /></span>
+              </li>
+              <li>
+                <span>02</span> 주문서작성/결제<span
+              ><img
+                      src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                      alt="주문서작성/결제완료"
+              /></span>
+              </li>
+              <li class="page_on"><span>03</span> 주문완료</li>
+            </ol>
+          </div>
+          <!-- //member_tit -->
+
+          <div class="order_cont">
+            <div class="order_end">
+              <!-- 결제 실패 -->
+              <div class="order_end_completion">
+                      <span
+                      ><img
+                              src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_end_completion.png"
+                              alt="주문완료"
+                      /></span>
+                <p>
+                  <strong
+                  >결제가 정상적으로 이루어지지 않았습니다. 다시 결제
+                    진행을 해주시기 바랍니다.</strong
+                  ><br /><em
+                >지속적으로 문제가 발생될 경우 관리자에게 문의 하시기
+                  바랍니다.</em
+                >
+                </p>
+              </div>
+
+              <div class="order_zone_tit">
+                <h4>주문요약정보</h4>
+              </div>
+
+              <div class="order_table_type">
+                <table class="table_left">
+                  <colgroup>
+                    <col style="width: 15%" />
+                    <col style="width: 85%" />
+                  </colgroup>
+                  <tbody>
+                  <tr>
+                    <th>결제수단</th>
+                    <td>
+                      <div class="pay_with_list">
+                        <strong>에스크로 계좌이체</strong>
+                        <ul>
+                          <li>이체은행 :</li>
+                          <li>
+                            결제금액 :
+                            <strong class="deposit_money"
+                            >8,300원</strong
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>주문번호</th>
+                    <td>2312080040000001</td>
+                  </tr>
+                  <tr>
+                    <th>결제실패사유</th>
+                    <td>
+                      고객님의 결제 중단에 의해서 주문이 취소
+                      되었습니다.
+                    </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <!-- //order_info -->
+            <div class="btn_center_box">
+              <a href="/" class="btn_order_end_ok"><em>확인</em></a>
+            </div>
+          </div>
+          <!-- //order_end -->
+        </div>
+        <!-- //order_cont -->
+      </div>
+      <!-- //order_wrap -->
+    </div>
+    <!-- //content_box -->
+
+
+
+  </div>
+  <!-- //sub_content -->
+</div>
+<!-- //본문 끝 contents -->
+</div>
+<!-- //container -->
+
+
+
+<!-- footer -->
+<footer >
+
+</footer>
+<!-- //footer -->
+
+
+</div>
+</body>
+</html>
