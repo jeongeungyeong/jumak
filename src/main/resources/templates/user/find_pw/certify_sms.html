@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../static/css/user/find_pw/certify_email.css" />
+  </head>
+  <body
+    id="blContents"
+    class="body_member body_user-certification-confirm pc"
+    oncontextmenu="return false"
+  >
+    <div id="wrap" class="paikSool banner-on">
+      <div id="container" onclick="clickBody()">
+        <div id="blContents">
+          <div class="location_wrap">
+            <div class="location_cont">
+              <em>
+                <!-- 본인인증 인증번호 확인 경로 넣기 -->
+                <a href="#" class="local_home">HOME</a>
+                > 본인인증 인증번호 확인
+              </em>
+            </div>
+          </div>
+          <div class="sub_content">
+            <div class="content_box">
+              <div class="member_wrap">
+                <div class="member_tit">
+                  <h2>본인인증</h2>
+                </div>
+                <div class="member_cont">
+                  <form
+                    name="formAuthConfirm"
+                    id="formAuthConfirm"
+                    method="post"
+                    novalidate="novalidate"
+                  >
+                    <input type="hidden" name="authType" value="authEmail" />
+                    <input
+                      type="hidden"
+                      name="certificationType"
+                      value="find_password"
+                    />
+                    <input type="hidden" name="token" value="MTcwMTY2NzA4NTgzMTE2MzI0NzIyNzQ2NTYyNjE4MzM1MDI3NTgzNTg1">
+                    <input type="hidden" name="requestAuth" value="true">
+                    <div class="find_password_box">
+                      <h3>인증번호 입력</h3>
+                        <p class="guide">수신된 SMS의 인증번호를 입력해 주세요</p>
+                          <div class="login_input">
+                            <div class="member_warning">
+                            <input type="text" id="inputCertify" name="inputCertify" class="text" placeholder="인증번호 입력">
+                            <p class="fc_red auth-text-time-authno dn" style="margin-top: 5px;">
+                              "남은 인증시간: "
+                              <span class="auth-time-authno style" id="m_timer_authno" style="background: rgb(255, 255, 255); color: rgb(255, 5, 0); background-color: rgb(255, 255, 255);"></span>
+                            </p>
+                            <!-- <div id="guideMsg" class="dn">
+                              <p class="info_again">
+                                "인증메일이 도착하지 않았나요?"
+                                <!--  -->
+                                <!-- <a href="#" name="btnAgain">인증번호 다시받기</a>
+                              </p>
+                            </div>
+                            <div id="errorMessage">
+                              <p class="info_again">
+                                본인인증에 필요한 정보를 찾을 수 없습니다.
+                                <a href="#" name="btnAgain">인증번호 다시받기</a>
+                              </p> -->
+                              </div>
+                            </div>
+                          </div>
+                          <div class="btn_center_box">
+                            <button type="button" id="btnCancel" class="btn_member_prev">이전</button>
+                            <button type="submit" class="btn_member_next">확인</button>
+                          </div>
+                        </p>
+                      </h3>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
