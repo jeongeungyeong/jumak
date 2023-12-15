@@ -111,16 +111,13 @@ header .gnb_wrap .side .login_before button {
 
 }
 header > div {
-	
+	vertical-align: middle;
 }
 
 header > div > h5 {
 	height : 60px;
 	background-color: black;
 	color: white;
-	display: flex;
-    align-items: center;
-    justify-content: center;
 	
 } 
 
