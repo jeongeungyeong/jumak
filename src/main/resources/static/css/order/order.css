@@ -1,0 +1,87 @@
+.content_box {
+    width: 90%;
+    max-width: 1350px;
+    padding-top: 40px;
+    margin: 0 auto;
+}
+.order_wrap .order_tit {
+    overflow: hidden;
+    border-bottom: 1px solid #dbdbdb;
+}
+.order_wrap .order_tit h2 {
+    float: left;
+    /* font-size: 28px; */
+    font-size: 24px;
+    color: #222222;
+    font-weight: 600;
+}
+.order_wrap .order_tit ol {
+    float: right;
+    line-height: 62px;
+}
+.order_wrap .order_tit ol li {
+    float: left;
+    font-size: 14px;
+    color: #d1d1d1;
+}
+.order_wrap .order_tit li span {
+    font-size: 16px;
+    font-weight: bold;
+}
+.order_wrap .order_tit li span > img {
+    padding: 0 14px;
+    vertical-align: -1px;
+}
+.order_wrap .order_tit .page_on {
+    color: rgb(240, 200, 100);
+}
+.order_end_completion {
+    padding: 40px 0 40px 0;
+    text-align: center;
+}
+.order_end_completion p {
+    padding: 15px 0 0 0;
+    line-height: 2;
+}
+.order_end_completion strong {
+    font-size: 22px;
+}
+.order_end_completion em {
+    font-size: 14px;
+}
+.order_zone_tit {
+    margin: 0 0 0 0;
+    padding: 0 0 10px 0;
+    font-size: 16px;
+}
+.order_zone_tit h4 {
+    font-size: 16px;
+}
+.order_table_type {
+    position: relative;
+    margin: 0 0 50px 0;
+}
+.order_table_type table {
+    width: 100%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+.order_table_type .table_left {
+    border-top: 1px solid #999999;
+}
+.btn_center_box {
+    text-align: center;
+}
+.btn_order_end_ok {
+    border: 1px solid rgb(240, 200, 100);
+    background: rgb(240, 200, 100);
+    display: inline-block;
+    width: 200px;
+    height: 61px;
+    line-height: 59px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
