@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>관리자페이지</title>   
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/user/user.css">
+    <title>관리자페이지</title>
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/user/user.css}">
 </head>
 
 <body>
@@ -20,35 +21,8 @@
         <div></div>
         <div class="sub_content">
             <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/user.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/product.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/order.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
+                    <!--사이드-->
+                <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
             </div>
 
             <!-- ----------------------------------------- -->

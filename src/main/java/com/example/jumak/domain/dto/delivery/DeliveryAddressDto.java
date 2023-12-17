@@ -13,6 +13,7 @@ public class DeliveryAddressDto {
     private String addressName;
     private String addressRecipient;
     private String address;
+    private String AddressDetail;
     private Long addressZipcode;
     private String addressCellphoneNumber;
     private String addressPhoneNumber;

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.admin.auser.AUserMapper">
+    <insert id="insert">
+        insert into JUMAK_USER (USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
+                                USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER,
+                                USER_ADDRESS_DETAIL)
+        values (SEQ_USER.nextval,#{userId},#{userPassword},#{userName},#{userNickname},#{userEmail},
+                #{userCellphoneNumber},#{userPhoneNumber},#{userAddress},#{userZipcode},#{userBirth},#{userGradeNumber},
+                #{userAddressDetail});
+    </insert>
+
+    <select id="selectAll" resultType="userDto">
+        select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
+               USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER,
+               USER_ADDRESS_DETAIL
+        from JUMAK_USER;
+    </select>
+
+    <delete id="delete">
+        DELETE
+        FROM JUMAK_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </delete>
+
+
+
+
+</mapper>
