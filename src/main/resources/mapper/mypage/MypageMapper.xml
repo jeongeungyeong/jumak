@@ -7,16 +7,38 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
-    <select id="selectBoardCount" resultType="_int">
+    <select id="selectBoardCount" resultType="long">
         SELECT COUNT (*)
         FROM JUMAK_MADANG
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
-    <select id="selectReplyCount" resultType="_int">
+    <select id="selectReplyCount" resultType="long">
         SELECT COUNT(*)
         FROM JUMAK_MADANG_REPLY
         WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectOrderStatusCount" resultType="orderStatusVo">
+        SELECT O.ORDER_STATUS_NUMBER, COUNT(ORDER_NUMBER) COUNT
+        FROM JUMAK_ORDER O
+        WHERE USER_NUMBER = #{userNumber} AND ORDER_DATE >= SYSDATE - 30
+        GROUP BY O.ORDER_STATUS_NUMBER
+        <![CDATA[
+        HAVING ORDER_STATUS_NUMBER <= 6
+        ]]>
+        ORDER BY ORDER_STATUS_NUMBER
+    </select>
+
+    <select id="selectOrderCancelStatusCount" resultType="orderStatusVo">
+        SELECT O.ORDER_STATUS_NUMBER, COUNT(ORDER_NUMBER) COUNT
+        FROM JUMAK_ORDER O
+        WHERE USER_NUMBER = #{userNumber} AND ORDER_DATE >= SYSDATE - 30
+        GROUP BY O.ORDER_STATUS_NUMBER
+        <![CDATA[
+        HAVING ORDER_STATUS_NUMBER BETWEEN 7 AND 11
+        ]]>
+        ORDER BY ORDER_STATUS_NUMBER
     </select>
 
     <insert id="insert" parameterType="userDto">

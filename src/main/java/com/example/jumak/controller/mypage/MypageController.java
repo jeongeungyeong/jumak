@@ -2,7 +2,9 @@ package com.example.jumak.controller.mypage;
 
 import com.example.jumak.domain.dto.madang.MadangDto;
 import com.example.jumak.domain.dto.user.UserDto;
+import com.example.jumak.domain.vo.myPage.OrderStatusVo;
 import com.example.jumak.service.mypage.MypageService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.apache.catalina.User;
 import org.apache.ibatis.annotations.Param;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -20,14 +24,21 @@ public class MypageController {
 
 //    메인
     @GetMapping("/main")
-    public String main(UserDto userDto, MadangDto madangDto, Model model) {
-        String userName = "유지수";
+    public String main(Model model, HttpServletRequest req) {
+//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
 
- //       String userName = userDto.getUserName();
-        Long countMadang = madangDto.getUserNumber();
+        String userName = mypageService.findUserName(userNumber);
+        Long boardCount = mypageService.findBoardCount(userNumber);
+        Long replyCount = mypageService.findReplyCount(userNumber);
+        List<OrderStatusVo> statusList = mypageService.findOrderStatusCount(userNumber);
+        List<OrderStatusVo> cancelList = mypageService.findOrderCancelStatusCount(userNumber);
 
-        model.addAttribute("user", userName);
-        model.addAttribute("madang", countMadang);
+        model.addAttribute("userName", userName);
+        model.addAttribute("boardCount", boardCount);
+        model.addAttribute("replyCount", replyCount);
+        model.addAttribute("statusList", statusList);
+        model.addAttribute("cancelList", cancelList);
 
         return "mypage/main/main";
     }

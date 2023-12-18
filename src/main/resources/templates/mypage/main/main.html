@@ -69,7 +69,7 @@
           <!-- 유저 등급 -->
           <div class="mypage_main_content_box_user_grade">
             <div class="mypage_main_content_box_user_grade_1">
-              <p>[[${user}]] 님의</p>
+              <p th:text="${userName} + ' 님의'"></p>
               <p>회원등급은 일반회원등급 입니다.</p>
               <span>
                 <select name="" id="">
@@ -87,7 +87,7 @@
               <span class="board_comment">
                 <em>작성글 / 댓글</em>
                 <a href="" class="user_comment">
-                  <strong>[[${madang}]] / 0</strong>
+                  <strong th:text="${boardCount} + '/' + ${replyCount}"></strong>
                 </a>
               </span>
             </div>
@@ -103,36 +103,26 @@
           <!-- 진행주문상태-->
           <div class="shipping_order_box">
             <ol class="shipping_order_list">
-              <li>
-                <b>입금대기</b>
-                <strong>0</strong>
-              </li>
-              <li>
-                <b>결재완료</b>
-                <strong>0</strong>
-              </li>
-              <li>
-                <b>상품준비중</b>
-                <strong>0</strong>
-              </li>
-              <li>
-                <b>배송중</b>
-                <strong>0</strong>
-              </li>
-              <li>
-                <b>배송완료</b>
-                <strong>0</strong>
-              </li>
-              <li>
-                <b>구매확정</b>
-                <strong>0</strong>
+              <li th:each="orderStatusVo : ${statusList}">
+                <th:block th:switch="${orderStatusVo.orderStatusNumber}" >
+                  <b th:case="1">입금대기</b>
+                  <b th:case="2">결제완료</b>
+                  <b th:case="3">상품준비중</b>
+                  <b th:case="4">배송중</b>
+                  <b th:case="5">배송완료</b>
+                  <b th:case="6">구매확정</b>
+                </th:block>
+                <strong th:text="${orderStatusVo.count}"></strong>
               </li>
             </ol>
             <div class="shipping_order_state">
               <ul class="shipping_order_state_content">
+                  <th:block th:each="orderStatusVo : ${cancelList}">
+                      <input type="hidden" th:name="${orderStatusVo.orderStatusNumber}" th:value="${orderStatusVo.count}">
+                  </th:block>
                 <li>
                   <b>• 취소</b>
-                  <span>0건</span>
+                    <span>0건</span>
                 </li>
                 <li>
                   <b>• 교환</b>
