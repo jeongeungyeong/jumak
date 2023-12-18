@@ -11,4 +11,6 @@ public interface AUserMapper {
     public List<UserDto> selectAll();
 //    유저 가입 ㅡㅡ
     public void insert(UserDto userDto);
+//    유저 삭제
+    public void delete(Long userNumber);
 }

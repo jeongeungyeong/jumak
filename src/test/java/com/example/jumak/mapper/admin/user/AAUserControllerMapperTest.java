@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AUserMapperTest {
+class AAUserControllerMapperTest {
     UserDto userDto;
     @Autowired
     com.example.jumak.mapper.admin.auser.AUserMapper AUserMapper;
@@ -15,17 +15,17 @@ class AUserMapperTest {
     @BeforeEach
     void setUp() {
         userDto = new UserDto();
-        userDto.setUserId("asdf");
-        userDto.setUserPassword("1234");
-        userDto.setUserAddress("asdf");
-        userDto.setUserBirth("1232456");
-        userDto.setUserEmail("asdf@gasdf");
-        userDto.setUserName("ㅇㅇㅇ");
-        userDto.setUserNickname("ddd");
-        userDto.setUserAddressDetail("123e w34s");
-        userDto.setUserCellphoneNumber("01012345678");
-        userDto.setUserPhoneNumber("01012345678");
-        userDto.setUserZipcode(12345L);
+        userDto.setUserId("ttttt");
+        userDto.setUserPassword("1111");
+        userDto.setUserAddress("서울시");
+        userDto.setUserBirth("19870503");
+        userDto.setUserEmail("tt@gmail.com");
+        userDto.setUserName("강백호");
+        userDto.setUserNickname("덩크왕");
+        userDto.setUserAddressDetail("106동 1701호");
+        userDto.setUserCellphoneNumber("01098765432");
+        userDto.setUserPhoneNumber("01045678945");
+        userDto.setUserZipcode(94805L);
         userDto.setUserGradeNumber(2L);
 
     }
@@ -35,8 +35,13 @@ class AUserMapperTest {
     void insert(){
         AUserMapper.insert(userDto);
     }
+
     @Test
     void selectAll() {
         AUserMapper.selectAll();
+    }
+    @Test
+    void delete(){
+        AUserMapper.delete(2L);
     }
 }

@@ -7,14 +7,15 @@
                                 USER_ADDRESS_DETAIL)
         values (SEQ_USER.nextval,#{userId},#{userPassword},#{userName},#{userNickname},#{userEmail},
                 #{userCellphoneNumber},#{userPhoneNumber},#{userAddress},#{userZipcode},#{userBirth},#{userGradeNumber},
-                #{userAddressDetail});
+                #{userAddressDetail})
     </insert>
 
     <select id="selectAll" resultType="userDto">
         select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
                USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER,
                USER_ADDRESS_DETAIL
-        from JUMAK_USER;
+        from JUMAK_USER
+        ORDER BY USER_NUMBER DESC
     </select>
 
     <delete id="delete">
