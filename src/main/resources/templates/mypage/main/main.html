@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="../css/mian.css" />
+    <link rel="stylesheet" th:href="@{/css/mypage/main/main.css}" />
   </head>
   <header class="header">
     <h1>수상한주막</h1>
@@ -69,7 +69,7 @@
           <!-- 유저 등급 -->
           <div class="mypage_main_content_box_user_grade">
             <div class="mypage_main_content_box_user_grade_1">
-              <p>유지수님의</p>
+              <p>[[${user}]] 님의</p>
               <p>회원등급은 일반회원등급 입니다.</p>
               <span>
                 <select name="" id="">
@@ -87,7 +87,7 @@
               <span class="board_comment">
                 <em>작성글 / 댓글</em>
                 <a href="" class="user_comment">
-                  <strong>0 / 0</strong>
+                  <strong>[[${madang}]] / 0</strong>
                 </a>
               </span>
             </div>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.mypage.MypageMapper">
+    <select id="selectName">
+        SELECT USER_NAME
+        FROM JUMAK_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectBoardCount" resultType="_int">
+        SELECT COUNT (*)
+        FROM JUMAK_MADANG
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <select id="selectReplyCount" resultType="_int">
+        SELECT COUNT(*)
+        FROM JUMAK_MADANG_REPLY
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
+    <insert id="insert" parameterType="userDto">
+        <selectKey keyProperty="userNumber" resultType="long" order="BEFORE">
+            SELECT SEQ_USER.NEXTVAL FROM DUAL
+        </selectKey>
+        INSERT INTO JUMAK_USER (USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME,
+                                USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
+                                USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL,
+                                USER_ZIPCODE, USER_BIRTH,
+                                USER_GRADE_NUMBER)
+        VALUES (#{userNumber}, #{userId}, #{userPassword}, #{userName},
+                #{userNickname}, #{userEmail}, #{userCellphoneNumber},
+                #{userPhoneNumber}, #{userAddress}, #{userAddressDetail},
+                #{userZipcode}, #{userBirth}, #{userGradeNumber})
+    </insert>
+</mapper>

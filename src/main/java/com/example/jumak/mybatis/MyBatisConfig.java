@@ -29,7 +29,7 @@ public class MyBatisConfig {
      */
     private final ApplicationContext applicationContext;
 
-//    이 어노테이션은 외부파일의 설정 값들을 자바 객체로 가져올때 사용한다.
+    //    이 어노테이션은 외부파일의 설정 값들을 자바 객체로 가져올때 사용한다.
 //    스프링부트에서는 application.properties라는 파일에 설정값을 작성하므로 해당 파일에서 특정 속성을 가져올 때 사용한다.
 //    prefix는 어노테이션의 설정이다.
 //    접두사를 설정할 때 사용하는 설정이며 "spring.datasource.hikari"로 시작하는 설정값을 전부 가져오라는 의미이다.
@@ -78,7 +78,7 @@ public class MyBatisConfig {
         classpath*는 java 디렉터리와 resources디렉터리 에서 검색을하여 일치하는 모든 파일을 찾아낸다.(여러 파일)
         해당 패턴으로 검색된 파일들의 경로를 sqlSessionFactoryBean에 저장한다.
          */
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:/mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:/mapper/**/*.xml"));
 //        config.xml파일의 경로를 알려준다.
 //        classpath는 하나의 파일만 검색하여 찾는다.
         sqlSessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:/config/config.xml"));
@@ -97,11 +97,3 @@ public class MyBatisConfig {
     }
 
 }
-
-
-
-
-
-
-
-
