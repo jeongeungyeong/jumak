@@ -302,13 +302,13 @@ input[type="button"] {
 
 /*  추천순, 판매인기순, 낮은가격순, 높은가격순, 상품평순, 등록일순 */
 
-.good_pick {
+.product_pick {
     margin: 40px 0;
     display: flex;
     justify-content: space-between;
 }
 
-.goods_pick_num {
+.products_pick_num {
     width: 95%;
 }
 .goods_pick_list .pick_list_num {
