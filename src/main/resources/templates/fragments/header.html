@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-<header>
-  <nav>
+<header th:fragment="header" class="header">
+  <nav class="nav">
     <h1>
       <a href="/">
         <img
@@ -24,13 +24,13 @@
     </ul>
     <div class="icon-box">
       <div class="search-icon-box icon-box">
-        <img th:src="@{/imgs/main/ico_top_search.png}" alt="">
+        <img th:src="@{/imgs/main/icon/ico_top_search.png}" alt="">
       </div>
       <div class="cart-icon-box icon-box">
-        <img th:src="@{/imgs/main/ico_top_cart.png}" alt="">
+        <img th:src="@{/imgs/main/icon/ico_top_cart.png}" alt="">
       </div>
       <div class="login-icon-box icon-box">
-        <img th:src="@{/imgs/main/ico_top_user.png}" alt="">
+        <img th:src="@{/imgs/main/icon/ico_top_user.png}" alt="">
       </div>
     </div>
   </nav>

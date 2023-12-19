@@ -1,38 +1,197 @@
-@font-face {
-    font-family: pado;
-    src: url('/font/pado.ttf');
+/*메인 최상단 배너*/
+.banner-box {
+    overflow: hidden;
 }
 
-*{
-    margin: 0;
-    padding: 0;
-}
-
-header ul {
-    list-style-type: none;
+.banner-ul {
     display: flex;
+    list-style-type: none;
 }
 
-header ul>li {
-    margin : 0 40px;
-    cursor: pointer;
-    font-family: pado;
-    font-size: 20px;
+/*메인 컨텐츠들*/
+.main__content-wrap{
+    width: 1200px;
+    margin : 0 auto;
+    padding: 100px 0px;
+    /*box-sizing: border-box;*/
 }
 
-header > nav {
+/* 뉴스, 마당 박스*/
+.top-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+/*뉴스 블록*/
+.section-head{
+    display: flex;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    align-items: center;
+}
+.section-head__title{
+    font-family: chosun100;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.section-head__more{
+    font-weight: bold;
+}
+.section-head__more span:first-child{
+    color: var(--main-color);
+}
+
+.news__content-box{
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    gap: 28px 38px;
+}
+
+.news__img-box > img{
+    border-radius: 15px;
+}
+
+.news__info{
+    text-align: center;
+    font-family: chosun;
+}
+
+.news__info > p{
+    margin-top: 15px;
+}
+
+/* 마당 섹션 */
+.madang__list-ul > li{
+    padding: 11px 0;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.madang__img-box{
+    width: 70px;
+    height: 70px;
+    overflow: hidden;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-header h1{
-    height: 100px;
+.madang__list-ul > li > a{
     display: flex;
-    align-items: center;
 }
 
-header .icon-box{
+.madang__info{
+    margin-left: 30px;
+    width: 400px;
+}
+
+.madang__info > span{
+    font-size: 14px;
+    font-weight: bold;
+    color: #828282;
+    line-height: 22px;
+}
+
+.madang__info > p{
+    font-family: chosun;
+    font-size: 16px;
+    color: #3d3935;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 중앙 배너 (술 취향 테스트)*/
+.middle-banner-box{
+    margin: 65px 0 100px;
+}
+
+/* 중앙 섹션 (이달의 술, 장터)*/
+.middle-box{
     display: flex;
-    margin : 0 5px
+    justify-content: space-between;
+}
+
+.monthly-sul__content-box{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.monthly-sul__content-box > a{
+    display: block;
+    position: absolute;
+    border-radius: 15px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 99%;
+    background: url("/imgs/main/monthly_gra.png") left bottom repeat-x;
+}
+
+.monthly-sul__content-box img{
+    border-radius: 15px;
+}
+
+.monthly-sul__text-box {
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+    width: 100%;
+    padding-left: 35px;
+}
+
+.monthly-sul__text-box span{
+    display: block;
+    margin-bottom: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    opacity: 0.8;
+}
+
+.monthly-sul__text-box p{
+    font-size: 19px;
+    font-weight: bold;
+    color: #fff;
+    line-height: 30px;
+}
+
+
+.store-direct__content-box > img{
+    border-radius: 15px;
+}
+
+/* 우리 술 찾기 배너*/
+.find-sul-banner{
+    margin: 65px 0 100px;
+}
+
+/* 양조장 탐방기 */
+.brewery-news__content-box{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(263px, auto));
+    gap: 20px 49px;
+    margin-top: 20px;
+}
+
+.brewery-news__img-box > img{
+    width: 263px;
+    height: 201px;
+    border-radius: 15px;
+}
+
+.brewery-news__item p{
+    margin-top: 15px;
+    font-size: 14px;
+    color: #3d3935;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: chosun;
+}
+
+/* 모임 공지 */
+.meeting-banner{
+    margin-top: 100px;
 }
