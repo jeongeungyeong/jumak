@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/user/userDetail.css">
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/user/userDetail.css}">
 </head>
 
 <body>
@@ -20,35 +21,8 @@
         <div></div>
         <div class="sub_content">
             <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/product.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/order.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
+                <!--사이드-->
+                <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
             </div>
 
             <!-- ----------------------------------------- -->
@@ -64,49 +38,53 @@
                                 <col width="25%">
                                 <col width="75%">
                             </colgroup>
-                            <tbody>
+                            <tbody t>
                                 <tr>
                                     <th>아이디</th>
-                                    <td>asdf</td>
+                                    <td th:text="${user.userId}"></td>
                                 </tr>
                                 <tr>
                                     <th>이름</th>
-                                    <td>김민규</td>
+                                    <td th:text="${user.userName}"></td>
                                 </tr>
                                 <tr>
                                     <th>닉네임</th>
-                                    <td>아무무</td>
+                                    <td th:text="${user.userNickname}"></td>
                                 </tr>
                                 <tr>
                                     <th>이메일</th>
-                                    <td>QWer@gmail.com</td>
+                                    <td th:text="${user.userEmail}"></td>
                                 </tr>
                                 <tr>
                                     <th>주소</th>
-                                    <td>서울특별시 강북구 미아동 머시기 아파트 123동2102호</td>
+                                    <td th:text="${user.userAddress}+ ' ' +${user.userAddressDetail}"></td>
                                 </tr>
                                 <tr>
                                     <th>휴대폰번호</th>
-                                    <td>010-1234-5678</td>
+                                    <td th:text="${user.userCellphoneNumber}"></td>
                                 </tr>
                                 <tr>
                                     <th>생년월일</th>
-                                    <td>1990.11.22</td>
+                                    <td th:text="${user.userBirth}"></td>
                                 </tr>
                                 <tr>
                                     <th>회원등급</th>
-                                    <td>일반</td>
+                                    <td th:if="${user.userGradeNumber==1}">관리자</td>
+                                    <td th:if="${user.userGradeNumber==2}">일반 회원</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button type="button">이전</button>
+                    <button class="btn_user_prev" type="button">이전</button>
                     <button type="button">수정</button>
                 </div>
               
             </div>
         </div>
     </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script th:src="@{/js/admin/user/userDetail.js}"></script>
 </body>
 
 </html>

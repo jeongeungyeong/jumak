@@ -16,10 +16,11 @@ import java.util.List;
 public class AUserRestController {
     private final AUserService aUserService;
 
-//    @DeleteMapping("/{userNumber}")
-//    public void userRemove(@PathVariable("userNumber") Long userNumber) {
-//        aUserService.remove(userNumber);
-//    }
+//    유저 삭제
+    @DeleteMapping("/delete/{userNumber}")
+    public void userRemove(@PathVariable("userNumber") Long userNumber) {
+        aUserService.remove(userNumber);
+    }
 
 
 }

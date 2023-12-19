@@ -27,23 +27,32 @@
 
             <!-- ----------------------------------------- -->
             <div class="content">
+
                 <div>
                     <h1>회원관리</h1>
                 </div>
+
+                <!--검색 창-->
                 <div class="user_search">
-                    <select>
-                        <option value="id">아이디</option>
-                        <option value="nickName">닉네임</option>
-                        <option value="phoneNumber">전화번호</option>
-                    </select>
-                    <input type="text" id="" placeholder>
-                    <button >검색</button>
+                    <form action="/user/search">
+                        <select name="searchType">
+                            <option value="id">아이디</option>
+                            <option value="nickname">닉네임</option>
+                            <option value="phoneNumber">전화번호</option>
+                        </select>
+                        <input type="text" name="keyword">
+                        <button>검색</button>
+                    </form>
                 </div>
+
+
+
+                <!--유저 리스트-->
                 <div>
                     <div class="admin_user_table">
                         <table>
                             <colgroup>
-                            <!-- 아이디 닉네임 전화번호 주소 관리(상세 변경 탈퇴)  -->
+                            <!--아이디 닉네임 전화번호 주소 관리-->
                             <col style="width:15%;">
                             <col style="width:15%;">
                             <col style="width:15%;">
@@ -65,32 +74,45 @@
                                     <td th:text="${user.userNickname}"></td>
                                     <td th:text="${user.userCellphoneNumber}"></td>
                                     <td th:text="${user.userAddress}+ ' ' +${user.userAddressDetail}"></td>
-                                    <td>
-                                        <button th:data-num="${user.userNumber}">상세</button>
-                                        <button class="btn_user_remove" th:data-num="${user.userNumber}">탈퇴</button>
+                                    <td class="wrap_user_button">
+                                        <button class="btn_user_detail" type="button" th:data-num="${user.userNumber}">상세</button>
+                                        <button class="btn_user_remove" type="button" th:data-num="${user.userNumber}">탈퇴</button>
                                     </td>
                                 </tr>                           
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="paging">
-                    <img class="prev_page" src="">
-                    <div class="pages">
-                        <span class="page-num prev">&lt</span>
-                    <span class="active">1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                        <span class="page-num next">&gt</span>
+
+                <!--페이징 처리-->
+                <div class="paging" >
+                    <div class="pages" th:object="${pageInfo}">
+
+                        <a th:href="@{/user(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
+                            <span class="page-num prev">&lt</span>
+                        </a>
+
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            <a th:href="@{/user(page=${i})}" class="page-a">
+                                <span class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></span>
+                            </a>
+                        </th:block>
+
+
+                        <a th:href="@{/user(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+                            <span class="page-num next">&gt</span>
+                        </a>
+
+                    </div>
                 </div>
-                    <img class="next_page" src="">
-                </div>
+
+
             </div>
         </div>
     </div>
-<!--<input type="hidden" class="user-num" th:value="${user.userNumber}">-->
+
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script th:src="@{/js/admin/user/userList.js}"></script>
 </body>
 
 </html>

@@ -4,7 +4,7 @@ body{
    
    .header_{
        background-color: #f0c864;
-       height: 200px;
+       height: 100px;
    }
 
    dl, ul, ol, menu, li{
@@ -30,7 +30,7 @@ body{
        display: block;
        float: left;
        width: 170px;
-       margin-top: 40px;
+       margin-top: 55px;
        border-right: 1px solid #ececec;
    }
    

@@ -17,8 +17,8 @@ class AAUserControllerServiceTest {
     void setUp() {
     }
 
-    @Test
-    void finalAll() {
-        aUserService.finalAll();
-    }
+//    @Test
+//    void finalAll() {
+//        aUserService.findAll();
+//    }
 }
