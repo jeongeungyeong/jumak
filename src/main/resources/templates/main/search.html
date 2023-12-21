@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/main/search.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+  <main>
+    <h4 class="search-title">검색결과</h4>
+    <section class="search-box">
+      <div class="input-box">
+<!--        검색 url 넣기-->
+        <form action="" method="" id="search-form">
+          <input type="text" name="keyword" id="keyword">
+          <button class="input-box__icon">
+            <img th:src="@{/imgs/main/icon/ico_top_search.png}" alt="">
+          </button>
+        </form>
+      </div>
+      <div class="search-box__popular">
+        <strong>인기 검색어</strong>
+        <ul>
+          <li><a href=""><span>#상큼한</span></a></li>
+          <li><a href=""><span>#시원한</span></a></li>
+          <li><a href=""><span>#추천술</span></a></li>
+          <li><a href=""><span>#선물하기좋은</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="search-result-msg">
+      <p>검색하신 <span id="result-keyword">"증류"</span>에 대한 <span id="result-count">111</span>개의 검색 결과가 있습니다.</p>
+    </section>
+
+    <section class="content">
+      <div class="info">
+        <div class="info-title content__title">
+          <span>우리술 정보(<span class="info-list-count">85</span>)</span>
+        </div>
+        <div class="info-list content__list">
+          <!-- 반복요소-->
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+
+          <!-- /반복요소-->
+        </div>
+      </div>
+      <div class="store">
+        <div class="store-title content__title">
+          <span>우리술 장터(<span class="store-list-count">15</span>)</span>
+        </div>
+
+        <div class="store-list content__list">
+          <article class="list-item">
+          <div class="img-box">
+            <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+          </div>
+          <div class="text-box">
+            <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+            <p class="sale-price">22,510원</p>
+            <p class="price"> 23,700원</p>
+          </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

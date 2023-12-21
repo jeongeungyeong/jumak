@@ -9,4 +9,9 @@ public class Main {
     public String mainPage(){
         return "main/main";
     }
+
+    @GetMapping("/goods/search")
+    public String searchPage(){
+        return "main/search";
+    }
 }
