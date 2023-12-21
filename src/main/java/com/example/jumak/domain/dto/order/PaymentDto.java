@@ -1,4 +1,4 @@
-package com.example.jumak.domain.dto.payment;
+package com.example.jumak.domain.dto.order;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

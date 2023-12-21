@@ -1,6 +1,8 @@
 package com.example.jumak.service.mypage;
 
+import com.example.jumak.domain.dto.order.PaymentDto;
 import com.example.jumak.domain.dto.user.UserDto;
+import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
 import com.example.jumak.mapper.mypage.MypageMapper;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +37,7 @@ public class MypageService {
         return mypageMapper.selectOrderStatusCount(userNumber);
     }
 
+//    배송 취소/반품/환불/교환 내역 조회
     public List<OrderStatusVo> findOrderCancelStatusCount(Long userNumber){
         List<OrderStatusVo> statusVoList = mypageMapper.selectOrderCancelStatusCount(userNumber);
 
@@ -69,6 +72,12 @@ public class MypageService {
 //        resultList.add(exchangeVo);
 
         return statusVoList;
+    }
+
+    public List<OrderDetailVo> findOrderDetail(Long userNumber) {
+        List<OrderDetailVo> orderDetailList = mypageMapper.selectOrderDetail(userNumber);
+
+        return orderDetailList;
     }
 
 

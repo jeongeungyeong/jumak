@@ -1,12 +1,15 @@
 package com.example.jumak.mapper.mypage;
 
 import com.example.jumak.domain.dto.user.UserDto;
+import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -45,5 +48,11 @@ class MypageMapperTest {
 //        then
         assertThat(foundName).isEqualTo(userDto.getUserName());
 //        assertThat(foundName.get()).isEqualTo(userDto.getUserNumber());
+    }
+
+    @Test
+    void selectOrderDetail(){
+        List<OrderDetailVo> voList = mypageMapper.selectOrderDetail(1L);
+        System.out.println("voList = " + voList);
     }
 }

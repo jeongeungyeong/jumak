@@ -19,7 +19,7 @@
               <h2>쇼핑정보</h2>
               <ul class="sub_menu_samll_list">
                 <li>
-                  <a href="">- 주문목록/배송조회</a>
+                  <a th:href="@{/mypage/search-shipping}">- 주문목록/배송조회</a>
                 </li>
                 <li>
                   <a href="">- 취소/반품/교환 내역</a>
@@ -155,81 +155,29 @@
               <thead>
                 <tr>
                   <th>날짜/주문번호</th>
-                  <th>상품명/옵션</th>
+                  <th>상품명</th>
                   <th>상품금액/수량</th>
                   <th>주문상태</th>
                   <th>확인/리뷰</th>
                 </tr>
               </thead>
               <tbody class="order_list_table">
+                <th:block th:each="orderDetailVo : ${orderDetailList}">
                 <tr class="order_list_table_1">
-                  <td>
-                    20221201/1234
-                  </td>
-                  <td>
-                    상품1/기본옵션
-                  </td>
-                  <td>
-                    20000원/1개
-                  </td>
-                  <td>
-                    배송중
-                  </td>
-                  <td>
-                    리뷰없음
-                  </td>
+                  <td th:text="${orderDetailVo.orderDate} + '/' + ${orderDetailVo.orderNumber}"></td>
+                  <td th:text="${orderDetailVo.productName}"></td>
+                  <td th:text="${orderDetailVo.productPrice} + '/' + ${orderDetailVo.orderDetailCount}"></td>
+                  <td th:text="${orderDetailVo.orderStatusNumber}"></td>
+                  <th:block th:if="${orderDetailVo.orderReviewCount == 0}">
+                    <td th:text="'없음'" class="order_detail"></td>
+                  </th:block>
+                  <th:block th:unless="${orderDetailVo.orderReviewCount == 0}">
+                    <td th:text="${orderDetailVo.orderReviewCount}" class="order_detail"></td>
+                  </th:block>
+
+
                 </tr>
-                <tr class="order_list_table_1">
-                  <td>
-                    20221201/1234
-                  </td>
-                  <td>
-                    상품1/기본옵션
-                  </td>
-                  <td>
-                    20000원/1개
-                  </td>
-                  <td>
-                    배송중
-                  </td>
-                  <td>
-                    리뷰없음
-                  </td>
-                </tr>
-                <tr class="order_list_table_1">
-                  <td>
-                    20221201/1234
-                  </td>
-                  <td>
-                    상품1/기본옵션
-                  </td>
-                  <td>
-                    20000원/1개
-                  </td>
-                  <td>
-                    배송중
-                  </td>
-                  <td>
-                    리뷰없음
-                  </td>
-                </tr>
-                <tr class="order_list_table_1">
-                  <td>
-                    20221201/1234
-                  </td>
-                  <td>
-                    상품1/기본옵션
-                  </td>
-                  <td>
-                    20000원/1개
-                  </td>
-                  <td>
-                    배송중
-                  </td>
-                  <td>
-                    리뷰없음
-                  </td>
-                </tr>
+                </th:block>
               </tbody>
             </table>
           </div>
@@ -272,4 +220,6 @@
       <h3>footer</h3>
     </footer>
   </body>
+  <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+  <script th:src="@{/js/mypage/main/main.js}"></script>
 </html>
