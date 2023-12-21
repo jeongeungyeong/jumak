@@ -10,11 +10,12 @@ import java.util.Optional;
 
 @Mapper
 public interface ProductMapper {
-    //    전체 상품 리스트 조회
-    public List<ProductVo> selectAll(Criteria criteria);
-    //    카테고리 조회
 //    상품 상세 정보 조회
-    public Optional<ProductVo> select(Long productNumber);
-//    총 상품수 조회
+//    public Optional<ProductVo> select(Long productNumber);
+//    카테고리 리스트
+//    상품 리스트
+    public List<ProductVo> productsGetList();
+//    상품 총 개수
     public int selectTotal();
+//    상품 조회 페이지
 }

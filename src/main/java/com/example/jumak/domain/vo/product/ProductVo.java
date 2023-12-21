@@ -14,7 +14,7 @@ public class ProductVo {
     private String productSubtitle;
     private String productRawMaterial;
     private Long productNetWeight;
-    private String productAlcoholicity;
+    private Long productAlcoholicity;
     private String productArea;
     private String productDescription;
     private Long productPrice;
