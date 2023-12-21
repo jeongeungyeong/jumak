@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
-  <link rel="stylesheet" th:href="@{/css/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/common.css}" />
   <title>주모's store</title>
 </head>
 
@@ -36,7 +36,7 @@
         <input
                 type="radio"
                 id="category-all"
-                name="shopCategory"
+                name="storeCategory"
                 value="all"
         />
       </label>
@@ -64,25 +64,22 @@
   </div>
   <!-- /카테고리 -->
   <!-- 정렬 -->
-  <div class="products_pick_list">
-    <!-- picklist -->
-    <div class="product_pick">
+  <form>
+    <div class="products_pick_list">
       <div class="products_pick_num">
         <div class="pick_list_num">총 <strong>641</strong>개의 상품</div>
       </div>
-      <div class="pick_list_box">
-        <span class="pick_list_btns"> </span>
-        <div class="pick_list_btns__box none">
-          <div class="product-date-btn">등록일순</div>
-          <div class="product-best-btn">판매인기순</div>
-          <div class="reply-modify-btn">낮은가격순</div>
-          <div class="reply-modify-btn">높은가격순</div>
-          <div class="reply-modify-btn">상품평순</div>
-        </div>
-      </div>
+
+      <select class="pick_list_box">
+        <option value="등록일순"selected="selected">등록일순</option>
+        <option value="판매인기순">판매인기순</option>
+        <option value="낮은가격순">낮은가격순</option>
+        <option value="높은가격순">높은가격순</option>
+        <option value="상품평순">상품평순</option>
+      </select>
     </div>
-    <!-- /picklist -->
-  </div>
+  </form>
+
   <!-- /정렬 -->
   <!-- 상품목록 -->
   <div class="product">
@@ -472,30 +469,59 @@
     <!-- /게시물 샘플 -->
   </div>
 </div>
-<!-- 페이징 처리 -->
+<!-- 페이징 처리  -->
 <div class="page-container">
-  <ul class="page-box" th:object="${pageInfo}">
-    <a th:href="@{/store/main(page=*{startPage-1})}" class="page-a" th:if="*{prev}">
+  <ul class="page-box">
+    <a href="" class="page-a">
       <li class="page-num prev">&lt</li>
     </a>
-
-    <!--    페이징 처리는 시작번호~끝번호 까지 반복을 돌려야 하므로 빠른 for문으로 처리 불가능하다.(시작과 끝이 정해졌기 때문)
-          그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리해준다.
-          #을 붙이면 타임리프에서 제공해주는 객체를 사용할 수 있으며 numbers라는 객체는 sequence(시작 값, 끝 값)라는 메소드를
-          지원해준다.  sequence(1, 5) -> 1, 2, 3, 4, 5
-    -->
-    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-      <a th:href="@{/store/main(page=${i})}" class="page-a">
-        <li class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></li>
-      </a>
-    </th:block>
-
-
-    <a th:href="@{/store/main(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+    <a href="" class="page-a">
+      <li class="page-num active">1</li>
+    </a>
+    <a href="" class="page-a">
+      <li class="page-num">2</li>
+    </a>
+    <a href="" class="page-a">
+      <li class="page-num">3</li>
+    </a>
+    <a href="" class="page-a">
+      <li class="page-num">4</li>
+    </a>
+    <a href="" class="page-a">
+      <li class="page-num">5</li>
+    </a>
+    <a href="" class="page-a">
       <li class="page-num next">&gt</li>
     </a>
   </ul>
 </div>
+<!-- /페이징 처리 -->
+
+
+<!-- 페이징 처리 -->
+<!--<div class="page-container">-->
+<!--  <ul class="page-box" th:object="${pageInfo}">-->
+<!--    <a th:href="@{/store/main(page=*{startPage-1})}" class="page-a" th:if="*{prev}">-->
+<!--      <li class="page-num prev">&lt</li>-->
+<!--    </a>-->
+
+<!--    &lt;!&ndash;    페이징 처리는 시작번호~끝번호 까지 반복을 돌려야 하므로 빠른 for문으로 처리 불가능하다.(시작과 끝이 정해졌기 때문)-->
+<!--          그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리해준다.-->
+<!--          #을 붙이면 타임리프에서 제공해주는 객체를 사용할 수 있으며 numbers라는 객체는 sequence(시작 값, 끝 값)라는 메소드를-->
+<!--          지원해준다.  sequence(1, 5) -> 1, 2, 3, 4, 5-->
+<!--    &ndash;&gt;-->
+<!--    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">-->
+<!--      <a th:href="@{/store/main(page=${i})}" class="page-a">-->
+<!--        <li class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></li>-->
+<!--      </a>-->
+<!--    </th:block>-->
+
+
+<!--    <a th:href="@{/store/main(page=*{endPage+1})}" class="page-a" th:if="*{next}">-->
+<!--      <li class="page-num next">&gt</li>-->
+<!--    </a>-->
+<!--  </ul>-->
+<!--</div>-->
 <!-- /페이징 처리 -->
 
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>

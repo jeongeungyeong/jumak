@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.product.ProductMapper">
-
-    <!--    상품 검색 -->
-
-    <!--    상품 카테고리-->
-    <select id="selectCategory" parameterType="long" resultType="productVo">
-        SELECT PRODUCT_NAME
-        FROM JUMAK_PRODUCT
+    <!--    전체 상품 보기-->
+    <select id="select" parameterType="long" resultType="productVo">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_PRICE,PRODUCT_DISCOUNT,
+               N.PRODUCT_IMG_MAIN_NUMBER, N.PRODUCT_IMG_MAIN_NAME, N.PRODUCT_IMG_MAIN_PATH, N.PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_IMG_MAIN N
+                                  ON P.PRODUCT_NUMBER=N.PRODUCT_NUMBER
     </select>
-    <!--    상품 정렬 보기-->
 
-    <!--    상품 보기-->
+    <!--    상품 카테고리 분류-->
+    <select id="selectCategory" resultType="productVo">
+        SELECT Y.PRODUCT_CATEGORY_NUMBER, Y.PRODUCT_CATEGORY_NAME
+        FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_CATEGORY Y
+                                  ON P.PRODUCT_CATEGORY_NUMBER = Y.PRODUCT_CATEGORY_NUMBER
+    </select>
+
+    <!--    상품 정렬 보기-->
 
     <!--    상품 리스트 조회-->
     <select id="selectAll" resultType="productVo">
@@ -48,12 +54,18 @@
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>
 
+    <!--    상품 디테일 페이지-->
+    <select id="selectDetail" resultType="productDetailVo">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_PRICE,PRODUCT_DISCOUNT,
+               G.PRODUCT_IMG_NUMBER, G.PRODUCT_IMG_NAME, G.PRODUCT_IMG_PATH, G.PRODUCT_IMG_UUID
+        FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_IMG G
+            ON P.PRODUCT_NUMBER = G.PRODUCT_NUMBER
+    </select>
+
     <!--    전체 상품 수-->
     <select id="selelctTotal" resultType="_int">
         SELECT COUNT(PRODUCT_NUMBER)
         FROM JUMAK_PRODUCT
     </select>
-
-
-
 </mapper>

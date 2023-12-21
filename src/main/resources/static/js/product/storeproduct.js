@@ -1,21 +1,21 @@
 // 추천순
-$(".goods_pick_list").on("click", ".pick_list_btns", function () {
+$(".products_pick_list").on("click", ".pick_list_btns", function () {
     let $replyBtnBox = $(this)
         .closest(".pick_list_box")
         .find(".pick_list_btns__box");
 
     $replyBtnBox.toggleClass("none");
 });
-
-$("body").click(function (e) {
-    if ($(e.target).hasClass("pick_list_btns")) {
-        //console.log('aa');
-        return;
-    }
-    if (!$(".pick_list_btns__box").has(e.target).length) {
-        $(".pick_list_btns__box").addClass("none");
-    }
-});
+// 정렬순서
+// $("body").click(function (e) {
+//     if ($(e.target).hasClass("pick_list_btns")) {
+//         //console.log('aa');
+//         return;
+//     }
+//     if (!$(".pick_list_btns__box").has(e.target).length) {
+//         $(".pick_list_btns__box").addClass("none");
+//     }
+// });
 
 // 카테고리
 let $categoryBox = $(".category-box");

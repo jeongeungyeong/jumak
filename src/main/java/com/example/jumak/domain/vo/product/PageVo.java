@@ -21,15 +21,15 @@ public class PageVo {
     //    전체 게시글 수
     private int total;
     //    화면에서 전달받은 page, amount를 저장하는 객체
-    private Criteria criteria;
+    private com.example.jumak.domain.vo.product.Criteria criteria;
 
     public PageVo() {}
 
-    public PageVo(int total, Criteria criteria) {
+    public PageVo(int total, com.example.jumak.domain.vo.product.Criteria criteria) {
         this(5, total, criteria); // 페이지 카운트를 별도로 받지 않으면 세트 당 5개로 고정
     }
 
-    public PageVo(int pageCount, int total, Criteria criteria) {
+    public PageVo(int pageCount, int total, com.example.jumak.domain.vo.product.Criteria criteria) {
         this.pageCount = pageCount;
         this.total = total;
         this.criteria = criteria;

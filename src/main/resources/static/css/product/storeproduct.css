@@ -121,7 +121,7 @@ a {
     color: #fff;
 }
 
-.add-post-btn {
+/*.add-post-btn {
     display: block;
     width: 110px;
     padding: 10px;
@@ -136,7 +136,7 @@ a {
 
 .add-post-btn:hover {
     background-color: #00a792;
-}
+}*/
 
 .btn-wrap {
     display: flex;

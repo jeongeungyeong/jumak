@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/store")
 public class ProductController {
+
     //    스토어 상품 전체 보기
     @GetMapping("/main")
     public String product(){
@@ -16,8 +17,10 @@ public class ProductController {
     }
     //    상품 카테고리
 
+    //    상품 정렬
+
     //    상품 디테일
-    @GetMapping("/detail")
+    @GetMapping("/view")
     public String detail(){
         return "product/storeproductdetail" ;
     }

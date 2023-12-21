@@ -1,0 +1,18 @@
+package com.example.jumak.mapper.product;
+
+import com.example.jumak.domain.dto.product.ProductDto;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+@SpringBootTest
+class ProductMapperTest {
+    @Autowired ProductMapper productMapper;
+
+    ProductDto productDto;
+
+
+}
