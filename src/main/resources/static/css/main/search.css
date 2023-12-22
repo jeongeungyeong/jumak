@@ -96,6 +96,7 @@ main {
 
 .list-item{
     max-width: 182px;
+    position: relative;
 }
 
 .content__title > span{
@@ -118,6 +119,7 @@ main {
     align-items: center;
     justify-items: center;
     padding-top: 100px;
+    padding-bottom: 100px;
     row-gap: 100px;
 }
 
@@ -148,14 +150,49 @@ main {
     font-family: chosun;
 }
 
-.price,
 .sale-price{
     font-size: 16px;
     color: #252525;
-    font-weight: bold;
-    font-family: chosun;
+    /*font-weight: bold;*/
+    /*font-family: chosun;*/
+    margin-top: 20px;
 }
 
+.price{
+    display: block;
+    margin-top: 7px;
+    font-size: 16px;
+    color: #acacac;
+    /*font-weight: bold;*/
+    /*font-family: chosun;*/
+}
+
+.sale-box{
+    position: absolute;
+    padding-top: 7px;
+    top: -20px;
+    left: -3px;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    line-height: 15px;
+    z-index: 10;
+    background-color: var(--main-color);
+    box-sizing: border-box;
+}
+
+.sale-box > span{
+    display: block;
+    font-size: 14px;
+}
+
+.sale-box strong{
+    font-size: 20px;
+    letter-spacing: 1px;
+}
 
 
 
