@@ -3,14 +3,14 @@
 
 <div th:fragment="sideCont" class="side_cont">
   <div class="sub_menu_box">
-    <h2> <a th:href="@{../main/adminMain.html}">관리자페이지</a></h2>
+    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
     <ul class="sub_menu_mypage">
       <li>
-        <a href="../user/userList.html">
+        <a th:href="@{/admin/user}">
           회원관리</a>
       </li>
       <li>
-        <a href="../product/product.html">
+        <a th:href="@{/admin/product}">
           상품관리</a>
       </li>
       <li>

@@ -17,11 +17,11 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/admin/user")
 public class AUserController {
     private final AUserService aUserService;
 
-    @GetMapping
+    @GetMapping()
     public String userList(Criteria criteria,Model model){
         List<UserDto> userList = aUserService.findAll(criteria);
         model.addAttribute("userList", userList);
@@ -38,22 +38,19 @@ public class AUserController {
 
     }
 
-//    @GetMapping("/search")
-//    public String searchResult(SearchVo searchVo , Criteria criteria, Model model){
-//        List<UserDto> searchDto = aUserService.findSearch(searchVo, criteria);
-//
-//        model.addAttribute("userList", searchDto);
-//        model.addAttribute("pageInfo", new PageVo(aUserService.findTotal(), criteria));
-//        return "admin/user/userList";
-//    }
+
 
     @GetMapping("/search")
-    public String searchResult(SearchVo searchVo, Model model){
-        List<UserDto> searchDto = aUserService.findSearch(searchVo);
+    public String searchResult(SearchVo searchVo , Criteria criteria, Model model){
+        List<UserDto> searchDto = aUserService.findSearch(searchVo, criteria);
 
         model.addAttribute("userList", searchDto);
-        return "admin/user/userList";
+        model.addAttribute("searchVo", searchVo);
+        model.addAttribute("pageInfo", new PageVo(aUserService.findSearchTotal(searchVo), criteria));
+        return "admin/user/userListSearch";
     }
+
+
 
 
 }

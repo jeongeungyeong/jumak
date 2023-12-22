@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.admin.aproduct.AProductMapper">
+    <select id="selectOne" resultType="productVo">
+        select P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
+               P.PRODUCT_RAW_MATERIAL, P.PRODUCT_NET_WEIGHT, P.PRODUCT_ALCOHOLICITY, P.PRODUCT_AREA,
+               P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_INVENTORY, P.PRODUCT_SALES, P.PRODUCT_DISCOUNT,
+               P.PRODUCT_RELEASE_DATE, P.PRODUCT_DISTILLERY, PC.PRODUCT_CATEGORY_NAME
+        from JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_CATEGORY PC
+        ON PRODUCT_NUMBER = #{productNumber} AND  P.PRODUCT_CATEGORY_NUMBER = PC.PRODUCT_CATEGORY_NUMBER
+    </select>
+
+<!--    <select id="selectOne" resultType="productDto">-->
+<!--        select PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,-->
+<!--               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,-->
+<!--               PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,-->
+<!--               PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY-->
+<!--        from JUMAK_PRODUCT-->
+<!--        where PRODUCT_NUMBER = #{productNumber}-->
+<!--    </select>-->
+
+    <select id="selectAll" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+               PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+               PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM(
+                SELECT ROWNUM AS RNUM, PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+                       PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+                       PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+                       PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+                FROM(
+                        select PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+                               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+                               PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+                               PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+                        from JUMAK_PRODUCT
+                        ORDER BY PRODUCT_NUMBER DESC)
+            <![CDATA[
+                WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT
+    </select>
+
+
+<!--    서치리스트-->
+    <select id="selectSearch" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+        PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+        PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+        PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM(
+        SELECT ROWNUM AS RNUM, PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+        PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+        PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+        PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM(
+        select PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+        PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+        PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+        PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        from JUMAK_PRODUCT
+        <if test="searchVo.searchType.equals('prdName')">
+            WHERE PRODUCT_NAME like '%' || #{searchVo.keyword} || '%'
+        </if>
+
+        <if test="searchVo.searchType.equals('prdNumber')">
+            WHERE PRODUCT_NUMBER like '%' || #{searchVo.keyword} || '%'
+        </if>
+        )
+        <![CDATA[
+            WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectSearchTotal" resultType="_int">
+        SELECT COUNT(PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT
+        <if test="searchVo.searchType.equals('prdName')">
+            WHERE USER_ID like '%' || #{searchVo.keyword} || '%'
+        </if>
+
+        <if test="searchVo.searchType.equals('prdNumber')">
+            WHERE USER_NICKNAME like '%' || #{searchVo.keyword} || '%'
+        </if>
+    </select>
+
+
+
+
+</mapper>

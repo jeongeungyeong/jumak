@@ -7,7 +7,7 @@
     <title>관리자페이지</title>
 
     <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
-    <link rel="stylesheet" th:href="@{/css/admin/user/userList.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/product/productList.css}">
 </head>
 
 <body>
@@ -25,58 +25,67 @@
 
         <!-- ----------------------------------------- -->
         <div class="content">
-
             <div>
-                <h1>회원관리</h1>
+                <h1>상품관리</h1>
             </div>
 
-            <!--검색 창-->
-            <div class="user_search">
-                <form action="/admin/user/search">
+
+            <!--검색창-->
+            <div class="product_search">
+                <form action="/admin/product/search">
                     <select name="searchType">
-                        <option value="id">아이디</option>
-                        <option value="nickname">닉네임</option>
-                        <option value="phoneNumber">전화번호</option>
+                        <option value="prdName">상품명</option>
+                        <option value="prdNumber">품번</option>
                     </select>
                     <input type="text" name="keyword">
                     <button>검색</button>
                 </form>
+                <button type="button" class="product_add">상품추가</button>
             </div>
 
-
-
-            <!--유저 리스트-->
             <div>
-                <div class="admin_user_table">
+
+            </div>
+
+            <!--상품 리스트-->
+            <div>
+                <div class="admin_product_table">
                     <table>
                         <colgroup>
-                            <!--아이디 닉네임 전화번호 주소 관리-->
+                            <col style="width:10%;">
+                            <col>
                             <col style="width:15%;">
+                            <col style="width:10%;">
+                            <col style="width:10%;">
                             <col style="width:15%;">
-                            <col style="width:15%;">
-                            <col >
                             <col style="width:15%;">
                         </colgroup>
                         <thead>
                         <tr>
-                            <th>아이디</th>
-                            <th>닉네임</th>
-                            <th>전화번호</th>
-                            <th>주소</th>
+                            <th>품번</th>
+                            <th>상품명</th>
+                            <th>가격</th>
+                            <th>재고수량</th>
+                            <th>판매수량</th>
+                            <th>출시일</th>
                             <th>관리</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="user : ${userList}">
-                            <td th:text="${user.userId}"></td>
-                            <td th:text="${user.userNickname}"></td>
-                            <td th:text="${user.userCellphoneNumber}"></td>
-                            <td th:text="${user.userAddress}+ ' ' +${user.userAddressDetail}"></td>
-                            <td class="wrap_user_button">
-                                <button class="btn_user_detail" type="button" th:data-num="${user.userNumber}">상세</button>
-                                <button class="btn_user_remove" type="button" th:data-num="${user.userNumber}">탈퇴</button>
+                        <tr th:each="product : ${productList}">
+                            <td th:text="${product.productNumber}"></td>
+                            <td th:text="${product.productName}"></td>
+                            <td th:text="${product.productPrice}"></td>
+                            <td th:text="${product.productInventory}"></td>
+                            <td th:text="${product.productSales}"></td>
+<!--                            ${#dates.format(date, 'dd/MMM/yyyy HH:mm')}-->
+                            <td th:text="${product.productReleaseDate}"></td>
+                            <td>
+                                <button class="btn_product_detail" type="button" th:data-num="${product.productNumber}">상세</button>
+                                <button>삭제</button>
                             </td>
                         </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -86,18 +95,18 @@
             <div class="paging" >
                 <div class="pages" th:object="${pageInfo}">
 
-                    <a th:href="@{/admin/user(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
+                    <a th:href="@{/admin/product(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
                         <span class="page-num prev">&lt</span>
                     </a>
 
                     <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-                        <a th:href="@{/admin/user(page=${i})}" class="page-a">
+                        <a th:href="@{/admin/product(page=${i})}" class="page-a">
                             <span class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></span>
                         </a>
                     </th:block>
 
 
-                    <a th:href="@{/admin/user(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+                    <a th:href="@{/admin/product(page=*{endPage+1})}" class="page-a" th:if="*{next}">
                         <span class="page-num next">&gt</span>
                     </a>
 
@@ -108,9 +117,7 @@
         </div>
     </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script th:src="@{/js/admin/user/userList.js}"></script>
+<script th:src="@{/js/admin/product/productList.js}"></script>
 </body>
-
 </html>

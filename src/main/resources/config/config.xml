@@ -4,8 +4,9 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
-
+        <typeAlias type="com.example.jumak.domain.dto.product.ProductDto" alias="productDto"/>
 
         <typeAlias type="com.example.jumak.domain.vo.admin.SearchVo" alias="searchVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.admin.ProductVo" alias="productVo"/>
     </typeAliases>
 </configuration>

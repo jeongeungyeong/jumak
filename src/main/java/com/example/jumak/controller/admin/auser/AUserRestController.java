@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/user")
+@RequestMapping("/admin/user")
 public class AUserRestController {
     private final AUserService aUserService;
 

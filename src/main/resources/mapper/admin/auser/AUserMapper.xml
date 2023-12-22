@@ -3,20 +3,20 @@
 <mapper namespace="com.example.jumak.mapper.admin.auser.AUserMapper">
     <select id="selectAll" resultType="userDto">
         SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME,
-                USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE,
-                USER_BIRTH, USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
+               USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE,
+               USER_BIRTH, USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
         FROM(
-            SELECT ROWNUM AS RNUM, USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME,
-                     USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE,
-                     USER_BIRTH, USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
-            FROM(
-                    select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL,
-                           USER_CELLPHONENUMBER,USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH,
-                           USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
-                    from JUMAK_USER
-                    ORDER BY USER_NUMBER DESC)
+                SELECT ROWNUM AS RNUM, USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME,
+                       USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE,
+                       USER_BIRTH, USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
+                FROM(
+                        select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL,
+                               USER_CELLPHONENUMBER,USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH,
+                               USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
+                        from JUMAK_USER
+                        ORDER BY USER_NUMBER DESC)
             <![CDATA[
-            WHERE ROWNUM <= #{page} * #{amount}
+                WHERE ROWNUM <= #{page} * #{amount}
             ]]>
         )
         WHERE RNUM > (#{page} - 1) * #{amount}
@@ -35,26 +35,7 @@
         FROM JUMAK_USER
     </select>
 
-    <select id="selectSearch" resultType="userDto" parameterType="searchVo">
-            select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
-            USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER,
-            USER_ADDRESS_DETAIL
-            from JUMAK_USER
-            <if test="searchType.equals('id')">
-                WHERE USER_ID like '%' || #{keyword} || '%'
-             </if>
-
-            <if test="searchType.equals('nickname')">
-                WHERE USER_NICKNAME like '%' || #{keyword} || '%'
-            </if>
-
-            <if test="searchType.equals('phoneNumber')">
-                WHERE USER_PHONENUMBER like '%' || #{keyword} || '%'
-            </if>
-
-    </select>
-
-<!--     <select id="selectSearch" resultType="userDto" parameterType="searchVo">
+    <select id="selectSearch" resultType="userDto">
         SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME,
         USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE,
         USER_BIRTH, USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
@@ -63,32 +44,47 @@
         USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE,
         USER_BIRTH, USER_GRADE_NUMBER, USER_ADDRESS_DETAIL
         FROM(
-            select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
-            USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER,
-            USER_ADDRESS_DETAIL
-            from JUMAK_USER
-            <if test="searchType.equals('id')">
-                WHERE BOARD_TITLE like '%' || #{keyword} || '%'
-             </if>
+        select USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
+        USER_PHONENUMBER, USER_ADDRESS, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER,
+        USER_ADDRESS_DETAIL
+        from JUMAK_USER
+        <if test="searchVo.searchType.equals('id')">
+            WHERE USER_ID like '%' || #{searchVo.keyword} || '%'
+        </if>
 
-            <if test="searchType.equals('nickname')">
-                WHERE BOARD_CONTENT like '%' || #{keyword} || '%'
-            </if>
+        <if test="searchVo.searchType.equals('nickname')">
+            WHERE USER_NICKNAME like '%' || #{searchVo.keyword} || '%'
+        </if>
 
-            <if test="searchType.equals('phoneNumber')">
-                WHERE MEMBER_ID like '%' || #{keyword} || '%'
-            </if>
-            )
+        <if test="searchVo.searchType.equals('phoneNumber')">
+            WHERE USER_PHONENUMBER like '%' || #{searchVo.keyword} || '%'
+        </if>
+        )
         <![CDATA[
-            WHERE ROWNUM <= #{page} * #{amount}
+            WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
             ]]>
         )
-        WHERE RNUM > (#{page} - 1) * #{amount}
-    </select>-->
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectSearchTotal" resultType="_int">
+        SELECT COUNT(USER_NUMBER)
+        FROM JUMAK_USER
+        <if test="searchType.equals('id')">
+            WHERE USER_ID like '%' || #{keyword} || '%'
+        </if>
+
+        <if test="searchType.equals('nickname')">
+            WHERE USER_NICKNAME like '%' || #{keyword} || '%'
+        </if>
+
+        <if test="searchType.equals('phoneNumber')">
+            WHERE USER_PHONENUMBER like '%' || #{keyword} || '%'
+        </if>
+    </select>
 
     <delete id="delete">
-        DELETE
-        FROM JUMAK_USER
+        DELETE FROM JUMAK_USER
         WHERE USER_NUMBER = #{userNumber}
     </delete>
 

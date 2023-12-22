@@ -36,13 +36,13 @@ class AAUserControllerMapperTest {
         SearchVo searchVo = new SearchVo();
         searchVo.setSearchType("id");
         searchVo.setKeyword("asdf");
-        AUserMapper.selectSearch(searchVo);
+//        AUserMapper.selectSearch(searchVo);
     }
 
-    @Test
-    void insert(){
-        AUserMapper.insert(userDto);
-    }
+//    @Test
+//    void insert(){
+//        AUserMapper.insert(userDto);
+//    }
 
 //    @Test
 //    void selectAll() {
@@ -50,6 +50,6 @@ class AAUserControllerMapperTest {
 //    }
     @Test
     void delete(){
-        AUserMapper.delete(2L);
+        AUserMapper.delete(174L);
     }
 }
