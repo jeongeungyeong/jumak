@@ -1,5 +1,6 @@
 package com.example.jumak.mapper.product;
 
+import com.example.jumak.domain.dto.product.ProductCategoryDto;
 import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.dto.product.ProductImgDto;
 import com.example.jumak.domain.dto.product.ProductImgMainDto;
@@ -13,34 +14,34 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class ProductMapperTest {
     @Autowired ProductMapper productMapper;
-    @Autowired ProductImgMapper productImgMapper;
 
     ProductDto productDto;
-    ProductImgMainDto productImgMainDto;
-
+    ProductCategoryDto productCategoryDto;
 
     @BeforeEach
     void setUp() {
         productDto = new ProductDto();
+
         productDto.setProductCategoryNumber(1L);
         productDto.setProductName("test");
+        productDto.setProductSubtitle("test");
+        productDto.setProductRawMaterial("막걸리");
         productDto.setProductNetWeight(1L);
         productDto.setProductAlcoholicity(5L);
+        productDto.setProductArea("대한민국");
+        productDto.setProductDescription("우리술");
         productDto.setProductPrice(5000L);
+        productDto.setProductInventory(5L);
+        productDto.setProductSales(100L);
         productDto.setProductDiscount(5L);
-
-        productImgMainDto.setProductImgMainName("test1");
-        productImgMainDto.setProductImgMainUuid("test");
-        productImgMainDto.setProductImgMainPath("test");
+        productDto.setProductReleaseDate("2023-12-22");
+        productDto.setProductDistillery("한국");
+        productMapper.insertProduct(productDto);
     }
 
     @Test
-    void productsGetList() {
-        //given
-
-        //when
-
-        //then
+    void selectByNumber() {
+        productMapper.insertProduct(productDto);
+        productMapper.selectByNumber(productDto.getProductNumber());
     }
-
 }

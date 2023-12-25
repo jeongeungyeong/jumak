@@ -149,6 +149,11 @@ colgroup {
     padding: 24px 0;
     border-top: 0;
 }
+/*카운트 버튼*/
+.cartStock input { font-size:22px; width:50px; padding:5px; margin:0; border:1px solid #eee; }
+/*.cartStock button { font-size:26px; border:none; background:none; }*/
+
+/*
 .item_choice_list .count {
     display: table-cell;
     vertical-align: middle;
@@ -174,7 +179,7 @@ colgroup {
 .goods_qty span .down {
     margin: -1px 0 0;
     background: url(../../img/common/btn/btn_count_down.png) no-repeat left top;
-}
+}*/
 .goods_qty .text {
     text-align: left;
     padding: 0 5px;

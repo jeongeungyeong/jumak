@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!--  <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>-->
   <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
   <title>주모's store</title>
@@ -19,6 +20,23 @@
 <!-- //헤더 -->
 
 <div class="container">
+<!--  슬라이드 배너-->
+  <div class="slide_div_wrap">
+    <div class="slide_div">
+      <div>
+        <a>
+            <img th:href="@{/imgs/product/shop_main_bn02_v231207.jpg}"/>
+        </a>
+      </div>
+      <div>
+        <a>
+          <img th:href="@{/imgs/product/shop_main_bn03_v231207.jpg}"/>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
   <!-- 카테고리 -->
   <form>
   <div class="category-area">
@@ -527,6 +545,7 @@
 <!-- /페이징 처리 -->
 
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<!--<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>-->
 <script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 

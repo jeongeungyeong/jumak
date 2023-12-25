@@ -36,3 +36,8 @@ $categoryBox.on("click", function (e) {
 $(".add-post-btn").on("click", function () {
     window.location.href = "/board/write";
 });
+
+//슬라이드
+$(".slide_div_wrap").ready(function(){
+    $(".slide_div").slick();
+});

@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/store")
 public class ProductController {
+//    스토어 베스트 상품 보기
+    @GetMapping("/best")
+    public String productbest(){
+        return "product/storemainproduct";
+    }
 
     //    스토어 상품 전체 보기
     @GetMapping("/main")
@@ -24,7 +29,6 @@ public class ProductController {
     public String detail(){
         return "product/storeproductdetail" ;
     }
-
 
     //  상품 장바구니 담기
 
