@@ -82,18 +82,34 @@
     </select>
 
     <select id="selectSearchTotal" resultType="_int">
-<!--        SELECT COUNT(PRODUCT_NUMBER)-->
-<!--        FROM JUMAK_PRODUCT-->
-<!--        <if test="searchVo.searchType.equals('prdName')">-->
-<!--            WHERE USER_ID like '%' || #{searchVo.keyword} || '%'-->
-<!--        </if>-->
+        SELECT COUNT(PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT
+        <if test="searchVo.searchType.equals('prdName')">
+            WHERE PRODUCT_NAME like '%' || #{searchVo.keyword} || '%'
+        </if>
 
-<!--        <if test="searchVo.searchType.equals('prdNumber')">-->
-<!--            WHERE USER_NICKNAME like '%' || #{searchVo.keyword} || '%'-->
-<!--        </if>-->
+        <if test="searchVo.searchType.equals('prdNumber')">
+            WHERE PRODUCT_NUMBER like '%' || #{searchVo.keyword} || '%'
+        </if>
     </select>
 
+    <delete id="delete">
+        DELETE FROM JUMAK_PRODUCT
+        WHERE PRODUCT_NUMBER = #{productNumber}
+    </delete>
 
 
+<!--    상품등록-->
+    <insert id="insert">
+        insert into JUMAK_PRODUCT (PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+                                   PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+                                   PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+                                   PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY)
+        values (SEQ_PRODUCT.nextval, #{productCategoryNumber},#{productName},#{productSubtitle},
+                #{productRawMaterial},#{productNetWeight},#{productAlcoholicity},#{productArea},
+                #{productDescription},#{productPrice},#{productInventory},#{productSales},
+                #{productDiscount},SYSDATE,#{productDistillery})
+
+    </insert>
 
 </mapper>

@@ -92,7 +92,7 @@
 
                         <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
                             <a th:href="@{/admin/user/search(searchType=${searchVo.searchType},keyword=${searchVo.keyword},page=${i})}" class="page-a">
-                                <span class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></span>
+                                <span class="page-num" th:classappend="${i==pageInfo.aCriteria.page} ? 'active' : '' " th:text="${i}"></span>
                             </a>
                         </th:block>
 

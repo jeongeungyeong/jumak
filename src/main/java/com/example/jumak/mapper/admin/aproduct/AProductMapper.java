@@ -28,4 +28,10 @@ public interface AProductMapper {
 
 //    search total
     public int selectSearchTotal(@Param("searchVo") ASearchVo aSearchVo);
+
+//    물품 삭제
+    public void delete(Long productNumber);
+
+//    물품 등록
+    public void insert(ProductDto productDto);
 }

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
@@ -45,5 +47,18 @@ public class AProductController {
         model.addAttribute("searchVo", aSearchVo);
         model.addAttribute("pageInfo", new APageVo(aProductService.findSearchTotal(aSearchVo), aCriteria));
         return "admin/product/productListSearch";
+    }
+
+    @GetMapping("/add")
+    public String productAdd(){
+        return "admin/product/productAdd";
+    }
+
+    @PostMapping("/add")
+    public RedirectView productAdd(ProductDto productDto){
+        productDto.setProductSales(0L);
+        aProductService.register(productDto);
+
+        return new RedirectView("/admin/product");
     }
 }
