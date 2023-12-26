@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.product.SearchUserMapper">
+    <insert id="insertSearchUser" parameterType="SearchUserDTO">
+        INSERT INTO SEARCH_USER (
+                              SEARCH_USER_NUM
+                           ,  SEARCH_USER_NAME
+                           ,  SEARCH_USER_ID
+                           ,  SEARCH_USER_PASSWORD
+                           ,  SEARCH_USER_PHONE
+                           ,  SEARCH_USER_GENDER
+                           ,  SEARCH_USER_EMAIL
+                           ,  SEARCH_USER_ADDRESS
+        ) VALUES (
+                    #{searchUserNum}
+                 ,  #{searchUserName}
+                 ,  #{searchUserId}
+                 ,  #{searchUserPassword}
+                 ,  #{searchUserPhone}
+                 ,  #{searchUserGender}
+                 ,  #{searchUserEmail}
+                 ,  #{searchUserAddress}
+                 )
+
+    </insert>
+</mapper>
