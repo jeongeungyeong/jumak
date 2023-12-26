@@ -7,8 +7,9 @@
         </select>
 
         <select id="selectByName" resultType="userDto">
-            SELECT USER_NUMBER, USER_ID, USER_PASSWORD,  USER_NAME, USER_NICKNAME, USER_EMAIL,
-                   USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH ,USER_GRADENUMBER
+            SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL,
+                   USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ZIPCODE,
+                   USER_BIRTH ,USER_GRADE_NUMBER
             FROM JUMAK_USER
             WHERE USER_NAME = #{userName}
         </select>
@@ -16,21 +17,22 @@
         <select id="selectAll" resultType="userDto">
             SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME,
                    USER_NICKNAME, USER_EMAIL, USER_CELLPHONENUMBER,
-                   USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH ,USER_GRADENUMBER
+                   USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH ,
+                   USER_GRADE_NUMBER
             FROM JUMAK_USER
         </select>
 
-        <insert id="insert" parameterType="userDto">
+        <insert id="insert">
             <selectKey keyProperty="userNumber" order="BEFORE" resultType="long">
                 SELECT SEQ_USER.nextval FROM DUAL
             </selectKey>
             INSERT INTO JUMAK_USER (USER_NUMBER, USER_ID, USER_PASSWORD,
                         USER_NAME, USER_NICKNAME, USER_EMAIL,
                         USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL,
-                        USER_ZIPCODE, USER_BIRTH ,USER_GRADENUMBER )
+                        USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER)
             VALUES (#{userNumber}, #{userId}, #{userPassword}, #{userName},
-                    #{userNickName}, #{userEmail}, #{userCellPhoneNumber}, #{userPhoneNumber},
-                    #{userAddress}, #{userAddressDetail} #{userZipCode}, #{userBirth}, #{userGradeNumber})
+                    #{userNickname}, #{userEmail}, #{userCellphoneNumber}, #{userPhoneNumber},
+                    #{userAddress}, #{userAddressDetail}, #{userZipcode}, #{userBirth}, #{userGradeNumber})
         </insert>
 
         <delete id="delete">

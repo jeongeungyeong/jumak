@@ -55,20 +55,20 @@
                   <form
                     id="formJoin"
                     name="formJoin"
-                    action="#"
-                    method="post"
-                    novalidate="novalidate"
-                  >
-                    <input type="hidden" name="rncheck" value="authCellphone" />
-                    <input
-                      type="hidden"
-                      name="dupeinfo"
-                      value="MC0GCCqGSIb3DQIJAyEAXho+eatigO+RGVkROX0NAJMbK8Lfyz64dv3n2G6yU2M="
-                    />
-                    <input type="hidden" name="pakey" value="" />
-                    <input type="hidden" name="foreigner" value="0" />
-                    <input type="hidden" name="adultFl" value="y" />
-                    <input type="hidden" name="mode" value="join" />
+                    action="/user/joinInfo"
+                    method="post">
+<!--                    novalidate="novalidate"-->
+
+<!--                    <input type="hidden" name="rncheck" value="authCellphone" />-->
+<!--                    <input-->
+<!--                      type="hidden"-->
+<!--                      name="dupeinfo"-->
+<!--                      value="MC0GCCqGSIb3DQIJAyEAXho+eatigO+RGVkROX0NAJMbK8Lfyz64dv3n2G6yU2M="-->
+<!--                    />-->
+<!--                    <input type="hidden" name="pakey" value="" />-->
+<!--                    <input type="hidden" name="foreigner" value="0" />-->
+<!--                    <input type="hidden" name="adultFl" value="y" />-->
+<!--                    <input type="hidden" name="mode" value="join" />-->
                     <div class="base_info_box">
                       <h3>기본정보</h3>
                       <span class="important"
@@ -90,7 +90,7 @@
                                   <input
                                     type="text"
                                     id="memId"
-                                    name="memId"
+                                    name="userId"
                                     data-pattern="gdMemberId"
                                   />
                                 </div>
@@ -105,28 +105,28 @@
                                   <input
                                     type="password"
                                     id="newPassword"
-                                    name="memPw"
+                                    name="userPassword"
                                     autocomplete="off"
                                     placeholder=""
                                   />
                                 </div>
                               </td>
                             </tr>
-                            <tr class="">
-                              <th>
-                                <span class="important">비밀번호 확인</span>
-                              </th>
-                              <td>
-                                <div class="member_warning">
-                                  <input
-                                    type="password"
-                                    class="check-id"
-                                    name="memPwRe"
-                                    autocomplete="off"
-                                  />
-                                </div>
-                              </td>
-                            </tr>
+<!--                            <tr class="">-->
+<!--                              <th>-->
+<!--                                <span class="important">비밀번호 확인</span>-->
+<!--                              </th>-->
+<!--                              <td>-->
+<!--                                <div class="member_warning">-->
+<!--                                  <input-->
+<!--                                    type="password"-->
+<!--                                    class="check-id"-->
+<!--                                    name="userPassword"-->
+<!--                                    autocomplete="off"-->
+<!--                                  />-->
+<!--                                </div>-->
+<!--                              </td>-->
+<!--                            </tr>-->
                             <tr>
                               <th>
                                 <span class="important">이름</span>
@@ -135,7 +135,7 @@
                                 <div class="member_warning">
                                   <input
                                     type="text"
-                                    name="memNm"
+                                    name="userName"
                                     data-pattern="gdMemberNmGlobal"
                                     value=""
                                     maxlength="30"
@@ -151,7 +151,7 @@
                                 <div class="member_warning">
                                   <input
                                     type="text"
-                                    name="nickNm"
+                                    name="userNickname"
                                     maxlength="20"
                                     value=""
                                   />
@@ -166,13 +166,13 @@
                                 <div class="member_warning">
                                   <input
                                     type="text"
-                                    name="email"
+                                    name="userEmail"
                                     id="email"
                                     value=""
                                     tabindex="-1"
                                   />
                                   <select
-                                    name="emailDomain"
+                                    name="Email"
                                     id="emailDomain"
                                     class="chosen-select"
                                   >
@@ -215,7 +215,7 @@
                                   <input
                                     type="text"
                                     id="cellPhone"
-                                    name="cellPhone"
+                                    name="userCellphoneNumber"
                                     maxlength="12"
                                     placeholder="-없이 입력하세요."
                                     data-pattern="gdNum"
@@ -246,7 +246,7 @@
                                   <input
                                     type="text"
                                     id="phone"
-                                    name="phone"
+                                    name="userPhoneNumber"
                                     maxlength="12"
                                     placeholder="- 없이 입력하세요."
                                     data-pattern="gdNum"
@@ -261,7 +261,7 @@
                               </th>
                               <td class="member_address">
                                 <div class="address_postcode">
-                                  <input type="text" name="zonecode" value="" />
+                                  <input type="text" name="userZipcode" value="" />
                                   <button
                                     type="button"
                                     id="btnPostcode"
@@ -279,14 +279,14 @@
                                   <div class="member_warning">
                                     <input
                                       type="text"
-                                      name="address"
+                                      name="userAddress"
                                       value=""
                                     />
                                   </div>
                                   <div class="member_warning js_address_sub">
                                     <input
                                       type="text"
-                                      name="addressSub"
+                                      name="userAddressDetail"
                                       value=""
                                     />
                                   </div>
@@ -311,73 +311,74 @@
                                 <span class="important">생일</span>
                               </th>
                               <td class="member_birthday">
-                                <div class="member_warning"></div>
-                                <div class="member_warning">
-                                  <select
-                                    class="chosen-single"
-                                    name="birthYear"
-                                    id="birthYear"
-                                    style="width: 100px"
-                                  >
-                                    <option value="">년</option>
-                                    <option value="2004">2004</option>
-                                    <option value="2003">2003</option>
-                                    <option value="2002">2002</option>
-                                    <option value="2001">2001</option>
-                                    <option value="2000">2000</option>
-                                    <option value="1999">1999</option>
-                                    <option value="1998">1998</option>
-                                    <option value="1997">1997</option>
-                                    <option value="1996">1996</option>
-                                    <option value="1995">1995</option>
-                                    <option value="1994">1994</option>
-                                    <option value="1993">1993</option>
-                                    <option value="1992">1992</option>
-                                    <option value="1991">1991</option>
-                                  </select>
-                                </div>
-                                <div class="member_warning">
-                                  <select
-                                    class="chosen-single"
-                                    name="birthMonth"
-                                    id="birthMonth"
-                                    style="width: 80px"
-                                  >
-                                    <option value="">월</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">12</option>
-                                  </select>
-                                </div>
-                                <div class="member_warning">
-                                  <select
-                                    class="chosen-single"
-                                    name="brithDay"
-                                    id="birthDay"
-                                    style="width: 80px"
-                                  >
-                                    <option value="">일</option>
-                                    <option value="01">01</option>
-                                    <option value="02">02</option>
-                                    <option value="03">03</option>
-                                    <option value="04">04</option>
-                                    <option value="05">05</option>
-                                    <option value="06">06</option>
-                                    <option value="07">07</option>
-                                    <option value="08">08</option>
-                                    <option value="09">09</option>
-                                    <option value="10">10</option>
-                                    <option value="11">11</option>
-                                    <option value="12">12</option>
-                                  </select>
+<!--                                <div class="member_warning"></div>-->
+<!--                                <div class="member_warning">-->
+                                  <input type="text" name="userBirth" value="">
+<!--                                  <select-->
+<!--                                    class="chosen-single"-->
+<!--                                    name="userBirth"-->
+<!--                                    id="birthYear"-->
+<!--                                    style="width: 100px"-->
+<!--                                  >-->
+<!--                                    <option value="">년</option>-->
+<!--                                    <option value="2004">2004</option>-->
+<!--                                    <option value="2003">2003</option>-->
+<!--                                    <option value="2002">2002</option>-->
+<!--                                    <option value="2001">2001</option>-->
+<!--                                    <option value="2000">2000</option>-->
+<!--                                    <option value="1999">1999</option>-->
+<!--                                    <option value="1998">1998</option>-->
+<!--                                    <option value="1997">1997</option>-->
+<!--                                    <option value="1996">1996</option>-->
+<!--                                    <option value="1995">1995</option>-->
+<!--                                    <option value="1994">1994</option>-->
+<!--                                    <option value="1993">1993</option>-->
+<!--                                    <option value="1992">1992</option>-->
+<!--                                    <option value="1991">1991</option>-->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                <div class="member_warning">-->
+<!--                                  <select-->
+<!--                                    class="chosen-single"-->
+<!--                                    name="userBirth"-->
+<!--                                    id="birthMonth"-->
+<!--                                    style="width: 80px"-->
+<!--                                  >-->
+<!--                                    <option value="">월</option>-->
+<!--                                    <option value="01">01</option>-->
+<!--                                    <option value="02">02</option>-->
+<!--                                    <option value="03">03</option>-->
+<!--                                    <option value="04">04</option>-->
+<!--                                    <option value="05">05</option>-->
+<!--                                    <option value="06">06</option>-->
+<!--                                    <option value="07">07</option>-->
+<!--                                    <option value="08">08</option>-->
+<!--                                    <option value="09">09</option>-->
+<!--                                    <option value="10">10</option>-->
+<!--                                    <option value="11">12</option>-->
+<!--                                  </select>-->
+<!--                                </div>-->
+<!--                                <div class="member_warning">-->
+<!--                                  <select-->
+<!--                                    class="chosen-single"-->
+<!--                                    name="userBirth"-->
+<!--                                    id="birthDay"-->
+<!--                                    style="width: 80px"-->
+<!--                                  >-->
+<!--                                    <option value="">일</option>-->
+<!--                                    <option value="01">01</option>-->
+<!--                                    <option value="02">02</option>-->
+<!--                                    <option value="03">03</option>-->
+<!--                                    <option value="04">04</option>-->
+<!--                                    <option value="05">05</option>-->
+<!--                                    <option value="06">06</option>-->
+<!--                                    <option value="07">07</option>-->
+<!--                                    <option value="08">08</option>-->
+<!--                                    <option value="09">09</option>-->
+<!--                                    <option value="10">10</option>-->
+<!--                                    <option value="11">11</option>-->
+<!--                                    <option value="12">12</option>-->
+<!--                                  </select>-->
                                 </div>
                               </td>
                             </tr>
@@ -394,7 +395,7 @@
                         취소
                       </button>
                       <button
-                        type="button"
+                        type="submit"
                         class="btn_confirm js_btn_join"
                         value="회원가입"
                       >
@@ -409,5 +410,7 @@
         </div>
       </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script src="join.js"></script>
   </body>
 </html>

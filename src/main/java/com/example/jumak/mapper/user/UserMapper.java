@@ -9,7 +9,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
 // 회원 아이디,패스워드로 번호 조회
-    Long selectUserNumber(@Param("userId") String userId, @Param("userPassword") String userPassword);
+    Long selectUserNumber(String userId, String userPassword);
 
 // 이름으로 회원 조회
     UserDto selectByName(String userName);
