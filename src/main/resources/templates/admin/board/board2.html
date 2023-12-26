@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
     
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/board/board2.css">
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/board/board2.css}">
 </head>
 
 <body>
@@ -24,11 +24,11 @@
                     <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
                     <ul class="sub_menu_mypage">
                         <li>
-                            <a href="../user/user.html">
+                            <a href="../user/userList.html">
                                 회원관리</a>
                         </li>
                         <li>
-                            <a href="../product/product.html">
+                            <a href="../product/productList.html">
                                 상품관리</a>
                         </li>
                         <li>

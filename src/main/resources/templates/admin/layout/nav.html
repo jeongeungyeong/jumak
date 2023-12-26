@@ -1,0 +1,36 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="sideCont" class="side_cont">
+  <div class="sub_menu_box">
+    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
+    <ul class="sub_menu_mypage">
+      <li>
+        <a th:href="@{/admin/user}">
+          회원관리</a>
+      </li>
+      <li>
+        <a th:href="@{/admin/product}">
+          상품관리</a>
+      </li>
+      <li>
+        <a href="../order/order.html">
+          주문관리
+        </a>
+      </li>
+      <li>게시글관리
+        <ul class="sub_depth">
+          <li><a href="../board/board1.html">수상한소식</a> </li>
+          <li><a href="../board/board2.html">수상한마당</a></li>
+          <li><a href="../board/board3.html">우리술칵테일</a></li>
+        </ul>
+      </li>
+      <li><a href="../qa/adminQa.html">
+        고객센터
+      </a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+</body>

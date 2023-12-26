@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/user/find_pw/complete_pwd.css}"/>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="container" onclick="clickBody()">
+        <div id="content">
+          <div class="location_wrap">
+            <div class="location_cont">
+              <em>
+                <!-- 비밀번호 변경 완료 경로 넣기 -->
+                <a href="#" class="local_home">HOME</a>
+                > 비밀번호 변경 완료
+              </em>
+            </div>
+          </div>
+          <div class="sub_content">
+            <div class="content_box">
+              <div class="member_wrap">
+                <div class="member_tit">
+                  <h2>비밀번호 찾기</h2>
+                </div>
+                <div class="member_cont">
+                  <div class="find_password_complete_box">
+                    <p>비밀번호가 정상적으로 변경되었습니다.</p>
+                    <div class="btn_center_box">
+                      <button class="btn_confirm js_btn_login">로그인</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

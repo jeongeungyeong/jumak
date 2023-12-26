@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/user/find_pw/certify_list.css}" />
+  </head>
+  <body
+    id="blContents"
+    class="body-member body-user-certification pc"
+    oncontextmenu="return false"
+  >
+    <div id="wrap" class="paikSool banner-on">
+      <div id="container" onclick="clickBody()">
+        <div id="contents">
+          <div class="location_wrap">
+            <div class="location_cont">
+              <em>
+                <!-- (비밀번호 찾기)본인인증 경로 넣기 -->
+                <a href="#" class="local_home">HOME</a>
+                > 본인인증 수단 선택
+              </em>
+            </div>
+          </div>
+          <div class="sub_content">
+            <div class="content_box">
+              <div class="member_wrap">
+                <div class="member_tit">
+                  <h2>비밀번호 찾기</h2>
+                </div>
+                <div class="member_cont">
+                  <div class="user_certify_box">
+                    <form
+                      name="formAuth"
+                      id="formAuth"
+                      method="post"
+                      action
+                      novalidate="novalidate"
+                    >
+                      <input type="hidden" name="act" value="Y" />
+                      <input type="hidden" name="rncheck" value="none" />
+                      <input type="hidden" name="dupeinfo" value />
+                      <input
+                        type="hidden"
+                        name="token"
+                        value="MTcwMTU5MDA3OTEwMjUzODQwNzE4OTMzNDg4NjE1MDgyMDQyNDgxMjY0"
+                      />
+                      <div class="user_certify_tit">
+                        <h3>인증수단 선택</h3>
+                        <p>본인인증 방법을 선택해 주세요.</p>
+                      </div>
+                      <div class="login_input">
+                        <div class="form_element">
+                          <ul class="user_certify_list">
+                            <li>
+                              <input
+                                type="radio"
+                                id="authEmail"
+                                name="authType"
+                                value="authEmail"
+                              />
+                              <label class="choice" for="authEmail"
+                                >이메일 인증</label
+                              >
+                              <!-- ##이메일 -->
+                              <strong>##</strong>
+                              <span
+                                >가입시 등록한 이메일로 인증번호가
+                                발송됩니다.</span
+                              >
+                            </li>
+                            <li>
+                              <input
+                                type="radio"
+                                id="authSms"
+                                name="authType"
+                                value="authSms"
+                                class="radio"
+                              />
+                              <label class="choice" for="authSms"
+                                >SMS인증</label
+                              >
+                              <strong> (01*****8-9176)</strong>
+                            </li>
+                            <li>
+                              <input
+                                type="radio"
+                                id="authCellphone"
+                                name="authType"
+                                value="authCellphone"
+                              />
+                              <label class="choice" for="authCellphone"
+                                >휴대폰 본인인증</label
+                              >
+                            </li>
+                            <p id="errorMessage" class="dn"></p>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="btn_member_sec">
+                        <ul>
+                          <li>
+                            <button type="submit">다음</button>
+                          </li>
+                        </ul>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

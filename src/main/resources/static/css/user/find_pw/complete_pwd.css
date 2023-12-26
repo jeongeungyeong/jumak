@@ -1,0 +1,126 @@
+@font-face {
+  font-family: "ChosunGu";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none !important;
+  font-family: "ChosunGu";
+}
+
+html {
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.1px;
+  line-height: 1;
+  color: #212121;
+}
+
+body {
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.1px;
+  line-height: 1;
+  color: #212121;
+  -webkit-text-size-adjust: none;
+}
+
+.location_wrap {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ededed;
+}
+
+.location_wrap .location_cont {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.location_cont em {
+  display: block;
+  float: left;
+  padding: 12px 0 10px 0;
+  color: #777777;
+  font-size: 11px;
+}
+
+em {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.location_cont .local_home {
+  color: #777777;
+}
+
+a {
+  text-decoration: none;
+}
+
+.location_wrap .location_cont::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+#container .sub_content {
+  padding-top: 112px;
+  min-height: 600px;
+  width: 100%;
+  min-width: 1200px;
+  overflow: hidden;
+}
+
+.content_box {
+  width: 90%;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+
+.member_wrap {
+  width: 593px;
+  margin: 20px auto 40px auto;
+}
+
+.member_tit h2 {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+}
+
+.member_cont {
+  padding: 70px 60px;
+  border: 1px solid #dbdbdb;
+}
+
+.member_cont .btn_center_box {
+  margin: 35px 0 0 0;
+}
+
+.btn_center_box {
+  text-align: center;
+}
+
+.btn_confirm {
+  border: 1px solid rgb(240, 200, 100);
+  background: rgb(240, 200, 100);
+  width: 150px;
+  height: 45px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button {
+  letter-spacing: -0.05px;
+  border-radius: 0;
+  vertical-align: middle;
+  line-height: 1.5;
+}
