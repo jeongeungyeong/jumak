@@ -12,7 +12,7 @@
     </select>
 
 <!--    리뷰 작성-->
-    <insert id="reviewWrite" parameterType="reviewVo">
+    <insert id="reviewWrite" parameterType="productReviewVo">
         <selectKey keyProperty="productReviewNumber" order="BEFORE" resultType="long">
 
         </selectKey>
@@ -23,14 +23,14 @@
     </insert>
 
 <!--    리뷰 수정-->
-    <update id="reviewModify" parameterType="reviewVo">
+    <update id="reviewModify" parameterType="productReviewVo">
         UPDATE JUMAK_PRODUCT_REVIEW
         SET PRODUCT_REVIEW_CONTENT =#{productReviewContent}
         WHERE PRODUCT_NUMBER=#{productNumber} and PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
     </update>
 
 <!--    리뷰 삭제-->
-    <delete id="reviewDelete" parameterType="reviewVo">
+    <delete id="reviewDelete" parameterType="productReviewVo">
         DELETE FROM JUMAK_PRODUCT_REVIEW
         WHERE PRODUCT_NUMBER=#{productNumber} and PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
     </delete>

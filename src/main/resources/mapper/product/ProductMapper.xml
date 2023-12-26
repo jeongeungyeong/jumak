@@ -43,7 +43,7 @@
     </insert>
 
 <!--    상품 총 개수-->
-        <select id="selelctTotal" resultType="_int">
+        <select id="selectTotal" resultType="_int">
             SELECT COUNT(PRODUCT_NUMBER)
             FROM JUMAK_PRODUCT
         </select>
