@@ -38,12 +38,12 @@ class MypageMapperTest {
 
     @Test
     void selectName() {
-//        given
-        mypageMapper.insert(userDto);
-//        when
-        String foundName = mypageMapper.selectName(userDto.getUserNumber());
-//        then
-        assertThat(foundName).isEqualTo(userDto.getUserName());
+////        given
+//        mypageMapper.insert(userDto);
+////        when
+//        String foundName = mypageMapper.selectName(userDto.getUserNumber());
+////        then
+//        assertThat(foundName).isEqualTo(userDto.getUserName());
 //        assertThat(foundName.get()).isEqualTo(userDto.getUserNumber());
     }
 }

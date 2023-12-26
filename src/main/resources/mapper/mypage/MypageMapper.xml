@@ -41,6 +41,19 @@
         ORDER BY ORDER_STATUS_NUMBER
     </select>
 
+    <select id="selectOrderDetail" resultType="orderDetailVo">
+        SELECT O.ORDER_NUMBER, O.USER_NUMBER, TO_CHAR(O.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE, O.ORDER_STATUS_NUMBER
+             , OD.ORDER_DETAIL_COUNT, OD.ORDER_DETAIL_NUMBER
+             , P.PRODUCT_NAME, P.PRODUCT_PRICE
+             , OS.ORDER_STATUS_NAME
+             , (SELECT COUNT(JOR.ORDER_REVIEW_NUMBER) FROM JUMAK_ORDER_REVIEW JOR WHERE JOR.ORDER_DETAIL_NUMBER = OD.ORDER_DETAIL_NUMBER AND JOR.USER_NUMBER = O
+            .USER_NUMBER) REVIEW_COUNT
+        FROM JUMAK_ORDER O JOIN JUMAK_ORDER_DETAIL OD on O.ORDER_NUMBER = OD.ORDER_NUMBER
+                           JOIN JUMAK_PRODUCT P ON OD.PRODUCT_NUMBER = P.PRODUCT_NUMBER
+                           JOIN JUMAK_ORDER_STATUS OS on O.ORDER_STATUS_NUMBER = OS.ORDER_STATUS_NUMBER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
     <insert id="insert" parameterType="userDto">
         <selectKey keyProperty="userNumber" resultType="long" order="BEFORE">
             SELECT SEQ_USER.NEXTVAL FROM DUAL

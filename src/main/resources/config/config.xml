@@ -7,5 +7,6 @@
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangDto" alias="madangDto"/>
 
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderStatusVo" alias="orderStatusVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.myPage.OrderDetailVo" alias="orderDetailVo"/>
     </typeAliases>
 </configuration>
