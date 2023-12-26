@@ -78,7 +78,7 @@ public class MyBatisConfig {
         classpath*는 java 디렉터리와 resources디렉터리 에서 검색을하여 일치하는 모든 파일을 찾아낸다.(여러 파일)
         해당 패턴으로 검색된 파일들의 경로를 sqlSessionFactoryBean에 저장한다.
          */
-        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:/mapper/*/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(applicationContext.getResources("classpath*:/mapper/**/*.xml"));
 //        config.xml파일의 경로를 알려준다.
 //        classpath는 하나의 파일만 검색하여 찾는다.
         sqlSessionFactoryBean.setConfigLocation(applicationContext.getResource("classpath:/config/config.xml"));

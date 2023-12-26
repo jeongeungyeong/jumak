@@ -1,0 +1,570 @@
+@font-face {
+  font-family: "ChosunGu";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none !important;
+  font-family: "ChosunGu";
+}
+
+html body {
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.1px;
+  line-height: 1;
+  color: #212121;
+}
+
+.location_wrap {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ededed;
+}
+
+.location_wrap .location_cont {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.location_cont em {
+  display: block;
+  float: left;
+  padding: 12px 0 10px 0;
+  color: #777777;
+  font-size: 11px;
+}
+
+em {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.location_cont .local_home {
+  color: #777777;
+}
+
+a {
+  text-decoration: none;
+}
+
+.location_wrap .location_cont::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+/* --------------------------------------------------------- */
+#container .sub_content {
+  padding-top: 112px;
+  min-height: 600px;
+  width: 100%;
+  min-width: 1200px;
+  overflow: hidden;
+}
+
+.content_box {
+  width: 90%;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+/* -------------------------------------------------------------- */
+.join_base_wrap .member_tit {
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.join_base_wrap .member_tit h2 {
+  float: left;
+  font-size: 28px;
+  color: #222222;
+}
+
+.member_tit h2 {
+  margin: 0 0 20px 0;
+}
+
+.join_base_wrap .member_tit ol {
+  float: right;
+  line-height: 62px;
+}
+
+ol {
+  list-style: none;
+}
+
+.join_base_wrap .member_tit ol li {
+  float: left;
+  font-size: 14px;
+  color: #d1d1d1;
+}
+
+li {
+  list-style: none;
+}
+
+.join_base_wrap .member_tit li span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.join_base_wrap .member_tit li span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.join_base_wrap .member_tit li span > img {
+  padding: 0 14px;
+  vertical-align: -1px;
+}
+
+img {
+  border: 0 none;
+}
+
+.join_base_wrap .member_tit .page_on {
+  color: rgb(240, 200, 100);
+  font-weight: bold;
+}
+/* -------------------------------------------------------- */
+.join_base_wrap .member_cont {
+  width: 743px;
+  margin: 0 auto;
+  border: none;
+}
+
+.member_cont {
+  padding: 70px 60px;
+}
+
+input {
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.join_base_wrap .member_cont h3 {
+  padding: 0 0 17px 0;
+  font-size: 18px;
+  color: #222222;
+}
+
+.base_info_box h3 {
+  display: inline-block;
+}
+
+.member_cont h3 {
+  font-weight: normal;
+}
+
+.join_base_wrap .important {
+  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/member/icon_dot_03.png)
+    no-repeat 0 center;
+}
+
+.base_info_box > span {
+  color: rgb(240, 200, 100);
+  float: right;
+  padding: 0 0 0 10px;
+  line-height: 40px;
+}
+
+.base_info_box .base_info_sec {
+  border-top: 1px solid #999999;
+}
+
+.base_info_sec table {
+  width: 100%;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+.base_info_sec table th:first-child {
+  border-left: none;
+}
+
+.base_info_sec table th {
+  text-align: left;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fbfbfb;
+}
+
+.join_base_wrap table th {
+  padding: 10px 25px;
+}
+
+.join_base_wrap table th span {
+  padding: 0 0 0 10px;
+  margin: 0 0 0 -10px;
+}
+
+/* ----------------------------------------------------- */
+.base_info_sec table td {
+  padding: 15px 0 15px 15px;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#wrap .member_warning {
+  display: inline;
+  position: relative;
+}
+
+.base_info_sec table input[type="text"] {
+  width: 380px;
+}
+
+input[type="text"] {
+  border-radius: 0;
+  padding: 0 10px;
+  font-size: 14px;
+  height: 31px;
+  color: #333333;
+  border: 1px solid #d6d6d6;
+  line-height: 31px;
+  box-sizing: border-box;
+}
+
+input {
+  vertical-align: middle;
+}
+
+input[type="password"] {
+  border-radius: 0;
+  padding: 0 10px;
+  font-size: 14px;
+  height: 31px;
+  color: #333333;
+  border: 1px solid #d6d6d6;
+  line-height: 31px;
+  box-sizing: border-box;
+}
+
+.base_info_sec .member_email input[type="text"] {
+  width: 251px;
+}
+
+.base_info_sec .member_email select {
+  width: 120px;
+  border: 1px solid #aaa;
+}
+
+select {
+  letter-spacing: -0.05;
+  border-radius: 0;
+  vertical-align: middle;
+  height: 31px;
+  color: #717171;
+  font-size: 12px;
+  line-height: 1.5;
+}
+/* -------------------------------------------------------------- */
+#wrap .chosen-container {
+  vertical-align: top;
+  text-align: left;
+}
+
+.chosen-container {
+  position: relative;
+  display: inline-block;
+  font-size: 13px;
+  user-select: none;
+}
+
+#wrap .chosen-single {
+  height: 31px;
+  color: #717171;
+  vertical-align: top;
+  border: 1px solid #cccccc;
+}
+
+.chosen-container-single .chosen-single {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  padding: 0 0 0 8px;
+  border-radius: 0px;
+  background-color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+  line-height: 24px;
+}
+
+.chosen-container a {
+  cursor: pointer;
+}
+
+.chosen-container * {
+  box-sizing: border-box;
+}
+
+#wrap .chosen-single > span {
+  line-height: 30px;
+}
+
+.chosen-container-single .chosen-single span {
+  display: block;
+  overflow: hidden;
+  margin-right: 26px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chosen-container-single .chosen-single div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: block;
+  width: 18px;
+  height: 100%;
+}
+
+/* .chosen-container-single .chosen-single div b {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: url(https://www.paiksool.com/data/skin/front/a_sr01/js/jquery/chosen/chosen-sprite.png)
+    no-repeat 0px 2px;
+} */
+
+/* b {
+  font-weight: bold;
+} */
+
+#wrap .chosen-container .chosen-drop {
+  border: 1px solid #cccccc;
+  border-top: none 0;
+}
+
+.chosen-container-single .chosen-drop {
+  margin-top: -1px;
+  border-radius: 0 0 4px 4px;
+  background-clip: padding-box;
+}
+
+.chosen-container .chosen-drop {
+  position: absolute;
+  top: 100%;
+  left: -9999px;
+  z-index: 1010;
+  width: 100%;
+  border: 1px solid #aaa;
+  border-top: 0;
+  background: #fff;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.15);
+}
+
+.chosen-container * {
+  box-sizing: border-box;
+}
+
+.chosen-container-single .chosen-container-single-nosearch .chosen-search {
+  position: absolute;
+  left: -9999px;
+}
+
+.chosen-container-single .chosen-search {
+  z-index: 1010;
+  margin: 0;
+  padding: 3px 4px;
+  white-space: nowrap;
+}
+
+.chosen-container-single .chosen-search input[type="text"] {
+  margin: 1px 0;
+  padding: 4px 20px 4px 5px;
+  width: 100%;
+  height: auto;
+  border: 1px solid #aaa;
+  background: url(https://www.paiksool.com/data/skin/front/a_sr01/js/jquery/chosen/chosen-sprite.png)
+    no-repeat 100% -20px;
+  font-size: 1em;
+  line-height: normal;
+  border-radius: 0;
+}
+
+.chosen-container .chosen-results {
+  color: #444;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0 4px 4px 0;
+  padding: 0 0 0 4px;
+  max-height: 240px;
+}
+
+ul {
+  list-style: none;
+}
+
+.base_info_sec table .form_element {
+  display: block;
+  margin-top: 5px;
+}
+
+/* .form_element {
+  overflow: hidden;
+  position: relative;
+} */
+
+/* .form_element input {
+  position: absolute;
+  top: 3px;
+  left: 1px;
+  width: 0;
+  z-index: -1;
+  visibility: hidden;
+} */
+/* ------------------------------------------------------------ */
+/* input[type="checkbox"] {
+  height: 13px;
+  vertical-align: top;
+} */
+
+.form_element label.check_s {
+  /* min-width: 13px; */
+  /* padding: 0 0 0 22px; */
+  /* background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/check_off_small.png)
+    no-repeat 1px 2px; */
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.form_element label {
+  position: relative;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  min-height: 20px;
+}
+
+#contents .member_address .address_postcode {
+  overflow: hidden;
+}
+
+#contents .member_address .address_postcode input {
+  float: left;
+  width: 190px;
+}
+
+#contents .member_address .address_postcode .btn_post-search {
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #989898;
+}
+
+button {
+  letter-spacing: -0.05px;
+  border-radius: 0;
+  background-color: transparent;
+  cursor: pointer;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+#contents .member_address .address_input {
+  float: left;
+  width: 72%;
+}
+
+#contents .member_address .address_input input {
+  margin: 10px 0 0 0;
+}
+
+input[type="text"] {
+  border-radius: 0;
+  padding: 0 10px;
+  font-size: 14px;
+  height: 31px;
+  color: #333333;
+  border: 1px solid #d6d6d6;
+  line-height: 31px;
+  box-sizing: border-box;
+}
+
+input {
+  vertical-align: middle;
+}
+/* --------------------------------------------------------------- */
+.addition_info_box {
+  margin: 40px 0 0 0;
+}
+
+.join_base_wrap .member_cont h3 {
+  padding: 0 0 17px 0;
+  font-size: 18px;
+  color: #222222;
+}
+
+.addition_info_box .addition_info_sec {
+  border-top: 1px solid #1c1c1c;
+}
+
+.addition_info_sec table {
+  width: 100%;
+}
+/* ----------------------------------------------------------------- */
+.member_cont .btn_center_box {
+  margin: 35px 0 0 0;
+}
+
+.btn_center_box {
+  text-align: center;
+}
+
+.btn_member_cancel {
+  width: 150px;
+  height: 45px;
+  color: #3e3d3c;
+  font-weight: bold;
+  font-size: 13px;
+  border: 1px solid #cccccc;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn_center_box button + button {
+  margin-left: 6px;
+}
+
+.btn_confirm {
+  border: 1px solid rgb(240, 200, 100);
+  background: rgb(240, 200, 100);
+}
+
+.btn_confirm {
+  width: 150px;
+  height: 45px;
+  margin: 0;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.addition_info_sec table th:first-child {
+  border-left: none;
+}
+
+.addition_info_sec table th {
+  text-align: left;
+  border-bottom: 1px solid #dcdcdc;
+  background: #fbfbfb;
+}
+
+.addition_info_sec table td {
+  padding: 15px 0 15px 15px;
+  border-bottom: 1px solid #dcdcdc;
+}

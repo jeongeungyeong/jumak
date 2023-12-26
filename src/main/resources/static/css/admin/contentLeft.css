@@ -1,10 +1,12 @@
 body{
     font-family: sans-serif;
+
+    margin-bottom: 100px;
    }
    
    .header_{
        background-color: #f0c864;
-       height: 200px;
+       height: 100px;
    }
 
    dl, ul, ol, menu, li{
@@ -15,7 +17,9 @@ body{
        text-decoration: none;
        color: inherit;
    }
-   
+
+
+
    .sub_content{
        min-height: 600px;
        width: 100%;
@@ -25,12 +29,14 @@ body{
        margin: 0 auto;
    
    }
-   
+
+/*사이드콘텐트*/
+
    .side_cont{
        display: block;
        float: left;
        width: 170px;
-       margin-top: 40px;
+       margin-top: 160px;
        border-right: 1px solid #ececec;
    }
    
@@ -53,7 +59,7 @@ body{
        padding: 20px 0 20px 0;
        font-size: 18px;
        font-weight: bold;
-       background: url('../img/lnb_tit.png') no-repeat top left;
+       background: url('static/imgs/admin/lnb_tit.png') no-repeat top left;
    
    }
    
@@ -67,7 +73,29 @@ body{
        display: list-item;
        padding: 20px 0 0 0;
        font-size: 15px;
-       text-align: -webkit-match-parents;
+       /*text-align: -webkit-match-parents;*/
    }
-   
+
+/*페이징처리*/
+.paging{
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.pages{
+    margin: 0 10px;
+}
+
+.pages > span{
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+span.active{
+    color: #f8b60e;
+}
+
    
