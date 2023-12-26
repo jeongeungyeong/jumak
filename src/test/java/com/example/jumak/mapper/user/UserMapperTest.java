@@ -33,7 +33,7 @@ class UserMapperTest {
         userDto.setUserPhoneNumber("021234567");
         userDto.setUserAddress("노원구");
         userDto.setUserAddressDetail("상계로1길");
-        userDto.setUserZipcode("1234");
+//        userDto.setUserZipcode("1234");
         userDto.setUserGradeNumber(1L);
     }
 

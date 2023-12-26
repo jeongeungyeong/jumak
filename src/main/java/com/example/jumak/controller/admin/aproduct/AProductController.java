@@ -1,10 +1,10 @@
 package com.example.jumak.controller.admin.aproduct;
 
 import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.vo.admin.Criteria;
-import com.example.jumak.domain.vo.admin.PageVo;
-import com.example.jumak.domain.vo.admin.ProductVo;
-import com.example.jumak.domain.vo.admin.SearchVo;
+import com.example.jumak.domain.vo.admin.ACriteria;
+import com.example.jumak.domain.vo.admin.APageVo;
+import com.example.jumak.domain.vo.admin.AProductVo;
+import com.example.jumak.domain.vo.admin.ASearchVo;
 import com.example.jumak.service.admin.aproduct.AProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,28 +22,28 @@ public class AProductController {
     private final AProductService aProductService;
 
     @GetMapping
-    public String productList(Criteria criteria, Model model){
-        List<ProductDto> productList = aProductService.findAll(criteria);
+    public String productList(ACriteria aCriteria, Model model){
+        List<ProductDto> productList = aProductService.findAll(aCriteria);
         model.addAttribute("productList", productList);
-        model.addAttribute("pageInfo", new PageVo(aProductService.findTotal(), criteria));
+        model.addAttribute("pageInfo", new APageVo(aProductService.findTotal(), aCriteria));
         return "admin/product/productList";
     }
 
     @GetMapping("/detail/{productNumber}")
     public String productDetail(@PathVariable("productNumber") Long productNumber,
                                 Model model){
-        ProductVo productDetail = aProductService.findOne(productNumber);
+        AProductVo productDetail = aProductService.findOne(productNumber);
         model.addAttribute("product",productDetail);
         return "admin/product/productDetail";
     }
 
     @GetMapping("/search")
-    public String searchResult(SearchVo searchVo , Criteria criteria, Model model){
-        List<ProductDto> searchDto = aProductService.findSearch(searchVo,criteria);
+    public String searchResult(ASearchVo aSearchVo, ACriteria aCriteria, Model model){
+        List<ProductDto> searchDto = aProductService.findSearch(aSearchVo, aCriteria);
 
         model.addAttribute("productList", searchDto);
-        model.addAttribute("searchVo", searchVo);
-        model.addAttribute("pageInfo", new PageVo(aProductService.findSearchTotal(searchVo),criteria));
+        model.addAttribute("searchVo", aSearchVo);
+        model.addAttribute("pageInfo", new APageVo(aProductService.findSearchTotal(aSearchVo), aCriteria));
         return "admin/product/productListSearch";
     }
 }

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class Criteria {
+public class ACriteria {
     private int page; // 현재 페이지
     private int amount; // 한 페이지 당 게시물 수
 
@@ -14,12 +14,12 @@ public class Criteria {
 //    이 때 사용되는 생성자는 기본 생성자이므로
 //    우리가 기본생성자에 page와 amount의 기본 값을 설정해주면 첫 페이지를 볼 수 있다.
 
-    public Criteria() {
+    public ACriteria() {
         this.page = 1;
         this.amount = 15;
     }
 
-    public Criteria(int page, int amount) {
+    public ACriteria(int page, int amount) {
         this.page = page;
         this.amount = amount;
     }

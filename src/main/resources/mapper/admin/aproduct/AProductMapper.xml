@@ -82,15 +82,15 @@
     </select>
 
     <select id="selectSearchTotal" resultType="_int">
-        SELECT COUNT(PRODUCT_NUMBER)
-        FROM JUMAK_PRODUCT
-        <if test="searchVo.searchType.equals('prdName')">
-            WHERE USER_ID like '%' || #{searchVo.keyword} || '%'
-        </if>
+<!--        SELECT COUNT(PRODUCT_NUMBER)-->
+<!--        FROM JUMAK_PRODUCT-->
+<!--        <if test="searchVo.searchType.equals('prdName')">-->
+<!--            WHERE USER_ID like '%' || #{searchVo.keyword} || '%'-->
+<!--        </if>-->
 
-        <if test="searchVo.searchType.equals('prdNumber')">
-            WHERE USER_NICKNAME like '%' || #{searchVo.keyword} || '%'
-        </if>
+<!--        <if test="searchVo.searchType.equals('prdNumber')">-->
+<!--            WHERE USER_NICKNAME like '%' || #{searchVo.keyword} || '%'-->
+<!--        </if>-->
     </select>
 
 

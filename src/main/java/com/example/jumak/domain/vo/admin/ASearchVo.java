@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class SearchVo {
+public class ASearchVo {
     private String searchType;
     private String keyword;
 }

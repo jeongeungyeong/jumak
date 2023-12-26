@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class ProductVo {
+public class AProductVo {
     private Long productNumber;
     private Long productCategoryNumber;
     private String productName;
