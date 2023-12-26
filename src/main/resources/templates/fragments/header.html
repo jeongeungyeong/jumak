@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<header th:fragment="header" class="header">
+  <nav class="nav">
+    <h1>
+      <a href="/">
+        <img
+            src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/common/logo.png"
+            alt="">
+      </a>
+    </h1>
+
+    <ul>
+      <li>
+        우리술 정보&리뷰
+        <ul class="header__sub-menu header--none">
+          <li>우리술 전체보기</li>
+          <li>양조장 탐방기</li>
+          <li>술 취향 테스트</li>
+          <li>나에게 맞는 술 찾기</li>
+        </ul>
+      </li>
+      <li>
+        백술 NEWS
+        <ul class="header__sub-menu header--none">
+          <li>백술 NEWS</li>
+        </ul>
+      </li>
+      <li>
+        우리술 빚기
+        <ul class="header__sub-menu header--none">
+          <li>백종원의 술비책</li>
+        </ul>
+      </li>
+      <li>
+        커뮤니티
+        <ul class="header__sub-menu header--none">
+          <li>백술놀이터</li>
+          <li>모임공지</li>
+        </ul>
+      </li>
+      <li>
+        우리술 장터
+        <ul class="header__sub-menu header__sub-market header--none">
+          <li>전체상품</li>
+          <li>술빚기용품</li>
+          <li>막걸리/탁주</li>
+          <li>증류주/리큐르</li>
+          <li>약주/청주</li>
+          <li>완인/과실주</li>
+          <li>기타주류/기타</li>
+          <li>선물하기 좋은 우리술🎁</li>
+          <li>통합배송🚚</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="icon-box">
+      <div class="search-icon-box icon-box">
+        <img th:src="@{/imgs/main/icon/ico_top_search.png}" alt="">
+      </div>
+      <div class="cart-icon-box icon-box">
+        <img th:src="@{/imgs/main/icon/ico_top_cart.png}" alt="">
+      </div>
+      <div class="login-icon-box icon-box">
+        <img th:src="@{/imgs/main/icon/ico_top_user.png}" alt="">
+      </div>
+    </div>
+    <div class="sub-menu__bg header--none"></div>
+  </nav>
+
+  <article class="header__search-top-menu header--none">
+<!--    검색 url 넣기 -->
+<!--    submit버튼으로 처리함-->
+    <form action="" method="">
+      <div class="header__search-top-box">
+        <div class="header__search__x-btn">
+          <img th:src="@{/imgs/main/icon/ico_top_close.png}" alt="">
+        </div>
+        <div class="header__search__keyword-box">
+          <input type="text" name="keyword" class="header__input-keyword">
+          <button class="header__search__icon">
+            <img th:src="@{/imgs/main/icon/ico_top_search.png}" alt="">
+          </button>
+        </div>
+      </div>
+    </form>
+  </article>
+
+</header>
+</body>
+</html>

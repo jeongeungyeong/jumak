@@ -1,8 +1,8 @@
 package com.example.jumak.service.admin.auser;
 
 import com.example.jumak.domain.dto.user.UserDto;
-import com.example.jumak.domain.vo.admin.Criteria;
-import com.example.jumak.domain.vo.admin.SearchVo;
+import com.example.jumak.domain.vo.admin.ACriteria;
+import com.example.jumak.domain.vo.admin.ASearchVo;
 import com.example.jumak.mapper.admin.auser.AUserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,8 +18,8 @@ public class AUserService {
 
 
     //    유저 전체 조회
-    public List<UserDto> findAll(Criteria criteria){
-        return AUserMapper.selectAll(criteria);
+    public List<UserDto> findAll(ACriteria aCriteria){
+        return AUserMapper.selectAll(aCriteria);
     }
 
     //    유저 번호로 상세정보 조회
@@ -38,13 +38,13 @@ public class AUserService {
     };
 
     //   검색어 조회
-    public List<UserDto> findSearch(SearchVo searchVo, Criteria criteria) {
-        return AUserMapper.selectSearch(searchVo, criteria);
+    public List<UserDto> findSearch(ASearchVo aSearchVo, ACriteria aCriteria) {
+        return AUserMapper.selectSearch(aSearchVo, aCriteria);
     }
 
     //     Search total
-    public int findSearchTotal(SearchVo searchVo) {
-        return AUserMapper.selectSearchTotal(searchVo);
+    public int findSearchTotal(ASearchVo aSearchVo) {
+        return AUserMapper.selectSearchTotal(aSearchVo);
 
     }
 }

@@ -1,8 +1,8 @@
 package com.example.jumak.mapper.admin.auser;
 
 import com.example.jumak.domain.dto.user.UserDto;
-import com.example.jumak.domain.vo.admin.Criteria;
-import com.example.jumak.domain.vo.admin.SearchVo;
+import com.example.jumak.domain.vo.admin.ACriteria;
+import com.example.jumak.domain.vo.admin.ASearchVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,7 +12,7 @@ import java.util.Optional;
 @Mapper
 public interface AUserMapper {
     //    유저 전체 조회
-    public List<UserDto> selectAll(Criteria criteria);
+    public List<UserDto> selectAll(ACriteria aCriteria);
 
     //    USER TOTAL
     public int selectTotal();
@@ -27,8 +27,8 @@ public interface AUserMapper {
 
 
     //    검색어로 조회
-    public List<UserDto> selectSearch(@Param("searchVo")SearchVo searchVo, @Param("criteria") Criteria criteria);
+    public List<UserDto> selectSearch(@Param("searchVo") ASearchVo aSearchVo, @Param("criteria") ACriteria aCriteria);
 
     //     Search Total
-    public int selectSearchTotal(SearchVo searchVo);
+    public int selectSearchTotal(ASearchVo aSearchVo);
 }

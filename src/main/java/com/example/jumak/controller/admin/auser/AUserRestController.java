@@ -14,13 +14,13 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/user")
 public class AUserRestController {
-    private final AUserService aUserService;
-
-//    유저 삭제
-    @DeleteMapping("/delete/{userNumber}")
-    public void userRemove(@PathVariable("userNumber") Long userNumber) {
-        aUserService.remove(userNumber);
-    }
+//    private final AUserService aUserService;
+//
+////    유저 삭제
+//    @DeleteMapping("/delete/{userNumber}")
+//    public void userRemove(@PathVariable("userNumber") Long userNumber) {
+//        aUserService.remove(userNumber);
+//    }
 
 
 }

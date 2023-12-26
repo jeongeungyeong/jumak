@@ -40,8 +40,3 @@
             WHERE USER_NUMBER = #{userNumber}
         </delete>
     </mapper>
-
-
-
-
-

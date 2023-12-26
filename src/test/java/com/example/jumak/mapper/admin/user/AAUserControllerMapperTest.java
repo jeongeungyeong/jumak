@@ -1,7 +1,7 @@
 package com.example.jumak.mapper.admin.user;
 
 import com.example.jumak.domain.dto.user.UserDto;
-import com.example.jumak.domain.vo.admin.SearchVo;
+import com.example.jumak.domain.vo.admin.ASearchVo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +33,9 @@ class AAUserControllerMapperTest {
 
     @Test
     void insertSearch(){
-        SearchVo searchVo = new SearchVo();
-        searchVo.setSearchType("id");
-        searchVo.setKeyword("asdf");
+        ASearchVo ASearchVo = new ASearchVo();
+        ASearchVo.setSearchType("id");
+        ASearchVo.setKeyword("asdf");
 //        AUserMapper.selectSearch(searchVo);
     }
 
@@ -48,8 +48,8 @@ class AAUserControllerMapperTest {
 //    void selectAll() {
 //        AUserMapper.selectAll();
 //    }
-    @Test
-    void delete(){
-        AUserMapper.delete(174L);
-    }
+//    @Test
+//    void delete(){
+//        AUserMapper.delete(174L);
+//    }
 }

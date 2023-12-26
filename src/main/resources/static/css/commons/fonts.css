@@ -1,0 +1,14 @@
+@font-face {
+    font-family: pado;
+    src: url('/font/pado.ttf');
+}
+
+@font-face {
+    font-family: chosun100;
+    src: url('/font/ChosunCentennial_otf.otf');
+}
+
+@font-face {
+    font-family: chosun;
+    src: url('/font/ChosunGu.TTF');
+}

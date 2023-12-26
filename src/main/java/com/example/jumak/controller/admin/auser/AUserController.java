@@ -2,9 +2,9 @@ package com.example.jumak.controller.admin.auser;
 
 
 import com.example.jumak.domain.dto.user.UserDto;
-import com.example.jumak.domain.vo.admin.Criteria;
-import com.example.jumak.domain.vo.admin.PageVo;
-import com.example.jumak.domain.vo.admin.SearchVo;
+import com.example.jumak.domain.vo.admin.ACriteria;
+import com.example.jumak.domain.vo.admin.APageVo;
+import com.example.jumak.domain.vo.admin.ASearchVo;
 import com.example.jumak.service.admin.auser.AUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -19,36 +19,36 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/user")
 public class AUserController {
-    private final AUserService aUserService;
-
-    @GetMapping()
-    public String userList(Criteria criteria,Model model){
-        List<UserDto> userList = aUserService.findAll(criteria);
-        model.addAttribute("userList", userList);
-        model.addAttribute("pageInfo", new PageVo(aUserService.findTotal(), criteria));
-        return "admin/user/userList";
-    }
-
-    @GetMapping("/detail/{userNumber}")
-    public String userDetail(@PathVariable("userNumber") Long boardNumber,
-                             Model model){
-        UserDto userDetail = aUserService.findOne(boardNumber);
-        model.addAttribute("user", userDetail);
-        return "admin/user/userDetail";
-
-    }
-
-
-
-    @GetMapping("/search")
-    public String searchResult(SearchVo searchVo , Criteria criteria, Model model){
-        List<UserDto> searchDto = aUserService.findSearch(searchVo, criteria);
-
-        model.addAttribute("userList", searchDto);
-        model.addAttribute("searchVo", searchVo);
-        model.addAttribute("pageInfo", new PageVo(aUserService.findSearchTotal(searchVo), criteria));
-        return "admin/user/userListSearch";
-    }
+//    private final AUserService aUserService;
+//
+//    @GetMapping()
+//    public String userList(ACriteria aCriteria, Model model){
+//        List<UserDto> userList = aUserService.findAll(aCriteria);
+//        model.addAttribute("userList", userList);
+//        model.addAttribute("pageInfo", new APageVo(aUserService.findTotal(), aCriteria));
+//        return "admin/user/userList";
+//    }
+//
+//    @GetMapping("/detail/{userNumber}")
+//    public String userDetail(@PathVariable("userNumber") Long boardNumber,
+//                             Model model){
+//        UserDto userDetail = aUserService.findOne(boardNumber);
+//        model.addAttribute("user", userDetail);
+//        return "admin/user/userDetail";
+//
+//    }
+//
+//
+//
+//    @GetMapping("/search")
+//    public String searchResult(ASearchVo aSearchVo, ACriteria aCriteria, Model model){
+//        List<UserDto> searchDto = aUserService.findSearch(aSearchVo, aCriteria);
+//
+//        model.addAttribute("userList", searchDto);
+//        model.addAttribute("searchVo", aSearchVo);
+//        model.addAttribute("pageInfo", new APageVo(aUserService.findSearchTotal(aSearchVo), aCriteria));
+//        return "admin/user/userListSearch";
+//    }
 
 
 

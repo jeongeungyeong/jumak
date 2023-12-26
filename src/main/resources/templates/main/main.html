@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" th:href="@{/css/main/main.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+
+</head>
+<body>
+<div class="wrap">
+  <header th:replace="~{/fragments/header :: header}"></header>
+  <section class="banner-section">
+    <div class="banner-box">
+      <ul class="banner-ul">
+        <li>
+          <img th:src="@{/imgs/main/banner/main_banner01.jpg}"/>
+        </li>
+
+        <li>
+          <img th:src="@{/imgs/main/banner/main_banner02.jpg}"/>
+        </li>
+        <li>
+          <img th:src="@{/imgs/main/banner/main_banner03.jpg}"/>
+        </li>
+        <li>
+          <img th:src="@{/imgs/main/banner/main_banner04.jpg}"/>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <main>
+    <div class="main__content-wrap">
+      <div class="top-box">
+
+
+        <section class="news">
+          <div class="section-head">
+            <div class="section-head__title">
+              수상한 NEWS
+            </div>
+            <div class="section-head__more">
+              <a href=""><!-- 뉴스 더 보기 링크 설정하기 -->
+                <span>+</span>
+                <span>more</span>
+              </a>
+            </div>
+          </div>
+          <div class="news__content-box">
+            <!-- 아이템 반복요소 샘플 (4개만 넣기)-->
+            <article class="news__item">
+              <a href=""> <!--아이템 링크 설정하기-->
+                <div class="news__img-box">
+                  <img src="https://www.paiksool.com/data/board/upload/column/8f322fdcea253ed4" alt="">
+                </div>
+                <div class="news__info">
+                  <p>초이리브루어리 '도로르' 출시</p>
+                </div>
+              </a>
+            </article>
+            <article class="news__item">
+              <a href="">
+                <div class="news__img-box">
+                  <img src="https://www.paiksool.com/data/board/upload/column/8f322fdcea253ed4" alt="">
+                </div>
+                <div class="news__info">
+                  <p>초이리브루어리 '도로르' 출시</p>
+                </div>
+              </a>
+            </article>
+            <article class="news__item">
+              <a href="">
+                <div class="news__img-box">
+                  <img src="https://www.paiksool.com/data/board/upload/column/8f322fdcea253ed4" alt="">
+                </div>
+                <div class="news__info">
+                  <p>초이리브루어리 '도로르' 출시</p>
+                </div>
+              </a>
+            </article>
+            <!-- /아이템 반복요소 샘플-->
+          </div>
+        </section>
+
+
+        <section class="madang">
+          <div class="section-head">
+            <div class="section-head__title">
+              수상한 마당
+            </div>
+            <div class="section-head__more">
+              <a href=""><!-- 마당 더 보기 링크 설정하기 -->
+                <span>+</span>
+                <span>more</span>
+              </a>
+            </div>
+          </div>
+          <div class="madang__content-box">
+            <ul class="madang__list-ul">
+              <!-- li 반복 요소 샘플-->
+              <li>
+                <a href=""> <!--바로가기 링크-->
+                  <div class="madang__img-box">
+                    <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/commonimg/re_pc_no_image.jpg" alt="">
+                  </div>
+                  <div class="madang__info">
+                    <span>일상</span>
+                    <p>너무우 춥다아아아</p>
+                  </div>
+                </a>
+              </li>
+<!--              -->
+              <li>
+                <a href=""> <!--바로가기 링크-->
+                  <div class="madang__img-box">
+                    <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/commonimg/re_pc_no_image.jpg" alt="">
+                  </div>
+                  <div class="madang__info">
+                    <span>일상</span>
+                    <p>너무우 춥다아아아</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href=""> <!--바로가기 링크-->
+                  <div class="madang__img-box">
+                    <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/commonimg/re_pc_no_image.jpg" alt="">
+                  </div>
+                  <div class="madang__info">
+                    <span>일상</span>
+                    <p>너무우 춥다아아아</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href=""> <!--바로가기 링크-->
+                  <div class="madang__img-box">
+                    <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/commonimg/re_pc_no_image.jpg" alt="">
+                  </div>
+                  <div class="madang__info">
+                    <span>일상</span>
+                    <p>너무우 춥다아아아</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href=""> <!--바로가기 링크-->
+                  <div class="madang__img-box">
+                    <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/commonimg/re_pc_no_image.jpg" alt="">
+                  </div>
+                  <div class="madang__info">
+                    <span>일상</span>
+                    <p>너무우 춥다아아아</p>
+                  </div>
+                </a>
+              </li>
+
+              <!-- /li 반복 요소 샘플-->
+            </ul>
+          </div>
+        </section>
+
+      </div>
+      <section class="middle-banner-box">
+        <a href=""> <!-- 링크, 이미지 설정-->
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/worldcup.jpg" alt="">
+        </a>
+      </section>
+
+      
+      
+      <div class="middle-box">
+        <section class="monthly-sul">
+          <div class="section-head">
+            <div class="section-head__title">
+              이달의 술 <!-- 문구 수정하기 -->
+            </div>
+            <div class="section-head__more">
+              <a href=""><!-- 더 보기 링크 설정하기 -->
+                <span>+</span>
+                <span>more</span>
+              </a>
+            </div>
+          </div>
+          <div class="monthly-sul__content-box">
+            <a href=""></a> <!--여기에 링크 설정(위치 변경X)-->
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/monthly_paiksool_v231204.jpg" alt="">
+              <div class="monthly-sul__text-box">
+                <span>이달의 술</span>
+                <p>선산 스위트와 함께 <br> 달콤한 겨울을 즐겨보세요</p>
+              </div>
+
+          </div>
+        </section>
+
+        <section class="store-direct">
+          <div class="section-head">
+            <div class="section-head__title">
+              장터 직행템🚕 <!-- 문구 수정하기 -->
+            </div>
+            <div class="section-head__more">
+            </div>
+          </div>
+
+          <div class="store-direct__content-box">
+            <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/sool_item_v231218.jpg" alt="">
+          </div>
+        </section>
+
+      </div>
+      <section class="find-sul-banner">
+        <a href=""> <!--링크 설정하기-->
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/find.jpg" alt="">
+        </a>
+      </section>
+      <section class="brewery-news">
+        <div class="section-head">
+          <div class="section-head__title">
+            양조장 탐방기 <!-- 문구 수정하기 -->
+          </div>
+          <div class="section-head__more">
+            <a href=""><!-- 더 보기 링크 설정하기 -->
+              <span>+</span>
+              <span>more</span>
+            </a>
+          </div>
+        </div>
+        <div class="brewery-news__content-box">
+          <!-- 반복 요소 8개 -->
+          <article class="brewery-news__item">
+            <a href=""> <!--링크 걸기-->
+              <div class="brewery-news__img-box">
+                <img src="https://www.paiksool.com/data/board/upload/visit/3151882a34281e2a" alt="">
+              </div>
+              <p>
+                &lt오티오티&gt 김선일, 김휘은 대표
+              </p>
+            </a>
+          </article>
+          <article class="brewery-news__item">
+            <a href=""> <!--링크 걸기-->
+              <div class="brewery-news__img-box">
+                <img src="https://www.paiksool.com/data/board/upload/visit/3151882a34281e2a" alt="">
+              </div>
+              <p>
+                &lt오티오티&gt 김선일, 김휘은 대표
+              </p>
+            </a>
+          </article>
+          <article class="brewery-news__item">
+            <a href=""> <!--링크 걸기-->
+              <div class="brewery-news__img-box">
+                <img src="https://www.paiksool.com/data/board/upload/visit/3151882a34281e2a" alt="">
+              </div>
+              <p>
+                &lt오티오티&gt 김선일, 김휘은 대표
+              </p>
+            </a>
+          </article>
+          <article class="brewery-news__item">
+            <a href=""> <!--링크 걸기-->
+              <div class="brewery-news__img-box">
+                <img src="https://www.paiksool.com/data/board/upload/visit/3151882a34281e2a" alt="">
+              </div>
+              <p>
+                &lt오티오티&gt 김선일, 김휘은 대표
+              </p>
+            </a>
+          </article>
+          <article class="brewery-news__item">
+            <a href=""> <!--링크 걸기-->
+              <div class="brewery-news__img-box">
+                <img src="https://www.paiksool.com/data/board/upload/visit/3151882a34281e2a" alt="">
+              </div>
+              <p>
+                &lt오티오티&gt 김선일, 김휘은 대표
+              </p>
+            </a>
+          </article>
+          <article class="brewery-news__item">
+            <a href=""> <!--링크 걸기-->
+              <div class="brewery-news__img-box">
+                <img src="https://www.paiksool.com/data/board/upload/visit/3151882a34281e2a" alt="">
+              </div>
+              <p>
+                &lt오티오티&gt 김선일, 김휘은 대표
+              </p>
+            </a>
+          </article>
+          <!-- /반복 요소 -->
+        </div>
+      </section>
+      <section class="meeting-banner">
+        <div class="section-head">
+          <div class="section-head__title">
+            모임공지 <!-- 문구 수정하기 -->
+          </div>
+          <div class="section-head__more">
+            <a href=""><!-- 더 보기 링크 설정하기 -->
+              <span>+</span>
+              <span>more</span>
+            </a>
+          </div>
+        </div>
+        <div class="meeting-banner__content">
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/meet_2.png" alt="">
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer th:replace="~{/fragments/footer :: footer}"></footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
