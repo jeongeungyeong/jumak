@@ -79,21 +79,21 @@ a {
     margin-bottom: 40px;
 }
 
-.board {
+.product {
     display: grid;
     grid-template-columns: repeat(5, minmax(250px, 400px));
     gap: 20px;
     justify-content: center;
 }
 
-.board-item {
+.product-item {
     width: 300px;
     overflow: hidden;
     border-radius: 10px;
     position: relative;
 }
 
-.board-item-image {
+.product-item-image {
     width: 100%;
     height: 200px;
     background-size: cover;
@@ -101,27 +101,27 @@ a {
     transition: 0.5s;
 }
 
-.board-img-box {
+.product-img-box {
     position: relative;
     height: 200px;
     overflow: hidden;
 }
 
-.board-item-image:hover {
+.product-item-image:hover {
     transform: scale(1.1);
 }
 
-.board-item-title {
+.product-item-title {
     font-size: 18px;
     margin-bottom: 5px;
 }
 
-.board-item-price_box {
+.product-item-price_box {
     font-size: 14px;
     color: #fff;
 }
 
-.add-post-btn {
+/*.add-post-btn {
     display: block;
     width: 110px;
     padding: 10px;
@@ -136,14 +136,14 @@ a {
 
 .add-post-btn:hover {
     background-color: #00a792;
-}
+}*/
 
 .btn-wrap {
     display: flex;
     justify-content: right;
 }
 
-.board-item {
+.product-item {
     overflow: hidden;
     border-radius: 10px;
     position: relative;
@@ -151,11 +151,11 @@ a {
     /* border: 1px solid #ccc; */
 }
 
-.board-item-text {
+.product-item-text {
     padding: 10px;
 }
 
-.board-item-image {
+.product-item-image {
     width: 100%;
     height: 200px;
     background-size: cover;
@@ -164,7 +164,7 @@ a {
     position: relative;
 }
 
-.board-img-box:hover .board-item-image {
+.product-img-box:hover .product-item-image {
     transform: scale(1.1);
 }
 
@@ -182,7 +182,7 @@ a {
   transition: opacity 0.5s;
 } */
 
-.board-img-box:hover .board-item-info {
+.product-img-box:hover .board-item-info {
     display: flex;
     visibility: visible;
     opacity: 1;
@@ -200,7 +200,7 @@ a {
   margin-left: 5px;
 } */
 
-.board-item-title {
+.product-item-title {
     font-size: 18px;
     margin-bottom: 5px;
 }
@@ -215,7 +215,7 @@ a {
     color: gray;
 }
 
-.board-item .box_absol {
+.product-item .box_absol {
     position: absolute;
     left: 11px;
     top: 0;
@@ -223,7 +223,7 @@ a {
     width: 279px;
     height: 291px;
 }
-.board-item .box_absol .sale {
+.product-item .box_absol .sale {
     width: 50px;
     height: 50px;
     text-align: center;
@@ -238,17 +238,17 @@ a {
     border: solid 1px;
     border-radius: 10px;
 }
-.board-item .box_absol .sale span {
+.product-item .box_absol .sale span {
     display: block;
     font-size: 14px;
 }
-.board-item .box_absol .sale span strong {
+.product-item .box_absol .sale span strong {
     font-size: 20px;
 }
-.board-item .box_absol .recom {
+.product-item .box_absol .recom {
     margin-top: -23px;
 }
-.board-item .box_absol .deli_icon {
+.product-item .box_absol .deli_icon {
     right: 2px;
     bottom: 8px;
 }

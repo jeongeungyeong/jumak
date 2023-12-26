@@ -1,0 +1,181 @@
+@font-face {
+  font-family: "ChosunGu";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: none !important;
+  font-family: "ChosunGu";
+}
+
+html {
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.1px;
+  line-height: 1;
+  color: #212121;
+}
+
+body {
+  width: 100%;
+  font-size: 16px;
+  letter-spacing: -0.1px;
+  line-height: 1;
+  color: #212121;
+  -webkit-text-size-adjust: none;
+}
+
+.location_wrap {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid #ededed;
+}
+
+.location_wrap .location_cont {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.location_cont em {
+  display: block;
+  float: left;
+  padding: 12px 0 10px 0;
+  color: #777777;
+  font-size: 11px;
+}
+
+em {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.location_cont .local_home {
+  color: #777777;
+}
+
+a {
+  text-decoration: none;
+}
+
+.location_wrap .location_cont::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+/* -------------------------------------------------------------- */
+#container .sub_content {
+  padding-top: 112px;
+  min-height: 600px;
+  width: 100%;
+  min-width: 1200px;
+  overflow: hidden;
+}
+
+.content_box {
+  width: 90%;
+  padding-top: 40px;
+  margin: 0 auto;
+}
+
+.member_wrap {
+  width: 593px;
+  margin: 20px auto 40px auto;
+}
+
+.member_tit h2 {
+  font-size: 28px;
+  margin: 0 0 20px 0;
+}
+
+.member_cont {
+  padding: 70px 60px;
+  border: 1px solid #dbdbdb;
+}
+
+.join_ok_box .join_ok_tit {
+  text-align: center;
+  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/member/img_join_ok.png)
+    no-repeat center 0;
+  padding: 50px 0 0 0;
+}
+
+.join_ok_box .join_ok_tit .complete {
+  padding: 20px 0 0 0;
+  font-size: 18px;
+  color: #222222;
+}
+
+.join_ok_box .join_ok_tit p {
+  letter-spacing: -0.5px;
+  line-height: 20pt;
+  padding: 20px 0 20px 0;
+  color: #989898;
+}
+
+.join_ok_box .join_ok_tit .complete strong {
+  font-weight: bold;
+}
+
+.join_ok_box .join_ok_tit p span {
+  font-weight: bold;
+  color: #222222;
+}
+
+.join_ok_box .btn_member_sec {
+  border-top: 1px solid #dbdbdb;
+}
+
+.join_ok_box .btn_member_sec ul {
+  overflow: hidden;
+  margin: 20px 0 0 0;
+  text-align: center;
+  font-size: 0;
+}
+
+dl ul ol menu li {
+  list-style: none;
+}
+
+.join_ok_box .btn_member_sec li:first-child {
+  margin: 0;
+}
+
+.join_ok_box .btn_member_sec li {
+  display: inline-block;
+  margin: 0 0 0 10px;
+}
+
+.join_ok_box .btn_member_sec li button {
+  width: 150px;
+  height: 42px;
+  border: 1px solid #cccccc;
+  background: #fff;
+  color: #3e3d3c;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+button {
+  letter-spacing: -0.05px;
+  border-radius: 0;
+  vertical-align: middle;
+}
+
+.join_ok_box {
+  margin: 0 0 0 10px;
+}
+
+.join_ok_box .btn_member_sec .btn_login {
+  background: rgb(240, 200, 100);
+  border: 1px solid rgb(240, 200, 100);
+}
+
+.join_ok_box .btn_member_sec .btn_login {
+  color: #fff;
+}

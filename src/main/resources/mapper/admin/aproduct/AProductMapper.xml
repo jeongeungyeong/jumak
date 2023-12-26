@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.admin.aproduct.AProductMapper">
-    <select id="selectOne" resultType="productVo">
+    <select id="selectOne" resultType="aProductVo">
         select P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
                P.PRODUCT_RAW_MATERIAL, P.PRODUCT_NET_WEIGHT, P.PRODUCT_ALCOHOLICITY, P.PRODUCT_AREA,
                P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_INVENTORY, P.PRODUCT_SALES, P.PRODUCT_DISCOUNT,
