@@ -12,6 +12,8 @@ public class OrderDto {
     private Long userNumber;
     private String orderRecipient;
     private Long orderZipcode;
+    private String orderAddress;
+    private String orderAddressDetail;
     private String orderCellphoneNumber;
     private String orderPhoneNumber;
     private String orderDate;

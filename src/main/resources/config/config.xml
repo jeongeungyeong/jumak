@@ -3,6 +3,9 @@
 
 <configuration>
     <typeAliases>
+
+        <typeAlias type="com.example.jumak.domain.vo.admin.SearchVo" alias="aSearchVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.admin.ProductVo" alias="aProductVo"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductDto" alias="productDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductImgMainDto" alias="productImgMainDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductCategoryDto" alias="productCategoryDto"/>
