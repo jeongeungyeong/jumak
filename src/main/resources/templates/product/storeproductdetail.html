@@ -4,9 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>게시물 상세보기</title>
-  <link rel="stylesheet" th:href="@{/css/product/product.css}" />
-  <link rel="stylesheet" th:href="@{/css/common.css}" />
-  <link rel="stylesheet" th:href="@{/css/product/productdetail.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />
+<!--  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>-->
 </head>
 <body>
 <header></header>
@@ -76,7 +79,6 @@
                         <strong
                         ><strong><em></em>36,270원</strong></strong
                         >
-                        <!-- 글로벌 참조 화폐 임시 적용 -->
                       </div>
                     </div>
                   </div>
@@ -162,7 +164,6 @@
                   <dd>
                     <strong><strong>36,270</strong></strong
                     >원
-                    <!-- 글로벌 참조 화폐 임시 적용 -->
                   </dd>
                 </dl>
                 <dl>
@@ -225,7 +226,39 @@
                     </td>
                     <!-- //cart_prdt_name -->
                     <td>
-                            <span class="count">
+
+                      <p class="cartStock">
+   <span>
+   <button type="button" class="plus">+</button>
+   <input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
+   <button type="button" class="minus">-</button>
+
+   <script>
+    $(".plus").click(function(){
+      var num = $(".numBox").val();
+      var plusNum = Number(num) + 1;
+
+      if(plusNum >= ${view.gdsStock}) {
+        $(".numBox").val(num);
+      } else {
+        $(".numBox").val(plusNum);
+      }
+    });
+
+    $(".minus").click(function(){
+      var num = $(".numBox").val();
+      var minusNum = Number(num) - 1;
+
+      if(minusNum <= 0) {
+        $(".numBox").val(num);
+      } else {
+        $(".numBox").val(minusNum);
+      }
+    });
+   </script>
+
+                      </p>
+                           <!-- <span class="count">
                               <span class="goods_qty">
                                 <input
                                         type="text"
@@ -257,7 +290,7 @@
                                   </button>
                                 </span>
                               </span>
-                            </span>
+                            </span>-->
                       <!-- //count -->
                     </td>
                     <td class="item_choice_price">
@@ -713,6 +746,41 @@
   </div>
   <!-- 교환/반품/환불 -->
   <!-- 상품 후기 -->
+
+<!--
+  <form action="/store/view" method="post">
+    <div class="reply-wrap">
+      <h3> 상품후기</h3>
+      `
+      <div class="reply-wrap__box">
+        <div class="reply-content__box">
+          <div class="reply-writer">유저닉네임</div>
+          <textarea id="summernote" name="content"></textarea>
+        </div>
+        <div class="reply-btn-wrap">
+          <button type="button" class="btn-reply">후기작성</button>
+        </div>
+      </div>
+
+    </div>
+  </form>
+
+
+  <script>
+    $('#summernote').summernote({
+      placeholder: '상품 후기를 공유해주세요!',
+      tabsize: 2,
+      height: 120,
+      toolbar: [
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
+    });
+  </script>
+-->
+
   <div class="reply-wrap">
     <h3>상품후기</h3>
 
@@ -732,8 +800,11 @@
     </div>
     <!-- 상품 후기 -->
   </div>
+
+
+
 </div>
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script th:src="@{/js/product/product.js}"></script>
+<script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 </html>

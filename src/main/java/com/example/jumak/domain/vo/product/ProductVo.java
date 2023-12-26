@@ -1,4 +1,4 @@
-package com.example.jumak.domain.dto.product;
+package com.example.jumak.domain.vo.product;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class ProductDto {
+public class ProductVo {
     private Long productNumber;
     private Long productCategoryNumber;
     private String productName;
@@ -23,4 +23,9 @@ public class ProductDto {
     private Long productDiscount;
     private String productReleaseDate;
     private String productDistillery;
+    private Long productImgMainNumber;
+    private String productImgMainName;
+    private String productImgMainPath;
+    private String productImgMainUuid;
+    private String productCategoryName;
 }
