@@ -1,8 +1,6 @@
 package com.example.jumak.mapper.product;
 
-import com.example.jumak.domain.dto.product.ProductCategoryDto;
 import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.vo.product.ProductVo;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

@@ -17,6 +17,10 @@
 
         <typeAlias type="com.example.jumak.domain.vo.product.ProductVo" alias="productVo"/>
         <typeAlias type="com.example.jumak.domain.vo.product.Criteria" alias="criteria"/>
+<<<<<<< HEAD
+=======
+        <typeAlias type="com.example.jumak.domain.vo.product.ProductReviewVo" alias="productReviewVo"/>
+>>>>>>> work/store03
 
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO"/>
