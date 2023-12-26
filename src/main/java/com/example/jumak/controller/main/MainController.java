@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Main {
+public class MainController {
     @GetMapping("/")
     public String mainPage(){
         return "main/main";
@@ -20,5 +20,11 @@ public class Main {
     @GetMapping("/order/cart")
     public String cartPage(){
         return "order/cart";
+    }
+
+//    임시 이동경로
+    @GetMapping("/goods/find")
+    public String findPage(){
+        return "main/find";
     }
 }
