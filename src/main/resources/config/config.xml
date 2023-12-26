@@ -3,6 +3,7 @@
 
 <configuration>
     <typeAliases>
+        <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
          <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO" />
     </typeAliases>
 </configuration>

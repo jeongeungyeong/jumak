@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/user/find_pw/find_pwd.css}" />
+  </head>
+  <body
+    id="blContents"
+    class="body-member body-find-password pc"
+    oncontextmenu="false"
+  >
+    <div id="wrap" class="paikSool banner-on">
+      <div id="container" onclick="clickBody()">
+        <div id="contents">
+          <div class="location_wrap">
+            <div class="location_cont">
+              <em>
+                <!-- 비밀번호 찾기 경로 넣기 -->
+                <a href="#" class="local_home">HOME</a>
+                > 비밀번호 찾기
+              </em>
+            </div>
+          </div>
+          <div class="sub_content">
+            <div class="content_box">
+              <form
+                name="formFind"
+                id="formFind"
+                action=""
+                method="post"
+                novalidate="novalidate"
+              >
+                <div class="member_wrap">
+                  <div class="member_tit">
+                    <h2>비밀번호 찾기</h2>
+                  </div>
+                  <div class="member_cont">
+                    <div class="find_password_box">
+                      <h3>아이디 입력</h3>
+                      <p>비밀번호를 찾고자 하는 아이디를 입력해 주세요.</p>
+                      <div class="login_input">
+                        <div class="member_warning">
+                          <input
+                            type="text"
+                            id="memberId"
+                            name="userId"
+                            placeholder="아이디"
+                          />
+                          <input
+                            type="text"
+                            id="memberName"
+                            name="userName"
+                            placeholder="이름"
+                          />
+                          <p class="info_again">
+                            아이디를 모르시나요?
+                            <!-- 아이디 찾기 경로 넣기 -->
+                            <a href="#" class="js_btn_find_id">아이디 찾기</a>
+                          </p>
+                          <p class="dn" id="errorMessage"></p>
+                        </div>
+                        <div class="btn_center_box">
+                          <button type="submit" class="btn_member_next">
+                            다음
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

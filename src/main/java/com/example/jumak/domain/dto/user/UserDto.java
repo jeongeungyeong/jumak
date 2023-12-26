@@ -17,6 +17,7 @@ public class UserDto {
     private String userCellphoneNumber;
     private String userPhoneNumber;
     private String userAddress;
+    private String userAddressDetail;
     private String userZipcode;
     private String userBirth;
     private Long userGradeNumber;
