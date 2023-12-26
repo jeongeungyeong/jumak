@@ -19,7 +19,7 @@
               <h2>쇼핑정보</h2>
               <ul class="sub_menu_samll_list">
                 <li>
-                  <a href="">- 주문목록/배송조회</a>
+                  <a href="/mypage/search-shipping">- 주문목록/배송조회</a>
                 </li>
                 <li>
                   <a href="">- 취소/반품/교환 내역</a>
@@ -122,15 +122,15 @@
                   </th:block>
                 <li>
                   <b>• 취소</b>
-                    <span th:text="${orderStatusVo.count}">0건</span>
+                    <span><span class="cancel_count"></span>건</span>
                 </li>
                 <li>
                   <b>• 교환</b>
-                  <span th:text="${orderStatusVo.count}">0건</span>
+                  <span><span class="change_count"></span>건</span>
                 </li>
                 <li>
                   <b>• 반품</b>
-                  <span th:text="${orderStatusVo.count}">0건</span>
+                  <span><span class="return_count"></span>건</span>
                 </li>
               </ul>
             </div>
@@ -213,5 +213,6 @@
       <h3>footer</h3>
     </footer>
   </body>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script th:src="@{/js/mypage/main/main.js}"></script>
 </html>

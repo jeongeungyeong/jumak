@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.awt.print.Pageable;
 import java.util.List;
 
 @Controller
@@ -54,7 +56,25 @@ public class MypageController {
 
 //    주문목록/배송조회
     @GetMapping("/search-shipping")
-    public String searchShipping() {
+    public String searchShipping(Model model, HttpServletRequest req) {
+//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+//       회원 이름 조회
+        String userName = mypageService.findUserName(userNumber);
+
+//        작성 게시물 조회
+        Long boardCount = mypageService.findBoardCount(userNumber);
+
+//        작성 댓글 조회
+        Long replyCount = mypageService.findReplyCount(userNumber);
+
+
+
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("boardCount", boardCount);
+        model.addAttribute("replyCount", replyCount);
         return "mypage/search_shipping/search_shipping";
     }
 
