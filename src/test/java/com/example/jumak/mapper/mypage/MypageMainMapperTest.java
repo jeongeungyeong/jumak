@@ -1,7 +1,6 @@
 package com.example.jumak.mapper.mypage;
 
 import com.example.jumak.domain.dto.user.UserDto;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-class MypageMapperTest {
+class MypageMainMapperTest {
     @Autowired
-    MypageMapper mypageMapper;
+    MypageMainMapper mypageMainMapper;
 
     UserDto userDto;
 

@@ -102,16 +102,16 @@
             <form action="" class="date_cheak_content">
               <h3>조회기간</h3>
               <div class="date_target_name">
-                <button type="button">오늘</button>
-                <button type="button">7일</button>
-                <button type="button">15일</button>
-                <button type="button">1개월</button>
-                <button type="button">3개월</button>
-                <button type="button">1년</button>
+                <button type="button" data-value="0" class="today">오늘</button>
+                <button type="button" data-value="7" class="week">7일</button>
+                <button type="button" data-value="15" class="half_month">15일</button>
+                <button type="button" data-value="30" class="month">1개월</button>
+                <button type="button" data-value="90" class="three_month">3개월</button>
+                <button type="button" data-value="365" class="year">1년</button>
               </div>
-              <div>
-                <input type="text" id="datePicker">
-              </div>
+              <div class="date_picker_btn">
+                <input type="text" id="datepicker_start" readonly="readonly">
+                <input type="text" id="datepicker_end" readonly="readonly">
               <div>
                 <button type="submit" class="search_button">
                   검색

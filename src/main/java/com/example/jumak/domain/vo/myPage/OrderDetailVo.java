@@ -14,5 +14,6 @@ public class OrderDetailVo {
     private Long productPrice;
     private Long orderDetailCount;
     private String orderStatusName;
-    private Long ReviewCount;
+    private Long reviewCount;
+    private Long userNumber;
 }

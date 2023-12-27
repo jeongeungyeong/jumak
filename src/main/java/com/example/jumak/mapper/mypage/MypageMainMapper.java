@@ -1,6 +1,5 @@
 package com.example.jumak.mapper.mypage;
 
-import com.example.jumak.domain.dto.madang.MadangDto;
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
@@ -10,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Mapper
-public interface MypageMapper {
+public interface MypageMainMapper {
     //회원 이름 조회
     String selectName(Long userNumber);
 

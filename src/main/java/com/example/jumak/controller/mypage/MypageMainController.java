@@ -2,7 +2,8 @@ package com.example.jumak.controller.mypage;
 
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
-import com.example.jumak.service.mypage.MypageService;
+import com.example.jumak.service.mypage.MypageMainService;
+import com.example.jumak.service.mypage.SearchShippingService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -10,14 +11,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("/mypage")
-public class MypageController {
-    private final MypageService mypageService;
+public class MypageMainController {
+    private final MypageMainService mypageMainService;
+    private final SearchShippingService searchShippingService;
+    private final OrderDetailVo orderDetailVo;
 
 
 //    메인
@@ -27,22 +29,22 @@ public class MypageController {
         Long userNumber = 1L;
 
 //       회원 이름 조회
-        String userName = mypageService.findUserName(userNumber);
+        String userName = mypageMainService.findUserName(userNumber);
 
 //        작성 게시물 조회
-        Long boardCount = mypageService.findBoardCount(userNumber);
+        Long boardCount = mypageMainService.findBoardCount(userNumber);
 
 //        작성 댓글 조회
-        Long replyCount = mypageService.findReplyCount(userNumber);
+        Long replyCount = mypageMainService.findReplyCount(userNumber);
 
 //        배송 상태 조회
-        List<OrderStatusVo> statusList = mypageService.findOrderStatusCount(userNumber);
+        List<OrderStatusVo> statusList = mypageMainService.findOrderStatusCount(userNumber);
 
 //        배송 취소/교환/반품 상태 조회
-        List<OrderStatusVo> cancelList = mypageService.findOrderCancelStatusCount(userNumber);
+        List<OrderStatusVo> cancelList = mypageMainService.findOrderCancelStatusCount(userNumber);
 
 //        최근 주문내역 리스트 조회
-        List<OrderDetailVo> orderDetailList = mypageService.findOrderDetail(userNumber);
+        List<OrderDetailVo> orderDetailList = mypageMainService.findOrderDetail(userNumber);
 
         model.addAttribute("userName", userName);
         model.addAttribute("boardCount", boardCount);
@@ -56,25 +58,28 @@ public class MypageController {
 
 //    주문목록/배송조회
     @GetMapping("/search-shipping")
-    public String searchShipping(Model model, HttpServletRequest req) {
+    public String searchShipping(Model model, HttpServletRequest req, OrderDetailVo orderDetailVo) {
 //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
         Long userNumber = 1L;
 
 //       회원 이름 조회
-        String userName = mypageService.findUserName(userNumber);
+        String userName = mypageMainService.findUserName(userNumber);
 
 //        작성 게시물 조회
-        Long boardCount = mypageService.findBoardCount(userNumber);
+        Long boardCount = mypageMainService.findBoardCount(userNumber);
 
 //        작성 댓글 조회
-        Long replyCount = mypageService.findReplyCount(userNumber);
+        Long replyCount = mypageMainService.findReplyCount(userNumber);
 
-
+//        기간별 주문/배송 리스트 조회
+        orderDetailVo.setUserNumber(userNumber);
+//        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
 
 
         model.addAttribute("userName", userName);
         model.addAttribute("boardCount", boardCount);
         model.addAttribute("replyCount", replyCount);
+//        model.addAttribute("orderDetailList", orderDetailList);
         return "mypage/search_shipping/search_shipping";
     }
 

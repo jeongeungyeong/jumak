@@ -11,3 +11,4 @@ let changeCount = parseInt(change1) + parseInt(change2);
 $(".cancel_count").text(cancelCount)
 $(".change_count").text(returnCount)
 $(".return_count").text(changeCount)
+
