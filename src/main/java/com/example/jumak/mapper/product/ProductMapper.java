@@ -7,14 +7,12 @@ import java.util.List;
 
 @Mapper
 public interface ProductMapper {
-//    상품 조회
+//    상품 번호 조회
     ProductDto selectByNumber(Long productNumber);
+//    상품 카테고리로 조회
+    ProductDto selectByCategory(Long productCategoryNumber);
 //    전체 상품 조회
     List<ProductDto> selectAll();
-//    상품 등록
-    void insertProduct(ProductDto productDto);
-//    상품 카테고리 등록
-//    void insertCategory(ProductCategoryDto productCategoryDto);
 //    상품 총 개수
     public int selectTotal();
 }

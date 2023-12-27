@@ -7,12 +7,15 @@
   <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
   <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />
-<!--  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>-->
+  <link rel="stylesheet" th:href="@{/css/product/storeproductdetailtest.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
 </head>
 <body>
-<header></header>
+<header th:replace="~{/fragments/header :: header}"></header>
+<main>
 <div class="container">
   <div class="post-wrap">
     <div class="content_box">
@@ -258,39 +261,39 @@
    </script>
 
                       </p>
-                           <!-- <span class="count">
-                              <span class="goods_qty">
-                                <input
-                                        type="text"
-                                        name="goodsCnt[]"
-                                        class="text goodsCnt_0"
-                                        title="수량"
-                                        value="1"
-                                        data-key="0"
-                                        data-value="1"
-                                        data-stock="0"
-                                        onchange="goodsViewController.input_count_change(this, '1');return false;"
-                                />
-                                <span>
-                                  <button
-                                          type="button"
-                                          class="up goods_cnt"
-                                          title="증가"
-                                          value="up^|^0"
-                                  >
-                                    증가
-                                  </button>
-                                  <button
-                                          type="button"
-                                          class="down goods_cnt"
-                                          title="감소"
-                                          value="dn^|^0"
-                                  >
-                                    감소
-                                  </button>
-                                </span>
-                              </span>
-                            </span>-->
+                      <!-- <span class="count">
+                         <span class="goods_qty">
+                           <input
+                                   type="text"
+                                   name="goodsCnt[]"
+                                   class="text goodsCnt_0"
+                                   title="수량"
+                                   value="1"
+                                   data-key="0"
+                                   data-value="1"
+                                   data-stock="0"
+                                   onchange="goodsViewController.input_count_change(this, '1');return false;"
+                           />
+                           <span>
+                             <button
+                                     type="button"
+                                     class="up goods_cnt"
+                                     title="증가"
+                                     value="up^|^0"
+                             >
+                               증가
+                             </button>
+                             <button
+                                     type="button"
+                                     class="down goods_cnt"
+                                     title="감소"
+                                     value="dn^|^0"
+                             >
+                               감소
+                             </button>
+                           </span>
+                         </span>
+                       </span>-->
                       <!-- //count -->
                     </td>
                     <td class="item_choice_price">
@@ -398,33 +401,15 @@
           <!-- 상품상세 공통정보 관리를 상세정보 상단에 노출-->
 
           <center>
-            <img
-                    src="http://gi.esmplus.com/gsool18/soolmarket/common/smpopup.jpg"
-            /><br />
-            <img
-                    src="http://gi.esmplus.com/gsool18/soolmarket/common/seller_pop.jpg"
-            /><br />
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/common/popup.jpg"
-            /><br />
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/oyeon_25_1_360/pro_01.jpg"
-            /><br />
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_01.jpg"
-            /><br />
+
             <img
                     src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_02.jpg"
             /><br />
             <img
                     src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_03.jpg"
             /><br />
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/oyeon_25_1_360/pro_02.jpg"
-            /><br />
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/common/notice.jpg"
-            /><br />
+
+
           </center>
         </div>
       </div>
@@ -692,7 +677,7 @@
 </div>
 </div>
 <!-- 판매자 정보 -->
-<div class="pbTable">
+<!--<div class="pbTable">
   <p class="tableTitle">판매자정보</p>
   <p style="font-size: 16px; text-align: center; margin-bottom: 50px">
     ※ 상품별로 판매자가 상이할 수 있습니다. 상품문의/cs 접수시 각
@@ -734,7 +719,7 @@
     </tr>
     </tbody>
   </table>
-</div>
+</div>-->
 
 <!-- 판매자정보 -->
 <!-- 교환/반품/환불 -->
@@ -746,40 +731,6 @@
   </div>
   <!-- 교환/반품/환불 -->
   <!-- 상품 후기 -->
-
-<!--
-  <form action="/store/view" method="post">
-    <div class="reply-wrap">
-      <h3> 상품후기</h3>
-      `
-      <div class="reply-wrap__box">
-        <div class="reply-content__box">
-          <div class="reply-writer">유저닉네임</div>
-          <textarea id="summernote" name="content"></textarea>
-        </div>
-        <div class="reply-btn-wrap">
-          <button type="button" class="btn-reply">후기작성</button>
-        </div>
-      </div>
-
-    </div>
-  </form>
-
-
-  <script>
-    $('#summernote').summernote({
-      placeholder: '상품 후기를 공유해주세요!',
-      tabsize: 2,
-      height: 120,
-      toolbar: [
-        ['font', ['bold', 'underline', 'clear']],
-        ['color', ['color']],
-        ['insert', ['link', 'picture', 'video']],
-        ['view', ['fullscreen', 'codeview', 'help']]
-      ]
-    });
-  </script>
--->
 
   <div class="reply-wrap">
     <h3>상품후기</h3>
@@ -794,17 +745,33 @@
                 rows="10"
         ></textarea>
       </div>
+      <div class="form-group">
+        <ul class="file-wrap">
+          <li>
+            <input type="file" id="post-image" name="boardFile" accept="image/*" multiple />
+          </li>
+          <li class="img-list"></li>
+          <li class="img-list"></li>
+          <li class="img-list"></li>
+          <li class="img-list"></li>
+        </ul>
+      </div>
       <div class="reply-btn-wrap">
         <button type="button" class="btn-reply">후기작성</button>
       </div>
     </div>
     <!-- 상품 후기 -->
   </div>
-
-
+  <!--상품 후기-->
 
 </div>
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+</main>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
 <script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 </html>

@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
   <title>주모's store</title>
 </head>
 
-<body
-        id="blContents"
-        class="body-goods body-goods-list pc"
-        oncontextmenu="return false"
-        cz-shortcut-listen="true"
->
+<body>
 <!-- 헤더 -->
-<header></header>
+<header th:replace="~{/fragments/header :: header}"></header>
 <!-- //헤더 -->
-
+<main>
 <div class="container">
   <!-- 카테고리 -->
   <form>
@@ -525,8 +524,13 @@
 <!--  </ul>-->
 <!--</div>-->
 <!-- /페이징 처리 -->
+</main>
 
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
 <script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 

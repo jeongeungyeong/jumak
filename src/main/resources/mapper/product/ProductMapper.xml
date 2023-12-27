@@ -12,6 +12,16 @@
         WHERE PRODUCT_NUMBER=#{productNumber}
     </select>
 
+<!--    상품 카테고리로 조회하기-->
+    <select id="selectByCategory" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
+               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM JUMAK_PRODUCT
+        WHERE PRODUCT_CATEGORY_NUMBER=#{productCategoryNumber}
+    </select>
+
     <!--    전체 상품 조회하기-->
     <select id="selectAll" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
@@ -20,27 +30,6 @@
                PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
         FROM JUMAK_PRODUCT
     </select>
-
-    <!--    상품 등록하기-->
-    <insert id="insertProduct">
-        <selectKey keyProperty="productNumber" order="BEFORE" resultType="long">
-            SELECT SEQ_PRODUCT.nextval FROM DUAL
-        </selectKey>
-
-        INSERT INTO JUMAK_PRODUCT (PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
-                                   PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
-                                   PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
-                                   PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY)
-        VALUES (#{productNumber},#{productCategoryNumber},#{productName},#{productSubtitle},#{productRawMaterial},
-                #{productNetWeight},#{productAlcoholicity},#{productArea},#{productDescription},#{productPrice},
-                #{productInventory},#{productSales},#{productDiscount},#{productReleaseDate},#{productDistillery})
-    </insert>
-
-    <!--    상품 카테고리 등록-->
-    <insert id="insertCategory">
-        INSERT INTO JUMAK_PRODUCT_CATEGORY (PRODUCT_CATEGORY_NUMBER, PRODUCT_CATEGORY_NAME)
-        VALUES (#{productCategoryNumber},#{productCategoryName})
-    </insert>
 
 <!--    상품 총 개수-->
         <select id="selectTotal" resultType="_int">

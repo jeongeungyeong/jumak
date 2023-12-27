@@ -33,4 +33,8 @@ public class ProductController {
     //  상품 장바구니 담기
 
     //  상품 주문버튼
+
+//    상품 테스트
+    @GetMapping("/test")
+    public String producttest(){return "product/producttest";}
 }

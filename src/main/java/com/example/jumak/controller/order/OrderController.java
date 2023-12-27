@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OrderController {
     private final OrderDto orderDto;
 
-    @GetMapping()
+
+    @GetMapping("/next")
     public String orderMain(){
         return "order/storeorder";
     }
