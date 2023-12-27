@@ -1,4 +1,4 @@
-package com.example.jumak.domain.dto.order;
+package com.example.jumak.domain.vo.admin;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Data
 @NoArgsConstructor
-public class OrderDto {
+public class AOrderVo {
     private Long orderNumber;
     private Long userNumber;
     private String orderRecipient;
@@ -18,4 +18,5 @@ public class OrderDto {
     private String orderPhoneNumber;
     private String orderDate;
     private Long orderStatusNumber;
+    private String userName;
 }

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
-    
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/order/order.css">
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/order/orderList.css}">
 </head>
 
 <body>
@@ -19,53 +19,26 @@
     <div>
         <div></div>
         <div class="sub_content">
-            <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                     <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/productList.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/order.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
 
             <!-- ----------------------------------------- -->
             <div class="content">
                 <div>
                     <h1>주문관리</h1>
                 </div>
-                <div class="user_search">
+                <div class="order_search">
                     <select>
-                        <option value="prdName">주문번호</option>
-                        <option value="prdNumber">아이디</option>
+                        <option value="orderNumber">주문번호</option>
+                        <option value="userId">아이디</option>
                     </select>
                     <input type="text" id="" placeholder>
                     <button>검색</button>
                 </div>
+
+
                 <div>
-                    <div class="admin_user_table">
+                    <div class="admin_order_table">
                         <table>
                             <colgroup>
                                 <col style="width:10%;">
@@ -73,7 +46,7 @@
                                 <col>
                                 <col style="width:13%;">
                                 <col style="width:13%;">                               
-                                <col style="width:13%;">
+<!--                                <col style="width:13%;">-->
                                 <col style="width:13%;">
                             </colgroup>
                             <thead>
@@ -83,14 +56,14 @@
                                     <th>구매자아이디</th>
                                     <th>금액</th>
                                     <th>배송상태</th>
-                                    <th>주문상태</th>
+<!--                                    <th>주문상태</th>-->
                                     <th>주문상세</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>2023-01-01</td>
+                                <tr th:each="order : ${orderList}">
+                                    <td th:text="${order.orderNumber}"></td>
+                                    <td th:text="${order.order}>2023-01-01</td>
                                     <td>asdfasdf</td>
                                     <td>3,300</td>  
                                     <td>
@@ -100,13 +73,13 @@
                                             <option value="">배송완료</option>
                                         </select>
                                     </td>     
-                                    <td>
-                                        <select>
-                                            <option value="">주문확정</option>
-                                            <option value="">부분취소</option>
-                                            <option value="">전체취소</option>
-                                        </select>
-                                    </td>     
+<!--                                    <td>-->
+<!--                                        <select>-->
+<!--                                            <option value="">주문확정</option>-->
+<!--                                            <option value="">부분취소</option>-->
+<!--                                            <option value="">전체취소</option>-->
+<!--                                        </select>-->
+<!--                                    </td>     -->
                                     <td>
                                         <button>
                                             주문상세 
@@ -120,9 +93,33 @@
                     </div>
                 </div>
 
+
+                <!--페이징 처리-->
+<!--                <div class="paging" >-->
+<!--                    <div class="pages" th:object="${pageInfo}">-->
+
+<!--                        <a th:href="@{/admin/user(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">-->
+<!--                            <span class="page-num prev">&lt</span>-->
+<!--                        </a>-->
+
+<!--                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">-->
+<!--                            <a th:href="@{/admin/user(page=${i})}" class="page-a">-->
+<!--                                <span class="page-num" th:classappend="${i==pageInfo.aCriteria.page} ? 'active' : '' " th:text="${i}"></span>-->
+<!--                            </a>-->
+<!--                        </th:block>-->
+
+
+<!--                        <a th:href="@{/admin/user(page=*{endPage+1})}" class="page-a" th:if="*{next}">-->
+<!--                            <span class="page-num next">&gt</span>-->
+<!--                        </a>-->
+
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 </body>
 
 </html>

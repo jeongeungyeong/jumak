@@ -101,11 +101,14 @@
 
 <!--    상품등록-->
     <insert id="insert">
+        <selectKey keyProperty="productNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_PRODUCT.nextval FROM DUAL
+        </selectKey>
         insert into JUMAK_PRODUCT (PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                                    PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
                                    PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
                                    PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY)
-        values (SEQ_PRODUCT.nextval, #{productCategoryNumber},#{productName},#{productSubtitle},
+        values (#{productNumber}, #{productCategoryNumber},#{productName},#{productSubtitle},
                 #{productRawMaterial},#{productNetWeight},#{productAlcoholicity},#{productArea},
                 #{productDescription},#{productPrice},#{productInventory},#{productSales},
                 #{productDiscount},SYSDATE,#{productDistillery})

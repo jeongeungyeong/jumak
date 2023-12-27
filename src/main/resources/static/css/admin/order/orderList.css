@@ -1,6 +1,6 @@
 
 
-.admin_user_table > table{
+.admin_order_table > table{
     width: 100%;
     border: 0;
     border-spacing: 0;
@@ -44,7 +44,7 @@ h1{
     text-align: center;
 }
 
-.user_search{
+.order_search{
     float: right;
     padding: 20px 0 20px 0
 }

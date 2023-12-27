@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.admin.aproduct.AProductImgMapper">
+    <select id="selectAll" resultType="aOrderVo">
+        SELECT ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
+               ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER
+        FROM(
+                SELECT ROWNUM AS RNUM, ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
+                       ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER
+                FROM(
+                        select ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
+                               ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER
+                        from JUMAK_ORDER
+                        ORDER BY ORDER_NUMBER DESC)
+            <![CDATA[
+                WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+        WHERE RNUM > (#{page} - 1) * #{amount}
+
+--       유저테이블이랑 조인걸어서 유저이름 가져오기
+
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(ORDER_NUMBER)
+        FROM JUMAK_ORDER
+    </select>
+</mapper>

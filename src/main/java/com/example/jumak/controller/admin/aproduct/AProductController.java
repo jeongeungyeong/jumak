@@ -5,16 +5,17 @@ import com.example.jumak.domain.vo.admin.ACriteria;
 import com.example.jumak.domain.vo.admin.APageVo;
 import com.example.jumak.domain.vo.admin.AProductVo;
 import com.example.jumak.domain.vo.admin.ASearchVo;
+import com.example.jumak.service.admin.aproduct.AProductImgMainService;
+import com.example.jumak.service.admin.aproduct.AProductImgService;
 import com.example.jumak.service.admin.aproduct.AProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -22,6 +23,8 @@ import java.util.List;
 @RequestMapping("/admin/product")
 public class AProductController {
     private final AProductService aProductService;
+    private final AProductImgMainService aProductImgMainService;
+    private final AProductImgService aProductImgService;
 
     @GetMapping
     public String productList(ACriteria aCriteria, Model model){
@@ -55,9 +58,19 @@ public class AProductController {
     }
 
     @PostMapping("/add")
-    public RedirectView productAdd(ProductDto productDto){
+    public RedirectView productAdd(ProductDto productDto,@RequestParam("productImgMain") List<MultipartFile> fileMain,
+                                   @RequestParam("productImg") List<MultipartFile> file){
         productDto.setProductSales(0L);
+        productDto.setProductDescription("");
         aProductService.register(productDto);
+        Long productNumber = productDto.getProductNumber();
+
+        try {
+            aProductImgMainService.registerAndSaveFiles(fileMain, productNumber);
+            aProductImgService.registerAndSaveFiles(file,productNumber);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         return new RedirectView("/admin/product");
     }

@@ -23,3 +23,8 @@ $('.btn_product_remove').on('click', function (){
         });
 
 })
+
+// 물품 추가
+$('.btn_product_add').on('click', function (){
+    window.location.href = `/admin/product/add`;
+})
