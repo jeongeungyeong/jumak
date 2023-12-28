@@ -1,5 +1,6 @@
 package com.example.jumak.controller.product;
 
+import com.example.jumak.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequiredArgsConstructor
 @RequestMapping("/store")
 public class ProductController {
+    private final ProductService productService;
+
 //    스토어 베스트 상품 보기
     @GetMapping("/best")
     public String productbest(){
-        return "product/storemainproduct";
+        return "product/storebestproduct";
     }
 
     //    스토어 상품 전체 보기
@@ -34,7 +37,4 @@ public class ProductController {
 
     //  상품 주문버튼
 
-//    상품 테스트
-    @GetMapping("/test")
-    public String producttest(){return "product/producttest";}
 }

@@ -14,226 +14,164 @@
 <body>
 <header th:replace="~{/fragments/header :: header}"></header>
 <main>
-<div id="container" onclick="clickBody()">
-    <div id="contents">
-        <!-- 본문 시작 -->
+    <div id="container">
+        <div id="contents">
+            <!-- 본문 시작 -->
 
-        <div class="sub_content">
-            <!-- //side_cont -->
+            <div class="sub_content">
+                <!-- //side_cont -->
 
-            <div class="content_box">
-                <div
-                        class="order_wrap">
-                    <div class="order_tit">
-                        <h2>주문완료</h2>
-                        <ol>
-                            <li>
-                                <span>01</span> 장바구니
-                                <span
-                                ><img
-                                        src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
-                                        alt="장바구니완료"
-                                /></span>
-                            </li>
-                            <li class="page_on">
-                                <span>02</span> 주문서작성/결제<span
-                            ><img
-                                    src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
-                                    alt="주문서작성/결제완료"
-                            /></span>
-                            </li>
-                            <li ><span>03</span> 주문완료</li>
-                        </ol>
-                    </div>
-                    <!-- //order_tit -->
+                <div class="content_box">
+                    <div
+                            class="order_wrap">
 
-                    <div class="order_cont">
-                        <div class="cart_cont_list">
-                            <div class="order_cart_tit">
-                                <h3>주문상세내역</h3>
-                            </div>
-                            <!-- //order_cart_tit -->
 
-                            <div class="order_table_type">
-                                <!-- 장바구니 상품리스트 시작 -->
-                                <table>
-                                    <colgroup>
-                                        <col />
-                                        <!-- 상품명/옵션 -->
-                                        <col style="width: 5%" />
-                                        <!-- 수량 -->
-                                        <col style="width: 10%" />
-                                        <!-- 상품금액 -->
-                                        <col style="width: 13%" />
-                                        <!-- 할인/적립 -->
-                                        <col style="width: 10%" />
-                                        <!-- 합계금액 -->
-                                        <col style="width: 14%" />
-                                        <!-- 배송비 -->
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>상품/옵션 정보</th>
-                                        <th>수량</th>
-                                        <th>상품금액</th>
-                                        <th>할인/적립</th>
-                                        <th>합계금액</th>
-                                        <th>배송비</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr
-                                            class="order-goods-layout"
-                                            data-goodsno="100000762"
-                                    >
-                                        <td class="td_left">
-                                            <input
-                                                    type="hidden"
-                                                    name="cartSno[]"
-                                                    value="37928"
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    name="memberDcInfo[100000762][838]"
-                                                    value=""
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    name="priceInfo[100000762][838]"
-                                                    value='{"fixedPrice":"3600.00","costPrice":"0.00","baseGoodsPrice":"3200.00","baseOptionPrice":"0.00","baseOptionTextPrice":0,"goodsPrice":"3200.00","optionPrice":"0.00","optionCostPrice":"0.00","optionTextPrice":0,"goodsPriceSum":3200,"optionPriceSum":0,"optionTextPriceSum":0,"addGoodsPriceSum":0,"addGoodsVat":{"supply":0,"tax":0},"goodsDcPrice":0,"memberDcPrice":0,"memberOverlapDcPrice":null,"couponGoodsDcPrice":0,"goodsDeliveryPrice":0,"timeSalePrice":null,"goodsCnt":"1","goodsMemberDcPrice":0,"goodsMemberOverlapDcPrice":null,"goodsCouponGoodsDcPrice":0,"addGoodsMemberDcPrice":0,"addGoodsMemberOverlapDcPrice":0,"addGoodsCouponGoodsDcPrice":0,"goodsPriceSubtotal":3200,"goodsVat":{"supply":2910,"tax":"290"}}'
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    name="mileageInfo[100000762][838]"
-                                                    value='{"goodsMileage":30,"memberMileage":0,"couponGoodsMileage":0,"goodsGoodsMileage":0,"goodsMemberMileage":0,"goodsCouponGoodsMileage":0,"addGoodsGoodsMileage":0,"addGoodsMemberMileage":0,"addGoodsCouponGoodsMileage":0,"goodsCnt":"1"}'
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    class="delivery-method-fl"
-                                                    value="delivery"
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    class="visit-address-use-fl"
-                                                    value="n"
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    class="delivery-method-visit-area"
-                                                    value="서울특별시 강남구 봉은사로1길 39 (유성빌딩) 5~6층"
-                                            />
-                                            <div class="pick_add_cont">
-                                <span class="pick_add_img">
-                                  <a
-                                          href="../goods/goods_view.php?goodsNo=100000762"
-                                  ><img
-                                          src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/09/39/100000762/100000762_list_097.jpg"
-                                          width="40"
-                                          alt="중원양조 사랑할때 12도 300ml 사과과실주"
-                                          title="중원양조 사랑할때 12도 300ml 사과과실주"
-                                          class="middle"
-                                  /></a>
-                                </span>
-                                                <div class="pick_add_info">
-                                                    <em
-                                                    ><a
-                                                            href="../goods/goods_view.php?goodsNo=100000762"
-                                                    >중원양조 사랑할때 12도 300ml
-                                                        사과과실주</a
-                                                    ></em
-                                                    >
+                        <div class="order_cont">
+                            <section class="order-title">
+                                <h2>주문서 작성/결제</h2>
+                               <ol>
+                                    <li>
+                                        <span>01</span> 장바구니
+                                        <span>
+            <img
+                    src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                    alt="장바구니완료"/>
+          </span>
+                                    </li>
+                                    <li class="page-on">
+                                        <span>02</span> 주문서작성/결제<span>
+          <img
+                  src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                  alt="주문서작성/결제완료"/>
+        </span>
+                                    </li>
+                                    <li><span>03</span> 주문완료</li>
+                                </ol>
+                            </section> <!-- /상단 진행 단계-->
 
-                                                    <!-- //icon_pick_list -->
+                            <!-- 백엔드 작업 시 상품 목록을 form으로 보낼거면
+                            반복요소에 input hidden 활용하기-->
+                            <form action="">
+                                <section class="order-list">
+                                    <table>
+                                        <colgroup>
 
-                                                    <div class="pick_option_box"></div>
-
-                                                    <div class="pick_option_box"></div>
+                                            <col>          <!-- 상품명/옵션 -->
+                                            <col style="width:15%">  <!-- 수량 -->
+                                            <col style="width:10%"> <!-- 상품금액 -->
+                                            <col style="width:13%"> <!-- 할인/적립 -->
+                                            <col style="width:10%"> <!-- 합계금액 -->
+                                            <col style="width:12%"> <!-- 배송비 -->
+                                        </colgroup>
+                                        <thead>
+                                        <tr>
+                                            <th>상품/옵션 정보</th>
+                                            <th>수량</th>
+                                            <th>상품금액</th>
+                                            <th>할인</th>
+                                            <th>합계금액</th>
+                                            <th>배송비</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <!--반복 요소-->
+                                        <tr>
+                                            <td class="product-info">
+                                                <div class="product-info__content">
+              <span>
+                <!--상품 주소 연결-->
+                <a href="">
+                  <!--상품 이미지 연결-->
+                  <img
+                          src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004763/100004763_list_066.jpg"
+                          alt="">
+                </a>
+              </span>
+                                                    <div class="product-info__box">
+                                                        <div class="product-info__coupon">
+                                                            <img
+                                                                    src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/common/btn/btn_coupon_apply.png"
+                                                                    alt="">
+                                                        </div>
+                                                        <!-- 상품 설명 넣기-->
+                                                        <div class="product-info__detail">
+                                                            착한농부 만월세트 375mlx2병_24도1병,40도1병_김,고추부각 랜덤 증정
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <!-- //pick_add_cont -->
+                                            </td>
+                                            <td class="product-count">
+                                                <div class="product-count__content">
+                                                    <strong><span>1</span>개</strong>
 
-                                            <!-- //pick_add_list -->
-                                        </td>
-                                        <td class="td_order_amount">
-                                            <div class="order_goods_num">
-                                                <strong>1개</strong>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <strong class="order_sum_txt price"
-                                            >3,200원</strong
-                                            >
-                                        </td>
-                                        <td class="td_benefit">
-                                            <ul class="benefit_list">
-                                                <li class="benefit_mileage js_mileage">
-                                                    <em>적립</em>
-                                                    <span>상품 <strong>+30원</strong></span>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <strong class="order_sum_txt">3,200원</strong>
-                                        </td>
-                                        <td class="td_delivery" rowspan="1">
-                                            기본 - 고정배송비<br />
-                                            2,500원
+                                                </div>
+                                            </td>
+                                            <td class="product-price">
+                                                <div class="product-price__content">
+                                                    <!--상품금액 넣기-->
+                                                    <strong><span>28,020</span>원</strong>
+                                                </div>
+                                            </td>
+                                            <td class="product-sale">
+                                                <div class="product-sale__content">
+                                                    <!--할인률 넣기-->
+                                                    <strong><span>20</span>% 할인</strong>
+                                                </div>
+                                            </td>
+                                            <td class="product-total-price">
+                                                <div class="product-total-price__content">
+                                                    <!--합계 금액 넣기-->
+                                                    <strong><span>28,020</span>원</strong>
+                                                </div>
+                                            </td>
+                                            <!-- 전체 리스트 사이즈를 rowspan에 넣기-->
+                                            <td class="delivery-charge" rowspan="">
+                                                <div class="delivery-charge__content">
+                                                    기본 - 고정배송비<br>
+                                                    0원
+                                                    <br>
+                                                    (택배-선결제)
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <!--/반복 요소-->
 
-                                            <br />
-                                            (택배-선결제)
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <!-- 장바구니 상품리스트 끝 -->
+                                        </tbody>
+                                    </table>
+                                </section>
+                            </form>
+                            <div class="go-back">
+                                <a href="">
+                                    <span>&lt 장바구니 가기</span>
+                                </a>
                             </div>
+
+                            <div class="cart-total">
+                                <div class="cart-total__price">
+                                    <div class="cart-total__product">
+                                        <span>총 <strong>3</strong>개의 상품금액</span>
+                                        <span class="price-color"><strong>92,620</strong>원</span>
+                                    </div>
+                                    <span class="plus-img">
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_plus.png" alt="">
+        </span>
+                                    <div class="cart-total__delivery">
+                                        <span>배송비</span>
+                                        <span class="price-color"><strong>0</strong>원</span>
+                                    </div>
+                                    <span class="equals-img">
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_total.png" alt="">
+        </span>
+                                    <div class="cart-total__sum">
+                                        <span>합계</span>
+                                        <span class="price-color"><strong>92,620</strong>원</span>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- //cart_cont_list -->
 
-                        <div class="btn_left_box">
-                            <a href="./cart.php" class="shop_go_link"
-                            ><em>&lt; 장바구니 가기</em></a
-                            >
-                        </div>
-
-                        <div class="price_sum">
-                            <div class="price_sum_cont">
-                                <div class="price_sum_list">
-                                    <dl>
-                                        <dt>총 <strong>1</strong> 개의 상품금액</dt>
-                                        <dd><strong>3,200</strong>원</dd>
-                                    </dl>
-                                    <span
-                                    ><img
-                                            src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_plus.png"
-                                            alt="더하기"
-                                    /></span>
-                                    <dl>
-                                        <dt>배송비</dt>
-                                        <dd><strong>2,500</strong>원</dd>
-                                    </dl>
-                                    <span
-                                    ><img
-                                            src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_total.png"
-                                            alt="합계"
-                                    /></span>
-                                    <dl class="price_total">
-                                        <dt>합계</dt>
-                                        <dd><strong>5,700</strong>원</dd>
-                                    </dl>
-                                </div>
-                                <em class="tobe_mileage js_mileage"
-                                >적립예정 마일리지 : <span>30</span> 원</em
-                                >
-                            </div>
-                            <!-- //price_sum_cont -->
-                        </div>
-                        <!-- //price_sum -->
-
-                        <!-- 주문 간단 가입 시작 -->
-                        <input type="hidden" name="simpleJoin" value="" />
-
-                        <!-- 주문 간단 가입 끝 -->
 
                         <div class="order_view_info">
                             <div class="order_agree">
@@ -336,24 +274,15 @@
                                             <td class="member_email">
                                                 <input type="text" name="orderEmail" value="" />
 
-                                                <select
-                                                        id="emailDomain"
-                                                        class="chosen-select"
-                                                        style="display: none"
-                                                >
-                                                    <option value="self">직접입력</option>
+                                                <select class="chosen-select">
+                                                    <option value="self"selected="selected">직접입력</option>
                                                     <option value="naver.com">naver.com</option>
-                                                    <option value="hanmail.net">
-                                                        hanmail.net
-                                                    </option>
+                                                    <option value="hanmail.net">hanmail.net</option>
                                                     <option value="daum.net">daum.net</option>
-                                                    <option value="nate.com">nate.com</option>
-                                                    <option value="hotmail.com">
-                                                        hotmail.com
-                                                    </option>
                                                     <option value="gmail.com">gmail.com</option>
-                                                    <option value="icloud.com">icloud.com</option>
                                                 </select>
+
+
                                                 <div
                                                         class="chosen-container chosen-container-single chosen-container-single-nosearch"
                                                         style="width: 120px"
@@ -534,36 +463,8 @@
                                                 />
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">남기실 말씀</th>
-                                            <td class="td_last_say">
-                                                <input type="text" name="orderMemo" />
-                                            </td>
-                                        </tr>
-                                        <tr id="memberinfoApplyTr">
-                                            <th scope="row">회원정보 반영</th>
-                                            <td>
-                                                <div class="form_element">
-                                                    <div
-                                                            id="memberinfoApplyTr1"
-                                                            class="member_info_delivery"
-                                                            style="display: none"
-                                                    >
-                                                        <input
-                                                                type="checkbox"
-                                                                id="reflectApplyDelivery"
-                                                                name="reflectApplyDelivery"
-                                                                value="y"
-                                                        />
-                                                        <label
-                                                                for="reflectApplyDelivery"
-                                                                class="check_s"
-                                                        ><em>나의 배송지에 추가합니다.</em></label
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
+
+
 
                                         </tbody>
                                     </table>
@@ -689,10 +590,7 @@
 
                                 <div class="payment_progress_list">
                                     <div class="js_pay_content">
-                                        <!-- N : 페이코결제 시작 -->
-                                        <!-- N : 페이코결제 끝 -->
 
-                                        <!-- N : 일반결제 시작 -->
                                         <div id="settlekind_general" class="general_payment">
                                             <dl>
                                                 <dt>일반결제</dt>
@@ -732,18 +630,15 @@
                                     </div>
 
                                     <!-- //payment_progress_list -->
-                                    <div class="payment_final">
-                                        <div class="payment_final_total">
-                                            <dl>
-                                                <dt>최종 결제 금액</dt>
-                                                <dd>
-                              <span
-                              ><strong id="totalSettlePriceView">5,700</strong
-                              >원</span
-                              >
-                                                </dd>
-                                            </dl>
+                                    <div class="cart-total">
+                                        <div class="cart-total__price">
+                                            <div class="cart-total__sum">
+                                                <span>최종 결제 금액</span>
+                                                <span class="price-color"><strong>92,620</strong>원</span>
+                                            </div>
                                         </div>
+                                    </div>
+                                    <div class="payment_final">
                                         <div class="payment_final_check">
                                             <div class="form_element">
                                                 <input
@@ -786,7 +681,7 @@
     </div>
     <!-- //container -->
 </main>
-    <!-- footer -->
+<!-- footer -->
 <footer th:replace="~{/fragments/footer :: footer}"></footer>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
