@@ -63,9 +63,9 @@
                             <tbody>
                                 <tr th:each="order : ${orderList}">
                                     <td th:text="${order.orderNumber}"></td>
-                                    <td th:text="${order.order}>2023-01-01</td>
-                                    <td>asdfasdf</td>
-                                    <td>3,300</td>  
+                                    <td th:text="${order.orderDate}">2023-01-01</td>
+                                    <td th:text="${order.userName}">asdfasdf</td>
+                                    <td th:text="${order.paymentTotalAmount}">3,300</td>
                                     <td>
                                         <select>
                                             <option value="">배송준비</option>

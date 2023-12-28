@@ -3,6 +3,7 @@ package com.example.jumak.service.admin.aorder;
 import com.example.jumak.domain.dto.order.OrderDto;
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.admin.ACriteria;
+import com.example.jumak.domain.vo.admin.AOrderVo;
 import com.example.jumak.domain.vo.admin.ASearchVo;
 import com.example.jumak.mapper.admin.aorder.AOrderMapper;
 import com.example.jumak.mapper.admin.auser.AUserMapper;
@@ -20,7 +21,7 @@ public class AOrderService {
 
 
     //    주문 전체 조회
-    public List<OrderDto> findAll(ACriteria aCriteria){
+    public List<AOrderVo> findAll(ACriteria aCriteria){
         return aOrderMapper.selectAll(aCriteria);
     }
 

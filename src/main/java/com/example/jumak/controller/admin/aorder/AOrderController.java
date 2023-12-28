@@ -2,6 +2,7 @@ package com.example.jumak.controller.admin.aorder;
 
 import com.example.jumak.domain.dto.order.OrderDto;
 import com.example.jumak.domain.vo.admin.ACriteria;
+import com.example.jumak.domain.vo.admin.AOrderVo;
 import com.example.jumak.domain.vo.admin.APageVo;
 import com.example.jumak.service.admin.aorder.AOrderService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class AOrderController {
 
     @GetMapping
     public String orderList(ACriteria aCriteria, Model model){
-        List<OrderDto> orderList = aOrderService.findAll(aCriteria);
+        List<AOrderVo> orderList = aOrderService.findAll(aCriteria);
         model.addAttribute("orderList", orderList);
         model.addAttribute("pageInfo", new APageVo(aOrderService.findTotal(),aCriteria));
         return "admin/order/orderList";

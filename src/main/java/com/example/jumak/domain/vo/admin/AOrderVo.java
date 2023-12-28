@@ -19,4 +19,5 @@ public class AOrderVo {
     private String orderDate;
     private Long orderStatusNumber;
     private String userName;
+    private Long paymentTotalAmount;
 }

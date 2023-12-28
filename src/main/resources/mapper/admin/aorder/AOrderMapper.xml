@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.jumak.mapper.admin.aproduct.AProductImgMapper">
+<mapper namespace="com.example.jumak.mapper.admin.aorder.AOrderMapper">
     <select id="selectAll" resultType="aOrderVo">
-        SELECT ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
-               ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER
+        SELECT O.ORDER_NUMBER, O.USER_NUMBER, O.ORDER_RECIPIENT, O.ORDER_ZIPCODE, O.ORDER_ADDRESS, O.ORDER_ADDRESS_DETAIL,
+               O.ORDER_CELLPHONENUMBER, O.ORDER_PHONENUMBER, O.ORDER_DATE, O.ORDER_STATUS_NUMBER, U.USER_NAME, P.PAYMENT_TOTAL_AMOUNT
         FROM(
-                SELECT ROWNUM AS RNUM, ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
-                       ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER
+                SELECT ROWNUM AS RNUM, O.ORDER_NUMBER, O.USER_NUMBER, O.ORDER_RECIPIENT, O.ORDER_ZIPCODE, O.ORDER_ADDRESS, O.ORDER_ADDRESS_DETAIL,
+                       O.ORDER_CELLPHONENUMBER, O.ORDER_PHONENUMBER, O.ORDER_DATE, O.ORDER_STATUS_NUMBER, U.USER_NAME, P.PAYMENT_TOTAL_AMOUNT
                 FROM(
-                        select ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
-                               ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER
-                        from JUMAK_ORDER
+                        select O.ORDER_NUMBER, O.USER_NUMBER, O.ORDER_RECIPIENT, O.ORDER_ZIPCODE, O.ORDER_ADDRESS, O.ORDER_ADDRESS_DETAIL,
+                               O.ORDER_CELLPHONENUMBER, O.ORDER_PHONENUMBER, O.ORDER_DATE, O.ORDER_STATUS_NUMBER, U.USER_NAME, P.PAYMENT_TOTAL_AMOUNT
+                        from JUMAK_ORDER O
+                                 JOIN JUMAK_USER U
+                                            ON O.USER_NUMBER = U.USER_NUMBER
+                                 JOIN JUMAK_PAYMENT P
+                                            ON O.ORDER_NUMBER = P.ORDER_NUMBER
                         ORDER BY ORDER_NUMBER DESC)
             <![CDATA[
                 WHERE ROWNUM <= #{page} * #{amount}
             ]]>
         )
         WHERE RNUM > (#{page} - 1) * #{amount}
-
---       유저테이블이랑 조인걸어서 유저이름 가져오기
 
     </select>
 
