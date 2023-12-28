@@ -42,7 +42,11 @@ $(".slide_div_wrap").ready(function(){
     $(".slide_div").slick();
 });
 
+<<<<<<< HEAD
 // 리뷰 파일처리
+=======
+//후기 파일처리
+>>>>>>> work/store
 let $input = $('#post-image');
 let $imgList = $('.img-list');
 // console.log($input);
@@ -110,4 +114,8 @@ function appendImg(files) {
             $imgList.eq(i).removeClass('x-box');
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> work/store

@@ -8,14 +8,10 @@
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
   <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />
   <link rel="stylesheet" th:href="@{/css/product/storeproductdetailtest.css}" />
-  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
-  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
-  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
-  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+
 </head>
 <body>
-<header th:replace="~{/fragments/header :: header}"></header>
-<main>
+<header></header>
 <div class="container">
   <div class="post-wrap">
     <div class="content_box">
@@ -261,39 +257,39 @@
    </script>
 
                       </p>
-                      <!-- <span class="count">
-                         <span class="goods_qty">
-                           <input
-                                   type="text"
-                                   name="goodsCnt[]"
-                                   class="text goodsCnt_0"
-                                   title="수량"
-                                   value="1"
-                                   data-key="0"
-                                   data-value="1"
-                                   data-stock="0"
-                                   onchange="goodsViewController.input_count_change(this, '1');return false;"
-                           />
-                           <span>
-                             <button
-                                     type="button"
-                                     class="up goods_cnt"
-                                     title="증가"
-                                     value="up^|^0"
-                             >
-                               증가
-                             </button>
-                             <button
-                                     type="button"
-                                     class="down goods_cnt"
-                                     title="감소"
-                                     value="dn^|^0"
-                             >
-                               감소
-                             </button>
-                           </span>
-                         </span>
-                       </span>-->
+                           <!-- <span class="count">
+                              <span class="goods_qty">
+                                <input
+                                        type="text"
+                                        name="goodsCnt[]"
+                                        class="text goodsCnt_0"
+                                        title="수량"
+                                        value="1"
+                                        data-key="0"
+                                        data-value="1"
+                                        data-stock="0"
+                                        onchange="goodsViewController.input_count_change(this, '1');return false;"
+                                />
+                                <span>
+                                  <button
+                                          type="button"
+                                          class="up goods_cnt"
+                                          title="증가"
+                                          value="up^|^0"
+                                  >
+                                    증가
+                                  </button>
+                                  <button
+                                          type="button"
+                                          class="down goods_cnt"
+                                          title="감소"
+                                          value="dn^|^0"
+                                  >
+                                    감소
+                                  </button>
+                                </span>
+                              </span>
+                            </span>-->
                       <!-- //count -->
                     </td>
                     <td class="item_choice_price">
@@ -401,15 +397,33 @@
           <!-- 상품상세 공통정보 관리를 상세정보 상단에 노출-->
 
           <center>
-
+            <img
+                    src="http://gi.esmplus.com/gsool18/soolmarket/common/smpopup.jpg"
+            /><br />
+            <img
+                    src="http://gi.esmplus.com/gsool18/soolmarket/common/seller_pop.jpg"
+            /><br />
+            <img
+                    src="http://ai.esmplus.com/gsool18/oyeonga/common/popup.jpg"
+            /><br />
+            <img
+                    src="http://ai.esmplus.com/gsool18/oyeonga/oyeon_25_1_360/pro_01.jpg"
+            /><br />
+            <img
+                    src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_01.jpg"
+            /><br />
             <img
                     src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_02.jpg"
             /><br />
             <img
                     src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_03.jpg"
             /><br />
-
-
+            <img
+                    src="http://ai.esmplus.com/gsool18/oyeonga/oyeon_25_1_360/pro_02.jpg"
+            /><br />
+            <img
+                    src="http://ai.esmplus.com/gsool18/oyeonga/common/notice.jpg"
+            /><br />
           </center>
         </div>
       </div>
@@ -677,7 +691,7 @@
 </div>
 </div>
 <!-- 판매자 정보 -->
-<!--<div class="pbTable">
+<div class="pbTable">
   <p class="tableTitle">판매자정보</p>
   <p style="font-size: 16px; text-align: center; margin-bottom: 50px">
     ※ 상품별로 판매자가 상이할 수 있습니다. 상품문의/cs 접수시 각
@@ -719,16 +733,16 @@
     </tr>
     </tbody>
   </table>
-</div>-->
+</div>
 
 <!-- 판매자정보 -->
 <!-- 교환/반품/환불 -->
-<!--<div class="reply-wrap">-->
-<!--  <div class="reply-wrap__box">-->
-<!--    <div class="reply-content__box">-->
-<!--      <h3>교환/반품/환불 안내</h3>-->
-<!--    </div>-->
-<!--  </div>-->
+<div class="reply-wrap">
+  <div class="reply-wrap__box">
+    <div class="reply-content__box">
+      <h3>교환/반품/환불 안내</h3>
+    </div>
+  </div>
   <!-- 교환/반품/환불 -->
   <!-- 상품 후기 -->
 
@@ -762,21 +776,10 @@
     </div>
     <!-- 상품 후기 -->
   </div>
-  <!--상품 후기-->
-<<<<<<< HEAD
-=======
-
-
->>>>>>> work/store
+<!--상품 후기-->
 
 </div>
-</main>
-
-<footer th:replace="~{/fragments/footer :: footer}"></footer>
-
-<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
-        crossorigin="anonymous"></script>
-<script th:src="@{/js/fragments/header.js}"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 </html>
