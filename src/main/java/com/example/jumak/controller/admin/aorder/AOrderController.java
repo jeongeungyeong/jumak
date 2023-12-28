@@ -26,4 +26,12 @@ public class AOrderController {
         model.addAttribute("pageInfo", new APageVo(aOrderService.findTotal(),aCriteria));
         return "admin/order/orderList";
     }
+
+//    @GetMapping
+//    public String orderList(Model model){
+//        List<AOrderVo> orderList = aOrderService.findAll();
+//        model.addAttribute("orderList", orderList);
+////        model.addAttribute("pageInfo", new APageVo(aOrderService.findTotal(),aCriteria));
+//        return "admin/order/orderList";
+//    }
 }

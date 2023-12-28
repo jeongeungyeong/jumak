@@ -20,10 +20,14 @@ public class AOrderService {
     private final AOrderMapper aOrderMapper;
 
 
-    //    주문 전체 조회
+//        주문 전체 조회
     public List<AOrderVo> findAll(ACriteria aCriteria){
         return aOrderMapper.selectAll(aCriteria);
     }
+
+//    public List<AOrderVo> findAll(){
+//        return aOrderMapper.selectAll();
+//    }
 
 
 
@@ -31,5 +35,10 @@ public class AOrderService {
     public int findTotal(){
         return aOrderMapper.selectTotal();
     };
+
+//    주문상태변경
+    public void modifyOrderStatus(Long orderNumber, Long orderStatusNumber){
+        aOrderMapper.updateOrderStatus(orderNumber,orderStatusNumber);
+    }
 
 }

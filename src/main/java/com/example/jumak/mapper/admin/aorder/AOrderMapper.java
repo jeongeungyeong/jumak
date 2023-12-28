@@ -16,6 +16,12 @@ public interface AOrderMapper {
 //    주문 전체 조회
     public List<AOrderVo> selectAll(ACriteria aCriteria);
 
-//    주문 토탈
+//    public List<AOrderVo> selectAll();
+
+    //    주문 토탈
     public int selectTotal();
+
+//    주문상태변경
+    public void updateOrderStatus(@Param("orderNumber")Long orderNumber,
+                                  @Param("orderStatusNumber") Long orderStatusNumber);
 }
