@@ -16,4 +16,7 @@ public class OrderDetailVo {
     private String orderStatusName;
     private Long reviewCount;
     private Long userNumber;
+
+    private String startDate;
+    private String endDate;
 }

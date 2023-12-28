@@ -1,27 +1,51 @@
 package com.example.jumak.controller.mypage;
 
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
-import com.example.jumak.service.mypage.SearchShippingService;
+import com.example.jumak.service.mypage.ShippingService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/mypage")
+@RequestMapping("/mypages")
 public class MypageMainRestController {
 
-    private final SearchShippingService searchShippingService;
+    private final ShippingService shippingService;
 
-    //    url로 데이터를 넘겨받아 조회가 가능하다.
-//    경로상의 데이터를 받기 위해서는 @PathVariable 을 사용한다.
-    @GetMapping("/search-shipping/{orderDate}")
-    public void periodInquiry(@RequestBody OrderDetailVo orderDetailVo) {
-        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
+
+
+//    주문내역 배송상태 조회
+    @GetMapping("/search-shipping")
+    public List<OrderDetailVo> searchShipping(
+            @RequestParam String startDate,
+            @RequestParam String endDate,
+            HttpServletRequest req) {
+//        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+        orderDetailVo.setStartDate(startDate);
+        orderDetailVo.setEndDate(endDate);
+        orderDetailVo.setUserNumber(userNumber);
+
+        return shippingService.findSearchShipping(orderDetailVo);
     }
 
+//    취소/반품/교환상태 조회
+    @GetMapping("/cancel-shipping")
+    public List<OrderDetailVo> cancelShipping(
+            @RequestParam String startDate,
+            @RequestParam String endDate,
+            HttpServletRequest req) {
+//        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+        orderDetailVo.setStartDate(startDate);
+        orderDetailVo.setEndDate(endDate);
+        orderDetailVo.setUserNumber(userNumber);
+
+        return shippingService.findCancelDetail(orderDetailVo);
+    }
 }

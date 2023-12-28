@@ -3,7 +3,7 @@ package com.example.jumak.controller.mypage;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
 import com.example.jumak.service.mypage.MypageMainService;
-import com.example.jumak.service.mypage.SearchShippingService;
+import com.example.jumak.service.mypage.ShippingService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/mypage")
 public class MypageMainController {
     private final MypageMainService mypageMainService;
-    private final SearchShippingService searchShippingService;
+    private final ShippingService shippingService;
     private final OrderDetailVo orderDetailVo;
 
 
@@ -86,7 +86,28 @@ public class MypageMainController {
 
 //    주문 취소 페이지
     @GetMapping("/cancel-shipping")
-    public String cancelShipping() {
+    public String cancelShipping(Model model, HttpServletRequest req) {
+        //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+//       회원 이름 조회
+        String userName = mypageMainService.findUserName(userNumber);
+
+//        작성 게시물 조회
+        Long boardCount = mypageMainService.findBoardCount(userNumber);
+
+//        작성 댓글 조회
+        Long replyCount = mypageMainService.findReplyCount(userNumber);
+
+//        기간별 주문/배송 리스트 조회
+        orderDetailVo.setUserNumber(userNumber);
+//        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
+
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("boardCount", boardCount);
+        model.addAttribute("replyCount", replyCount);
+
         return "mypage/cancel_shipping/cancel_shipping";
     }
 
