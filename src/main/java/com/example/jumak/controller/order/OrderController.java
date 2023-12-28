@@ -21,4 +21,10 @@ public class OrderController {
     public String orderFinal(){
         return "order/storeorderfin";
     }
+
+    //    임시 이동경로
+    @GetMapping("/cart")
+    public String cartPage(){
+        return "order/cart";
+    }
 }

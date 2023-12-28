@@ -1,212 +1,253 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../static/css/product/search.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-   
-    <title>Document</title>
-  </head>
-  <body>
-  <header class="bg on scroll-active">
-    <div>
-	<!--<img src="./img/info_top_bn.jpg"></div> 
-	style="background:#000; text-align:center"-->
-	<h5> 포토 리뷰만 작성해도 마일리지 500원 즉시 지급 </h5> 
-    <!-- <input type="hidden" id="freeIsNew" name="freeIsNew" value="Y"> -->
-      
-      <div class="gnb_wrap">
-        <h1><a href="#"><img src="../../static/imgs/product/KakaoTalk_20231129_125738230_02.jpg" alt=""></a></h1>
-        <ul class="gnb">
-          <li class="gnb_item">
-            <a class= "menu1 " href="#" style="font-weight: bold;">우리술 정보&amp;리뷰</a>
-            <ul class="lnb1" style="display: none;">
-              <li><a href="#">우리술 전체보기</a></li>
-              <li><a href="#">양조장 탐방기</a></li>
-              <li><a href="#">술 취향 테스트</a></li>					
-              <li><a href="#">나에게 맞는 술 찾기</a></li>
-            </ul>
-     
-          </li>
-          <li class="gnb_item">
-            <a class="menu2" href="/board/list#" style="font-weight: bold;">백술 NEWS</a>
-            <ul class="lnb2" style="display: none;">
-              <li><a href="/board/list#">주막 NEWS</a></li>
-			  <li><a href="/board/list#">주막 새상품</a></li> 	
-			  <li><a href="/board/list#">주막 소식</a></li>
-			  <li><a href="/board/list#">주막 수상한 상품</a></li>
-			</ul>
-          </li>
-          <li class="gnb_item">
-            <a class="menu3" href="/board/#" style="font-weight: bold;">우리술 빚기</a>
-            <ul class="lnb3" style="display: none;">
-              <li><a href="/board/list#">주막의 술비책</a></li>
-              <!--<li><a href="/board/list.php?bdId=myrecipe">나의 술비책</a></li>-->
-            </ul>
-          </li>
-          <li class="gnb_item">
-             <a class="menu4" href="/board/list#" style="font-weight: bold;">커뮤니티<!--<img src="#">--></a> 
-            <ul class="lnb4" style="display: none;">
-              <li><a href="/board/#">백술놀이터</a><img src="#" style="margin-top: 5px;margin-left: 4px;"></li>
-              <li><a href="/board/#">모임공지</a></li>
-             
-            </ul>
-      
-          </li>
-    
-          <li class="gnb_item">
-            <a class="menu5" href="#" style="font-weight: bold;">우리술 장터</a>
-            <ul class="lnb5" style="display: none;">
-              <li><a href="#">크리스마스 우리술🎄</a></li>
-              <li><a href="#">전체상품</a></li>
-              <li><a href="#">술빚기용품</a></li>
-              <li><a href="#">막걸리/탁주</a></li>
-              <li><a href="#">증류주/리큐르</a></li>
-              <li><a href="#">약주/청주</a></li>
-              <li><a href="#">와인/과실주</a></li>
-              <li><a href="#">기타주류/기타</a></li>
-              <li><a href="#">선물하기 좋은 우리술🎁</a></li>
-              <li><a href="#"">통합배송🚚</a></li>
-            </ul>
-          </li>
-        
-        <div class="side">
-          <button id="btnSearchTop" class="btn_search">검색</button>
-          
-          <a href="#" class="btn_cart"><img src="../../static/imgs/product/ico_top_cart.png" alt="장바구니" title="장바구니">
-            <!-- <span>0</span> -->
-          </a>
-          
-          <div class="login_before">
-            <button>사용자</button>
-            <div class="mn">
-              <ul class="lnb" style="display: none;">
-                <li><a href="#">로그인</a></li>
-                <li><a href="#">회원가입..</a></li>
-              </ul>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/product/search.css}">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+  <main>
+    <h4 class="search-title">검색결과</h4>
+    <section class="search-box">
+      <div class="input-box">
+<!--        검색 url 넣기-->
+        <form action="" method="" id="search-form">
+          <input type="text" name="keyword" id="keyword">
+          <button class="input-box__icon">
+            <img th:src="@{/imgs/main/icon/ico_top_search.png}" alt="">
+          </button>
+        </form>
+      </div>
+      <div class="search-box__popular">
+        <strong>인기 검색어</strong>
+        <ul>
+          <li><a href=""><span>#상큼한</span></a></li>
+          <li><a href=""><span>#시원한</span></a></li>
+          <li><a href=""><span>#추천술</span></a></li>
+          <li><a href=""><span>#선물하기좋은</span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="search-result-msg">
+      <p>검색하신 <span id="result-keyword">"증류"</span>에 대한 <span id="result-count">111</span>개의 검색 결과가 있습니다.</p>
+    </section>
+
+    <section class="content">
+      <div class="info">
+        <div class="info-title content__title">
+          <span>우리술 정보(<span class="info-list-count">85</span>)</span>
+        </div>
+        <div class="info-list content__list">
+          <!-- 반복요소-->
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
             </div>
-          </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">춘희 40</p>
+              <p class="detail">숙성된 사과 증류주</p>
+            </div>
+          </article>
+
+          <!-- /반복요소-->
         </div>
-       
       </div>
-      
-      <div class="lnb_bg" style="display: none;"></div>
-    </header>
-  
-    <div class="woori">
-      <div class="goodsinfo_top">
-        <h4><strong>궁금한 우리술 정보</strong><br />지금 검색해보세요!</h4>
-        <div class="search_box">
-          <form name="frmSearch" id="frmSearch" action="#" method="get">
-            <input
-              type="search"
-              name="keyword"
-              id="keyword"
-              placeholder="우리술과 관련된 키워드를 검색해 보세요."
-            />
-            <a href="javascript:searchSend();" class="btn_search">검색</a>
-          </form>
-          <script>
-            function searchSend() {
-              if ($("#keyword").val() == "") {
-                alert("검색어를 입력하세요");
-                return false;
-              } else {
-                $("#frmSearch").submit();
-              }
-            }
-          </script>
+      <div class="store">
+        <div class="store-title content__title">
+          <span>우리술 장터(<span class="store-list-count">15</span>)</span>
         </div>
-        <div class="txt_popular">
-          <ul>
-            <li><a href="#">상큼한</a></li>
-            <li><a href="#">시원한</a></li>
-            <li><a href="#">추천술</a></li>
-            <li><a href="#">선물하기좋은</a></li>
-          </ul>
+
+        <div class="store-list content__list">
+          <!-- 반복 요소 -->
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <article class="list-item">
+            <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+              <span>SALE</span>
+            </div>
+            <div class="img-box">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+            </div>
+            <div class="text-box">
+              <p class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
+              <p class="sale-price">22,510원</p>
+              <del class="price"> 23,700원</del>
+            </div>
+          </article>
+          <!-- /반복 요소 -->
         </div>
-		<div class="best">
-			<h5><span>겨울 감성</span>을 풍성하게 해줄 <span>우리술 추천</span></h5>
-			<ul class="list_shop">
-				<li>
-					<a href="#">
-					<div class="box_img">
-						 <img src="../../static/imgs/product/500000215_list_025.jpg" alt="">
-					 </div>
-					 <div class="txt_box">
-						 <div class="review">
-							 <span>4.5</span>
-								<span>2</span>
-						 </div>
-
-						 <p class="name ellipsis">서울막걸리</p>
-						 <p class="exple_box">
-							 우유처럼 부드럽고 매끈한 막걸리
-						 </p>
-					 </div>
-					 <!--
-					 <div class="box_absol">
-					 </div>
-					 -->
-					 </a>
-				 </li>
-				<li>
-					<a href="#">
-					<div class="box_img">
-						 <img src="../../static/imgs/product/500000124_list_027.jpg" alt="">
-					 </div>
-					 <div class="txt_box">
-						 <div class="review">
-							 <span>4.67</span>
-								<span>3</span>
-						 </div>
-
-						 <p class="name ellipsis">일엽편주 약주</p>
-						 <p class="exple_box">
-							 전통방식 그대로 빚어낸 종택의 술
-						 </p>
-					 </div>
-					 <!--
-					 <div class="box_absol">
-					 </div>
-					 -->
-					 </a>
-				 </li>
-				<li>
-					<a href="#">
-					<div class="box_img">
-						 <img src="../../static/imgs/product/500000335_list_074.jpg " alt="">
-					 </div>
-					 <div class="txt_box">
-						 <div class="review">
-							 <span>5</span>
-								<span>2</span>
-						 </div>
-
-						 <p class="name ellipsis">려 40 (고구마 100%)</p>
-						 <p class="exple_box">
-							 묘한 매력을 지닌 고구마 소주
-						 </p>
-					 </div>
-					 <!--
-					 <div class="box_absol">
-					 </div>
-					 -->
-					 </a>
-				 </li>
-			 </ul>
-			 <!--
-			 <div class="area_btn">
-				 <a href="/goodsinfo/goods_list.php?cateCd=019">전체보기</a>
-			 </div>
-			 -->
-		</div>
-
       </div>
-    </div>
-		<script src="../../static/js/product/search.js"></script>
-			
-		
-  </body>
+    </section>
+  </main>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script th:src="@{/js/fragments/header.js}"></script>
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
