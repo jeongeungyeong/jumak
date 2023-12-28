@@ -17,18 +17,21 @@ import java.util.Optional;
 public class ProductService {
     private final ProductMapper productMapper;
 
-//    상품 조회
+//    상품 번호 조회
     ProductDto findByNumber(Long productNumber){
-        return Optional.ofNullable(productMapper.selectByNumber(productNumber))
-                .orElseThrow( () -> new IllegalStateException( "조회 결과 없음!"));
+        return productMapper.selectByNumber(productNumber)
+                .orElseThrow( () -> new IllegalStateException( "상품 조회 결과 없음!"));
     }
-    
+
+//    상품 카테고리로 조회
+/*    List<ProductDto> findByCategory(Long productCategoryNumber){
+        return Optional.ofNullable(productMapper.selectByCategory(productCategoryNumber))
+                .orElseThrow( () -> new IllegalStateException("카테고리 조회 결과 없음!"));
+    }*/
+
 //    전체 상품 조회
     List<ProductDto> findAll(){return productMapper.selectAll();}
 
-//    상품 등록
-    void register(ProductDto productDto){productMapper.insertProduct(productDto);}
 
-//    총 게시물 수 조회
-    public int findTotal(){return productMapper.selectTotal();}
+
 }
