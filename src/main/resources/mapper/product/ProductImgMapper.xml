@@ -3,11 +3,19 @@
 <mapper namespace="com.example.jumak.mapper.product.ProductImgMapper">
 
 <!--    상품 메인 이미지리스트 조회-->
-    <select id="selectList" resultType="productImgMainDto">
+    <select id="selectMList" resultType="productImgMainDto">
         SELECT PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH,
                PRODUCT_IMG_MAIN_UUID, PRODUCT_NUMBER
         FROM JUMAK_PRODUCT_IMG_MAIN
         WHERE PRODUCT_NUMBER =#{productNumber}
+    </select>
+
+<!--    상품 설명 이미지리스트 조회-->
+    <select id="selectDList" resultType="productImgDto">
+        SELECT PRODUCT_IMG_NUMBER, PRODUCT_IMG_NAME, PRODUCT_IMG_PATH,
+               PRODUCT_IMG_UUID, PRODUCT_NUMBER
+        FROM JUMAK_PRODUCT_IMG
+        WHERE PRODUCT_NUMBER=#{productNumber}
     </select>
 
 

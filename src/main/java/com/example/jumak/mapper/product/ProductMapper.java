@@ -1,7 +1,9 @@
 package com.example.jumak.mapper.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.vo.product.ProductListVo;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,9 +23,11 @@ public interface ProductMapper {
 //    정렬 분류: 등록일순
     List<ProductDto> arrUpdate();
 //    정렬 분류: 판매인기순
-List<ProductDto> arrSale();
+List<ProductListVo> arrSale();
 //    정렬 분류: 낮은 가격순
 List<ProductDto> arrLPrice();
 //    정렬 분류: 높은 가격순
 List<ProductDto> arrHPrice();
+
+    List<ProductListVo> selectByOrderCond(@Param("orderCond") String orderCond, @Param("cate") String cate);
 }

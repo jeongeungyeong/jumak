@@ -57,13 +57,14 @@
         ORDER BY PRODUCT_RELEASE_DATE DESC
     </select>
 <!--    정렬 분류: 판매인기순-->
-    <select id="arrSale" resultType="productDto">
-        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
-               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
-               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
-               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
-        FROM JUMAK_PRODUCT
-        ORDER BY PRODUCT_SALES DESC
+    <select id="arrSale" resultType="productListVo">
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_PRICE,
+               P.PRODUCT_ALCOHOLICITY, P.PRODUCT_DISCOUNT, P.PRODUCT_NET_WEIGHT, P.PRODUCT_RELEASE_DATE,
+               P.PRODUCT_SALES,
+               I.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I
+                                       ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        ORDER BY PRODUCT_SALES ASC
     </select>
 <!--    정렬 분류: 낮은 가격순-->
     <select id="arrLPrice" resultType="productDto">
@@ -119,6 +120,59 @@
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>-->
 
+    <select id="selectByOrderCond" resultType="productListVo" parameterType="string">
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_PRICE,
+               P.PRODUCT_ALCOHOLICITY, P.PRODUCT_DISCOUNT, P.PRODUCT_NET_WEIGHT, P.PRODUCT_RELEASE_DATE,
+               P.PRODUCT_SALES,
+               I.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I
+                                       ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        <trim prefix="WHERE">
+            <choose>
+                <when test="'group1'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(1,2)
+                </when>
+                <when test="'group2'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(3,4)
+                </when>
+                <when test="'group3'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(5,6)
+                </when>
+                <when test="'group4'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(7,8)
+                </when>
+                <when test="'group5'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER = 9
+                </when>
+            </choose>
+        </trim>
 
+        <choose>
+            <when test="'date'.equals(orderCond)">
+                ORDER BY PRODUCT_RELEASE_DATE DESC
+            </when>
+            <when test="'sale'.equals(orderCond) or orderCond == null">
+                ORDER BY PRODUCT_SALES DESC
+            </when>
+            <when test="'rowPrice'.equals(orderCond)">
+                ORDER BY PRODUCT_PRICE
+            </when>
+            <when test="'highPrice'.equals(orderCond)">
+                ORDER BY PRODUCT_PRICE DESC
+            </when>
+        </choose>
+
+
+
+    </select>
 
 </mapper>
+
+
+
+
+
+
+
+
+
