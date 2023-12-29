@@ -18,6 +18,10 @@ public class AOrderVo {
     private String orderPhoneNumber;
     private String orderDate;
     private Long orderStatusNumber;
+
+
     private String userName;
     private Long paymentTotalAmount;
+    private String orderStatusName;
+    private String paymentDeliveryFee;
 }

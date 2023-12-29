@@ -34,4 +34,10 @@ public interface AProductMapper {
 
 //    물품 등록
     public void insert(ProductDto productDto);
+
+//    물품 수정
+    public void update(ProductDto productDto);
+
+//    물품 수정용 단건 조회 쿼리
+    public ProductDto selectOneUpdate(Long productNumber);
 }

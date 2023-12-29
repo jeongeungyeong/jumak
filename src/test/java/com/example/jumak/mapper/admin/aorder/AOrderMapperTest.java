@@ -22,6 +22,13 @@ class AOrderMapperTest {
 //    }
 
     @Test
+    void selectOne(){
+        aOrderMapper.selectOrderOne(1l);
+
+
+    }
+
+    @Test
     void updateOrderStatus(){
         aOrderMapper.updateOrderStatus(2l,3l);
     }

@@ -74,4 +74,17 @@ public class AProductController {
 
         return new RedirectView("/admin/product");
     }
+
+    @GetMapping("/modify/{productNumber}")
+    public String productModify(@PathVariable("productNumber") Long productNumber, Model model){
+        ProductDto findProduct = aProductService.findOneUpdate(productNumber);
+        model.addAttribute("product",findProduct);
+        return "admin/product/productModify";
+    }
+
+    @PostMapping("/modify")
+    public RedirectView productModify(ProductDto productDto){
+        aProductService.modify(productDto);
+        return new RedirectView("/admin/product/detail/" + productDto.getProductNumber());
+    }
 }

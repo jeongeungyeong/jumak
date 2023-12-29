@@ -101,18 +101,18 @@
                 <div class="paging" >
                     <div class="pages" th:object="${pageInfo}">
 
-                        <a th:href="@{/admin/order(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
+                        <a th:href="@{/admin/order/search(searchType=${searchVo.searchType},keyword=${searchVo.keyword},page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
                             <span class="page-num prev">&lt</span>
                         </a>
 
                         <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-                            <a th:href="@{/admin/order(page=${i})}" class="page-a">
+                            <a th:href="@{/admin/order/search(searchType=${searchVo.searchType},keyword=${searchVo.keyword},(page=${i})}" class="page-a">
                                 <span class="page-num" th:classappend="${i==pageInfo.aCriteria.page} ? 'active' : '' " th:text="${i}"></span>
                             </a>
                         </th:block>
 
 
-                        <a th:href="@{/admin/order(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+                        <a th:href="@{/admin/order/search(searchType=${searchVo.searchType},keyword=${searchVo.keyword},(page=*{endPage+1})}" class="page-a" th:if="*{next}">
                             <span class="page-num next">&gt</span>
                         </a>
 

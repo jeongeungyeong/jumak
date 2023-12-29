@@ -52,3 +52,9 @@ function displayImgs() {
 $('.btn_product_prev').on('click', function (){
     window.location.href = `/admin/product`;
 })
+
+// 수정 버튼
+$('.btn_product_modify').on('click', function (){
+    let num = $(this).data('num');
+    window.location.href = `/admin/product/modify/${num}`;
+})
