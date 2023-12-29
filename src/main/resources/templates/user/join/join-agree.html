@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/user/join/join.css}" />
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/user/join/join-agree.css}" />
   </head>
   <body>
+    <header th:replace="~{/fragments/header :: header}"></header>
     <div id="wrap">
-      <div id="container" onclick="clickBody()">
+      <div id="container">
         <div id="contents">
-          <div class="location_wrap">
-            <div class="location_cont">
-              <em>
-                <!-- 회원가입 경로 넣기 -->
-                <a href="#" class="local_home">HOME</a>
-                > 회원가입 > 약관동의
-              </em>
-            </div>
-          </div>
           <div class="sub_content">
             <style>
               .content_box {
@@ -83,7 +79,7 @@
                     <div class="join_agreement_cont">
                       <div class="join_agreement_box">
                         <div class="form_element">
-                          <input type="checkbox" id="allAgree" onclick="check(event)"/>
+                          <input type="checkbox" id="allAgree"/>
                           <label class="check" for="allAgree">
                             <em
                               >수상한 주막의 모든 약관을 확인하고 전체
@@ -102,7 +98,6 @@
                             name="agreementInfoFl"
                             class="require"
                             value="n"
-                            onclick="check(event)"
                           />
                           <label class="check_s" for="termsAgreel">
                             <strong>(필수)</strong>
@@ -345,7 +340,6 @@
                             id="termsAgree2"
                             name="privateApprovalF1"
                             class="require"
-                            onclick="check(event)"
                           />
                           <label class="check_s" for="termsAgree2">
                             <strong>(필수)</strong>
@@ -464,5 +458,10 @@
         </div>
       </div>
     </div>
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+    <script th:src="@{/js/fragments/header.js}"></script>
+    <script th:src="@{/js/user/join/join-agree.js}"></script>
   </body>
 </html>
