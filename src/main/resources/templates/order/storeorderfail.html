@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
-  <link rel="stylesheet" th:href="@{/css/order/ordertest.css}">
+  <link rel="stylesheet" th:href="@{/css/order/orderfinal.css}">
   <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
   <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
   <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
   <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <title>상품결제 실패</title>
 </head>
 <body>
 <header th:replace="~{/fragments/header :: header}"></header>
@@ -36,7 +37,7 @@
       </ol>
     </section> <!-- /타이틀 섹션 -->
 
-<!--    결제 상태 표시-->
+    <!--    결제 상태 표시-->
     <div class="order_end">
       <!-- 결제 실패 -->
       <div class="order_end_completion">
@@ -56,70 +57,70 @@
         </p>
       </div>
 
-<!--   주문 요약 정보 -->
-    <div class="forder-end_info">
-      <div class="order_zone_tit">
-        <h4>주문요약정보</h4>
+      <!--   주문 요약 정보 -->
+      <div class="forder-end_info">
+        <div class="order_zone_tit">
+          <h4>주문요약정보</h4>
+        </div>
+
+        <div class="order_table_type">
+          <table class="table_left">
+            <colgroup>
+              <col style="width: 15%" />
+              <col style="width: 85%" />
+            </colgroup>
+            <tbody>
+            <tr>
+              <th scope="row">결제수단</th>
+              <td>
+                <strong
+                        id="totalGoodsPrice"
+                        class="order_payment_sum"
+                >신용카드 결제</strong
+                >
+                <ul>
+                  <li>
+                    결제금액 :
+                    <strong class="deposit_money"
+                    >8,300원</strong
+                    >
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">주문번호</th>
+              <td>
+                <span id="orderNumber">2312080040000001</span>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th scope="row">결제실패사유</th>
+              <td>
+                고객님의 결제 중단에 의해서 주문이 취소
+                되었습니다.
+              </td>
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 결제 정보 끝-->
+
+      <!--          하단 버튼-->
+
+      <div class="btn-box">
+        <div class="order-btn">
+          확인
+        </div>
       </div>
 
-      <div class="order_table_type">
-        <table class="table_left">
-          <colgroup>
-            <col style="width: 15%" />
-            <col style="width: 85%" />
-          </colgroup>
-          <tbody>
-          <tr>
-            <th scope="row">결제수단</th>
-            <td>
-              <strong
-                      id="totalGoodsPrice"
-                      class="order_payment_sum"
-              >신용카드 결제</strong
-              >
-              <ul>
-                <li>
-                  결제금액 :
-                  <strong class="deposit_money"
-                  >8,300원</strong
-                  >
-                </li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">주문번호</th>
-            <td>
-              <span id="orderNumber">2312080040000001</span>
-            </td>
-          </tr>
 
-
-          <tr>
-            <th scope="row">결제실패사유</th>
-            <td>
-              고객님의 결제 중단에 의해서 주문이 취소
-              되었습니다.
-            </td>
-          </tr>
-
-
-          </tbody>
-        </table>
-      </div>
     </div>
-    <!-- 결제 정보 끝-->
-
-    <!--          하단 버튼-->
-
-    <div class="btn-box">
-      <div class="order-btn">
-        확인
-      </div>
-    </div>
-
-
-  </div>
 </main>
 
 <footer th:replace="~{/fragments/footer :: footer}"></footer>

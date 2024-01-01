@@ -18,8 +18,12 @@ public class OrderController {
         return "order/storeorder";
     }
 
-    @GetMapping("final")
-    public String orderFinal(){
-        return "order/storeorderfin";
+    @GetMapping("/fail")
+    public String orderFail(){
+        return "order/storeorderfail";
     }
+
+    @GetMapping("/success")
+    public String orderSuccess(){ return "order/storeordersucc";}
+
 }
