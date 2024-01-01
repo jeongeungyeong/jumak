@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.order.OrderMapper">
-    <select id="getTime" resultType="string">
-        SELECT SYSDATE FROM DUAL
+    
+
+
+<!--    주문 요약 정보-->
+    <select id="selectByNumber" resultType="orderFinishVo" >
+    SELECT JP.PAYMENT_NUMBER, JP.PAYMENT_TOTAL,
+               JO.ORDER_DATE, JO.USER_NUMBER, JO.ORDER_NUMBER,
+               OS.ORDER_STATUS_NUMBER,OS.ORDER_STATUS_NAME
+    FROM  JUMAK_ORDER JO INNER JOIN JUMAK_PAYMENT JP
+                                        ON JO.ORDER_NUMBER = JP.ORDER_NUMBER
+                             INNER JOIN JUMAK_ORDER_STATUS OS ON JO.ORDER_STATUS_NUMBER = OS.ORDER_STATUS_NUMBER
     </select>
+
 </mapper>

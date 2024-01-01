@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Title</title>
@@ -8,7 +8,7 @@
   <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
   <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
   <link rel="stylesheet" th:href="@{/css/commons/default.css}">
-  <title>상품결제 실패</title>
+  <title>상품결제 성공</title>
 </head>
 <body>
 <header th:replace="~{/fragments/header :: header}"></header>
@@ -62,7 +62,7 @@
         </div>
 
         <div class="order_table_type">
-          <table class="table_left">
+          <table class="table_left" th:each="finalorder: ${finalorders}">
             <colgroup>
               <col style="width: 15%" />
               <col style="width: 85%" />
@@ -79,8 +79,8 @@
                 <ul>
                   <li>
                     결제금액 :
-                    <strong class="deposit_money"
-                    >8,300원</strong
+                    <strong class="deposit_money" th:text="${#numbers.formatInteger(finalorder.paymentTotal,0,'COMMA') + '원'}"
+                    ></strong
                     >
                   </li>
                 </ul>
@@ -89,7 +89,7 @@
             <tr>
               <th scope="row">주문번호</th>
               <td>
-                <span id="orderNumber">2312080040000001</span>
+                <span id="orderNumber" th:text="${orderDate}+${userNumber}+${orderNumber}+${paymentNumber}">2312080040000001주문날짜+회원번호+주문번호+결제번호</span>
               </td>
             </tr>
 
