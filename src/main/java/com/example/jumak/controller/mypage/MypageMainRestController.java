@@ -50,19 +50,19 @@ public class MypageMainRestController {
 
 
 
-    // 환불/입금상태 조회
-    @GetMapping("/cancel-shipping")
-    public List<OrderDetailVo> cancelShipping(
-            @RequestParam String startDate,
-            @RequestParam String endDate,
-            HttpServletRequest req) {
-//        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
-        OrderDetailVo orderDetailVo = new OrderDetailVo();
-        orderDetailVo.setStartDate(startDate);
-        orderDetailVo.setEndDate(endDate);
-        orderDetailVo.setUserNumber(userNumber);
-
-        return shippingService.findCancelDetail(orderDetailVo);
-    }
+//    // 환불/입금상태 조회
+//    @GetMapping("/cancel-shipping")
+//    public List<OrderDetailVo> cancelShipping(
+//            @RequestParam String startDate,
+//            @RequestParam String endDate,
+//            HttpServletRequest req) {
+////        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+//        Long userNumber = 1L;
+//        OrderDetailVo orderDetailVo = new OrderDetailVo();
+//        orderDetailVo.setStartDate(startDate);
+//        orderDetailVo.setEndDate(endDate);
+//        orderDetailVo.setUserNumber(userNumber);
+//
+//        return shippingService.findCancelDetail(orderDetailVo);
+//    }
 }
