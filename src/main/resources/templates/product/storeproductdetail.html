@@ -20,7 +20,7 @@
     <div class="top-box">
 
       <!--  상품 상단 정보-->
-      <div class="product-content_box" >
+      <div class="product-content_box" th:each="detailproduct: ${detailproducts}">
         <!-- 상품 이미지 상단 -->
 
         <section class="product-img">
@@ -369,20 +369,20 @@
         <div class="goods">
           <div class="store-list product__list">
             <!-- 반복 요소 -->
-            <article class="list-product" th:each="detailproduct : ${detailproducts}">
+            <article class="list-product" >
               <div class="sale-box">
               <span>
-                <strong class="sale-percent" th:text="${detailproduct.productDiscount}"></strong>%
+                <strong class="sale-percent" ></strong>%
               </span>
                 <span>SALE</span>
               </div>
               <div class="main_img-box">
-                <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/' + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">
+               <!-- <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/' + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">-->
               </div>
               <div class="title-box">
-                <p class="name" th:text="${detailproduct.productName + detailproduct.productAlcoholicity + '도' + detailproduct.productNetWeight + 'ml'}">마스브루어리+도수+용량</p>
-                <p class="sale-price" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA') + '원'}">26,600원</p>
-                <del class="price" th:text="${detailproduct.productPrice}"> 28,000원</del>
+                <p class="name" >마스브루어리+도수+용량</p>
+                <p class="sale-price" >26,600원</p>
+                <del class="price" > 28,000원</del>
               </div>
             </article>
             <article class="list-product">

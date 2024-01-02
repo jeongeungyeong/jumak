@@ -40,8 +40,14 @@ public class ProductService {
    public List<ProductListVo> findAll(){return productMapper.arrSale();}
 
 //    상품 상세정보 조회
-  public List<ProductDetailVo> findByDetail(){
+/*  public List<ProductDetailVo> findByDetail(){
        return productMapper.selectByDetail();
-  };
+  };*/
+
+//    상품 번호 상세 조회
+    public ProductDetailVo findByDNumber(Long productNumber){
+        return productMapper.selectByDNumber(productNumber)
+                .orElseThrow( ()-> new IllegalStateException("상품 조회 결과 없음!"));
+    }
 
 }

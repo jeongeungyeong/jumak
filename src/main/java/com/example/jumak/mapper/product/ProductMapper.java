@@ -33,5 +33,9 @@ List<ProductDto> arrHPrice();
     List<ProductListVo> selectByOrderCond(@Param("orderCond") String orderCond, @Param("cate") String cate);
 
 //     상품 디테일 페이지
-    List<ProductDetailVo> selectByDetail();
+//    List<ProductDetailVo> selectByDetail();
+
+//    상품 디테일 번호로 조회
+    Optional<ProductDetailVo> selectByDNumber(Long productNumber);
+
 }

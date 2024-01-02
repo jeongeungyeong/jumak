@@ -19,6 +19,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
@@ -70,6 +71,16 @@ class ProductServiceTest {
     }
 
     @Test
+    void findByDNumber() {
+        //given
+        doReturn(Optional.ofNullable(productDetailVo)).when(productMapper).selectByDNumber(any());
+        //when
+        ProductDetailVo foundDNumber = productService.findByDNumber(22L);
+        //then
+        Assertions.assertThat(foundDNumber).isEqualTo(productDetailVo);
+    }
+
+/*    @Test
     void findByDetail() {
         // given
             doReturn(List.of(productDetailVo)).when(productMapper).selectByDetail();
@@ -77,5 +88,5 @@ class ProductServiceTest {
         List<ProductDetailVo> productDetailList = productService.findByDetail();
         // then
         Assertions.assertThat(productDetailList).contains(productDetailVo);
-    }
+    }*/
 }

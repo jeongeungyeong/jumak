@@ -58,8 +58,13 @@ class ProductMapperTest {
         productMapper.arrHPrice();
     }
 
-    @Test
+/*    @Test
     void selectByDetail() {
         productMapper.selectByDetail();
+    }*/
+
+    @Test
+    void selectByDNumber() {
+        productMapper.selectByDNumber(22L);
     }
 }

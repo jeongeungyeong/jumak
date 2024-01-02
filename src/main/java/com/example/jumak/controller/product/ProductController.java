@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -42,9 +43,13 @@ public class ProductController {
 
     //    상품 디테일
     @GetMapping("/view")
-    public String detail(Model model){
-        List<ProductDetailVo> prodcutDetailList = productService.findByDetail();
-        model.addAttribute("detailproducts",prodcutDetailList);
+    public String detail(@RequestParam("productNumber") Long productNumber, Model model){
+/*        List<ProductDetailVo> prodcutDetailList = productService.findByDetail();
+        model.addAttribute("detailproducts",prodcutDetailList);*/
+        ProductDetailVo prodcutDetails = productService.findByDNumber(productNumber);
+        model.addAttribute("detailproducts",prodcutDetails);
+
+
         return "product/storeproductdetail" ;
     }
 
