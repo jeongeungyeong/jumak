@@ -1,0 +1,314 @@
+/* 상단 배너 */
+.top-banner{
+}
+.top-banner__background{
+    background-image: url("/imgs/main/find/bg_find_drink.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 360px;
+}
+
+.top-banner__background > h4{
+    font-size: 36px;
+    text-align: center;
+    padding: 85px 0 10px;
+    color: #fff;
+    font-weight: 400;
+}
+
+.top-banner__background > p{
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    font-weight: 200;
+}
+
+/* 카테고리 선택 동그라미 */
+.cate-circle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -170px auto 0;
+}
+
+.cate-circle > li{
+    width: 240px;
+    height: 240px;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+
+    margin-left: -20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cate-img{
+    width: 70px;
+    height: 70px;
+}
+
+.cate-title{
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    top: -20px;
+}
+
+.cate-circle li:nth-child(1) .cate-title{
+    top: -17px;
+}
+
+.cate-text{
+    color: #868686;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.4;
+    font-family: chosun;
+}
+
+.cate-circle li:nth-child(1) .cate-img{
+    background: url(/imgs/main/find/ico_circle01.png) no-repeat center top;
+    position: relative;
+    top: 5px;
+}
+
+.cate-circle li:nth-child(2) .cate-img{
+    background: url(/imgs/main/find/ico_circle02.png) no-repeat center top;
+}
+
+.cate-circle li:nth-child(3) .cate-img{
+    background: url(/imgs/main/find/ico_circle03.png) no-repeat center top;
+}
+
+.cate-circle li:nth-child(4) .cate-img{
+    background: url(/imgs/main/find/ico_circle04.png) no-repeat center top;
+}
+.cate-circle li:nth-child(5) .cate-img{
+    background: url(/imgs/main/find/ico_circle05.png) no-repeat center top;
+}
+
+/* 카테 선택 시 활성화 처리 */
+.cate-circle > .on {
+    background-color: #3242af;
+    border: 2px solid #3242af;
+}
+
+.on .cate-title{
+    color: #ffffff;
+}
+
+.on .cate-text{
+    color: #ffffff;
+}
+
+.cate-circle li.on:nth-child(1) .cate-img{
+    background: url(/imgs/main/find/ico_circle01_on.png) no-repeat center top;
+    position: relative;
+    top: 5px;
+}
+
+.cate-circle li.on:nth-child(2) .cate-img{
+    background: url(/imgs/main/find/ico_circle02_on.png) no-repeat center top;
+}
+
+.cate-circle li.on:nth-child(3) .cate-img{
+    background: url(/imgs/main/find/ico_circle03_on.png) no-repeat center top;
+}
+
+.cate-circle li.on:nth-child(4) .cate-img{
+    background: url(/imgs/main/find/ico_circle04_on.png) no-repeat center top;
+}
+.cate-circle li.on:nth-child(5) .cate-img{
+    background: url(/imgs/main/find/ico_circle05_on.png) no-repeat center top;
+}
+
+/* 키워드 선택 */
+.keyword-select__title{
+    margin-top: 70px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+.keyword-select__title > span{
+    color: #868686;
+}
+
+.cate-btns-area{
+    padding-top: 50px;
+    text-align: center;
+}
+
+.cate-list{
+    text-align: center;
+    font-size: 0;
+    margin-bottom: 55px;
+    display: inline-block;
+    width: 716px;
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 30px;
+}
+
+.cate-list > li{
+    margin-right: 15px;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.cate-list span{
+    display: inline-block;
+    width: 131px;
+    height: 43px;
+    box-sizing: border-box;
+    border-radius: 22px;
+    border: 1px solid #dcdcdc;
+    font-size: 17px;
+    font-weight: 300;
+    color: #7d7d7d;
+    text-align: center;
+    line-height: 41px;
+    background-color: #fff;
+}
+
+.cate-list > li > span.active{
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: #ffffff;
+}
+
+/* 검색 버튼들 (다시 선택, 결과보기)*/
+.search-btns{
+    text-align: center;
+}
+
+.search-btns > button{
+    text-align: center;
+    width: 166px;
+    height: 51px;
+    border-radius: 25px;
+    border: 1px solid #000;
+    font-size: 18px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+
+.search-btns > .search-btn{
+    margin-left: 10px;
+    background-color: #000;
+    color: #fff;
+}
+
+/* 결과 리스트 */
+.result-list{
+    width: 90%;
+    margin: 0 auto 100px;
+}
+
+.result-list__grid{
+    padding-top: 110px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1%;
+}
+
+.img-box{
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    text-align: center;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.img-box > img{
+    max-width: 100%;
+}
+
+.text-box{
+    margin-top: 25px;
+    min-height: 130px;
+}
+
+.text-box__name{
+    font-size: 18px;
+    color: #252525;
+    font-family: chosun;
+    font-weight: bold;
+    text-align: center;
+
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.text-box__explain{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #acacac;
+    line-height: 20px;
+    font-family: chosun;
+    text-align: center;
+}
+
+/* 페이징 */
+.pagination{
+    padding-top: 0px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.page-ul{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.page-ul li{
+    margin-right: 9px;
+}
+
+.page-ul li a{
+    display: block;
+    width: 35px;
+    height: 35px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 400;
+    color: #1A191E;
+    line-height: 35px;
+}
+
+.page-ul .active > a{
+    border-radius: 50%;
+    background-color: var(--main-color);
+
+    font-weight: 500;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

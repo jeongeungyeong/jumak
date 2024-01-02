@@ -206,7 +206,7 @@ input {
   min-width: 20px;
   min-height: 20px;
   padding: 0 0 0 27px;
-  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/check_off.png)
+  background: url("/imgs/user/join/check_off.png")
     no-repeat 1px top;
 }
 
@@ -226,31 +226,6 @@ em {
 input:checked[type="checkbox"] {
   background-color: #666;
 }
-
-/* .form_element label.on {
-  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/check_on.png)
-    no-repeat 1px top;
-} */
-/* ---------------------------------------------------- */
-
-/* .form_element label.check_s:hover {
-  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/check_over_small.png)
-    no-repeat 1px 2px;
-} */
-
-/* .form_element label.check_s {
-  min-width: 13px;
-  padding: 0 0 0 22px;
-  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/check_off_small.png)
-    no-repeat 1px 2px;
-  font-size: 12px;
-  line-height: 20px;
-} */
-
-/* .form_element label.check_s.on {
-  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/check_on_small.png)
-    no-repeat 1px 2px;
-} */
 
 .join_agreement_cont .join_agreement_box {
   margin: 0 0 30px 0;
@@ -401,7 +376,7 @@ input[type="radio"] {
 .form_element label.choice_s {
   min-width: 13px;
   /* padding: 2px 0 0 22px; */
-  background: url(https://www.paiksool.com/data/skin/front/a_sr01/img/common/input/radio_off_small.png)
+  background: url("/imgs/user/join/radio_off_small.png")
     no-repeat 1px 0;
 }
 
@@ -431,3 +406,52 @@ button {
   vertical-align: middle;
   line-height: 1.5;
 }
+
+/* 추가 */
+.form_element label.check_s{
+  min-width: 13px;
+  /* padding: 2px 0 0 22px; */
+  background: url("/imgs/user/join/check_off_small.png")
+  no-repeat 1px 0;
+}
+
+.form_element label:hover{
+  background: url("/imgs/user/join/check_over.png")
+  no-repeat 1px 0;
+}
+
+.form_element label.checked{
+  background: url("/imgs/user/join/check_on.png")
+  no-repeat 1px 0;
+}
+
+.form_element label.check_s:hover{
+  background: url("/imgs/user/join/check_over_small.png")
+  no-repeat 1px 0;
+}
+
+.form_element label.check_s.checked{
+  background: url("/imgs/user/join/check_on_small.png")
+  no-repeat 1px 0;
+}
+
+.form_element label.choice_s:hover{
+  background: url("/imgs/user/join/radio_over_small.png")
+  no-repeat 1px 0;
+}
+
+.form_element label.choice_s.checked{
+  background: url("/imgs/user/join/radio_on_small.png")
+  no-repeat 1px 0;
+}
+
+
+/* /추가 */
+
+
+
+
+
+
+
+
