@@ -91,18 +91,24 @@
                                 </tr>
                                 <tr>
                                     <th>대표이미지</th>
-                                    <td>를어케해야할지생각</td>
+                                    <td class="product_img_main"></td>
                                 </tr>
+                               <tr>
+                                   <th>상세이미지</th>
+                                   <td class="product_img"></td>
+                               </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button type="button">이전</button>
-                    <button type="button">수정</button>
+                    <button class="btn_product_prev" type="button">이전</button>
+                    <button class="btn_product_modify" type="button" th:data-num="${product.productNumber}">수정</button>
                 </div>
               
             </div>
         </div>
     </div>
-
+<input type="hidden" class="product-num" th:value="${product.productNumber}">
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script th:src="@{/js/admin/product/productDetail.js}"></script>
 </body>
 </html>

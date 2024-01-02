@@ -10,15 +10,6 @@
         ON PRODUCT_NUMBER = #{productNumber} AND  P.PRODUCT_CATEGORY_NUMBER = PC.PRODUCT_CATEGORY_NUMBER
     </select>
 
-<!--    <select id="selectOne" resultType="productDto">-->
-<!--        select PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,-->
-<!--               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,-->
-<!--               PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,-->
-<!--               PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY-->
-<!--        from JUMAK_PRODUCT-->
-<!--        where PRODUCT_NUMBER = #{productNumber}-->
-<!--    </select>-->
-
     <select id="selectAll" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
@@ -82,18 +73,59 @@
     </select>
 
     <select id="selectSearchTotal" resultType="_int">
-<!--        SELECT COUNT(PRODUCT_NUMBER)-->
-<!--        FROM JUMAK_PRODUCT-->
-<!--        <if test="searchVo.searchType.equals('prdName')">-->
-<!--            WHERE USER_ID like '%' || #{searchVo.keyword} || '%'-->
-<!--        </if>-->
+        SELECT COUNT(PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT
+        <if test="searchVo.searchType.equals('prdName')">
+            WHERE PRODUCT_NAME like '%' || #{searchVo.keyword} || '%'
+        </if>
 
-<!--        <if test="searchVo.searchType.equals('prdNumber')">-->
-<!--            WHERE USER_NICKNAME like '%' || #{searchVo.keyword} || '%'-->
-<!--        </if>-->
+        <if test="searchVo.searchType.equals('prdNumber')">
+            WHERE PRODUCT_NUMBER like '%' || #{searchVo.keyword} || '%'
+        </if>
     </select>
 
+    <delete id="delete">
+        DELETE FROM JUMAK_PRODUCT
+        WHERE PRODUCT_NUMBER = #{productNumber}
+    </delete>
 
 
+<!--    상품등록-->
+    <insert id="insert">
+        <selectKey keyProperty="productNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_PRODUCT.nextval FROM DUAL
+        </selectKey>
+        insert into JUMAK_PRODUCT (PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+                                   PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+                                   PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
+                                   PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY)
+        values (#{productNumber}, #{productCategoryNumber},#{productName},#{productSubtitle},
+                #{productRawMaterial},#{productNetWeight},#{productAlcoholicity},#{productArea},
+                #{productDescription},#{productPrice},#{productInventory},#{productSales},
+                #{productDiscount},SYSDATE,#{productDistillery})
+
+    </insert>
+
+
+<!--    상품정보 수정-->
+    <update id="update">
+        update JUMAK_PRODUCT
+        set PRODUCT_CATEGORY_NUMBER = #{productCategoryNumber},PRODUCT_NAME =#{productName} ,
+            PRODUCT_SUBTITLE =#{productSubtitle} , PRODUCT_RAW_MATERIAL=#{productRawMaterial},
+            PRODUCT_NET_WEIGHT=#{productNetWeight}, PRODUCT_ALCOHOLICITY=#{productAlcoholicity},
+            PRODUCT_AREA=#{productArea},
+            PRODUCT_PRICE=#{productPrice}, PRODUCT_INVENTORY=#{productInventory},
+            PRODUCT_DISCOUNT=#{productDiscount}, PRODUCT_DISTILLERY=#{productDistillery}
+        where PRODUCT_NUMBER = #{productNumber}
+    </update>
+
+    <select id="selectOneUpdate" resultType="productDto">
+        select PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
+               PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_DISCOUNT,
+               PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        from JUMAK_PRODUCT
+        where PRODUCT_NUMBER = #{productNumber}
+    </select>
 
 </mapper>

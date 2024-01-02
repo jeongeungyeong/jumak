@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @NoArgsConstructor
 public class OrderDetailDto {
     private Long orderDetailNumber;
-    private Long orderDetailNumberCount;
+    private Long orderDetailCount;
     private Long productNumber;
     private Long orderNumber;
 }

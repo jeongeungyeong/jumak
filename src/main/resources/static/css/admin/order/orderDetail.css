@@ -29,7 +29,7 @@
     height : 40px;
 }
 
-.user_detail > table{
+.order_detail > table{
     width: 70%;
     border: 0;
     border-spacing: 0;
@@ -59,7 +59,7 @@ h3{
     text-align: center;
 }
 
-.user_detail{
+.order_detail{
     padding-bottom: 50px;
 }
 
@@ -82,4 +82,11 @@ button{
 
 button:hover{
     background-color: antiquewhite;
+}
+
+.product_name,
+.product_detail_name > th{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

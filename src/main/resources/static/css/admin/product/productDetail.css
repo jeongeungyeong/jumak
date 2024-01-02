@@ -48,3 +48,11 @@ button{
 button:hover{
     background-color: antiquewhite;
 }
+
+.product_img_main>img{
+    max-width: 200px;
+}
+
+.product_img > img{
+    max-width: 500px;
+}

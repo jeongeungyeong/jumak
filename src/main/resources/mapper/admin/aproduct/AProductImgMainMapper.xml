@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.admin.aproduct.AProductImgMainMapper">
+   <insert id="insert">
+       INSERT INTO JUMAK_PRODUCT_IMG_MAIN (PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH,
+                                           PRODUCT_IMG_MAIN_UUID, PRODUCT_NUMBER)
+       VALUES (SEQ_PRODUCT_IMG_MAIN.nextval,#{productImgMainName},#{productImgMainPath},
+               #{productImgMainUuid},#{productNumber})
+   </insert>
+
+    <select id="selectOne" resultType="productImgMainDto">
+        SELECT PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH,
+               PRODUCT_IMG_MAIN_UUID, PRODUCT_NUMBER
+        FROM JUMAK_PRODUCT_IMG_MAIN
+        WHERE PRODUCT_NUMBER = #{productNumber}
+  </select>
+</mapper>

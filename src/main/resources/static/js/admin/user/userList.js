@@ -9,7 +9,6 @@ $('.btn_user_detail').on('click', function (){
 // 유저 삭제 
 $('.btn_user_remove').on('click', function (){
     let num = $(this).data('num');
-    console.log('1');
 
         $.ajax({
             url : `/admin/user/delete/${num}`,

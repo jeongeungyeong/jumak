@@ -7,7 +7,7 @@
     font-size: 14px;
     text-indent: initial;
     border-spacing: 2px;
-    border-top: 1px solid #999999; 
+    border-top: 1px solid #999999;
     margin: auto;
 }
 
@@ -57,4 +57,4 @@ input[type=text]{
     outline: none;
     padding-left: 10px;
     background-color: rgb(238, 238, 238);
-  }
+}

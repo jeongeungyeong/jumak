@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자페이지</title>
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/order/orderList.css}">
+</head>
+
+<body>
+    <header>
+        <div class="header_">
+            <img src="" alt="">
+        </div>
+    </header>
+    <div>
+        <div></div>
+        <div class="sub_content">
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
+
+            <!-- ----------------------------------------- -->
+            <div class="content">
+                <div>
+                    <h1>주문관리</h1>
+                </div>
+                <div class="order_search">
+                    <form action="/admin/order/search">
+                    <select name="searchType">
+                        <option value="orderNumber">주문번호</option>
+                        <option value="userName">구매자이름</option>
+                    </select>
+                    <input type="text"name="keyword">
+                    <button>검색</button>
+                    </form>
+                </div>
+
+
+                <div>
+                    <div class="admin_order_table">
+                        <table>
+                            <colgroup>
+                                <col style="width:10%;">
+                                <col style="width:15%;">
+                                <col>
+                                <col style="width:15%;">
+                                <col style="width:15%;">
+<!--                                <col style="width:13%;">-->
+                                <col style="width:15%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>주문번호</th>
+                                    <th>주문일</th>
+                                    <th>구매자아이디</th>
+                                    <th>금액</th>
+                                    <th>배송상태</th>
+<!--                                    <th>주문상태</th>-->
+                                    <th>주문상세</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="order : ${orderList}">
+                                    <td th:text="${order.orderNumber}"></td>
+                                    <td th:text="${order.orderDate}"></td>
+                                    <td th:text="${order.userName}"></td>
+                                    <td th:text="${order.paymentTotalAmount}">3,300</td>
+                                    <td >
+                                        <select th:data-num="${order.orderNumber}" onchange="f_oStatusChange(this)" class="orderStatus">
+                                            <option value="2"  th:selected="${order.orderStatusNumber == 2}">결제완료</option>
+                                            <option value="3"  th:selected="${order.orderStatusNumber == 3}">상품준비중</option>
+                                            <option value="4"  th:selected="${order.orderStatusNumber == 4}">배송중</option>
+                                            <option value="5"  th:selected="${order.orderStatusNumber == 5}">배송완료</option>
+                                            <option value="7"  th:selected="${order.orderStatusNumber == 7}">취소완료</option>
+                                            <option value="8"  th:selected="${order.orderStatusNumber == 8}">반품중</option>
+                                            <option value="9"  th:selected="${order.orderStatusNumber == 9}">반품완료</option>
+                                            <option value="10" th:selected="${order.orderStatusNumber == 10}">교환중</option>
+                                            <option value="11" th:selected="${order.orderStatusNumber == 11}">교환완료</option>
+                                            <option value="12" th:selected="${order.orderStatusNumber == 12}">환불중</option>
+                                            <option value="13" th:selected="${order.orderStatusNumber == 13}">환불완료</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <button class="btn_order_detail" type="button" th:data-num="${order.orderNumber}">
+                                            주문상세 
+                                            <!-- 주문상세에 상품-주문테이블 정보 -->
+                                        </button>
+                                    </td>                         
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+                <!--페이징 처리-->
+                <div class="paging" >
+                    <div class="pages" th:object="${pageInfo}">
+
+                        <a th:href="@{/admin/order(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
+                            <span class="page-num prev">&lt</span>
+                        </a>
+
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            <a th:href="@{/admin/order(page=${i})}" class="page-a">
+                                <span class="page-num" th:classappend="${i==pageInfo.aCriteria.page} ? 'active' : '' " th:text="${i}"></span>
+                            </a>
+                        </th:block>
+
+
+                        <a th:href="@{/admin/order(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+                            <span class="page-num next">&gt</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script th:src="@{/js/admin/order/orderList.js}"></script>
+</body>
+
+</html>
