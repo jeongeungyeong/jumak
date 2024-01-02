@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/mypage/memeber_info_cheak/member_info_cheak.css}" />
+  </head>
+  <header class="header">
+    <h1>수상한주막</h1>
+  </header>
+  <body>
+    <div class="my_page">
+      <!-- 사이드 메뉴 시작 -->
+      <div class="sub_menu_box">
+        <div class="sub_menu_content">
+          <h2>마이페이지</h2>
+          <ul class="sub_menu_list">
+            <li>
+              <h2>쇼핑정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 주문목록/배송조회</a>
+                </li>
+                <li>
+                  <a href="">- 취소/반품/교환 내역</a>
+                </li>
+                <li>
+                  <a href="">- 환불/입금 내역</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>고객샌터</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 1:1 문의</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>회원정보</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 회원정보 변경</a>
+                </li>
+                <li>
+                  <a href="">- 회원 탈퇴</a>
+                </li>
+                <li>
+                  <a href="">- 배송지 관리</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <h2>커뮤니티</h2>
+              <ul class="sub_menu_samll_list">
+                <li>
+                  <a href="">- 작성글 확인</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- 사이드 메뉴 끝 -->
+      <!-- 메인 시작 -->
+      <div class="mypage_main_box">
+        <div class="mypage_main_content_box_1">
+          <!-- 회원정보 변경 시작 -->>
+          <div class="info_content">
+            <h2>회원정보 변경</h2>
+          </div>
+          <div class="detail_content">
+            <form action="" id="info_form">
+              <div class="member_info_msg">
+                <h3>
+                  회원님의 정보를 안전하게 보호하기 위해 비밀번호를 다시 한번
+                  확인해 주세요
+                </h3>
+              </div>
+              <div class="detail_box">
+                <h3>아이디</h3>
+                <h3 class="member_id">!회원 아이디!</h3>
+                <h3>비밀번호</h3>
+                <input type="password" />
+              </div>
+              <div class="button_content">
+                <a href="" id="cancel">취소</a>
+                <button type="submit" id="button">인증하기</button>
+              </div>
+            </form>
+          </div>
+          <!-- 회원정보 변경 끝 -->
+          <!-- 날짜 선택 시작 -->
+          <!-- 날짜 선택 끝 -->
+          <!-- 조회 시작 -->
+          <!-- 조회 끝 -->
+        </div>
+      </div>
+    </div>
+    <footer>
+      <h3>footer</h3>
+    </footer>
+  </body>
+</html>
