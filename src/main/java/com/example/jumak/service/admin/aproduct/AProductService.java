@@ -42,4 +42,22 @@ public class AProductService {
     public int findSearchTotal(ASearchVo aSearchVo){
         return aProductMapper.selectSearchTotal(aSearchVo);
     }
+
+    //    물품 삭제
+    public void remove(Long productNumber){
+        aProductMapper.delete(productNumber);
+    }
+
+    //    물품 등록
+    public void register(ProductDto productDto){
+        aProductMapper.insert(productDto);
+    }
+
+//    물품 수정
+    public void modify(ProductDto productDto){aProductMapper.update(productDto);}
+
+    //    물품 수정용 단건 조회 쿼리
+    public ProductDto findOneUpdate(Long productNumber){
+        return aProductMapper.selectOneUpdate(productNumber);
+    }
 }

@@ -28,7 +28,7 @@ h3{
 }
 
 
-button{
+.btn_news_add, .btn_news_list{
     left: 740px;
     display: block;
     position: relative;
@@ -45,7 +45,7 @@ button{
     border-radius: 7px;
     transition: all 0.2s ;}
 
-button:hover{
+.btn_news_add:hover, .btn_news_list:hover{
     background-color: antiquewhite;
 }
 input[type=text]{

@@ -29,7 +29,7 @@
                 </div>
 
 
-                <form th:action="@{/admin/product/add}" method="post" enctype="multipart/form-data">
+                <form th:action="@{/admin/product/modify}" method="post" enctype="multipart/form-data">
                 <div>
                     <div>
                         <table class="product_add_table">
@@ -40,28 +40,28 @@
                             <tbody>
                                 <tr>
                                     <th>상품명</th>
-                                    <td><input type="text"  name="productName"></td>
+                                    <td><input type="text"  name="productName" th:value="${product.productName}"></td>
                                 </tr>
                                 <tr>
                                     <th>카테고리</th>
                                     <td>
-                                        <input type="radio" name="productCategoryNumber" value="1" checked="checked">막걸리
-                                        <input type="radio" name="productCategoryNumber" value="2">탁주
-                                        <input type="radio" name="productCategoryNumber" value="3">증류주
-                                        <input type="radio" name="productCategoryNumber" value="4">리큐르
-                                        <input type="radio" name="productCategoryNumber" value="5">약주
-                                        <input type="radio" name="productCategoryNumber" value="6">청주
-                                        <input type="radio" name="productCategoryNumber" value="7">와인
-                                        <input type="radio" name="productCategoryNumber" value="8">과실주
+                                        <input type="radio" name="productCategoryNumber" value="1" th:checked="${product.productCategoryNumber == 1}">막걸리
+                                        <input type="radio" name="productCategoryNumber" value="2" th:checked="${product.productCategoryNumber == 2}">탁주
+                                        <input type="radio" name="productCategoryNumber" value="3" th:checked="${product.productCategoryNumber == 3}">증류주
+                                        <input type="radio" name="productCategoryNumber" value="4" th:checked="${product.productCategoryNumber == 4}">리큐르
+                                        <input type="radio" name="productCategoryNumber" value="5" th:checked="${product.productCategoryNumber == 5}">약주
+                                        <input type="radio" name="productCategoryNumber" value="6" th:checked="${product.productCategoryNumber == 6}">청주
+                                        <input type="radio" name="productCategoryNumber" value="7" th:checked="${product.productCategoryNumber == 7}">와인
+                                        <input type="radio" name="productCategoryNumber" value="8" th:checked="${product.productCategoryNumber == 8}">과실주
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>양조장</th>
-                                    <td><input type="text" name="productDistillery"></td>
+                                    <td><input type="text" name="productDistillery"  th:value="${product.productDistillery}"></td>
                                 </tr>
                                 <tr>
                                     <th>상품부제목</th>
-                                    <td><input type="text"  name="productSubtitle"></td>
+                                    <td><input type="text"  name="productSubtitle"  th:value="${product.productSubtitle}"></td>
                                 </tr>
                                 <tr>
                                     <th>상품설명이미지</th>
@@ -69,31 +69,31 @@
                                 </tr>
                                 <tr>
                                     <th>주원료</th>
-                                    <td><input type="text"  name="productRawMaterial"></td>
+                                    <td><input type="text"  name="productRawMaterial"  th:value="${product.productRawMaterial}"></td>
                                 </tr>
                                 <tr>
                                     <th>용량</th>
-                                    <td><input type="text"  name="productNetWeight"></td>
+                                    <td><input type="text"  name="productNetWeight"  th:value="${product.productNetWeight}"></td>
                                 </tr>
                                 <tr>
                                     <th>생산지역</th>
-                                    <td><input type="text"  name="productArea"></td>
+                                    <td><input type="text"  name="productArea"  th:value="${product.productArea}"></td>
                                 </tr>
                                 <tr>
                                     <th>도수</th>
-                                    <td><input type="text" name="productAlcoholicity"></td>
+                                    <td><input type="text" name="productAlcoholicity"  th:value="${product.productAlcoholicity}"></td>
                                 </tr>
                                 <tr>
                                     <th>재고수량</th>
-                                    <td><input type="text" name="productInventory"></td>
+                                    <td><input type="text" name="productInventory"  th:value="${product.productInventory}"></td>
                                 </tr>
                                 <tr>
                                     <th>가격</th>
-                                    <td><input type="text"  name="productPrice"></td>
+                                    <td><input type="text"  name="productPrice"  th:value="${product.productPrice}"></td>
                                 </tr>
                                 <tr>
                                     <th>할인률</th>
-                                    <td><input type="text" name="productDiscount"></td>
+                                    <td><input type="text" name="productDiscount"  th:value="${product.productDiscount}"></td>
                                 </tr>
                                 <tr>
                                     <th>상품대표이미지</th>
@@ -102,8 +102,9 @@
                             </tbody>
                         </table>
                     </div>
+                    <input type="hidden" name="productNumber" th:value="${product.productNumber}"/>
                     <button class="btn_product_list" type="button">취소</button>
-                    <button class="btn_product_add">저장</button>
+                    <button class="btn_product_add" >저장</button>
                 </div>
             </form>
             </div>
