@@ -14,6 +14,7 @@
         <typeAlias type="com.example.jumak.domain.vo.admin.ACriteria" alias="aCriteria"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.APageVo" alias="aPageVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AOrderDetailVo" alias="aOrderDetailVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.admin.AQaVo" alias="aQaVo"/>
 
         <typeAlias type="com.example.jumak.domain.dto.product.ProductDto" alias="productDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductImgMainDto" alias="productImgMainDto"/>
@@ -23,8 +24,6 @@
         <typeAlias type="com.example.jumak.domain.dto.product.ProductReviewImgDto" alias="productReviewImgDto"/>
 
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
-
-
         <typeAlias type="com.example.jumak.domain.vo.product.ProductReviewVo" alias="productReviewVo"/>
         <typeAlias type="com.example.jumak.domain.vo.product.ProductDetailVo" alias="productDetailVo"/>
         <typeAlias type="com.example.jumak.domain.dto.order.OrderDto" alias="orderDto"/>

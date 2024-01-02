@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
-    
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/qa/adminQa.css">
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/qa/adminQa.css}">
 </head>
 
 <body>
@@ -19,53 +19,26 @@
     <div>
         <div></div>
         <div class="sub_content">
-            <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/productList.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/orderList.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
 
             <!-- ----------------------------------------- -->
             <div class="content">
                 <div>
                     <h1>1:1문의</h1>
                 </div>
-                <div class="user_search">
+                <div class="qa_search">
                     <select>
-                        <option value="prdName">상품명</option>
-                        <option value="prdNumber">품번</option>
+                        <option value="prdName">작성자</option>
+                        <option value="prdNumber">작성상태</option>
+                        <option value="prdNumber">카테고리</option>
+
                     </select>
                     <input type="text" id="" placeholder>
                     <button>검색</button>
                 </div>
                 <div>
-                    <div class="admin_user_table">
+                    <div class="qa_list_table">
                         <table>
                             <colgroup>
                                 <col style="width:10%;">
@@ -86,22 +59,46 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>1</th>
-                                    <th>상품문의</th>
-                                    <th>ㅁㄴㅇㄻㄴㅇㄻㄴㅇㄹ</th>
-                                    <th>아무무</th>
-                                    <th>2023-01-01</th> 
-                                    <th>답변완료</th>                               
+                                <tr class="qaList" th:data-num="${list.qaNumber}" th:each="list : ${qaList}">
+                                    <th th:text="${list.qaNumber}"></th>
+                                    <th th:text="${list.qaCategoryName}"></th>
+                                    <th th:text="${list.qaTitle}"></th>
+                                    <th th:text="${list.userName}"></th>
+                                    <th th:text="${list.qaDate}"></th>
+                                    <th th:text="${#strings.isEmpty(list.qaReply)?'미답변':'답변완료'}"></th>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
+                <!--페이징 처리-->
+                <div class="paging" >
+                    <div class="pages" th:object="${pageInfo}">
+
+                        <a th:href="@{/admin/qa(page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
+                            <span class="page-num prev">&lt</span>
+                        </a>
+
+                        <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+                            <a th:href="@{/admin/qa(page=${i})}" class="page-a">
+                                <span class="page-num" th:classappend="${i==pageInfo.aCriteria.page} ? 'active' : '' " th:text="${i}"></span>
+                            </a>
+                        </th:block>
+
+
+                        <a th:href="@{/admin/qa(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+                            <span class="page-num next">&gt</span>
+                        </a>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+    <script th:src="@{/js/admin/qa/adminQa.js}"></script>
 </body>
 
 </html>
