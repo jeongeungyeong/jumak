@@ -8,14 +8,16 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class OrderDetailVo {
-    private Long orderNumber;
+
     private String orderDate;
-    private Long orderStatusNumber;
-    private String orderStatusName;
-    private Long orderDetailCount;
-    private Long orderDetailNumber;
+    private Long orderNumber;
     private String productName;
     private Long productPrice;
+    private Long orderDetailCount;
+    private String orderStatusName;
+    private Long reviewCount;
     private Long userNumber;
-    private Long orderReviewCount;
+
+    private String startDate;
+    private String endDate;
 }

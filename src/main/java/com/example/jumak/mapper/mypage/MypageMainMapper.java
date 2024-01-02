@@ -1,7 +1,5 @@
 package com.example.jumak.mapper.mypage;
 
-import com.example.jumak.domain.dto.madang.MadangDto;
-import com.example.jumak.domain.dto.order.PaymentDto;
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
@@ -11,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Mapper
-public interface MypageMapper {
+public interface MypageMainMapper {
     //회원 이름 조회
     String selectName(Long userNumber);
 
@@ -23,10 +21,12 @@ public interface MypageMapper {
 
 //    배송 상태 조회
     List<OrderStatusVo> selectOrderStatusCount(Long userNumber);
+
 //    배송 상태 취소/교환/반품 조회
     List<OrderStatusVo> selectOrderCancelStatusCount(Long userNumber);
 
-//  배송 상세 내역 조회
+
+//    최근 주문내역 리스트 조회
     List<OrderDetailVo> selectOrderDetail(Long userNumber);
 
     void insert(UserDto userDto);

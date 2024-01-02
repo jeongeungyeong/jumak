@@ -84,7 +84,7 @@ $(document).ready(function() {
 
         $.ajax({
             type: "GET",
-            url: "/mypages/search-shipping",
+            url: "/mypages/cancel-shipping",
             data: { startDate: startDate, endDate: endDate },
             success: function(response) {
                 updateTable(response);

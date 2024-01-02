@@ -92,7 +92,7 @@
 
   /* 날짜 박스 */
   .date_name_box{
-    margin-top: 70px;
+    margin-top: 30px;
     margin-bottom: 10px;
     font-size: 15px;
     font-weight: bold;
@@ -146,4 +146,16 @@
   .table_data{
     text-align: center;
     margin: 10px 0;
+  }
+
+  #datepicker_start, #datepicker_end{
+    width: 120px;
+  }
+
+  .date_picker_btn {
+    display: flex;
+  }
+
+  .date_picker_btn > input {
+    margin-right: 10px;
   }
