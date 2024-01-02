@@ -33,18 +33,18 @@ class UserMapperTest {
         userDto.setUserPhoneNumber("021234567");
         userDto.setUserAddress("노원구");
         userDto.setUserAddressDetail("상계로1길");
-//        userDto.setUserZipcode("1234");
+        userDto.setUserZipcode(12345L);
         userDto.setUserGradeNumber(1L);
     }
 
-//    @Test @DisplayName("회원 저장 및 조회 테스트")
-//    void insertAndSelect(){
-//        userMapper.insert(userDto);
-//
-//        UserDto foundUser = userMapper.selectByName(userDto.getUserName());
-//
-//        assertThat(foundUser.getUserName()).isEqualTo(userDto.getUserName());
-//    }
+    @Test @DisplayName("회원 저장 및 조회 테스트")
+    void insertAndSelect(){
+        userMapper.insert(userDto);
+
+        Long userNumber = userMapper.selectUserNumber(userDto.getUserId(), userDto.getUserPassword()).get();
+
+        assertThat(userNumber).isEqualTo(userDto.getUserNumber());
+    }
 //
 //    @Test @DisplayName("회원번호 조회")
 //    void selectUserNumber() {

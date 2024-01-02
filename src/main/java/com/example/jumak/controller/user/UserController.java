@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
@@ -23,12 +24,13 @@ public class UserController {
         return "user/join/join-agree";
     }
 
-    @GetMapping("/joinInfo")
+//    페이지 이동 처리
+    @GetMapping("/join")
     public String joinInfo(){
         return "user/join/join_info";
     }
 
-    @GetMapping("/join-ok")
+    @GetMapping("/join/success")
     public String joinOk(){
         return "user/join/join_ok";
     }
@@ -74,26 +76,31 @@ public class UserController {
     }
 
 // 회원가입 처리
-    @PostMapping("/joinInfo")
-    public RedirectView join(UserDto userDto){
+    @PostMapping("/join")
+    public RedirectView join(UserDto userDto, RedirectAttributes redirectAttributes){
         userService.register(userDto);
-        return new RedirectView("/user/login/login");
+
+        redirectAttributes.addFlashAttribute("userNickname", userDto.getUserNickname());
+        return new RedirectView("/user/join/success");
     }
 
 // 로그인 처리
     @PostMapping("/login")
     public RedirectView login(String userId, String userPassword, HttpServletRequest req){
-        Long userNumber = userService.findUserNumber(userId, userPassword);
+        UserDto userDto = userService.findLoginInfo(userId, userPassword);
+
         HttpSession session = req.getSession();
-        session.setAttribute("userNumber", userNumber);
-        return new RedirectView("/admin");  //메인화면경로 설정하기
+        session.setAttribute("userNumber", userDto.getUserNumber());
+        session.setAttribute("userNickname", userDto.getUserNickname());
+
+        return new RedirectView("/");  //메인화면경로 설정하기
     }
 
 // 로그아웃 처리
     @GetMapping("/logout")
     public RedirectView logout(HttpServletRequest req){
         req.getSession().invalidate();
-        return new RedirectView("/admin"); //메인화면경로 설정하기
+        return new RedirectView("/"); //메인화면경로 설정하기
     }
 
     }
