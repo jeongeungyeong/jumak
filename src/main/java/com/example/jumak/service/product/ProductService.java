@@ -2,6 +2,7 @@ package com.example.jumak.service.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.vo.product.Criteria;
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import com.example.jumak.domain.vo.product.ProductVo;
 import com.example.jumak.mapper.product.ProductMapper;
@@ -39,6 +40,8 @@ public class ProductService {
    public List<ProductListVo> findAll(){return productMapper.arrSale();}
 
 //    상품 상세정보 조회
-
+  public List<ProductDetailVo> findByDetail(){
+       return productMapper.selectByDetail();
+  };
 
 }

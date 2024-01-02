@@ -1,6 +1,7 @@
 package com.example.jumak.service.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import com.example.jumak.mapper.product.ProductMapper;
 import org.assertj.core.api.Assertions;
@@ -15,9 +16,11 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.mock;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -28,10 +31,12 @@ class ProductServiceTest {
     ProductService productService;
 
     ProductDto productDto;
+    ProductDetailVo productDetailVo;
 
     @BeforeEach
     void setUp(){
         productDto = new ProductDto();
+        productDetailVo = new ProductDetailVo();
     }
 
     @Test
@@ -64,4 +69,13 @@ class ProductServiceTest {
 //        assertThat(productList).contains(productDto);
     }
 
+    @Test
+    void findByDetail() {
+        // given
+            doReturn(List.of(productDetailVo)).when(productMapper).selectByDetail();
+        // when
+        List<ProductDetailVo> productDetailList = productService.findByDetail();
+        // then
+        Assertions.assertThat(productDetailList).contains(productDetailVo);
+    }
 }

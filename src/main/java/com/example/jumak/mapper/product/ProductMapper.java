@@ -1,6 +1,7 @@
 package com.example.jumak.mapper.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -30,4 +31,7 @@ List<ProductDto> arrLPrice();
 List<ProductDto> arrHPrice();
 
     List<ProductListVo> selectByOrderCond(@Param("orderCond") String orderCond, @Param("cate") String cate);
+
+//     상품 디테일 페이지
+    List<ProductDetailVo> selectByDetail();
 }

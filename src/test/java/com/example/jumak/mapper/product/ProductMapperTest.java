@@ -57,4 +57,9 @@ class ProductMapperTest {
     void arrHPrice() {
         productMapper.arrHPrice();
     }
+
+    @Test
+    void selectByDetail() {
+        productMapper.selectByDetail();
+    }
 }

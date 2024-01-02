@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>게시물 상세보기</title>
-  <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
+  <title>주모's store</title>
+  <!--    <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />-->
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
-  <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />
+  <!--    <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />-->
   <link rel="stylesheet" th:href="@{/css/product/storeproductdetailtest.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
   <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
@@ -16,79 +16,58 @@
 <body>
 <header th:replace="~{/fragments/header :: header}"></header>
 <main>
-<div class="container">
-  <div class="post-wrap">
-    <div class="content_box">
-      <!-- //location_wrap -->
-      <!-- 상품 상단 -->
-      <div class="item_photo_info_sec">
-        <div class="item_photo_view_box">
-          <div class="item_photo_view">
+  <div class="product_content-wrap">
+    <div class="top-box">
 
+      <!--  상품 상단 정보-->
+      <div class="product-content_box" >
+        <!-- 상품 이미지 상단 -->
 
-            <!-- //item_photo_slide -->
-            <div class="item_photo_big">
-                  <span class="img_photo_big"
-                  ><a
-                  ><img
-                          src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100000919/100000919_detail_074.jpg"
-                          width="606"
-                          alt="시나브로 피에스 화이트스파클링와인 5도 750ml"
-                          title="시나브로 피에스 화이트스파클링와인 5도 750ml"
-                          class="middle" /></a
-                  ></span>
-              <!-- <a href="#lyZoom" class="btn_zoom zoom_layer_open btn_open_layer"><img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/icon/goods_icon/icon_zoom.png" alt="이미지 확대 보기"></a> -->
+        <section class="product-img">
+          <div class="product-img__content-box">
+            <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100000919/100000919_detail_074.jpg">
+          </div>
+
+        </section>
+
+        <section class="product-info">
+          <div class="product-info__topHead-box">
+            <div class="product-info__topHead__title">
+              <h2>와인/과실주</h2>
+              <br>
+              <h3>시나브로 피에스 화이트스파클링와인 5도 750ml</h3>
+            </div>
+          </div>
+          <!--                    //product-info__topHead-box-->
+          <div class="product-info__price-box">
+            <div class="discount-rate">
+              7<span>%</span>
+            </div>
+            <div class="product-info__price">
+              <div class="origin-price disib">
+                <del
+                ><span><em></em>39,000원</span>
+                </del>
+
+              </div>
+
+              <div class="sale-price disib">
+                <strong
+                ><strong><em></em>36,270원</strong></strong
+                >
+              </div>
+
             </div>
 
-            <!-- //item_photo_big -->
           </div>
-          <!-- //item_photo_view -->
-        </div>
-        <!-- //item_photo_view_box -->
 
-        <form name="frmView" id="frmView">
-          <div class="item_info_box">
-            <!-- //time_sale -->
-            <div class="item_tit_detail_cont">
-              <div class="item_detail_tit">
-                <h2>와인/과실주</h2>
-                <br />
+          <!-- //product-info__price-box-->
 
-                <h3>시나브로 피에스 화이트스파클링와인 5도 750ml</h3>
+          <div class="product-info__table-box">
 
-                <p class="sub-tit"></p>
-              </div>
-              <div class="item_detail_tit">
-                <div class="price-wrap">
-                  <div class="discount-rate">7<span>%</span></div>
-
-                  <div class="table">
-                    <div class="table-cell">
-                      <div class="origin-price disib">
-                        <del
-                        ><span><em></em>39,000원</span>
-                        </del>
-                      </div>
-
-                      <div class="sale-price disib">
-                        <strong
-                        ><strong><em></em>36,270원</strong></strong
-                        >
-                      </div>
-                    </div>
-                  </div>
-
-
-
-
-                  <!-- //btn_qa_share_box -->
-                </div>
-              </div>
-              <div class="item_detail_list">
-
-                <table
-                        class="tbl"
-                        style="
+            <table
+                    class="tbl"
+                    style="
                         border-collapse: collapse;
                         border-spacing: 0;
                         table-layout: fixed;
@@ -97,132 +76,134 @@
                         margin-bottom: 20px;
                         border-bottom: 1px solid #dedede;
                       "
+            >
+              <colgroup>
+                <col width="" />
+                <col width="" />
+                <col width="" />
+                <col width="" />
+              </colgroup>
+              <thead>
+              <tr>
+                <th scope="col">용량(ml)</th>
+                <th scope="col">도수(%)</th>
+                <th scope="col">양조장</th>
+                <th scope="col">생산지역</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
                 >
-                  <colgroup>
-                    <col width="" />
-                    <col width="" />
-                    <col width="" />
-                    <col width="" />
-                  </colgroup>
-                  <thead>
-                  <tr>
-                    <th scope="col">용량(ml)</th>
-                    <th scope="col">도수(%)</th>
-                    <th scope="col">양조장</th>
-                    <th scope="col">생산지역</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td
-                            style="
+                  750
+                </td>
+                <td
+                        style="
                               text-align: center;
                               padding: 20px 0;
                               font-weight: 300;
                             "
-                    >
-                      750
-                    </td>
-                    <td
-                            style="
-                              text-align: center;
-                              padding: 20px 0;
-                              font-weight: 300;
-                            "
-                    >
-                      5
-                    </td>
-                    <td
-                            style="
-                              text-align: center;
-                              padding: 20px 0;
-                              font-weight: 300;
-                            "
-                    >
-                      시나브로와이너리
-                    </td>
-                    <td
-                            style="
-                              text-align: center;
-                              padding: 20px 0;
-                              font-weight: 300;
-                            "
-                    >
-                      충청북도 영동군
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-
-                <dl class="item_price">
-                  <dt>판매가</dt>
-                  <dd>
-                    <strong><strong>36,270</strong></strong
-                    >원
-                  </dd>
-                </dl>
-                <dl>
-                  <dt>구매제한</dt>
-                  <dd>옵션당 최소 1개</dd>
-                </dl>
-
-                <dl class="item_delivery">
-                  <dt>배송비</dt>
-                  <dd>
-                    <strong>0원</strong>
-                    <input type="hidden" name="deliveryCollectFl" value="pre" />
-                    <strong> / 주문시결제(선결제)</strong>
-
-                    <div class="delivery-detail">
-                      <input
-                              type="hidden"
-                              name="deliveryMethodFl"
-                              value="delivery"
-                      />
-                      <div class="delivery-division">택배</div>
-                    </div>
-                  </dd>
-                </dl>
-              </div>
-              <!-- //item_detail_list -->
-              <div class="item_choice_list">
-                <table
-                        class="option_display_area"
-                        border="0"
-                        cellpadding="0"
-                        cellspacing="0"
                 >
-                  <colgroup>
-                    <col width="330px" />
-                    <col />
-                    <col width="80px" />
-                    <col width="40px" />
-                  </colgroup>
-                  <tbody id="option_display_item_0">
-                  <tr class="check optionKey_0">
-                    <td class="cart_prdt_name">
-                      <input type="hidden" name="goodsNo[]" value="100000919" />
-                      <input type="hidden" name="optionSno[]" value="995" />
-                      <input type="hidden" name="goodsPriceSum[]" value="36270" />
-                      <input type="hidden" name="addGoodsPriceSum[]" value="0" />
-                      <input type="hidden" name="couponApplyNo[]" value="" />
-                      <input type="hidden" name="couponSalePriceSum[]" value="" />
-                      <input type="hidden" name="couponAddPriceSum[]" value="" />
-                      <div class="cart_tit_box">
-                        <strong class="cart_tit">
+                  5
+                </td>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+                >
+                  시나브로와이너리
+                </td>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+                >
+                  충청북도 영동군
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+            <dl class="item_price">
+              <dt>판매가</dt>
+              <dd>
+                <strong><strong>36,270</strong></strong
+                >원
+              </dd>
+            </dl>
+            <dl>
+              <dt>구매제한</dt>
+              <dd>옵션당 최소 1개</dd>
+            </dl>
+
+            <dl class="item_delivery">
+              <dt>배송비</dt>
+              <dd>
+                <strong>0원</strong>
+                <input type="hidden" name="deliveryCollectFl" value="pre" />
+                <strong> / 주문시결제(선결제)</strong>
+
+                <div class="delivery-detail">
+                  <input
+                          type="hidden"
+                          name="deliveryMethodFl"
+                          value="delivery"
+                  />
+                  <div class="delivery-division">택배</div>
+                </div>
+              </dd>
+            </dl>
+
+          </div>
+          <!--    //product-info__table-box-->
+
+          <div class="item_choice_list">
+            <table
+                    class="option_display_area"
+                    border="0"
+                    cellpadding="0"
+                    cellspacing="0"
+            >
+              <colgroup>
+                <col width="330px" />
+                <col />
+                <col width="80px" />
+                <col width="40px" />
+              </colgroup>
+              <tbody id="option_display_item_0">
+              <tr class="check optionKey_0">
+                <td class="cart_prdt_name">
+                  <input type="hidden" name="goodsNo[]" value="100000919" />
+                  <input type="hidden" name="optionSno[]" value="995" />
+                  <input type="hidden" name="goodsPriceSum[]" value="36270" />
+                  <input type="hidden" name="addGoodsPriceSum[]" value="0" />
+                  <input type="hidden" name="couponApplyNo[]" value="" />
+                  <input type="hidden" name="couponSalePriceSum[]" value="" />
+                  <input type="hidden" name="couponAddPriceSum[]" value="" />
+                  <div class="cart_tit_box">
+                    <strong class="cart_tit">
                                 <span
                                 >시나브로 피에스 화이트스파클링와인 5도 750ml</span
                                 >
 
-                          <span id="option_text_display_0"></span>
-                        </strong>
-                      </div>
-                      <!-- //cart_tit_box -->
-                    </td>
-                    <!-- //cart_prdt_name -->
-                    <td>
+                      <span id="option_text_display_0"></span>
+                    </strong>
+                  </div>
+                  <!-- //cart_tit_box -->
+                </td>
+                <!-- //cart_prdt_name -->
+                <td>
 
-                      <p class="cartStock">
+                  <p class="cartStock">
    <span>
    <button type="button" class="plus">+</button>
    <input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
@@ -252,496 +233,230 @@
     });
    </script>
 
-                      </p>
-                      <!-- <span class="count">
-                         <span class="goods_qty">
-                           <input
-                                   type="text"
-                                   name="goodsCnt[]"
-                                   class="text goodsCnt_0"
-                                   title="수량"
-                                   value="1"
-                                   data-key="0"
-                                   data-value="1"
-                                   data-stock="0"
-                                   onchange="goodsViewController.input_count_change(this, '1');return false;"
-                           />
-                           <span>
-                             <button
-                                     type="button"
-                                     class="up goods_cnt"
-                                     title="증가"
-                                     value="up^|^0"
-                             >
-                               증가
-                             </button>
-                             <button
-                                     type="button"
-                                     class="down goods_cnt"
-                                     title="감소"
-                                     value="dn^|^0"
-                             >
-                               감소
-                             </button>
-                           </span>
-                         </span>
-                       </span>-->
-                      <!-- //count -->
-                    </td>
-                    <td class="item_choice_price">
-                      <input type="hidden" name="optionPriceSum[]" value="0" />
-                      <input type="hidden" name="option_price_0" value="0.00" />
-                      <strong class="option_price_display_0">36,270</strong>원
-                    </td>
-                    <!-- //item_choice_price -->
-                    <td></td>
-                  </tr>
-                  </tbody>
-                </table>
-                <div class="item_price_cont">
-                  <div class="end_price item_tatal_box">
-                    <dl class="total_amount">
-                      <dt>총 합계금액</dt>
-                      <dd>
-                        <strong class="total_price"> 36,270<b>원</b></strong>
-                      </dd>
-                    </dl>
-                  </div>
-                  <!-- //item_tatal_box -->
-                </div>
-                <!-- //item_price_cont -->
+                  </p>
+                  <!-- <span class="count">
+                     <span class="goods_qty">
+                       <input
+                               type="text"
+                               name="goodsCnt[]"
+                               class="text goodsCnt_0"
+                               title="수량"
+                               value="1"
+                               data-key="0"
+                               data-value="1"
+                               data-stock="0"
+                               onchange="goodsViewController.input_count_change(this, '1');return false;"
+                       />
+                       <span>
+                         <button
+                                 type="button"
+                                 class="up goods_cnt"
+                                 title="증가"
+                                 value="up^|^0"
+                         >
+                           증가
+                         </button>
+                         <button
+                                 type="button"
+                                 class="down goods_cnt"
+                                 title="감소"
+                                 value="dn^|^0"
+                         >
+                           감소
+                         </button>
+                       </span>
+                     </span>
+                   </span>-->
+                  <!-- //count -->
+                </td>
+                <td class="item_choice_price">
+                  <input type="hidden" name="optionPriceSum[]" value="0" />
+                  <input type="hidden" name="option_price_0" value="0.00" />
+                  <strong class="option_price_display_0">36,270</strong>원
+                </td>
+                <!-- //item_choice_price -->
+                <td></td>
+              </tr>
+              </tbody>
+            </table>
+            <div class="item_price_cont">
+              <div class="end_price item_tatal_box">
+                <dl class="total_amount">
+                  <dt>총 합계금액</dt>
+                  <dd>
+                    <strong class="total_price"> 36,270<b>원</b></strong>
+                  </dd>
+                </dl>
               </div>
-              <!-- //item_choice_list -->
-              <div class="btn_choice_box">
-                <div>
-                  <button id="cartBtn" type="button" class="btn_add_cart">
-                    장바구니
-                  </button>
-                  <button type="button" class="btn_add_order">바로 구매</button>
-                </div>
-              </div>
-              <!-- //btn_choice_box -->
-
-              <!-- //pay_box -->
+              <!-- //item_tatal_box -->
             </div>
-            <!-- //item_tit_detail_cont -->
+            <!-- //item_price_cont -->
           </div>
-          <!-- //item_info_box -->
-        </form>
-      </div>
-      <!-- //item_photo_info_sec -->
-      <!-- //상품 상단 끝 -->
+          <!-- //item_choice_list -->
 
+          <!--                    버튼-->
+          <div class="btn_choice_box">
+            <div>
+              <button id="cartBtn" type="button" class="btn_add_cart">
+                장바구니
+              </button>
+              <button type="button" class="btn_add_order">바로 구매</button>
+            </div>
+          </div>
+
+        </section>
+
+
+      </div>
+      <!--    //product-content_box   -->
+
+
+      <!--            상품 디테일 이미지 -->
+      <div class="item_goods_sec">
+        <div class="category-area">
+          <div class="category-wrap">
+            <label for="category-best" class="category-box">
+              <span>상품상세정보</span>
+              <input
+                      type="radio"
+                      id="category-best"
+                      name="shopCategory"
+                      value="best"
+              />
+            </label>
+
+            <label for="category-a" class="category-box checked">
+              <span>관련상품</span>
+              <input
+                      type="radio"
+                      id="category-a"
+                      name="shopCategory"
+                      value="a"
+              />
+            </label>
+            <label for="category-b" class="category-box checked">
+              <span>상품후기</span>
+              <input
+                      type="radio"
+                      id="category-b"
+                      name="shopCategory"
+                      value="b"
+              />
+            </label>
+
+          </div>
+          <!-- //item_goods_tab -->
+          <div class="detail_cont">
+            <div class="detail_explain_box go01">
+              <div class="image-manual"><!-- 이미지 --></div>
+              <div class="txt-manual">
+
+
+                <img
+                        src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_02.jpg"
+                /><br />
+                <img
+                        src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_03.jpg"
+                /><br />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- /상품상세 -->
+        <!-- 추천상품 -->
+        <h3>관련 상품</h3>
+        <div class="goods">
+          <div class="store-list product__list">
+            <!-- 반복 요소 -->
+            <article class="list-product" th:each="detailproduct : ${detailproducts}">
+              <div class="sale-box">
+              <span>
+                <strong class="sale-percent" th:text="${detailproduct.productDiscount}"></strong>%
+              </span>
+                <span>SALE</span>
+              </div>
+              <div class="main_img-box">
+                <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/' + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">
+              </div>
+              <div class="title-box">
+                <p class="name" th:text="${detailproduct.productName + detailproduct.productAlcoholicity + '도' + detailproduct.productNetWeight + 'ml'}">마스브루어리+도수+용량</p>
+                <p class="sale-price" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA') + '원'}">26,600원</p>
+                <del class="price" th:text="${detailproduct.productPrice}"> 28,000원</del>
+              </div>
+            </article>
+            <article class="list-product">
+              <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+                <span>SALE</span>
+              </div>
+              <div class="main_img-box">
+                <img src="/imgs/product/product02.jpg" alt="">
+              </div>
+              <div class="title-box">
+                <p class="name">오연가+도수+용량</p>
+                <p class="sale-price">11,400원</p>
+                <del class="price"> 12,000원</del>
+              </div>
+            </article>
+            <!-- /반복 요소 -->
+          </div>
+
+
+        </div>
+        <!-- 추천상품 -->
+      </div>
     </div>
+
+
+
+
+    <div class="reply-wrap">
+      <h3>상품후기</h3>
+
+      <div class="reply-wrap__box">
+        <div class="reply-content__box">
+          <div class="reply-writer">홍길동</div>
+          <textarea
+                  name="replyContent"
+                  id="reply-content"
+                  cols="30"
+                  rows="10"
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <ul class="file-wrap">
+            <li>
+              <input type="file" id="post-image" name="boardFile" accept="image/*" multiple />
+            </li>
+            <li class="img-list"></li>
+            <li class="img-list"></li>
+            <li class="img-list"></li>
+            <li class="img-list"></li>
+          </ul>
+        </div>
+        <div class="reply-btn-wrap">
+          <button type="button" class="btn-reply">후기작성</button>
+        </div>
+      </div>
+      <!-- 상품 후기 -->
+    </div>
+    <!--상품 후기-->
+
+
+
+
+
+
+
+
+
+    <!--   //top-box  -->
   </div>
-</div>
-<!-- 상품상세 -->
-<div class="item_goods_sec">
-  <div class="category-area">
-    <div class="category-wrap">
-      <label for="category-best" class="category-box">
-        <span>상품상세정보</span>
-        <input
-                type="radio"
-                id="category-best"
-                name="shopCategory"
-                value="best"
-        />
-      </label>
-
-      <label for="category-a" class="category-box checked">
-        <span>관련상품</span>
-        <input
-                type="radio"
-                id="category-a"
-                name="shopCategory"
-                value="a"
-        />
-      </label>
-      <label for="category-b" class="category-box checked">
-        <span>상품후기</span>
-        <input
-                type="radio"
-                id="category-b"
-                name="shopCategory"
-                value="b"
-        />
-      </label>
-
-    </div>
-    <!-- //item_goods_tab -->
-    <div class="detail_cont">
-      <div class="detail_explain_box go01">
-        <div class="image-manual"><!-- 이미지 --></div>
-        <div class="txt-manual">
-          <!-- 상품상세 공통정보 관리를 상세정보 상단에 노출-->
-
-          <center>
-
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_02.jpg"
-            /><br />
-            <img
-                    src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_03.jpg"
-            /><br />
-
-
-          </center>
-        </div>
-      </div>
-    </div>
+  <!--  //product_content-wrap -->
   </div>
-
-  <!-- /상품상세 -->
-  <!-- 추천상품 -->
-  <h3>관련 상품</h3>
-  <div class="goods">
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001039/100001039_detail_053.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">두루양조 용25 25도 375ml</h3>
-        <span class="goods-item-price_box">
-                  <span>11,160원</span> <del>12,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/46/100004693/100004693_detail_084.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">황금 보리 증류주 40도 250ml</h3>
-        <span class="goods-item-price_box">
-                  <span>16,150원</span>
-                  <del>17,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100000937/100000937_detail_060.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">
-          양반안동소주 25년산 로얄안동소주 45도 600ml
-        </h3>
-        <span class="goods-item-price_box">
-                  <span>116,250원</span>
-                  <del>125,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="goods_litem">
-      <div class="goods-img-box">
-        <div
-                class="goods-item-image"
-                style="
-                    background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100001037/100001037_detail_040.jpg);
-                  "
-        ></div>
-      </div>
-      <div class="goods-item-text">
-        <h3 class="goods-item-title">인산농장 미니 적송자 72도 50ml</h3>
-        <span class="goods-item-price_box">
-                  <span>27,900원</span>
-                  <del>30,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>7</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-  </div>
-  <!-- 추천상품 -->
-</div>
-</div>
-</div>
-<!-- 판매자 정보 -->
-<!--<div class="pbTable">
-  <p class="tableTitle">판매자정보</p>
-  <p style="font-size: 16px; text-align: center; margin-bottom: 50px">
-    ※ 상품별로 판매자가 상이할 수 있습니다. 상품문의/cs 접수시 각
-    상품페이지의 판매자정보를 확인해주세요.
-  </p>
-  <table>
-    <colgroup>
-      <col width="20%" />
-      <col width="30%" />
-      <col width="20%" />
-      <col width="30%" />
-    </colgroup>
-    <tbody>
-    <tr>
-      <th>상호명</th>
-      <td>농업회사법인 우리도가 서울지점</td>
-      <th>대표자</th>
-      <td>차효심</td>
-    </tr>
-    <tr>
-      <th>사업자등록번호</th>
-      <td>405-85-08714</td>
-      <th>통신판매업번호</th>
-      <td>제 2021-와부조안-0163호</td>
-    </tr>
-    <tr>
-      <th>대표번호</th>
-      <td>070-4146-6151</td>
-      <th>고객센터</th>
-      <td>070-4146-6151</td>
-    </tr>
-    <tr>
-      <th>사업장소재지</th>
-      <td colspan="3" style="text-align: left">
-        <p style="margin-left: 20px">
-          경기도 남양주시 와부읍 궁촌로 28 1층
-        </p>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>-->
-
-<!-- 판매자정보 -->
-<!-- 교환/반품/환불 -->
-<!--<div class="reply-wrap">-->
-<!--  <div class="reply-wrap__box">-->
-<!--    <div class="reply-content__box">-->
-<!--      <h3>교환/반품/환불 안내</h3>-->
-<!--    </div>-->
-<!--  </div>-->
-  <!-- 교환/반품/환불 -->
-  <!-- 상품 후기 -->
-
-  <div class="reply-wrap">
-    <h3>상품후기</h3>
-
-    <div class="reply-wrap__box">
-      <div class="reply-content__box">
-        <div class="reply-writer">홍길동</div>
-        <textarea
-                name="replyContent"
-                id="reply-content"
-                cols="30"
-                rows="10"
-        ></textarea>
-      </div>
-      <div class="form-group">
-        <ul class="file-wrap">
-          <li>
-            <input type="file" id="post-image" name="boardFile" accept="image/*" multiple />
-          </li>
-          <li class="img-list"></li>
-          <li class="img-list"></li>
-          <li class="img-list"></li>
-          <li class="img-list"></li>
-        </ul>
-      </div>
-      <div class="reply-btn-wrap">
-        <button type="button" class="btn-reply">후기작성</button>
-      </div>
-    </div>
-    <!-- 상품 후기 -->
-  </div>
-  <!--상품 후기-->
-
-
-</div>
 </main>
 
 <footer th:replace="~{/fragments/footer :: footer}"></footer>

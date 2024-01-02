@@ -1,6 +1,7 @@
 package com.example.jumak.controller.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import com.example.jumak.domain.vo.product.ProductVo;
 import com.example.jumak.service.product.ProductService;
@@ -39,13 +40,11 @@ public class ProductController {
         return "product/storeproduct";
     }
 
-//    상품 디테일 테스트
-    @GetMapping("/testing")
-    public String testing(){return "product/storeproductdetailtest" ; }
-
     //    상품 디테일
     @GetMapping("/view")
-    public String detail(){
+    public String detail(Model model){
+        List<ProductDetailVo> prodcutDetailList = productService.findByDetail();
+        model.addAttribute("detailproducts",prodcutDetailList);
         return "product/storeproductdetail" ;
     }
 
