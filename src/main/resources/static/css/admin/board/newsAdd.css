@@ -1,0 +1,60 @@
+.product_add_table{
+    width: 70%;
+    border: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 14px;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-top: 1px solid #999999;
+    margin: auto;
+}
+
+th,td{
+    padding: 10px 25px;
+    text-align: left;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+th{
+    background: #fbfbfb;
+}
+
+h3{
+    display: block;
+    padding: 20px 0 10px 0;
+    text-align: center;
+}
+
+
+.btn_news_add, .btn_news_list{
+    left: 740px;
+    display: block;
+    position: relative;
+    float: left;
+    width: 50px;
+    padding: 0;
+    margin: 20px 20px 10px 0;
+    font-weight: 600;
+    text-align: center;
+    line-height: 30px;
+    background-color: white;
+    border-color: #f0c864;
+    color: rgba(0, 0, 0);
+    border-radius: 7px;
+    transition: all 0.2s ;}
+
+.btn_news_add:hover, .btn_news_list:hover{
+    background-color: antiquewhite;
+}
+input[type=text]{
+    width: 500px;
+    height: 30px;
+    font-size: 14px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(238, 238, 238);
+}

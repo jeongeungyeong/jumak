@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/product/productAdd.css">
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/product/productAdd.css}">
 </head>
 
 <body>
@@ -19,44 +19,17 @@
     <div>
         <div></div>
         <div class="sub_content">
-            <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="productList.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/order.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
 
             <!-- ----------------------------------------- -->
             <div class="content">
                 <div>
                     <h3>상품등록</h3>
                 </div>
-                <form>
+
+
+                <form th:action="@{/admin/product/add}" method="post" enctype="multipart/form-data">
                 <div>
                     <div>
                         <table class="product_add_table">
@@ -67,62 +40,70 @@
                             <tbody>
                                 <tr>
                                     <th>상품명</th>
-                                    <td><input type="text"  name=""></td>
+                                    <td><input type="text"  name="productName"></td>
                                 </tr>
                                 <tr>
                                     <th>카테고리</th>
                                     <td>
-                                        <input type="radio" name="chk_category" value="" checked="checked">막걸리
-                                        <input type="radio" name="chk_category" value="">탁주
-                                        <input type="radio" name="chk_category" value="">증류주
-                                        <input type="radio" name="chk_category" value="">리큐르
-                                        <input type="radio" name="chk_category" value="">약주
-                                        <input type="radio" name="chk_category" value="">청주
-                                        <input type="radio" name="chk_category" value="">와인
-                                        <input type="radio" name="chk_category" value="">과실주
+                                        <input type="radio" name="productCategoryNumber" value="1" checked="checked">막걸리
+                                        <input type="radio" name="productCategoryNumber" value="2">탁주
+                                        <input type="radio" name="productCategoryNumber" value="3">증류주
+                                        <input type="radio" name="productCategoryNumber" value="4">리큐르
+                                        <input type="radio" name="productCategoryNumber" value="5">약주
+                                        <input type="radio" name="productCategoryNumber" value="6">청주
+                                        <input type="radio" name="productCategoryNumber" value="7">와인
+                                        <input type="radio" name="productCategoryNumber" value="8">과실주
                                     </td>
                                 </tr>
                                 <tr>
                                     <th>양조장</th>
-                                    <td><input type="text" name=""></td>
+                                    <td><input type="text" name="productDistillery"></td>
                                 </tr>
                                 <tr>
                                     <th>상품부제목</th>
-                                    <td><input type="text"  name=""></td>
+                                    <td><input type="text"  name="productSubtitle"></td>
+                                </tr>
+                                <tr>
+                                    <th>상품설명이미지</th>
+                                    <td><input type="file"  id="post-image" name="productImg" accept="image/*" ></td>
                                 </tr>
                                 <tr>
                                     <th>주원료</th>
-                                    <td><input type="text"  name=""></td>
+                                    <td><input type="text"  name="productRawMaterial"></td>
                                 </tr>
                                 <tr>
                                     <th>용량</th>
-                                    <td><input type="text"  name=""></td>
+                                    <td><input type="text"  name="productNetWeight"></td>
                                 </tr>
                                 <tr>
                                     <th>생산지역</th>
-                                    <td><input type="text"  name=""></td>
+                                    <td><input type="text"  name="productArea"></td>
                                 </tr>
                                 <tr>
                                     <th>도수</th>
-                                    <td><input type="text" name=""></td>
+                                    <td><input type="text" name="productAlcoholicity"></td>
                                 </tr>
                                 <tr>
                                     <th>재고수량</th>
-                                    <td><input type="text" name=""></td>
+                                    <td><input type="text" name="productInventory"></td>
+                                </tr>
+                                <tr>
+                                    <th>가격</th>
+                                    <td><input type="text"  name="productPrice"></td>
                                 </tr>
                                 <tr>
                                     <th>할인률</th>
-                                    <td><input type="text" name=""></td>
+                                    <td><input type="text" name="productDiscount"></td>
                                 </tr>
                                 <tr>
-                                    <th>제품이미지</th>
-                                    <td><input type="text" name="" value="어케해야함?"></td>
+                                    <th>상품대표이미지</th>
+                                    <td><input type="file"  id="post-image-main" name="productImgMain" accept="image/*" ></td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
-                    <button type="button">취소</button>
-                    <button>저장</button>
+                    <button class="btn_product_list" type="button">취소</button>
+                    <button class="btn_product_add">저장</button>
                 </div>
             </form>
             </div>

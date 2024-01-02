@@ -19,36 +19,36 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin/user")
 public class AUserController {
-//    private final AUserService aUserService;
-//
-//    @GetMapping()
-//    public String userList(ACriteria aCriteria, Model model){
-//        List<UserDto> userList = aUserService.findAll(aCriteria);
-//        model.addAttribute("userList", userList);
-//        model.addAttribute("pageInfo", new APageVo(aUserService.findTotal(), aCriteria));
-//        return "admin/user/userList";
-//    }
-//
-//    @GetMapping("/detail/{userNumber}")
-//    public String userDetail(@PathVariable("userNumber") Long boardNumber,
-//                             Model model){
-//        UserDto userDetail = aUserService.findOne(boardNumber);
-//        model.addAttribute("user", userDetail);
-//        return "admin/user/userDetail";
-//
-//    }
-//
-//
-//
-//    @GetMapping("/search")
-//    public String searchResult(ASearchVo aSearchVo, ACriteria aCriteria, Model model){
-//        List<UserDto> searchDto = aUserService.findSearch(aSearchVo, aCriteria);
-//
-//        model.addAttribute("userList", searchDto);
-//        model.addAttribute("searchVo", aSearchVo);
-//        model.addAttribute("pageInfo", new APageVo(aUserService.findSearchTotal(aSearchVo), aCriteria));
-//        return "admin/user/userListSearch";
-//    }
+    private final AUserService aUserService;
+
+    @GetMapping()
+    public String userList(ACriteria aCriteria, Model model){
+        List<UserDto> userList = aUserService.findAll(aCriteria);
+        model.addAttribute("userList", userList);
+        model.addAttribute("pageInfo", new APageVo(aUserService.findTotal(), aCriteria));
+        return "admin/user/userList";
+    }
+
+    @GetMapping("/detail/{userNumber}")
+    public String userDetail(@PathVariable("userNumber") Long boardNumber,
+                             Model model){
+        UserDto userDetail = aUserService.findOne(boardNumber);
+        model.addAttribute("user", userDetail);
+        return "admin/user/userDetail";
+
+    }
+
+
+
+    @GetMapping("/search")
+    public String searchResult(ASearchVo aSearchVo, ACriteria aCriteria, Model model){
+        List<UserDto> searchDto = aUserService.findSearch(aSearchVo, aCriteria);
+
+        model.addAttribute("userList", searchDto);
+        model.addAttribute("searchVo", aSearchVo);
+        model.addAttribute("pageInfo", new APageVo(aUserService.findSearchTotal(aSearchVo), aCriteria));
+        return "admin/user/userListSearch";
+    }
 
 
 

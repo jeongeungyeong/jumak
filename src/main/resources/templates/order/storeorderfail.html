@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/order/orderfinal.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <title>상품결제 실패</title>
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<main>
+  <div class="order-wrap">
+
+    <section class="order-title">
+      <h2>주문완료</h2>
+      <ol>
+        <li>
+          <span>01</span> 장바구니
+          <span>
+            <img
+                    src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                    alt="장바구니완료"/>
+          </span>
+        </li>
+        <li>
+          <span>02</span> 주문서작성/결제<span>
+          <img
+                  src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                  alt="주문서작성/결제완료"/>
+        </span>
+        </li>
+        <li class="page-on"><span>03</span> 주문완료</li>
+      </ol>
+    </section> <!-- /타이틀 섹션 -->
+
+    <!--    결제 상태 표시-->
+    <div class="order_end">
+      <!-- 결제 실패 -->
+      <div class="order_end_completion">
+                      <span
+                      ><img
+                              src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_end_completion.png"
+                              alt="주문완료"
+                      /></span>
+        <p>
+          <strong
+          >결제가 정상적으로 이루어지지 않았습니다. 다시 결제
+            진행을 해주시기 바랍니다.</strong
+          ><br /><em
+        >지속적으로 문제가 발생될 경우 관리자에게 문의 하시기
+          바랍니다.</em
+        >
+        </p>
+      </div>
+
+      <!--   주문 요약 정보 -->
+      <div class="forder-end_info">
+        <div class="order_zone_tit">
+          <h4>주문요약정보</h4>
+        </div>
+
+        <div class="order_table_type">
+          <table class="table_left" th:each="finalorder: ${finalorders}">
+            <colgroup>
+              <col style="width: 15%" />
+              <col style="width: 85%" />
+            </colgroup>
+            <tbody>
+            <tr>
+              <th scope="row">결제수단</th>
+              <td>
+                <strong
+                        id="totalGoodsPrice"
+                        class="order_payment_sum"
+                >신용카드 결제</strong
+                >
+                <ul>
+                  <li>
+                    결제금액 :
+                    <strong class="deposit_money" th:text="${#numbers.formatInteger(finalorder.paymentTotal,0,'COMMA') + '원'}"
+                    ></strong
+                    >
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">주문번호</th>
+              <td>
+                <span id="orderNumber" th:text="${finalorder.orderNumber}"></span>
+              </td>
+            </tr>
+
+
+            <tr>
+              <th scope="row">결제실패사유</th>
+              <td>
+                고객님의 결제 중단에 의해서 주문이 취소
+                되었습니다.
+              </td>
+            </tr>
+
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- 결제 정보 끝-->
+
+      <!--          하단 버튼-->
+
+      <div class="btn-box">
+        <div class="order-btn">
+          확인
+        </div>
+      </div>
+
+
+    </div>
+</main>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+</body>
+</html>

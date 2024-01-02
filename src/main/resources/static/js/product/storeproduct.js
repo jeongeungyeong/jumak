@@ -1,43 +1,29 @@
-// 추천순
-$(".products_pick_list").on("click", ".pick_list_btns", function () {
-    let $replyBtnBox = $(this)
-        .closest(".pick_list_box")
-        .find(".pick_list_btns__box");
+let orderValue = $('.section-head__more').val();
+let cateValue = $('input[name=shopCategory]:checked').val();
 
-    $replyBtnBox.toggleClass("none");
-});
-// 정렬순서
-// $("body").click(function (e) {
-//     if ($(e.target).hasClass("pick_list_btns")) {
-//         //console.log('aa');
-//         return;
-//     }
-//     if (!$(".pick_list_btns__box").has(e.target).length) {
-//         $(".pick_list_btns__box").addClass("none");
-//     }
-// });
+{
+    let $checkedBtn = $('input[name=shopCategory]:checked');
+    console.log($checkedBtn)
 
-// 카테고리
-let $categoryBox = $(".category-box");
+    $('label').removeClass('checked');
+    $checkedBtn.closest('label').addClass('checked');
+}
 
-$categoryBox.on("click", function (e) {
-    let idx = $categoryBox.index(this);
-    console.log(idx);
-    for (let i = 0; i < $categoryBox.length; i++) {
-        if (i == idx) {
-            $categoryBox.eq(i).addClass("checked");
-        } else {
-            $categoryBox.eq(i).removeClass("checked");
-        }
-    }
-});
 
-// 보드
-$(".add-post-btn").on("click", function () {
-    window.location.href = "/board/write";
-});
 
-//슬라이드
-$(".slide_div_wrap").ready(function(){
-    $(".slide_div").slick();
+$('.section-head__more').on('change', function () {
+    orderValue = $(this).val();
+
+    window.location.href = `/store/list?orderCond=${orderValue}&cate=${cateValue}`;
+})
+
+$('input[name=shopCategory]').on('change', function () {
+    let $label = $(this).closest('label')
+
+    $('.category-box').removeClass('checked');
+    $label.addClass('checked');
+
+    cateValue = $(this).val();
+
+    window.location.href = `/store/list?orderCond=${orderValue}&cate=${cateValue}`;
 });

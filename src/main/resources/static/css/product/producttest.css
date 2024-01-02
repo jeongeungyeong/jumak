@@ -1,0 +1,73 @@
+/*메인 컨텐츠들*/
+.main__content-wrap{
+    width: 1200px;
+    margin : 0 auto;
+    padding: 100px 0px;
+    /*box-sizing: border-box;*/
+}
+
+/* 중앙 섹션 (이달의 술, 장터)*/
+.middle-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.monthly-sul__content-box{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.monthly-sul__content-box > a {
+    display: block;
+    position: absolute;
+    border-radius: 15px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 99%;
+    background: url(/imgs/main/monthly_gra.png) left bottom repeat-x;
+}
+
+
+.monthly-sul__content-box img{
+    border-radius: 15px;
+}
+
+
+.store-direct__content-box > img{
+    border-radius: 15px;
+}
+
+/* 우리 술 찾기 배너*/
+.find-sul-banner{
+    margin: 65px 0 100px;
+}
+
+/* 양조장 탐방기 */
+.brewery-news__content-box{
+    display: grid;
+    grid-template-columns: repeat(4, minmax(263px, auto));
+    gap: 20px 49px;
+    margin-top: 20px;
+}
+
+.brewery-news__img-box > img{
+    width: 263px;
+    height: 201px;
+    border-radius: 15px;
+}
+
+.brewery-news__item p{
+    margin-top: 15px;
+    font-size: 14px;
+    color: #3d3935;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: chosun;
+}
+
+/* 모임 공지 */
+.meeting-banner{
+    margin-top: 100px;
+}

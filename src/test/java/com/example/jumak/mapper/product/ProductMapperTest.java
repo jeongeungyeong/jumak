@@ -1,47 +1,60 @@
 package com.example.jumak.mapper.product;
 
-import com.example.jumak.domain.dto.product.ProductCategoryDto;
-import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.dto.product.ProductImgDto;
-import com.example.jumak.domain.dto.product.ProductImgMainDto;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.jumak.domain.vo.product.ProductListVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
 @SpringBootTest
 class ProductMapperTest {
-    @Autowired ProductMapper productMapper;
-
-    ProductDto productDto;
-    ProductCategoryDto productCategoryDto;
-
-    @BeforeEach
-    void setUp() {
-        productDto = new ProductDto();
-
-        productDto.setProductCategoryNumber(1L);
-        productDto.setProductName("test");
-        productDto.setProductSubtitle("test");
-        productDto.setProductRawMaterial("막걸리");
-        productDto.setProductNetWeight(1L);
-        productDto.setProductAlcoholicity(5L);
-        productDto.setProductArea("대한민국");
-        productDto.setProductDescription("우리술");
-        productDto.setProductPrice(5000L);
-        productDto.setProductInventory(5L);
-        productDto.setProductSales(100L);
-        productDto.setProductDiscount(5L);
-        productDto.setProductReleaseDate("2023-12-22");
-        productDto.setProductDistillery("한국");
-        productMapper.insertProduct(productDto);
-    }
+    @Autowired
+    ProductMapper productMapper;
 
     @Test
     void selectByNumber() {
-        productMapper.insertProduct(productDto);
-        productMapper.selectByNumber(productDto.getProductNumber());
+        productMapper.selectByNumber(25L);
+    }
+    @Test
+    void selectByCategory(){
+        productMapper.selectByCategory(1L);
+    }
+
+    @Test
+    void selectAll() {
+        productMapper.selectAll();
+    }
+
+    @Test
+    void selectTotal() {
+        productMapper.selectTotal();
+    }
+
+
+    @Test
+    void selectSaleBest() {
+        productMapper.selectSaleBest();
+    }
+
+    @Test
+    void arrUpdate() {
+        productMapper.arrUpdate();
+    }
+
+    @Test
+    void arrSale() {
+        List<ProductListVo> productListVos = productMapper.arrSale();
+        System.out.println("productListVos = " + productListVos);
+    }
+
+    @Test
+    void arrLPrice() {
+        productMapper.arrLPrice();
+    }
+
+    @Test
+    void arrHPrice() {
+        productMapper.arrHPrice();
     }
 }

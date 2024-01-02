@@ -17,6 +17,6 @@ public class AProductRestController {
 
     @DeleteMapping("/delete/{productNumber}")
     public void productRemove(@PathVariable("productNumber") Long productNumber){
-//        aProductService.re
+        aProductService.remove(productNumber);
     }
 }

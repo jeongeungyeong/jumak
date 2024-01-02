@@ -18,5 +18,4 @@ public class OrderDto {
     private String orderPhoneNumber;
     private String orderDate;
     private Long orderStatusNumber;
-    private Long deliveryStatusNumber;
 }
