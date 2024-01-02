@@ -10,9 +10,9 @@ import org.springframework.stereotype.Component;
 public class PaymentDto {
     private Long paymentNumber;
     private String paymentDate;
-    private Long paymentTotalPrice;
-    private Long paymentDiscountAmount;
-    private Long paymentDeliveryCharge;
-    private String paymentStatus;
+    private Long paymentTotalAmount;
+    private Long paymentTotalDiscount;
+    private Long paymentDeliveryFee;
+    private Long paymentTotal;
     private Long orderNumber;
 }

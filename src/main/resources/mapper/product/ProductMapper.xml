@@ -12,6 +12,16 @@
         WHERE PRODUCT_NUMBER=#{productNumber}
     </select>
 
+<!--    상품 카테고리로 조회하기-->
+    <select id="selectByCategory" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
+               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM JUMAK_PRODUCT
+        WHERE PRODUCT_CATEGORY_NUMBER = #{productCategoryNumber}
+    </select>
+
     <!--    전체 상품 조회하기-->
     <select id="selectAll" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
@@ -21,56 +31,59 @@
         FROM JUMAK_PRODUCT
     </select>
 
-    <!--    상품 등록하기-->
-    <insert id="insertProduct">
-        <selectKey keyProperty="productNumber" order="BEFORE" resultType="long">
-            SELECT SEQ_PRODUCT.nextval FROM DUAL
-        </selectKey>
-
-        INSERT INTO JUMAK_PRODUCT (PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
-                                   PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_AREA,
-                                   PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY, PRODUCT_SALES, PRODUCT_DISCOUNT,
-                                   PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY)
-        VALUES (#{productNumber},#{productCategoryNumber},#{productName},#{productSubtitle},#{productRawMaterial},
-                #{productNetWeight},#{productAlcoholicity},#{productArea},#{productDescription},#{productPrice},
-                #{productInventory},#{productSales},#{productDiscount},#{productReleaseDate},#{productDistillery})
-    </insert>
-
-    <!--    상품 카테고리 등록-->
-    <insert id="insertCategory">
-        INSERT INTO JUMAK_PRODUCT_CATEGORY (PRODUCT_CATEGORY_NUMBER, PRODUCT_CATEGORY_NAME)
-        VALUES (#{productCategoryNumber},#{productCategoryName})
-    </insert>
-
 <!--    상품 총 개수-->
-        <select id="selelctTotal" resultType="_int">
+        <select id="selectTotal" resultType="_int">
             SELECT COUNT(PRODUCT_NUMBER)
             FROM JUMAK_PRODUCT
         </select>
 
-
-
-
-    <!--    상품 카테고리 분류-->
-<!--    <select id="selectCategory" resultType="productVo">
-        SELECT Y.PRODUCT_CATEGORY_NUMBER, Y.PRODUCT_CATEGORY_NAME
-        FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_CATEGORY Y
-                                  ON P.PRODUCT_CATEGORY_NUMBER = Y.PRODUCT_CATEGORY_NUMBER
-    </select>-->
-
-    <!--    상품 정렬 보기-->
-
-    <!--    상품 리스트 조회-->
-<!--
-    <select id="productsGetList"  resultType="productVo">
-        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
-               PRODUCT_PRICE,PRODUCT_DISCOUNT,
-               N.PRODUCT_IMG_MAIN_NUMBER, N.PRODUCT_IMG_MAIN_NAME, N.PRODUCT_IMG_MAIN_PATH, N.PRODUCT_IMG_MAIN_UUID
-        FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_IMG_MAIN N
-                                  ON P.PRODUCT_NUMBER=N.PRODUCT_NUMBER
-        ORDER BY PRODUCT_NUMBER
+<!--    판매량 베스트 상품-->
+    <select id="selectSaleBest" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
+               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM JUMAK_PRODUCT
+        ORDER BY PRODUCT_SALES DESC
     </select>
--->
+
+<!--    정렬 분류: 등록일순 -->
+    <select id="arrUpdate" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
+               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM JUMAK_PRODUCT
+        ORDER BY PRODUCT_RELEASE_DATE DESC
+    </select>
+<!--    정렬 분류: 판매인기순-->
+    <select id="arrSale" resultType="productListVo">
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_PRICE,
+               P.PRODUCT_ALCOHOLICITY, P.PRODUCT_DISCOUNT, P.PRODUCT_NET_WEIGHT, P.PRODUCT_RELEASE_DATE,
+               P.PRODUCT_SALES,
+               I.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I
+                                       ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        ORDER BY PRODUCT_SALES ASC
+    </select>
+<!--    정렬 분류: 낮은 가격순-->
+    <select id="arrLPrice" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
+               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM JUMAK_PRODUCT
+        ORDER BY PRODUCT_PRICE ASC
+    </select>
+<!--    정렬 분류: 높은 가격순-->
+    <select id="arrHPrice" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+               PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
+               PRODUCT_AREA, PRODUCT_DESCRIPTION, PRODUCT_PRICE, PRODUCT_INVENTORY,
+               PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
+        FROM JUMAK_PRODUCT
+        ORDER BY PRODUCT_PRICE DESC
+    </select>
 
 
   <!--  <select id="productsGetList" resultType="productVo">
@@ -107,14 +120,59 @@
         WHERE RNUM > (#{page} - 1) * #{amount}
     </select>-->
 
-    <!--    상품 디테일 페이지-->
-<!--    <select id="selectDetail" resultType="productDetailVo">
-        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
-               PRODUCT_PRICE,PRODUCT_DISCOUNT,
-               G.PRODUCT_IMG_NUMBER, G.PRODUCT_IMG_NAME, G.PRODUCT_IMG_PATH, G.PRODUCT_IMG_UUID
-        FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_IMG G
-            ON P.PRODUCT_NUMBER = G.PRODUCT_NUMBER
-    </select>-->
+    <select id="selectByOrderCond" resultType="productListVo" parameterType="string">
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_PRICE,
+               P.PRODUCT_ALCOHOLICITY, P.PRODUCT_DISCOUNT, P.PRODUCT_NET_WEIGHT, P.PRODUCT_RELEASE_DATE,
+               P.PRODUCT_SALES,
+               I.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I
+                                       ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        <trim prefix="WHERE">
+            <choose>
+                <when test="'group1'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(1,2)
+                </when>
+                <when test="'group2'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(3,4)
+                </when>
+                <when test="'group3'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(5,6)
+                </when>
+                <when test="'group4'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(7,8)
+                </when>
+                <when test="'group5'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER = 9
+                </when>
+            </choose>
+        </trim>
 
+        <choose>
+            <when test="'date'.equals(orderCond)">
+                ORDER BY PRODUCT_RELEASE_DATE DESC
+            </when>
+            <when test="'sale'.equals(orderCond) or orderCond == null">
+                ORDER BY PRODUCT_SALES DESC
+            </when>
+            <when test="'rowPrice'.equals(orderCond)">
+                ORDER BY PRODUCT_PRICE
+            </when>
+            <when test="'highPrice'.equals(orderCond)">
+                ORDER BY PRODUCT_PRICE DESC
+            </when>
+        </choose>
+
+
+
+    </select>
 
 </mapper>
+
+
+
+
+
+
+
+
+

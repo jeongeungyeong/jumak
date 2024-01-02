@@ -20,7 +20,7 @@ public class UserController {
 // 단순페이지 이동 처리
     @GetMapping("/join/agree")
     public String joinAgree(){
-        return "user/join/join";
+        return "user/join/join-agree";
     }
 
     @GetMapping("/joinInfo")

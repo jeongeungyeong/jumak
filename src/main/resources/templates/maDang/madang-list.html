@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/madang/madang-list.css}">
+
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<div class="madang-wrap">
+  <section class="top-banner">
+    <img src="/imgs/maDang/madang-banner.jpg" alt="">
+  </section>
+  <main>
+    <section class="title">
+      <h3>수상한 마당</h3>
+    </section>
+    <section class="cate">
+      <ul class="cate-ul">
+        <a href="" class="active">
+          <li>전체보기</li>
+        </a>
+        <a href="">
+          <li>공지</li>
+        </a>
+        <a href="">
+          <li>도란도란</li>
+        </a>
+        <a href="">
+          <li>후기</li>
+        </a>
+        <a href="">
+          <li>나만의 레시피</li>
+        </a>
+      </ul>
+      <button type="button" class="write-btn">글쓰기</button>
+    </section>
+
+    <section class="board-list">
+      <table class="board-list-table">
+        <colgroup>
+          <col style="width:5%">
+          <col style="width:6%">
+          <col style="width:13%">
+          <col>
+          <col style="width:6%">
+          <col style="width:6%">
+          <col style="width:7%">
+        </colgroup>
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>분류</th>
+          <th>작성자</th>
+          <th>제목</th>
+          <th>조회</th>
+          <th>추천</th>
+          <th>날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--공지 반복 요소-->
+        <tr class="board-list-table__notice">
+          <td>
+            <img src="/imgs/maDang/icon_board_notice.png" alt="">
+          </td>
+          <td>[공지]</td>
+          <td class="board-list-table__writer">수상한 주막</td>
+          <td class="board-list-table__title">🎇신년맞이 우리술 파티🎇</td>
+          <td>100</td>
+          <td>5</td>
+          <td>23/12/12</td>
+        </tr>
+        <!--/공지 반복 요소-->
+        <!--일반글 반복 요소-->
+        <tr class="board-list-table__normal">
+          <td>1539</td>
+          <td>일상</td>
+          <td class="board-list-table__writer">크리스탈</td>
+          <td class="board-list-table__title">CU편의점에서 겟한 크라운 땅콩카라멜 막걸리</td>
+          <td>24</td>
+          <td>0</td>
+          <td>23/12/26</td>
+        </tr>
+        <!--/일반글 반복 요소-->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <section class="pagination">
+    <div class="pagination-wrap">
+      <ul class="page-ul">
+        <li>
+          <a href="" class="arrow">
+            <img src="/imgs/maDang/icon_arrow_page_l.png" alt="">
+          </a>
+        </li>
+        <li class="active">
+          <a href="">1</a>
+        </li>
+        <li>
+          <a href="">2</a>
+        </li>
+        <li>
+          <a href="">3</a>
+        </li>
+        <li>
+          <a href="">4</a>
+        </li>
+        <li>
+          <a href="">5</a>
+        </li>
+        <li>
+          <a href="" class="arrow">
+            <img src="/imgs/maDang/icon_arrow_page_r.png" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
