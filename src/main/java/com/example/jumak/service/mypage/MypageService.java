@@ -4,7 +4,7 @@ import com.example.jumak.domain.dto.order.PaymentDto;
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
-import com.example.jumak.mapper.mypage.MypageMapper;
+import com.example.jumak.mapper.mypage.MypageMainMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Transactional
 public class MypageService {
-    private final MypageMapper mypageMapper;
+    private final MypageMainMapper mypageMapper;
 
 
     //회원 이름 조회

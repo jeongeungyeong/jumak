@@ -1,786 +1,633 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" th:href="@{/css/order/order.css}" />
-    <link rel="stylesheet" th:href="@{/css/product/common.css}" />
-    <title>수상한 주막</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/order/order.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+    <title>상품 주문하기</title>
 </head>
 <body>
-<div id="container" onclick="clickBody()">
-    <div id="contents">
-        <!-- 본문 시작 -->
+<header th:replace="~{/fragments/header :: header}"></header>
+<main>
+    <div class="order-wrap">
 
-        <div class="sub_content">
-            <!-- //side_cont -->
+        <section class="order-title">
+            <h2>주문서 작성/결제</h2>
+            <ol>
+                <li>
+                    <span>01</span> 장바구니
+                    <span>
+            <img
+                    src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                    alt="장바구니완료"/>
+          </span>
+                </li>
+                <li class="page-on">
+                    <span>02</span> 주문서작성/결제<span>
+          <img
+                  src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
+                  alt="주문서작성/결제완료"/>
+        </span>
+                </li>
+                <li><span>03</span> 주문완료</li>
+            </ol>
+        </section> <!-- /타이틀 섹션 -->
 
-            <div class="content_box">
-                <div
-                        class="order_wrap">
-                    <div class="order_tit">
-                        <h2>주문완료</h2>
-                        <ol>
-                            <li>
-                                <span>01</span> 장바구니
-                                <span
-                                ><img
-                                        src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
-                                        alt="장바구니완료"
-                                /></span>
-                            </li>
-                            <li class="page_on">
-                                <span>02</span> 주문서작성/결제<span
-                            ><img
-                                    src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/member/icon_join_step_off.png"
-                                    alt="주문서작성/결제완료"
-                            /></span>
-                            </li>
-                            <li ><span>03</span> 주문완료</li>
-                        </ol>
-                    </div>
-                    <!-- //order_tit -->
+        <!-- 백엔드 작업 시 상품 목록을 form으로 보낼거면
+        반복요소에 input hidden 활용하기-->
+        <form action="">
+            <section class="order-list">
+                <table>
+                    <colgroup>
 
-                    <div class="order_cont">
-                        <div class="cart_cont_list">
-                            <div class="order_cart_tit">
-                                <h3>주문상세내역</h3>
-                            </div>
-                            <!-- //order_cart_tit -->
-
-                            <div class="order_table_type">
-                                <!-- 장바구니 상품리스트 시작 -->
-                                <table>
-                                    <colgroup>
-                                        <col />
-                                        <!-- 상품명/옵션 -->
-                                        <col style="width: 5%" />
-                                        <!-- 수량 -->
-                                        <col style="width: 10%" />
-                                        <!-- 상품금액 -->
-                                        <col style="width: 13%" />
-                                        <!-- 할인/적립 -->
-                                        <col style="width: 10%" />
-                                        <!-- 합계금액 -->
-                                        <col style="width: 14%" />
-                                        <!-- 배송비 -->
-                                    </colgroup>
-                                    <thead>
-                                    <tr>
-                                        <th>상품/옵션 정보</th>
-                                        <th>수량</th>
-                                        <th>상품금액</th>
-                                        <th>할인/적립</th>
-                                        <th>합계금액</th>
-                                        <th>배송비</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr
-                                            class="order-goods-layout"
-                                            data-goodsno="100000762"
-                                    >
-                                        <td class="td_left">
-                                            <input
-                                                    type="hidden"
-                                                    name="cartSno[]"
-                                                    value="37928"
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    name="memberDcInfo[100000762][838]"
-                                                    value=""
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    name="priceInfo[100000762][838]"
-                                                    value='{"fixedPrice":"3600.00","costPrice":"0.00","baseGoodsPrice":"3200.00","baseOptionPrice":"0.00","baseOptionTextPrice":0,"goodsPrice":"3200.00","optionPrice":"0.00","optionCostPrice":"0.00","optionTextPrice":0,"goodsPriceSum":3200,"optionPriceSum":0,"optionTextPriceSum":0,"addGoodsPriceSum":0,"addGoodsVat":{"supply":0,"tax":0},"goodsDcPrice":0,"memberDcPrice":0,"memberOverlapDcPrice":null,"couponGoodsDcPrice":0,"goodsDeliveryPrice":0,"timeSalePrice":null,"goodsCnt":"1","goodsMemberDcPrice":0,"goodsMemberOverlapDcPrice":null,"goodsCouponGoodsDcPrice":0,"addGoodsMemberDcPrice":0,"addGoodsMemberOverlapDcPrice":0,"addGoodsCouponGoodsDcPrice":0,"goodsPriceSubtotal":3200,"goodsVat":{"supply":2910,"tax":"290"}}'
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    name="mileageInfo[100000762][838]"
-                                                    value='{"goodsMileage":30,"memberMileage":0,"couponGoodsMileage":0,"goodsGoodsMileage":0,"goodsMemberMileage":0,"goodsCouponGoodsMileage":0,"addGoodsGoodsMileage":0,"addGoodsMemberMileage":0,"addGoodsCouponGoodsMileage":0,"goodsCnt":"1"}'
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    class="delivery-method-fl"
-                                                    value="delivery"
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    class="visit-address-use-fl"
-                                                    value="n"
-                                            />
-                                            <input
-                                                    type="hidden"
-                                                    class="delivery-method-visit-area"
-                                                    value="서울특별시 강남구 봉은사로1길 39 (유성빌딩) 5~6층"
-                                            />
-                                            <div class="pick_add_cont">
-                                <span class="pick_add_img">
-                                  <a
-                                          href="../goods/goods_view.php?goodsNo=100000762"
-                                  ><img
-                                          src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/09/39/100000762/100000762_list_097.jpg"
-                                          width="40"
-                                          alt="중원양조 사랑할때 12도 300ml 사과과실주"
-                                          title="중원양조 사랑할때 12도 300ml 사과과실주"
-                                          class="middle"
-                                  /></a>
-                                </span>
-                                                <div class="pick_add_info">
-                                                    <em
-                                                    ><a
-                                                            href="../goods/goods_view.php?goodsNo=100000762"
-                                                    >중원양조 사랑할때 12도 300ml
-                                                        사과과실주</a
-                                                    ></em
-                                                    >
-
-                                                    <!-- //icon_pick_list -->
-
-                                                    <div class="pick_option_box"></div>
-
-                                                    <div class="pick_option_box"></div>
-                                                </div>
-                                            </div>
-                                            <!-- //pick_add_cont -->
-
-                                            <!-- //pick_add_list -->
-                                        </td>
-                                        <td class="td_order_amount">
-                                            <div class="order_goods_num">
-                                                <strong>1개</strong>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <strong class="order_sum_txt price"
-                                            >3,200원</strong
-                                            >
-                                        </td>
-                                        <td class="td_benefit">
-                                            <ul class="benefit_list">
-                                                <li class="benefit_mileage js_mileage">
-                                                    <em>적립</em>
-                                                    <span>상품 <strong>+30원</strong></span>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                        <td>
-                                            <strong class="order_sum_txt">3,200원</strong>
-                                        </td>
-                                        <td class="td_delivery" rowspan="1">
-                                            기본 - 고정배송비<br />
-                                            2,500원
-
-                                            <br />
-                                            (택배-선결제)
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                                <!-- 장바구니 상품리스트 끝 -->
-                            </div>
-                        </div>
-                        <!-- //cart_cont_list -->
-
-                        <div class="btn_left_box">
-                            <a href="./cart.php" class="shop_go_link"
-                            ><em>&lt; 장바구니 가기</em></a
-                            >
-                        </div>
-
-                        <div class="price_sum">
-                            <div class="price_sum_cont">
-                                <div class="price_sum_list">
-                                    <dl>
-                                        <dt>총 <strong>1</strong> 개의 상품금액</dt>
-                                        <dd><strong>3,200</strong>원</dd>
-                                    </dl>
-                                    <span
-                                    ><img
-                                            src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_plus.png"
-                                            alt="더하기"
-                                    /></span>
-                                    <dl>
-                                        <dt>배송비</dt>
-                                        <dd><strong>2,500</strong>원</dd>
-                                    </dl>
-                                    <span
-                                    ><img
-                                            src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_total.png"
-                                            alt="합계"
-                                    /></span>
-                                    <dl class="price_total">
-                                        <dt>합계</dt>
-                                        <dd><strong>5,700</strong>원</dd>
-                                    </dl>
-                                </div>
-                                <em class="tobe_mileage js_mileage"
-                                >적립예정 마일리지 : <span>30</span> 원</em
-                                >
-                            </div>
-                            <!-- //price_sum_cont -->
-                        </div>
-                        <!-- //price_sum -->
-
-                        <!-- 주문 간단 가입 시작 -->
-                        <input type="hidden" name="simpleJoin" value="" />
-
-                        <!-- 주문 간단 가입 끝 -->
-
-                        <div class="order_view_info">
-                            <div class="order_agree">
-                                <div class="order_zone_tit">
-                                    <h4>상품 공급사 개인정보 제공 동의</h4>
-                                </div>
-                                <div class="order_agree_cont">
-                                    <div class="join_agreement_box">
-                                        <div class="agreement_box">
-                                            - 제공받는 자 : 농업회사법인 우리도가 서울지점
-                                            공급사<br />
-                                            - 이용목적 : 상품 및 경품(서비스) 배송(전송), 반품,
-                                            환불, 고객상담 등 정보통신서비스제공계약 및
-                                            전자상거래(통신판매)계약의 이행을 위해 필요한 업무의
-                                            처리<br />
-                                            - 수집항목 : 구매자정보(닉네임, 이름, 휴대전화 번호,
-                                            이메일주소), 수령인정보(이름, 휴대전화 번호, 수령인
-                                            주소), 상품 구매, 취소, 반품, 교환정보, 송장정보<br />
-                                            - 보유 / 이용기간 : 상품 제공 완료 후 3개월
-                                        </div>
-                                        <!-- //agreement_box -->
-                                        <div class="form_element">
-                                            <input
-                                                    type="checkbox"
-                                                    id="termAgree_privateProvider"
-                                                    name="termAgreePrivateProvider"
-                                                    class="require"
-                                            />
-                                            <label
-                                                    for="termAgree_privateProvider"
-                                                    class="check_s"
-                                            ><strong>(필수)</strong> 상품 공급사 개인정보 제공
-                                                동의에 대한 내용을 확인 하였으며 이에 동의
-                                                합니다.</label
-                                            >
-                                        </div>
+                        <col>          <!-- 상품명/옵션 -->
+                        <col style="width:15%">  <!-- 수량 -->
+                        <col style="width:10%"> <!-- 상품금액 -->
+                        <col style="width:13%"> <!-- 할인/적립 -->
+                        <col style="width:10%"> <!-- 합계금액 -->
+                        <col style="width:12%"> <!-- 배송비 -->
+                    </colgroup>
+                    <thead>
+                    <tr>
+                        <th>상품/옵션 정보</th>
+                        <th>수량</th>
+                        <th>상품금액</th>
+                        <th>할인</th>
+                        <th>합계금액</th>
+                        <th>배송비</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!--반복 요소-->
+                    <tr>
+                        <td class="product-info">
+                            <div class="product-info__content">
+              <span>
+                <!--상품 주소 연결-->
+                <a href="">
+                  <!--상품 이미지 연결-->
+                  <img
+                          src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004763/100004763_list_066.jpg"
+                          alt="">
+                </a>
+              </span>
+                                <div class="product-info__box">
+                                    <!-- 상품 설명 넣기-->
+                                    <div class="product-info__detail">
+                                        착한농부 만월세트 375mlx2병_24도1병,40도1병_김,고추부각 랜덤 증정
                                     </div>
                                 </div>
-                                <!-- //order_agree_cont -->
                             </div>
-                            <!-- //order_agree -->
+                        </td>
+                        <td class="product-count">
+                            <div class="product-count__content">
+                                <strong><span>1</span>개</strong>
 
-                            <div class="order_info">
-                                <div class="order_zone_tit">
-                                    <h4>주문자 정보</h4>
-                                </div>
-
-                                <div class="order_table_type">
-                                    <table class="table_left">
-                                        <colgroup>
-                                            <col style="width: 15%" />
-                                            <col style="width: 85%" />
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">
-                                                <span class="important">주문하시는 분</span>
-                                            </th>
-                                            <td>
-                                                <input
-                                                        type="text"
-                                                        name="orderName"
-                                                        id="orderName"
-                                                        value="정은경"
-                                                        data-pattern="gdEngKor"
-                                                        maxlength="20"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">전화번호</th>
-                                            <td>
-                                                <input
-                                                        type="text"
-                                                        id="phoneNum"
-                                                        name="orderPhone"
-                                                        value=""
-                                                        maxlength="20"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <span class="important">휴대폰 번호</span>
-                                            </th>
-                                            <td>
-                                                <input
-                                                        type="text"
-                                                        id="mobileNum"
-                                                        name="orderCellPhone"
-                                                        value="010-5397-0434"
-                                                        maxlength="20"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <span class="important">이메일</span>
-                                            </th>
-                                            <td class="member_email">
-                                                <input type="text" name="orderEmail" value="" />
-
-                                                <select
-                                                        id="emailDomain"
-                                                        class="chosen-select"
-                                                        style="display: none"
-                                                >
-                                                    <option value="self">직접입력</option>
-                                                    <option value="naver.com">naver.com</option>
-                                                    <option value="hanmail.net">
-                                                        hanmail.net
-                                                    </option>
-                                                    <option value="daum.net">daum.net</option>
-                                                    <option value="nate.com">nate.com</option>
-                                                    <option value="hotmail.com">
-                                                        hotmail.com
-                                                    </option>
-                                                    <option value="gmail.com">gmail.com</option>
-                                                    <option value="icloud.com">icloud.com</option>
-                                                </select>
-                                                <div
-                                                        class="chosen-container chosen-container-single chosen-container-single-nosearch"
-                                                        style="width: 120px"
-                                                        title=""
-                                                        id="emailDomain_chosen"
-                                                >
-                                                    <a class="chosen-single"
-                                                    ><span>직접입력</span>
-                                                        <div><b></b></div
-                                                        ></a>
-                                                    <div class="chosen-drop">
-                                                        <div class="chosen-search">
-                                                            <input
-                                                                    type="text"
-                                                                    autocomplete="off"
-                                                                    readonly=""
-                                                            />
-                                                        </div>
-                                                        <ul class="chosen-results"></ul>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
-                            <!-- //order_info -->
-
-                            <div class="delivery_info">
-                                <div class="order_zone_tit">
-                                    <h4>배송정보</h4>
-                                </div>
-
-                                <div class="order_table_type shipping_info">
-                                    <table class="table_left shipping_info_table">
-                                        <colgroup>
-                                            <col style="width: 15%" />
-                                            <col style="width: 85%" />
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">배송지 확인</th>
-                                            <td>
-                                                <div class="form_element">
-                                                    <ul>
-                                                        <li>
-                                                            <input
-                                                                    type="radio"
-                                                                    name="shipping"
-                                                                    id="shippingBasic"
-                                                            />
-                                                            <label
-                                                                    for="shippingBasic"
-                                                                    class="choice_s on"
-                                                            >기본 배송지</label
-                                                            >
-                                                        </li>
-                                                        <li>
-                                                            <input
-                                                                    type="radio"
-                                                                    name="shipping"
-                                                                    id="shippingRecently"
-                                                            />
-                                                            <label
-                                                                    for="shippingRecently"
-                                                                    class="choice_s"
-                                                            >최근 배송지</label
-                                                            >
-                                                        </li>
-                                                        <li>
-                                                            <input
-                                                                    type="radio"
-                                                                    name="shipping"
-                                                                    id="shippingNew"
-                                                            />
-                                                            <label for="shippingNew" class="choice_s"
-                                                            >직접 입력</label
-                                                            >
-                                                        </li>
-                                                        <li>
-                                                            <input
-                                                                    type="radio"
-                                                                    name="shipping"
-                                                                    id="shippingSameCheck"
-                                                            />
-                                                            <label
-                                                                    for="shippingSameCheck"
-                                                                    class="choice_s"
-                                                            >주문자정보와 동일</label
-                                                            >
-                                                        </li>
-                                                    </ul>
-                                                    <span class="btn_gray_list"
-                                                    ><a
-                                                            href="#myShippingListLayer"
-                                                            class="btn_gray_small btn_open_layer js_shipping"
-                                                    ><span>배송지 관리</span></a
-                                                    ></span
-                                                    >
-                                                    <input
-                                                            type="hidden"
-                                                            class="shipping-delivery-visit"
-                                                            value="n"
-                                                    />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <span class="important">받으실분</span>
-                                            </th>
-                                            <td>
-                                                <input
-                                                        type="text"
-                                                        name="receiverName"
-                                                        data-pattern="gdEngKor"
-                                                        maxlength="20"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <span class="important">받으실 곳</span>
-                                            </th>
-                                            <td class="member_address">
-                                                <div class="address_postcode">
-                                                    <input
-                                                            type="text"
-                                                            name="receiverZonecode"
-                                                            readonly="readonly"
-                                                    />
-                                                    <input
-                                                            type="hidden"
-                                                            name="receiverZipcode"
-                                                            value="-"
-                                                    />
-                                                    <button
-                                                            type="button"
-                                                            class="btn_post_search"
-                                                            onclick="gd_postcode_search('receiverZonecode', 'receiverAddress', 'receiverZipcode');"
-                                                    >
-                                                        우편번호검색
-                                                    </button>
-                                                </div>
-                                                <div class="address_input">
-                                                    <input
-                                                            type="text"
-                                                            name="receiverAddress"
-                                                            readonly="readonly"
-                                                    />
-                                                    <input
-                                                            type="text"
-                                                            name="receiverAddressSub"
-                                                    />
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">전화번호</th>
-                                            <td>
-                                                <input
-                                                        type="text"
-                                                        id="receiverPhone"
-                                                        name="receiverPhone"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">
-                                                <span class="important">휴대폰 번호</span>
-                                            </th>
-                                            <td>
-                                                <input
-                                                        type="text"
-                                                        id="receiverCellPhone"
-                                                        name="receiverCellPhone"
-                                                />
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">남기실 말씀</th>
-                                            <td class="td_last_say">
-                                                <input type="text" name="orderMemo" />
-                                            </td>
-                                        </tr>
-                                        <tr id="memberinfoApplyTr">
-                                            <th scope="row">회원정보 반영</th>
-                                            <td>
-                                                <div class="form_element">
-                                                    <div
-                                                            id="memberinfoApplyTr1"
-                                                            class="member_info_delivery"
-                                                            style="display: none"
-                                                    >
-                                                        <input
-                                                                type="checkbox"
-                                                                id="reflectApplyDelivery"
-                                                                name="reflectApplyDelivery"
-                                                                value="y"
-                                                        />
-                                                        <label
-                                                                for="reflectApplyDelivery"
-                                                                class="check_s"
-                                                        ><em>나의 배송지에 추가합니다.</em></label
-                                                        >
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
+                        </td>
+                        <td class="product-price">
+                            <div class="product-price__content">
+                                <!--상품금액 넣기-->
+                                <strong><span>28,020</span>원</strong>
                             </div>
-                            <!-- //delivery_info -->
+                        </td>
+                        <td class="product-sale">
+                            <div class="product-sale__content">
+                                <!--할인률 넣기-->
+                                <strong><span>20</span>% 할인</strong>
+                            </div>
+                        </td>
+                        <td class="product-total-price">
+                            <div class="product-total-price__content">
+                                <!--합계 금액 넣기-->
+                                <strong><span>28,020</span>원</strong>
+                            </div>
+                        </td>
+                        <!-- 전체 리스트 사이즈를 rowspan에 넣기-->
+                        <td class="delivery-charge" rowspan="">
+                            <div class="delivery-charge__content">
+                                기본 - 고정배송비<br>
+                                2500원
+                                <br>
+                                (택배-선결제)
+                            </div>
+                        </td>
+                    </tr>
+                    <!--/반복 요소-->
 
-                            <!-- //addition_info -->
-
-                            <div class="payment_info">
-                                <div class="order_zone_tit">
-                                    <h4>결제정보</h4>
-                                </div>
-
-                                <div class="order_table_type">
-                                    <table class="table_left">
-                                        <colgroup>
-                                            <col style="width: 15%" />
-                                            <col style="width: 85%" />
-                                        </colgroup>
-                                        <tbody>
-                                        <tr>
-                                            <th scope="row">상품 합계 금액</th>
-                                            <td>
-                                                <strong
-                                                        id="totalGoodsPrice"
-                                                        class="order_payment_sum"
-                                                >3,200원</strong
-                                                >
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">배송비</th>
-                                            <td>
-                                                <span id="totalDeliveryCharge">2,500</span>원
-                                                <span class="multi_shipping_text"></span>
-                                            </td>
-                                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </form>
 
 
-                                        <tr>
-                                            <th scope="row">할인</th>
-                                            <td>
-                                                <ul class="order_benefit_list">
-                                                    <li class="order_benefit_sale">
-                                                        <em id="saleDefault">
-                                                            할인 :
-                                                            <strong
-                                                            >(-)
-                                                                <b class="total-member-dc-price">0</b
-                                                                >원</strong
-                                                            >
-                                                            <span
-                                                            >( 상품 0원 , 회원
+        <div class="go-back">
+            <a href="">
+                <span>&lt 장바구니 가기</span>
+            </a>
+        </div>
+
+
+        <!-- 상품 합계가격-->
+        <div class="cart-total">
+            <div class="cart-total__price">
+                <div class="cart-total__product">
+                    <span>총 <strong>3</strong>개의 상품금액</span>
+                    <span class="price-color"><strong>92,620</strong>원</span>
+                </div>
+                <span class="plus-img">
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_plus.png" alt="">
+        </span>
+                <div class="cart-total__delivery">
+                    <span>배송비</span>
+                    <span class="price-color"><strong>2,500</strong>원</span>
+                </div>
+                <span class="equals-img">
+          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_total.png" alt="">
+        </span>
+                <div class="cart-total__sum">
+                    <span>합계</span>
+                    <span class="price-color"><strong>92,620</strong>원</span>
+                </div>
+            </div>
+        </div>
+        <!--    상품 가격 끝-->
+
+        <!--    주문 동의안-->
+        <div class="order_agree">
+
+            <div class="order_zone_tit">
+                <h4>상품 공급사 개인정보 제공 동의</h4>
+            </div>
+
+            <div class="order_agree_cont">
+
+                <div class="join_agreement_box">
+
+                    <div class="agreement_box">
+                        - 제공받는 자 : 농업회사법인 우리도가 서울지점
+                        공급사<br />
+                        - 이용목적 : 상품 및 경품(서비스) 배송(전송), 반품,
+                        환불, 고객상담 등 정보통신서비스제공계약 및
+                        전자상거래(통신판매)계약의 이행을 위해 필요한 업무의
+                        처리<br />
+                        - 수집항목 : 구매자정보(닉네임, 이름, 휴대전화 번호,
+                        이메일주소), 수령인정보(이름, 휴대전화 번호, 수령인
+                        주소), 상품 구매, 취소, 반품, 교환정보, 송장정보<br />
+                        - 보유 / 이용기간 : 상품 제공 완료 후 3개월
+                    </div>
+
+                    <!-- //agreement_box -->
+                    <div class="form_element">
+
+                        <!-- id는 중복되면 안되므로 상품정보의 고유값을 연결하여 사용하기-->
+                        <input type="checkbox" id="check-item1" class="check-box check-box__children" checked="checked">
+                        <!-- 위에서 설정한 id를 label의 for에 동일하게 설정하기-->
+                        <label for="check-item1" class="check-box__label check-box__label--checked"><strong>(필수)</strong> 상품 공급사 개인정보 제공
+                            동의에 대한 내용을 확인 하였으며 이에 동의
+                            합니다.</label>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!--    개인정보 동의 끝-->
+
+        <!--   주문자 정보 -->
+        <div class="order_info">
+            <div class="order_zone_tit">
+                <h4>주문자 정보</h4>
+            </div>
+
+            <div class="order_table_type">
+                <table class="table_left">
+                    <colgroup>
+                        <col style="width: 15%" />
+                        <col style="width: 85%" />
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">
+                            <span class="important">주문하시는 분</span>
+                        </th>
+                        <td>
+                            <input
+                                    type="text"
+                                    name="userName"
+                                    id="orderName"
+                                    value="정은경"
+                                    maxlength="20"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">전화번호</th>
+                        <td>
+                            <input
+                                    type="text"
+                                    name="userPhone"
+                                    id="orderPhoneNumber"
+                                    value=""
+                                    maxlength="20"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="important">휴대폰 번호</span>
+                        </th>
+                        <td>
+                            <input
+                                    type="text"
+                                    name="userCellPhone"
+                                    id="orderCellPhoneNumber"
+                                    value=""
+                                    maxlength="20"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="important">이메일</span>
+                        </th>
+                        <td class="user_email">
+                            <input type="text" name="orderEmail" value="" />
+
+                            <select class="chosen-select">
+                                <option value="self"selected="selected">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="hanmail.net">hanmail.net</option>
+                                <option value="daum.net">daum.net</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </select>
+
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 주문자 정보 끝 -->
+
+        <!--    배송지 정보-->
+        <div class="delivery_info">
+            <div class="order_zone_tit">
+                <h4>배송정보</h4>
+            </div>
+
+            <div class="order_table_type shipping_info">
+                <table class="table_left shipping_info_table">
+                    <colgroup>
+                        <col style="width: 15%" />
+                        <col style="width: 85%" />
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">배송지 확인</th>
+                        <td>
+                            <div class="form_element">
+                                <ul>
+                                    <li>
+                                        <input
+                                                type="radio"
+                                                name="shipping"
+                                                id="shippingBasic"
+                                        />
+                                        <label
+                                                for="shippingBasic"
+                                                class="choice_s on"
+                                        >기본 배송지</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                                type="radio"
+                                                name="shipping"
+                                                id="shippingRecently"
+                                        />
+                                        <label
+                                                for="shippingRecently"
+                                                class="choice_s"
+                                        >최근 배송지</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                                type="radio"
+                                                name="shipping"
+                                                id="shippingNew"
+                                        />
+                                        <label for="shippingNew" class="choice_s"
+                                        >직접 입력</label
+                                        >
+                                    </li>
+                                    <li>
+                                        <input
+                                                type="radio"
+                                                name="shipping"
+                                                id="shippingSameCheck"
+                                        />
+                                        <label
+                                                for="shippingSameCheck"
+                                                class="choice_s"
+                                        >주문자정보와 동일</label
+                                        >
+                                    </li>
+                                </ul>
+                                <span class="btn_gray_list"
+                                ><a
+                                        href="#myShippingListLayer"
+                                        class="btn_gray_small btn_open_layer js_shipping"
+                                ><span>배송지 관리</span></a
+                                ></span
+                                >
+                                <input
+                                        type="hidden"
+                                        class="shipping-delivery-visit"
+                                        value="n"
+                                />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="important">받으실분</span>
+                        </th>
+                        <td>
+                            <input
+                                    type="text"
+                                    name="receiverName"
+                                    data-pattern="gdEngKor"
+                                    maxlength="20"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="important">받으실 곳</span>
+                        </th>
+                        <td class="member_address">
+                            <div class="address_postcode">
+                                <input
+                                        type="text"
+                                        name="receiverZonecode"
+                                        readonly="readonly"
+                                />
+                                <input
+                                        type="hidden"
+                                        name="receiverZipcode"
+                                        value="-"
+                                />
+                                <button
+                                        type="button"
+                                        class="btn_post_search"
+                                        onclick="gd_postcode_search('receiverZonecode', 'receiverAddress', 'receiverZipcode');"
+                                >
+                                    우편번호검색
+                                </button>
+                            </div>
+                            <div class="address_input">
+                                <input
+                                        type="text"
+                                        name="receiverAddress"
+                                        readonly="readonly"
+                                />
+                                <input
+                                        type="text"
+                                        name="receiverAddressSub"
+                                />
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">전화번호</th>
+                        <td>
+                            <input
+                                    type="text"
+                                    id="receiverPhone"
+                                    name="receiverPhone"
+                            />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <span class="important">휴대폰 번호</span>
+                        </th>
+                        <td>
+                            <input
+                                    type="text"
+                                    id="receiverCellPhone"
+                                    name="receiverCellPhone"
+                            />
+                        </td>
+                    </tr>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- 배송지 정보 끝-->
+
+        <!--    결제 정보-->
+        <div class="payment_info">
+            <div class="order_zone_tit">
+                <h4>결제정보</h4>
+            </div>
+
+            <div class="order_table_type">
+                <table class="table_left">
+                    <colgroup>
+                        <col style="width: 15%" />
+                        <col style="width: 85%" />
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">상품 합계 금액</th>
+                        <td>
+                            <strong
+                                    id="totalGoodsPrice"
+                                    class="order_payment_sum"
+                            >3,200원</strong
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">배송비</th>
+                        <td>
+                            <span id="totalDeliveryCharge">2,500</span>원
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">할인</th>
+                        <td>
+                            <ul class="order_benefit_list">
+                                <li class="order_benefit_sale">
+                                    <em id="saleDefault">
+                                        할인 :
+                                        <strong
+                                        >(-)
+                                            <b class="total-member-dc-price">0</b
+                                            >원</strong
+                                        >
+                                        <span
+                                        >( 상품 0원 , 회원
                                         <span class="member-dc-price">0원</span>
                                         , 쿠폰
                                         <span class="goods-coupon-dc-price"
                                         >0</span
                                         >원 )</span
-                                                            >
-                                                        </em>
-                                                        <em id="saleWithoutMember" class="dn">
-                                                            할인 :
-                                                            <strong
-                                                            >(-)
-                                                                <b
-                                                                        class="total-member-dc-price-without-member"
-                                                                >0</b
-                                                                >원</strong
-                                                            >
-                                                            <span
-                                                            >( 상품 0원 , 회원 0원 , 쿠폰
+                                        >
+                                    </em>
+                                    <em id="saleWithoutMember" class="dn">
+                                        할인 :
+                                        <strong
+                                        >(-)
+                                            <b
+                                                    class="total-member-dc-price-without-member"
+                                            >0</b
+                                            >원</strong
+                                        >
+                                        <span
+                                        >( 상품 0원 , 회원 0원 , 쿠폰
                                         <span
                                                 class="goods-coupon-dc-price-without-member"
                                         >0</span
                                         >원</span
-                                                            >
-                                                            )
-                                                        </em>
-                                                    </li>
+                                        >
+                                        )
+                                    </em>
+                                </li>
 
-                                                </ul>
-                                            </td>
-                                        </tr>
-
-
-                                        <tr>
-                                            <th scope="row">최종 결제 금액</th>
-                                            <td>
-                                                <input
-                                                        type="hidden"
-                                                        name="settlePrice"
-                                                        value="5700"
-                                                />
-                                                <input
-                                                        type="hidden"
-                                                        name="overseasSettlePrice"
-                                                        value="0"
-                                                />
-                                                <input
-                                                        type="hidden"
-                                                        name="overseasSettleCurrency"
-                                                        value="KRW"
-                                                />
-                                                <strong
-                                                        id="totalSettlePrice"
-                                                        class="order_payment_sum"
-                                                >5,700</strong
-                                                >원
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <!-- //payment_info -->
-
-                            <div class="payment_progress">
-                                <div class="order_zone_tit">
-                                    <h4>결제수단 선택 / 결제</h4>
-
-                                </div>
-
-                                <div class="payment_progress_list">
-                                    <div class="js_pay_content">
-                                        <!-- N : 페이코결제 시작 -->
-                                        <!-- N : 페이코결제 끝 -->
-
-                                        <!-- N : 일반결제 시작 -->
-                                        <div id="settlekind_general" class="general_payment">
-                                            <dl>
-                                                <dt>일반결제</dt>
-                                                <dd>
-                                                    <div class="form_element">
-                                                        <ul class="payment_progress_select">
-                                                            <li id="settlekindType_pc">
-                                                                <input
-                                                                        type="radio"
-                                                                        id="settleKind_pc"
-                                                                        name="settleKind"
-                                                                        value="pc"
-                                                                />
-                                                                <label
-                                                                        for="settleKind_pc"
-                                                                        class="choice_s on"
-                                                                >신용카드</label
-                                                                >
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-
-                                                    <!-- 신용카드 컨텐츠 -->
-                                                    <div
-                                                            class="card"
-                                                            id="settlekind_general_pc"
-                                                            style="display: block"
-                                                    ></div>
-                                                    <!-- //신용카드 컨텐츠 -->
-                                                </dd>
-                                            </dl>
-                                        </div>
-                                        <!-- //general_payment -->
-                                        <!-- N : 일반결제 끝 -->
+                            </ul>
+                        </td>
+                    </tr>
 
 
-                                    </div>
-
-                                    <!-- //payment_progress_list -->
-                                    <div class="payment_final">
-                                        <div class="payment_final_total">
-                                            <dl>
-                                                <dt>최종 결제 금액</dt>
-                                                <dd>
-                              <span
-                              ><strong id="totalSettlePriceView">5,700</strong
-                              >원</span
-                              >
-                                                </dd>
-                                            </dl>
-                                        </div>
-                                        <div class="payment_final_check">
-                                            <div class="form_element">
-                                                <input
-                                                        type="checkbox"
-                                                        id="termAgree_orderCheck"
-                                                        class="require"
-                                                />
-                                                <label for="termAgree_orderCheck" class="check_s"
-                                                ><em
-                                                ><b>(필수)</b> 구매하실 상품의 결제정보를
-                                                    확인하였으며, 구매진행에 동의합니다.</em
-                                                ></label
-                                                >
-                                            </div>
-                                        </div>
-                                        <div class="btn_center_box">
-                                            <button class="btn_order_buy order-buy">
-                                                <em>결제하기</em>
-                                            </button>
-                                        </div>
-                                    </div>
-                                    <!-- //payment_final -->
-                                </div>
-                                <!-- //payment_progress -->
-                            </div>
-                            <!-- //order_view_info -->
-                        </div>
-                        <!-- //order_cont -->
-                    </div>
-                    <!-- //order_wrap -->
-                    </form>
-                </div>
-                <!-- //content_box -->
-
-
+                    <tr>
+                        <th scope="row">최종 결제 금액</th>
+                        <td>
+                            <input
+                                    type="hidden"
+                                    name="settlePrice"
+                                    value="5700"
+                            />
+                            <input
+                                    type="hidden"
+                                    name="overseasSettlePrice"
+                                    value="0"
+                            />
+                            <input
+                                    type="hidden"
+                                    name="overseasSettleCurrency"
+                                    value="KRW"
+                            />
+                            <strong
+                                    id="totalSettlePrice"
+                                    class="order_payment_sum"
+                            >5,700</strong
+                            >원
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
-            <!-- //sub_content -->
         </div>
-        <!-- //본문 끝 contents -->
-    </div>
-    <!-- //container -->
+        <!-- 결제 정보 끝-->
 
-    <!-- footer -->
-    <footer></footer>
+        <!--    결제 수단-->
+
+        <div class="payment_progress">
+            <div class="order_zone_tit">
+                <h4>결제수단 선택 / 결제</h4>
+            </div>
+
+            <div class="order_table_type shipping_info">
+                <table class="table_left shipping_info_table">
+                    <colgroup>
+                        <col style="width: 15%" />
+                        <col style="width: 85%" />
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th scope="row">일반결제</th>
+                        <td>
+                            <div class="form_element">
+                                <ul>
+                                    <li>
+                                        <input
+                                                type="radio"
+                                                name="card"
+                                                id="card"
+                                        />
+                                        <label
+                                                for="card"
+                                                class="card on"
+                                        >신용카드</label
+                                        >
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!--    신용카드 결제 끝-->
+
+        <!--    최종 결제금액-->
+        <div class="cart-final_total">
+            <div class="cart-final_total__price">
+                <div class="cart-final_total__sum">
+                    <span>최종 결제 금액</span>
+                    <span class="final_price-color"><strong>92,620</strong>원</span>
+                </div>
+            </div>
+        </div>
+
+        <!--    주문 동의안-->
+        <div class="payment_final">
+            <div class="payment_final_check">
+                <div class="form_element">
+                    <input
+                            type="checkbox"
+                            id="termAgree_orderCheck"
+                            class="require"
+                    />
+                    <label for="termAgree_orderCheck" class="check_s"
+                    ><em
+                    ><b>(필수)</b> 구매하실 상품의 결제정보를
+                        확인하였으며, 구매진행에 동의합니다.</em
+                    ></label
+                    >
+                </div>
+            </div>
+
+            <!--          하단 버튼-->
+
+            <div class="btn-box">
+                <div class="order-btn">
+                    결제하기
+                </div>
+            </div>
+
+
+        </div>
+</main>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
 </body>
 </html>

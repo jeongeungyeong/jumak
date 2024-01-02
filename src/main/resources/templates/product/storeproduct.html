@@ -5,19 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
   <title>주모's store</title>
 </head>
 
-<body
-        id="blContents"
-        class="body-goods body-goods-list pc"
-        oncontextmenu="return false"
-        cz-shortcut-listen="true"
->
+<body>
 <!-- 헤더 -->
-<header></header>
+<header th:replace="~{/fragments/header :: header}"></header>
 <!-- //헤더 -->
-
+<main>
 <div class="container">
   <!-- 카테고리 -->
   <form>
@@ -30,447 +29,94 @@
                 id="category-best"
                 name="shopCategory"
                 value="best"
+                th:checked="${'best' == cate || cate == null}"
         />
       </label>
-      <label for="category-all" class="category-box checked">
+      <label for="category-all" class="category-box">
         <span>전체상품</span>
         <input
                 type="radio"
                 id="category-all"
-                name="storeCategory"
+                name="shopCategory"
                 value="all"
+                th:checked="${'all' == cate}"
         />
       </label>
-      <label for="category-a" class="category-box checked">
+      <label for="category-a" class="category-box">
         <span>막걸리/탁주</span>
-        <input type="radio" id="category-a" name="shopCategory" value="a" />
+        <input type="radio" id="category-a" name="shopCategory" value="group1" th:checked="${'group1' == cate}"/>
       </label>
-      <label for="category-b" class="category-box checked">
+      <label for="category-b" class="category-box">
         <span>증류주/리큐르</span>
-        <input type="radio" id="category-b" name="shopCategory" value="b" />
+        <input type="radio" id="category-b" name="shopCategory" value="group2" th:checked="${'group2' == cate}"/>
       </label>
-      <label for="category-c" class="category-box checked">
+      <label for="category-c" class="category-box">
         <span>약주/청주</span>
-        <input type="radio" id="category-c" name="shopCategory" value="c" />
+        <input type="radio" id="category-c" name="shopCategory" value="group3" th:checked="${'group3' == cate}"/>
       </label>
-      <label for="category-d" class="category-box checked">
+      <label for="category-d" class="category-box">
         <span>와인/과실주</span>
-        <input type="radio" id="category-d" name="shopCategory" value="d" />
+        <input type="radio" id="category-d" name="shopCategory" value="group4" th:checked="${'group4' == cate}"/>
       </label>
-      <label for="category-e" class="category-box checked">
+      <label for="category-e" class="category-box">
         <span>기타주류</span>
-        <input type="radio" id="category-e" name="shopCategory" value="e" />
+        <input type="radio" id="category-e" name="shopCategory" value="group5" th:checked="${'group5' == cate}"/>
       </label>
     </div>
   </div>
     </form>
   <!-- /카테고리 -->
   <!-- 정렬 -->
-  <form>
-    <div class="products_pick_list">
-      <div class="products_pick_num">
-        <div class="pick_list_num">총 <strong>641</strong>개의 상품</div>
+  <section class="products_pick_list">
+    <div class="section-head">
+      <div class="section-head__title">
+        총 641개의 상품
       </div>
-
-      <select class="pick_list_box">
-        <option value="등록일순"selected="selected">등록일순</option>
-        <option value="판매인기순">판매인기순</option>
-        <option value="낮은가격순">낮은가격순</option>
-        <option value="높은가격순">높은가격순</option>
-        <option value="상품평순">상품평순</option>
+      <select class="section-head__more">
+        <option value="date" th:selected="${'date' == orderCond}">등록일순</option>
+        <option value="sale" th:selected="${'sale' == orderCond}">판매인기순</option>
+        <option value="rowPrice" th:selected="${'rowPrice' == orderCond}">낮은가격순</option>
+        <option value="highPrice" th:selected="${'highPrice' == orderCond}">높은가격순</option>
       </select>
     </div>
-  </form>
-
-  <!-- /정렬 -->
-  <!-- 상품목록 -->
-  <div class="product">
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004711/100004711_detail_05.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-          <span class="like">
-            <i class="fas fa-heart"></i>
-            <span class="like-count">12</span>
-          </span>
-          <span class="comment">
-            <i class="fas fa-comment"></i>
-            <span class="comment-count">5</span>
-          </span>
-        </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">오연가 오연 25도 360ml 홍시증류주</h3>
-        <span class="product-item-price_box">
-              <span>11,400원</span> <del>12,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004710/100004710_detail_06.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-            <span class="like">
-              <i class="fas fa-heart"></i>
-              <span class="like-count">12</span>
-            </span>
-            <span class="comment">
-              <i class="fas fa-comment"></i>
-              <span class="comment-count">5</span>
-            </span>
-          </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          내변산 부안참뽕와인 미니어쳐세트 13도 90mlx5
-        </h3>
-        <span class="product-item-price_box">
-              <span>11,400원</span>
-              <del>12,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004709/100004709_detail_058.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-            <span class="like">
-              <i class="fas fa-heart"></i>
-              <span class="like-count">12</span>
-            </span>
-            <span class="comment">
-              <i class="fas fa-comment"></i>
-              <span class="comment-count">5</span>
-            </span>
-          </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          내변산 부안참뽕와인 미니어쳐 13도 90ml
-        </h3>
-        <span class="product-item-price_box">
-              <span>3,320원</span>
-              <del>3,500원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004708/100004708_detail_043.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-            <span class="like">
-              <i class="fas fa-heart"></i>
-              <span class="like-count">12</span>
-            </span>
-            <span class="comment">
-              <i class="fas fa-comment"></i>
-              <span class="comment-count">5</span>
-            </span>
-          </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          김연박명인 민속주안동소주 양반탈 45도 400ml 조옥화1대명인
-        </h3>
-        <span class="product-item-price_box">
-              <span>30,400원</span>
-              <del>32,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004707/100004707_detail_035.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-            <span class="like">
-              <i class="fas fa-heart"></i>
-              <span class="like-count">12</span>
-            </span>
-            <span class="comment">
-              <i class="fas fa-comment"></i>
-              <span class="comment-count">5</span>
-            </span>
-          </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          솔티마을 심쿵하리 사과 하드셀처와인 4.5도 375ml
-        </h3>
-        <span class="product-item-price_box">
-              <span>14,250원</span>
-              <del>15,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004705/100004705_detail_097.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-            <span class="like">
-              <i class="fas fa-heart"></i>
-              <span class="like-count">12</span>
-            </span>
-            <span class="comment">
-              <i class="fas fa-comment"></i>
-              <span class="comment-count">5</span>
-            </span>
-          </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          솔티마을 오롯이 포도 스파클링와인 4.5도 375ml
-        </h3>
-        <span class="product-item-price_box">
-              <span>14,250원</span>
-              <del>15,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/100004704/100004704_detail_02.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-                  <span class="like">
-                    <i class="fas fa-heart"></i>
-                    <span class="like-count">12</span>
-                  </span>
-                  <span class="comment">
-                    <i class="fas fa-comment"></i>
-                    <span class="comment-count">5</span>
-                  </span>
-                </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          서울고량주 레드 35도 375ml x2병 + 서울고량주전용잔 2개 증정
-        </h3>
-        <span class="product-item-price_box">
-              <span>25,110원</span>
-              <del>26,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/47/100004703/100004703_detail_028.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-              <span class="like">
-                <i class="fas fa-heart"></i>
-                <span class="like-count">12</span>
-              </span>
-              <span class="comment">
-                <i class="fas fa-comment"></i>
-                <span class="comment-count">5</span>
-              </span>
-            </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">참주가 우리청주 11도 375ml 7분도정</h3>
-        <span class="product-item-price_box">
-              <span>3,320원</span>
-              <del>3,500원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/49/100004721/100004721_detail_084.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-              <span class="like">
-                <i class="fas fa-heart"></i>
-                <span class="like-count">12</span>
-              </span>
-              <span class="comment">
-                <i class="fas fa-comment"></i>
-                <span class="comment-count">5</span>
-              </span>
-            </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">
-          제주왕지케 설홍 20도 375ml 동백증류주
-        </h3>
-        <span class="product-item-price_box">
-              <span>4,750원</span>
-              <del>5,000원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-    <!-- 게시물 샘플 -->
-    <div class="product-item" th:each="product: ${products}">
-      <div class="product-img-box">
-        <div
-                class="product-item-image"
-                style="
-                background-image: url(https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/49/100004720/100004720_detail_039.jpg);
-              "
-        ></div>
-        <!-- 별점/ 찜하기 -->
-        <!-- <div class="product-item-info">
-              <span class="like">
-                <i class="fas fa-heart"></i>
-                <span class="like-count">12</span>
-              </span>
-              <span class="comment">
-                <i class="fas fa-comment"></i>
-                <span class="comment-count">5</span>
-              </span>
-            </div> -->
-        <!-- //별점/찜하기 -->
-      </div>
-      <div class="product-item-text">
-        <h3 class="product-item-title">문경주조 폭스진 25도 200ml</h3>
-        <span class="product-item-price_box">
-              <span>16,050원</span>
-              <del>16,900원</del></span
-        >
-      </div>
-      <div class="box_absol">
-        <div class="sale">
-          <span><strong>5</strong>%</span>
-          <span>SALE</span>
-        </div>
-      </div>
-    </div>
-    <!-- /게시물 샘플 -->
-  </div>
 </div>
+  <div class="store-list product__list">
+    <!-- 반복 요소 -->
+    <article class="list-product" th:each="product: ${products}">
+      <div class="sale-box">
+              <span>
+                <strong class="sale-percent" th:text="${product.productDiscount}"></strong>%
+              </span>
+        <span>SALE</span>
+      </div>
+      <div class="main_img-box">
+        <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
+      </div>
+      <div class="title-box">
+        <p class="name" th:text="${product.productName + product.productAlcoholicity + '도' + product.productNetWeight + 'ml'}">마스브루어리+도수+용량</p>
+        <p class="sale-price" th:with="isEven=${product.productPrice - (product.productPrice * (product.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA') + '원'}">26,600원</p>
+        <del class="price" th:text="${product.productPrice}"> 28,000원</del>
+      </div>
+    </article>
+    <article class="list-product">
+      <div class="sale-box">
+              <span>
+                <strong class="sale-percent">5</strong>%
+              </span>
+        <span>SALE</span>
+      </div>
+      <div class="main_img-box">
+        <img src="/imgs/product/product02.jpg" alt="">
+      </div>
+      <div class="title-box">
+        <p class="name">오연가+도수+용량</p>
+        <p class="sale-price">11,400원</p>
+        <del class="price"> 12,000원</del>
+      </div>
+    </article>
+    <!-- /반복 요소 -->
+  </div>
+  </section>
 <!-- 페이징 처리  -->
 <div class="page-container">
   <ul class="page-box">
@@ -525,8 +171,13 @@
 <!--  </ul>-->
 <!--</div>-->
 <!-- /페이징 처리 -->
+</main>
 
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
 <script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 

@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.product.ProductImgMapper">
-    <insert id="insert">
-        <selectKey keyProperty="productImgMainNumber" order="BEFORE" resultType="long">
-            SELECT SEQ_PRODUCT_IMG_MAIN.nextval FROM DUAL
-        </selectKey>
-        INSERT INTO JUMAK_PRODUCT_IMG_MAIN(PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH,
-                                           PRODUCT_IMG_MAIN_UUID, PRODUCT_NUMBER)
-        VALUES (#{productImgMainNumber},#{productImgMainName},#{productImgMainPath},
-                #{productImgMainUuid},#{productNumber})
-    </insert>
+
+<!--    상품 메인 이미지리스트 조회-->
+    <select id="selectMList" resultType="productImgMainDto">
+        SELECT PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH,
+               PRODUCT_IMG_MAIN_UUID, PRODUCT_NUMBER
+        FROM JUMAK_PRODUCT_IMG_MAIN
+        WHERE PRODUCT_NUMBER =#{productNumber}
+    </select>
+
+<!--    상품 설명 이미지리스트 조회-->
+    <select id="selectDList" resultType="productImgDto">
+        SELECT PRODUCT_IMG_NUMBER, PRODUCT_IMG_NAME, PRODUCT_IMG_PATH,
+               PRODUCT_IMG_UUID, PRODUCT_NUMBER
+        FROM JUMAK_PRODUCT_IMG
+        WHERE PRODUCT_NUMBER=#{productNumber}
+    </select>
+
+
+
+
 </mapper>
