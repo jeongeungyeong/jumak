@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.mypage.SearchShippingMapper">
+    <select id="selectOrderDetail" resultType="orderDetailVo">
+        SELECT O.ORDER_NUMBER, O.USER_NUMBER, TO_CHAR(O.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE, O.ORDER_STATUS_NUMBER
+             , OD.ORDER_DETAIL_COUNT, OD.ORDER_DETAIL_NUMBER
+             , P.PRODUCT_NAME, P.PRODUCT_PRICE
+             , OS.ORDER_STATUS_NAME
+             , (SELECT COUNT(JOR.ORDER_REVIEW_NUMBER) FROM JUMAK_ORDER_REVIEW JOR WHERE JOR.ORDER_DETAIL_NUMBER = OD.ORDER_DETAIL_NUMBER
+                                                                                    AND JOR.USER_NUMBER = O.USER_NUMBER) REVIEW_COUNT
+        FROM JUMAK_ORDER O JOIN JUMAK_ORDER_DETAIL OD on O.ORDER_NUMBER = OD.ORDER_NUMBER
+                           JOIN JUMAK_PRODUCT P ON OD.PRODUCT_NUMBER = P.PRODUCT_NUMBER
+                           JOIN JUMAK_ORDER_STATUS OS on O.ORDER_STATUS_NUMBER = OS.ORDER_STATUS_NUMBER
+        WHERE TO_CHAR(ORDER_DATE, 'YYYY-MM-DD') BETWEEN #{startDate} AND #{endDate} AND USER_NUMBER = #{userNumber} AND O.ORDER_STATUS_NUMBER IN(1,2,3,4,5,6)
+    </select>
+</mapper>

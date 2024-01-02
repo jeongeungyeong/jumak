@@ -40,7 +40,7 @@
                     <input type="text" name="keyword">
                     <button>검색</button>
                 </form>
-                <button type="button" class="product_add">상품추가</button>
+                <button type="button" class="btn_product_add">상품추가</button>
             </div>
 
             <div>
@@ -82,7 +82,7 @@
                             <td th:text="${product.productReleaseDate}"></td>
                             <td>
                                 <button class="btn_product_detail" type="button" th:data-num="${product.productNumber}">상세</button>
-                                <button>삭제</button>
+                                <button class="btn_product_remove" type="button" th:data-num="${product.productNumber}">삭제</button>
                             </td>
                         </tr>
 
@@ -101,7 +101,7 @@
 
                     <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
                         <a th:href="@{/admin/product(page=${i})}" class="page-a">
-                            <span class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></span>
+                            <span class="page-num" th:classappend="${i==pageInfo.aCriteria.page} ? 'active' : '' " th:text="${i}"></span>
                         </a>
                     </th:block>
 
