@@ -50,4 +50,10 @@ public class ProductService {
                 .orElseThrow( ()-> new IllegalStateException("상품 조회 결과 없음!"));
     }
 
+//    상품 디테일 이미지 조회
+    public List<ProductDetailVo> findByDImg(Long productNumber){
+        return Optional.ofNullable(productMapper.selectByDImg(productNumber))
+                .orElseThrow( ()-> new IllegalStateException("상품 이미지 조회 결과 없음!"));
+    }
+
 }

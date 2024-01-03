@@ -12,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
@@ -75,9 +76,19 @@ class ProductServiceTest {
         //given
         doReturn(Optional.ofNullable(productDetailVo)).when(productMapper).selectByDNumber(any());
         //when
-        ProductDetailVo foundDNumber = productService.findByDNumber(22L);
+        ProductDetailVo foundDNumber = productService.findByDNumber(26L);
         //then
-        Assertions.assertThat(foundDNumber).isEqualTo(productDetailVo);
+        assertThat(foundDNumber).isEqualTo(productDetailVo);
+    }
+
+    @Test
+    void findByDImg() {
+        // given
+        Mockito.doReturn(List.of(productDetailVo)).when(productMapper).selectByDImg(26L);
+        // when
+        List<ProductDetailVo> byDImgList = productService.findByDImg(26L);
+        // then
+        assertThat(byDImgList).contains(productDetailVo);
     }
 
 /*    @Test

@@ -339,18 +339,13 @@
                                         >
                                     </li>
                                 </ul>
-                                <span class="btn_gray_list"
+                              <!--  <span class="btn_gray_list"
                                 ><a
                                         href="#myShippingListLayer"
                                         class="btn_gray_small btn_open_layer js_shipping"
                                 ><span>배송지 관리</span></a
                                 ></span
-                                >
-                                <input
-                                        type="hidden"
-                                        class="shipping-delivery-visit"
-                                        value="n"
-                                />
+                                >-->
                             </div>
                         </td>
                     </tr>
@@ -373,33 +368,22 @@
                         </th>
                         <td class="member_address">
                             <div class="address_postcode">
-                                <input
-                                        type="text"
-                                        name="receiverZonecode"
-                                        readonly="readonly"
-                                />
-                                <input
-                                        type="hidden"
-                                        name="receiverZipcode"
-                                        value="-"
-                                />
-                                <button
-                                        type="button"
-                                        class="btn_post_search"
-                                        onclick="gd_postcode_search('receiverZonecode', 'receiverAddress', 'receiverZipcode');"
-                                >
-                                    우편번호검색
-                                </button>
+
+                                <input type="text" id="zipcode" placeholder="우편번호">
+                                <input type="button" onclick="searchAddress()" value="우편번호 찾기"><br>
+
                             </div>
                             <div class="address_input">
                                 <input
                                         type="text"
-                                        name="receiverAddress"
-                                        readonly="readonly"
+                                        name="orderAddress"
+                                        id="address"
+                                        placeholder="주소"
                                 />
                                 <input
                                         type="text"
-                                        name="receiverAddressSub"
+                                        name="orderAddressDetail"
+                                        id="addressDetail" placeholder="상세주소"
                                 />
                             </div>
                         </td>
@@ -628,6 +612,8 @@
 <footer th:replace="~{/fragments/footer :: footer}"></footer>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script th:src="@{/js/fragments/header.js}"></script>
+<script th:src="@{/js/order/order.js}"></script>
 </body>
 </html>

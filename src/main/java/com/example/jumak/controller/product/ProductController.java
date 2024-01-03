@@ -31,7 +31,6 @@ public class ProductController {
     }
 
 
-
     //    스토어 상품 전체 보기
     @GetMapping("/all")
     public String productall(Model model){
@@ -49,12 +48,12 @@ public class ProductController {
         ProductDetailVo prodcutDetails = productService.findByDNumber(productNumber);
         model.addAttribute("detailproducts",prodcutDetails);
 
+        List<ProductDetailVo> byDImgList = productService.findByDImg(productNumber);
+        model.addAttribute("dimgs",byDImgList);
+
 
         return "product/storeproductdetail" ;
     }
 
-    //  상품 장바구니 담기
-
-    //  상품 주문버튼
 
 }

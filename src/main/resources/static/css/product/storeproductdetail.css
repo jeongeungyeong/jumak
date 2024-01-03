@@ -119,6 +119,7 @@ colgroup {
     padding: 0;
     padding: 6px 0;
     min-height: auto;
+    display: flex;
 }
 .product-info__table-box dl dt {
     width: 108px;
@@ -252,6 +253,7 @@ colgroup {
 .btn_choice_box > div {
     font-size: 0;
     text-align: center;
+    display: flex;
 }
 .btn_choice_box > div button.btn_add_cart {
     border: 1px solid rgb(240, 200, 100);
@@ -315,7 +317,7 @@ colgroup {
     resize: none;
     border: none;
     background-color: #f7f7f7;
-    height: 80px;
+    height: 20px;
     padding: 50px;
 }
 

@@ -1,5 +1,6 @@
 package com.example.jumak.mapper.product;
 
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,11 @@ class ProductMapperTest {
 
     @Test
     void selectByDNumber() {
-        productMapper.selectByDNumber(22L);
+        productMapper.selectByDNumber(26L);
+    }
+
+    @Test
+    void selectByDImg() {
+        List<ProductDetailVo> productDImgList = productMapper.selectByDImg(26L);
     }
 }

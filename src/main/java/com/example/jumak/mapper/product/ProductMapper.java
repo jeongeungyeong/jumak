@@ -38,4 +38,7 @@ List<ProductDto> arrHPrice();
 //    상품 디테일 번호로 조회
     Optional<ProductDetailVo> selectByDNumber(Long productNumber);
 
+//    상품 디테일 이미지 조회
+    List<ProductDetailVo> selectByDImg(Long productNumber);
+
 }

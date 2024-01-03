@@ -4,10 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>주모's store</title>
-  <!--    <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />-->
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
-  <!--    <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />-->
-  <link rel="stylesheet" th:href="@{/css/product/storeproductdetailtest.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
   <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
   <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
@@ -25,7 +23,9 @@
 
         <section class="product-img">
           <div class="product-img__content-box">
-            <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100000919/100000919_detail_074.jpg">
+            <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/'
+            + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">
+<!--            <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100000919/100000919_detail_074.jpg">-->
           </div>
 
         </section>
@@ -33,27 +33,27 @@
         <section class="product-info">
           <div class="product-info__topHead-box">
             <div class="product-info__topHead__title">
-              <h2>와인/과실주</h2>
+              <h2 th:text="${detailproduct.productCategoryName}">와인/과실주</h2>
               <br>
-              <h3>시나브로 피에스 화이트스파클링와인 5도 750ml</h3>
+              <h3 th:text="${detailproduct.productName}+' '+${detailproduct.productAlcoholicity}+'도'
+              +' '+${detailproduct.productNetWeight}+'ml'" >시나브로 피에스 화이트스파클링와인 5도 750ml</h3>
             </div>
           </div>
           <!--                    //product-info__topHead-box-->
           <div class="product-info__price-box">
-            <div class="discount-rate">
-              7<span>%</span>
+            <div class="discount-rate" th:text="${detailproduct.productDiscount}+'%'">
             </div>
             <div class="product-info__price">
               <div class="origin-price disib">
                 <del
-                ><span><em></em>39,000원</span>
+                ><span th:text="${detailproduct.productPrice}"><em></em>39,000원</span>
                 </del>
 
               </div>
 
               <div class="sale-price disib">
                 <strong
-                ><strong><em></em>36,270원</strong></strong
+                ><strong th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA') + '원'}"><em></em>36,270원</strong></strong
                 >
               </div>
 
@@ -99,6 +99,7 @@
                               padding: 20px 0;
                               font-weight: 300;
                             "
+                        th:text="${detailproduct.productNetWeight}"
                 >
                   750
                 </td>
@@ -108,6 +109,7 @@
                               padding: 20px 0;
                               font-weight: 300;
                             "
+                        th:text="${detailproduct.productAlcoholicity}"
                 >
                   5
                 </td>
@@ -117,6 +119,7 @@
                               padding: 20px 0;
                               font-weight: 300;
                             "
+                        th:text="${detailproduct.productDistillery}"
                 >
                   시나브로와이너리
                 </td>
@@ -126,6 +129,7 @@
                               padding: 20px 0;
                               font-weight: 300;
                             "
+                        th:text="${detailproduct.productArea}"
                 >
                   충청북도 영동군
                 </td>
@@ -136,7 +140,7 @@
             <dl class="item_price">
               <dt>판매가</dt>
               <dd>
-                <strong><strong>36,270</strong></strong
+                <strong><strong id="result-price" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA')}">36,270</strong></strong
                 >원
               </dd>
             </dl>
@@ -148,7 +152,7 @@
             <dl class="item_delivery">
               <dt>배송비</dt>
               <dd>
-                <strong>0원</strong>
+                <strong>2,500원</strong>
                 <input type="hidden" name="deliveryCollectFl" value="pre" />
                 <strong> / 주문시결제(선결제)</strong>
 
@@ -182,17 +186,11 @@
               <tbody id="option_display_item_0">
               <tr class="check optionKey_0">
                 <td class="cart_prdt_name">
-                  <input type="hidden" name="goodsNo[]" value="100000919" />
-                  <input type="hidden" name="optionSno[]" value="995" />
-                  <input type="hidden" name="goodsPriceSum[]" value="36270" />
-                  <input type="hidden" name="addGoodsPriceSum[]" value="0" />
-                  <input type="hidden" name="couponApplyNo[]" value="" />
-                  <input type="hidden" name="couponSalePriceSum[]" value="" />
-                  <input type="hidden" name="couponAddPriceSum[]" value="" />
                   <div class="cart_tit_box">
                     <strong class="cart_tit">
-                                <span
-                                >시나브로 피에스 화이트스파클링와인 5도 750ml</span
+                                <span style="padding: 20px"
+                                th:text="${detailproduct.productName}+' '+${detailproduct.productAlcoholicity}+'도'
+              +' '+${detailproduct.productNetWeight}+'ml'">시나브로 피에스 화이트스파클링와인 5도 750ml</span
                                 >
 
                       <span id="option_text_display_0"></span>
@@ -209,70 +207,14 @@
    <input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
    <button type="button" class="minus">-</button>
 
-   <script>
-    $(".plus").click(function(){
-      var num = $(".numBox").val();
-      var plusNum = Number(num) + 1;
-
-      if(plusNum >= ${view.gdsStock}) {
-        $(".numBox").val(num);
-      } else {
-        $(".numBox").val(plusNum);
-      }
-    });
-
-    $(".minus").click(function(){
-      var num = $(".numBox").val();
-      var minusNum = Number(num) - 1;
-
-      if(minusNum <= 0) {
-        $(".numBox").val(num);
-      } else {
-        $(".numBox").val(minusNum);
-      }
-    });
-   </script>
 
                   </p>
-                  <!-- <span class="count">
-                     <span class="goods_qty">
-                       <input
-                               type="text"
-                               name="goodsCnt[]"
-                               class="text goodsCnt_0"
-                               title="수량"
-                               value="1"
-                               data-key="0"
-                               data-value="1"
-                               data-stock="0"
-                               onchange="goodsViewController.input_count_change(this, '1');return false;"
-                       />
-                       <span>
-                         <button
-                                 type="button"
-                                 class="up goods_cnt"
-                                 title="증가"
-                                 value="up^|^0"
-                         >
-                           증가
-                         </button>
-                         <button
-                                 type="button"
-                                 class="down goods_cnt"
-                                 title="감소"
-                                 value="dn^|^0"
-                         >
-                           감소
-                         </button>
-                       </span>
-                     </span>
-                   </span>-->
-                  <!-- //count -->
+
                 </td>
                 <td class="item_choice_price">
                   <input type="hidden" name="optionPriceSum[]" value="0" />
                   <input type="hidden" name="option_price_0" value="0.00" />
-                  <strong class="option_price_display_0">36,270</strong>원
+                  <strong class="option_price_display_0" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA')}" >36,270</strong>원
                 </td>
                 <!-- //item_choice_price -->
                 <td></td>
@@ -284,7 +226,10 @@
                 <dl class="total_amount">
                   <dt>총 합계금액</dt>
                   <dd>
-                    <strong class="total_price"> 36,270<b>원</b></strong>
+                    <strong class="total_price">
+                      <span class="total_price--display" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA')}">36,270</span>
+                      <b>원</b>
+                    </strong>
                   </dd>
                 </dl>
               </div>
@@ -314,7 +259,7 @@
       <!--            상품 디테일 이미지 -->
       <div class="item_goods_sec">
         <div class="category-area">
-          <div class="category-wrap">
+          <!--<div class="category-wrap">
             <label for="category-best" class="category-box">
               <span>상품상세정보</span>
               <input
@@ -344,20 +289,15 @@
               />
             </label>
 
-          </div>
+          </div>-->
           <!-- //item_goods_tab -->
           <div class="detail_cont">
             <div class="detail_explain_box go01">
               <div class="image-manual"><!-- 이미지 --></div>
-              <div class="txt-manual">
-
-
-                <img
-                        src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_02.jpg"
-                /><br />
-                <img
-                        src="http://ai.esmplus.com/gsool18/oyeonga/company/etc_03.jpg"
-                /><br />
+              <div class="txt-manual" th:each="dimg: ${dimgs}">
+                <img th:src="'/upload/' + ${dimg.productImgPath} + '/'
+            + ${dimg.productImgUuid} + '_' + ${dimg.productImgName}" alt=""
+                />
               </div>
             </div>
           </div>
@@ -365,10 +305,10 @@
 
         <!-- /상품상세 -->
         <!-- 추천상품 -->
-        <h3>관련 상품</h3>
+        <!--<h3>관련 상품</h3>
         <div class="goods">
           <div class="store-list product__list">
-            <!-- 반복 요소 -->
+            &lt;!&ndash; 반복 요소 &ndash;&gt;
             <article class="list-product" >
               <div class="sale-box">
               <span>
@@ -377,7 +317,7 @@
                 <span>SALE</span>
               </div>
               <div class="main_img-box">
-               <!-- <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/' + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">-->
+               &lt;!&ndash; <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/' + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">&ndash;&gt;
               </div>
               <div class="title-box">
                 <p class="name" >마스브루어리+도수+용량</p>
@@ -401,14 +341,14 @@
                 <del class="price"> 12,000원</del>
               </div>
             </article>
-            <!-- /반복 요소 -->
+            &lt;!&ndash; /반복 요소 &ndash;&gt;
           </div>
 
 
         </div>
-        <!-- 추천상품 -->
+        &lt;!&ndash; 추천상품 &ndash;&gt;
       </div>
-    </div>
+    </div>-->
 
 
 
@@ -422,26 +362,39 @@
           <textarea
                   name="replyContent"
                   id="reply-content"
-                  cols="30"
+                  cols="10"
                   rows="10"
           ></textarea>
-        </div>
-        <div class="form-group">
-          <ul class="file-wrap">
-            <li>
-              <input type="file" id="post-image" name="boardFile" accept="image/*" multiple />
-            </li>
-            <li class="img-list"></li>
-            <li class="img-list"></li>
-            <li class="img-list"></li>
-            <li class="img-list"></li>
-          </ul>
         </div>
         <div class="reply-btn-wrap">
           <button type="button" class="btn-reply">후기작성</button>
         </div>
       </div>
       <!-- 상품 후기 -->
+
+<!--      상품 후기 리스트-->
+      <!-- 댓글 리스트 -->
+      <div class="reply-list-wrap">
+        <!-- 리플 예시 -->
+        <div class="reply">
+
+          <div class="reply-box">
+            <div class="reply-box__writer">김철수</div>
+            <div class="reply-box__content">안녕하세요!</div>
+          </div>
+
+          <div class="reply-btn-box">
+            <span class="reply-btns"></span>
+            <div class="reply-btns__box none">
+              <div class="reply-remove-btn">삭제</div>
+              <div class="reply-modify-btn">수정</div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /리플 예시 -->
+      </div>
+
     </div>
     <!--상품 후기-->
 
@@ -464,6 +417,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
 <script th:src="@{/js/fragments/header.js}"></script>
-<script th:src="@{/js/product/storeproduct.js}"></script>
+<script th:src="@{/js/product/storeproductdetail.js}"></script>
 </body>
 </html>
