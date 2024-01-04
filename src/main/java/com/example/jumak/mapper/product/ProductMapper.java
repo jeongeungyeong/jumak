@@ -13,7 +13,7 @@ import java.util.Optional;
 @Mapper
 public interface ProductMapper {
 //    상품 번호 조회
-    Optional<ProductDto> selectByNumber(Long productNumber);
+    Optional<ProductDto> selectByNumber(@Param("productNumber") Long productNumber);
 //    상품 카테고리로 조회
     List<ProductDto> selectByCategory(Long productCategoryNumber);
 //    전체 상품 조회

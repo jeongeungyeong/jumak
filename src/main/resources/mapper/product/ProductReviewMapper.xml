@@ -7,7 +7,7 @@
         INSERT INTO JUMAK_PRODUCT_REVIEW (PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
          PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER)
         VALUES (SEQ_PRODUCT_REVIEW.nextval,#{productReviewContent},
-        #{productReviewDate},#{userNumber},#{productNumber})
+        sysdate,#{userNumber},#{productNumber})
     </insert>
 
 

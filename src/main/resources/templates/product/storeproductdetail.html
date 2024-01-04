@@ -15,6 +15,7 @@
 <header th:replace="~{/fragments/header :: header}"></header>
 <main>
   <div class="product_content-wrap">
+
     <div class="top-box">
 
       <!--  상품 상단 정보-->
@@ -170,6 +171,8 @@
           </div>
           <!--    //product-info__table-box-->
 
+
+
           <div class="item_choice_list">
             <table
                     class="option_display_area"
@@ -199,21 +202,22 @@
                   <!-- //cart_tit_box -->
                 </td>
                 <!-- //cart_prdt_name -->
-                <td>
 
+
+                <form th:action="@{/order/next}" method="get">
+                <td>
                   <p class="cartStock">
-   <span>
-   <button type="button" class="plus">+</button>
-   <input type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
-   <button type="button" class="minus">-</button>
+                <span>
+                <button type="button" class="plus">+</button>
+                <input name="productCount" type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
+                  <button type="button" class="minus">-</button>
+
 
 
                   </p>
 
                 </td>
                 <td class="item_choice_price">
-                  <input type="hidden" name="optionPriceSum[]" value="0" />
-                  <input type="hidden" name="option_price_0" value="0.00" />
                   <strong class="option_price_display_0" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA')}" >36,270</strong>원
                 </td>
                 <!-- //item_choice_price -->
@@ -243,19 +247,23 @@
 
             <div class="btn_choice_box">
               <div>
-                <button id="cartBtn" type="button" class="btn_add_cart">
+                <button id="cartBtn" type="submit" class="btn_add_cart">
                   장바구니
                 </button>
-                <button type="button" class="btn_add_order">바로 구매</button>
+                <button type="submit" class="btn_add_order">바로 구매</button>
               </div>
             </div>
 
+          <input type="hidden" class="product-num" th:value="${detailproduct.productNumber}">
+
+          </form>
 
 
         </section>
 
 
       </div>
+
       <!--    //product-content_box   -->
 
 
@@ -401,8 +409,19 @@
     </div>
     <!--상품 후기-->
 
-<input type="hidden" class="product-num" th:value="${detailproduct.productNumber}">
+<!--<input type="hidden" class="product-num" th:value="${detailproduct.productNumber}">-->
+<!-- 이거뭐야 해명해 왜 인풋이-->
+<!--        이거 상품 디테일 페이지에서 넘겨줘야 함...-->
 
+<!--        보여??? 그 상품마다 들어가면서 상품번호 받고 -->
+
+<!--        그 파라미터로 상품번호넘겨주는걸 비동기로 하는데 나는 -->
+<!--        그러면 나는
+ 오 뭐아 -->
+<!--        이거 넘기는 처리 어디서 해 이다음페이지 -->
+<!--        이게 주문페이지로 넘어갈 겅미...ㅠ-->
+<!--그거 결국에 버튼 딸깍해서 넘어가는거아냐? ㅇㅇㅇ 맞음 폼태그로 가려고-
+그 부분 어딨어 찾아봐->
 
 
 

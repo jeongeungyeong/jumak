@@ -41,24 +41,57 @@ $('.btn_add_order').on('click', function (){
 
     window.location.href = '/order/next?';
 })
+
+// ===========================================================
+// 상품 후기 리플
+$('.reply-list-wrap').on('click', '.reply-btns', function () {
+    let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
+
+    $replyBtnBox.toggleClass('none');
+});
+
+$('body').click(function (e) {
+    if ($(e.target).hasClass('reply-btns')) {
+        //console.log('aa');
+        return;
+    }
+    if (!$('.reply-btns__box').has(e.target).length) {
+        $('.reply-btns__box').addClass('none');
+    }
+});
+
+//리플 작성 완료 처리
+$('.btn-reply').on('click', function (){
+//      컨트롤러에 전해줘야할 것
+//     productNumber userNumber productReviewContent
+
+    let productNumber = $('.prod')
+});
+
+// 리플 삭제 버튼 처리
+$('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
+    $('.reply-btns__box').addClass('none');
+});
+
+// 리플 수정 버튼 처리
+$('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
+    let $content = $(this).closest('.reply').find('.reply-box__content');
+    $content.replaceWith(`
+  <div class='modify-box'>
+    <textarea class='modify-content'>${$content.text()}</textarea>
+    <button type='button' class='modify-content-btn'>수정 완료</button>
+  </div>
+  `);
+    $('.reply-btns__box').addClass('none');
+});
+
+// 리플 수정 완료 처리
+$('.reply-list-wrap').on('click', '.modify-content-btn', function () {
+    console.log('modify!!!');
+});
+
 /*
 
-// 상품 후기 작업
-$('.btn-reply').on('click', function (){
-    page=1;
-    let content = $('#reply-content').val();
-
-    let replyObj = {
-        replyContent : content,
-        productNumber : productNumber
-    };
-
-    reply.add(replyObj, ()=>{
-        reply.getListPage(productNumber, page, showReply);
-    });
-
-    $('#reply-content').val('');
-});
 
 // =====================================================
 //무한 스크롤 페이징
@@ -81,27 +114,8 @@ reply.getListPage(productNumber, page, showReply);
 
  */
 
-// 리플 작성 완료 처리
-$('.btn-reply').on('click', function (){
-
-});
-
-$('.reply-list-wrap').on('click', '.reply-btns', function () {
-    let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
-
-    $replyBtnBox.toggleClass('none');
-});
 
 
 
 
-// 수정 버튼
-$('.btn-modify').on('click', function () {
-    let boardNumber = $('.board-num').val();
-    window.location.href = '/board/modify?boardNumber=' + boardNumber;
-});
-// 삭제 버튼
-$('.btn-remove').on('click', function () {
-    let boardNumber = $('.board-num').val();
-    window.location.href = '/board/remove?boardNumber=' + boardNumber;
-});
+

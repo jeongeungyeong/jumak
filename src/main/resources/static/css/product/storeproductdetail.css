@@ -166,7 +166,8 @@ colgroup {
     border-top: 0;
 }
 /*카운트 버튼*/
-.cartStock input { font-size:22px; width:50px; padding:5px; margin:0; border:1px solid #eee; }
+.cartStock input { font-size:22px; width:50px; padding:0px; margin:0; border:1px solid #eee;
+text-align: center;}
 /*.cartStock button { font-size:26px; border:none; background:none; }*/
 
 /*

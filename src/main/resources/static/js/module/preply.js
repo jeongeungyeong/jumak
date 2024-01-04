@@ -19,7 +19,7 @@ export function add(reply, callback) {
     });
 }
 
-export function getList(boardNumber, callback) {
+export function getList(productNumber, callback) {
     $.ajax({
         url: `/reviews/view/${productNumber}`,
         type: 'get',
@@ -36,7 +36,7 @@ export function getList(boardNumber, callback) {
 }
 export function getListPage(productNumber,page, callback){
     $.ajax({
-        url: `/reviews/view/${prodcutNumber}/${page}`,
+        url: `/reviews/view/${productNumber}/${page}`,
         type: 'get',
         dataType: 'json',
         success: function (replyList){
@@ -67,9 +67,9 @@ export function modify(reply, callback) {
     });
 }
 
-export function remove(replyNumber, callback) {
+export function remove(productReviewNumber, callback) {
     $.ajax({
-        url : `/reviews/${replyNumber}`,
+        url : `/reviews/${productReviewNumber}`,
         type : 'delete',
         success : function (){
             if(callback){

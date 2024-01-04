@@ -77,7 +77,8 @@
               </span>
                                 <div class="product-info__box">
                                     <!-- 상품 설명 넣기-->
-                                    <div class="product-info__detail">
+                                    <div class="product-info__detail" th:text="${productDetail.productName}+' '+${productDetail.productAlcoholicity}+'도'
+              +' '+${productDetail.productNetWeight}+'ml'">
                                         착한농부 만월세트 375mlx2병_24도1병,40도1병_김,고추부각 랜덤 증정
                                     </div>
                                 </div>
@@ -197,7 +198,9 @@
             </div>
         </div>
         <!--    개인정보 동의 끝-->
+        <div class="order_form-wrap">
 
+            <form class="new-order-form">
         <!--   주문자 정보 -->
         <div class="order_info">
             <div class="order_zone_tit">
@@ -600,13 +603,20 @@
             <!--          하단 버튼-->
 
             <div class="btn-box">
-                <div class="order-btn">
+                <button type="submit" class="order-btn">결제하기</button>
+     <!--           <div class="order-btn">
                     결제하기
-                </div>
+                </div>-->
             </div>
 
 
         </div>
+<!--            주문 하단 버튼-->
+            </form>
+
+        </div>
+<!--        주문 info-->
+
 </main>
 
 <footer th:replace="~{/fragments/footer :: footer}"></footer>
