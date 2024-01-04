@@ -53,11 +53,7 @@ public class ProductController {
 
     //  상품 주문버튼
 
-    //    임시 이동경로
-    @GetMapping("/search")
-    public String searchPage(){
-        return "product/search";
-    }
+
 
     //    임시 이동경로
     @GetMapping("/find")

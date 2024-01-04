@@ -16,6 +16,8 @@
         <typeAlias type="com.example.jumak.domain.vo.admin.AOrderDetailVo" alias="aOrderDetailVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AQaVo" alias="aQaVo"/>
 
+        <typeAlias type="com.example.jumak.domain.vo.main.ProductSearchVo" alias="productSearchVo"/>
+
         <typeAlias type="com.example.jumak.domain.dto.product.ProductDto" alias="productDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductImgMainDto" alias="productImgMainDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductCategoryDto" alias="productCategoryDto"/>

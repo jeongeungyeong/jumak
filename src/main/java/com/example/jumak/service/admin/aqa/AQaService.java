@@ -29,4 +29,9 @@ public class AQaService {
     public AQaVo findOne(Long qaNumber){
         return aQaMapper.selectOne(qaNumber);
     }
+
+//  답변 수정
+    public void modifyReply(String qaReply,Long qaNumber){
+      aQaMapper.updateReply(qaReply,qaNumber);
+    }
 }

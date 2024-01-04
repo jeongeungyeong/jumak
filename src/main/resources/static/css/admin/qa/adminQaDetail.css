@@ -67,3 +67,11 @@ textarea{
     padding-left: 10px;
     overflow: hidden;
 }
+
+.qa_reply_content{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    height: 250px;
+
+}

@@ -20,4 +20,8 @@ public interface AQaMapper {
 
 //    상세 조회
     public AQaVo selectOne(Long qaNumber);
+
+//    답변 수정
+    public void updateReply(@Param("qaReply") String qaReply,
+                            @Param("qaNumber") Long qaNumber);
 }

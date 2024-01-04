@@ -38,4 +38,10 @@
                       ON Q.USER_NUMBER = U.USER_NUMBER
         where Q.QA_NUMBER = #{qaNumber}
     </select>
+
+    <update id="updateReply">
+        UPDATE JUMAK_QA
+        SET QA_REPLY = #{qaReply}
+        WHERE QA_NUMBER = #{qaNumber}
+    </update>
 </mapper>
