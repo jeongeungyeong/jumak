@@ -21,27 +21,26 @@
     </section>
 
     <main>
-      <div class="content-wrap">
+      <div class="content-wrap" th:object="${madang}">
+        <input type="hidden" id="madangNumber" th:value="*{madangNumber}">
         <h3 class="content-title">
-          [후기] 인더배럴.. 좋으네요..
+          [<span th:text="*{madangCategoryName}"></span>] <span th:text="*{madangTitle}"></span>
         </h3>
         <section class="content-info">
           <div class="content-info__left-box">
-            <strong>닉네임</strong>
-            <span><em>2023.12.12 16:05:48</em></span>
+            <strong th:text="*{userNickname}"></strong>
+            <span><em th:text="*{madangDate}"></em></span>
           </div>
           <div class="content-info__right-box">
-            <strong>조회수</strong>
-            <span>99</span>
+            <strong >조회수</strong>
+            <span th:text="*{madangCount}"></span>
           </div>
         </section>
 
         <section class="content">
           <!-- 컨텐츠 넣기 -->
-          <div class="content__text">
-내용
-들어간
-다
+          <div class="content__text" th:utext="*{madangContent}">
+
           </div>
         </section>
 
@@ -49,15 +48,16 @@
           <div class="user-info__box">
             <div class="user-info__left">
               <!-- 닉네임 넣기 -->
-              <u class="user-info__name"><strong>닉네임</strong>님</u>
+              <u class="user-info__name">
+                <strong th:text="*{userNickname}">닉네임</strong>님
+              </u>
             </div>
             <div class="user-info__right">
               <ul class="user-info__info-ul">
                 <!-- 각 count 조회하여 넣기-->
-                <li>방문횟수 : <span class="user-info__visit-count">111</span></li>
-                <li>추천수 : <span class="user-info__recommend-count">6</span></li>
-                <li>게시글 수 : <span class="user-info__board-count">22</span></li>
-                <li>댓글 수 : <span class="user-info__reply-count">22</span></li>
+                <li>추천수 : <span class="user-info__recommend-count" th:text="*{recommendedCount}"></span></li>
+                <li>게시글 수 : <span class="user-info__board-count" th:text="*{writeCount}"></span></li>
+                <li>댓글 수 : <span class="user-info__reply-count" th:text="*{replyCount}"></span></li>
               </ul>
             </div>
           </div>
@@ -65,12 +65,10 @@
         <section class="reply">
           <section class="reply__info">
             <span class="reply__count">
-              <!-- 해당 글의 총 댓글 수 넣기-->
-              총 댓글 <strong>2</strong>
+              총 댓글 <strong></strong>
             </span>
             <span class="reply__recommended-count">
-              <!-- 해당 글의 추천 수 넣기 -->
-              추천 : <strong>0</strong>
+              추천 : <strong></strong>
             </span>
             <button type="button" class="reply__recommend-btn">추천하기</button>
           </section>
@@ -80,10 +78,10 @@
           <section class="reply__list">
             <!-- 로그인 여부로 분기처리 하기-->
             <!-- none 클래스가 display:none 처리 담당 -->
-            <section class="reply__write--not-login none">
+            <section class="reply__write--not-login" th:classappend="${session.userNumber != null} ? 'none'">
               로그인을 하셔야 댓글을 등록하실 수 있습니다.
             </section>
-            <section class="reply__write--login">
+            <section class="reply__write--login" th:classappend="${session.userNumber == null} ? 'none'">
               <div class="reply__write-box">
                 <textarea name="replyContent" id="reply-content"
                           placeholder="댓글 내용을 입력하세요"></textarea>
@@ -92,7 +90,7 @@
                 </button>
               </div>
             </section>
-            <ul class="reply__list-ul">
+            <ul class="reply__list-ul" th:data-num="${session.userNumber}">
               <!-- 리플 반복 요소-->
               <li>
                 <!--닉네임 넣기-->

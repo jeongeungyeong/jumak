@@ -66,6 +66,7 @@
     text-align: center;
     vertical-align: middle;
     font-weight: bold;
+    cursor: pointer;
 }
 
 /* 게시물 리스트 */

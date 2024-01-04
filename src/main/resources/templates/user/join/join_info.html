@@ -245,7 +245,7 @@
                               </th>
                               <td class="member_address">
                                 <div class="address_postcode">
-                                  <input type="text" name="userZipcode" value="" />
+                                  <input type="text" name="userZipcode" value="" id="zipcode"/>
                                   <button
                                     type="button"
                                     id="btnPostcode"
@@ -255,6 +255,7 @@
                                   </button>
                                   <input
                                     type="hidden"
+
                                     name="zipcode"
                                     value=""
                                   />
@@ -262,6 +263,7 @@
                                 <div class="address_input">
                                   <div class="member_warning">
                                     <input
+                                        id="address"
                                       type="text"
                                       name="userAddress"
                                       value=""
@@ -270,6 +272,7 @@
                                   <div class="member_warning js_address_sub">
                                     <input
                                       type="text"
+                                      id="addressDetail"
                                       name="userAddressDetail"
                                       value=""
                                     />
@@ -397,5 +400,8 @@
     <footer th:replace="~{/fragments/footer :: footer}"></footer>
     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script th:src="@{/js/fragments/header.js}"></script>
+
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script th:src="@{/js/user/join/join_info.js}"></script>
   </body>
 </html>

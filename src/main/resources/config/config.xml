@@ -3,7 +3,6 @@
 
 <configuration>
     <typeAliases>
-        <typeAlias type="com.example.jumak.domain.dto.madang.MadangDto" alias="madangDto"/>
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
 
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderStatusVo" alias="orderStatusVo"/>
@@ -40,5 +39,13 @@
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO"/>
 
+        <typeAlias type="com.example.jumak.domain.dto.madang.MadangDto" alias="madangDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.madang.MadangCategoryDto" alias="madangCategoryDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.madang.MadangReplyDto" alias="madangReplyDto"/>
+
+        <typeAlias type="com.example.jumak.domain.vo.madang.MadangVo" alias="madangVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.madang.MadangDetailVo" alias="madangDetailVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyCountVo" alias="madangReplyCountVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyVo" alias="madangReplyVo"/>
     </typeAliases>
 </configuration>
