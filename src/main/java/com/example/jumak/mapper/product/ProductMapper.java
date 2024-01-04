@@ -1,6 +1,7 @@
 package com.example.jumak.mapper.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.vo.product.Criteria;
 import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -30,7 +31,9 @@ List<ProductDto> arrLPrice();
 //    정렬 분류: 높은 가격순
 List<ProductDto> arrHPrice();
 
-    List<ProductListVo> selectByOrderCond(@Param("orderCond") String orderCond, @Param("cate") String cate);
+    List<ProductListVo> selectByOrderCond(@Param("orderCond") String orderCond,
+                                          @Param("cate") String cate,
+                                          @Param("criteria")Criteria criteria);
 
 //     상품 디테일 페이지
 //    List<ProductDetailVo> selectByDetail();

@@ -18,7 +18,7 @@
     <div class="top-box">
 
       <!--  상품 상단 정보-->
-      <div class="product-content_box" th:each="detailproduct: ${detailproducts}">
+      <div class="product-content_box">
         <!-- 상품 이미지 상단 -->
 
         <section class="product-img">
@@ -227,7 +227,7 @@
                   <dt>총 합계금액</dt>
                   <dd>
                     <strong class="total_price">
-                      <span class="total_price--display" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA')}">36,270</span>
+                      <span class="total_price--display" th:with="isEven=${detailproduct.productPrice - (detailproduct.productPrice * (detailproduct.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></span>
                       <b>원</b>
                     </strong>
                   </dd>
@@ -240,14 +240,17 @@
           <!-- //item_choice_list -->
 
           <!--                    버튼-->
-          <div class="btn_choice_box">
-            <div>
-              <button id="cartBtn" type="button" class="btn_add_cart">
-                장바구니
-              </button>
-              <button type="button" class="btn_add_order">바로 구매</button>
+
+            <div class="btn_choice_box">
+              <div>
+                <button id="cartBtn" type="button" class="btn_add_cart">
+                  장바구니
+                </button>
+                <button type="button" class="btn_add_order">바로 구매</button>
+              </div>
             </div>
-          </div>
+
+
 
         </section>
 
@@ -398,7 +401,7 @@
     </div>
     <!--상품 후기-->
 
-
+<input type="hidden" class="product-num" th:value="${detailproduct.productNumber}">
 
 
 

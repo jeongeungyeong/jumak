@@ -1,11 +1,10 @@
 package com.example.jumak.controller.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.vo.product.ProductDetailVo;
-import com.example.jumak.domain.vo.product.ProductListVo;
-import com.example.jumak.domain.vo.product.ProductVo;
+import com.example.jumak.domain.vo.product.*;
 import com.example.jumak.service.product.ProductService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,18 +13,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@Controller
+@Controller @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/store")
 public class ProductController {
     private final ProductService productService;
 
     @GetMapping("/list")
-    public String productList(String orderCond, String cate, Model model){
-        List<ProductListVo> productList = productService.findByCond(orderCond, cate);
+    public String productList(String orderCond, String cate, Criteria criteria, Model model){
+        criteria.setAmount(20);
+        List<ProductListVo> productList = productService.findByCond(orderCond, cate, criteria);
         model.addAttribute("products", productList);
         model.addAttribute("orderCond", orderCond);
         model.addAttribute("cate", cate);
+//        model.addAttribute("pageInfo",new PageVo(productService.findByCond(orderCond,cate,criteria));
 
         return "product/storeproduct";
     }
@@ -46,7 +47,7 @@ public class ProductController {
 /*        List<ProductDetailVo> prodcutDetailList = productService.findByDetail();
         model.addAttribute("detailproducts",prodcutDetailList);*/
         ProductDetailVo prodcutDetails = productService.findByDNumber(productNumber);
-        model.addAttribute("detailproducts",prodcutDetails);
+        model.addAttribute("detailproduct",prodcutDetails);
 
         List<ProductDetailVo> byDImgList = productService.findByDImg(productNumber);
         model.addAttribute("dimgs",byDImgList);

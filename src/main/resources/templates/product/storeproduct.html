@@ -89,6 +89,7 @@
               </span>
         <span>SALE</span>
       </div>
+      <a th:href="@{/store/view(productNumber=${product.productNumber})}">
       <div class="main_img-box">
         <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
       </div>
@@ -97,22 +98,7 @@
         <p class="sale-price" th:with="isEven=${product.productPrice - (product.productPrice * (product.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA') + '원'}">26,600원</p>
         <del class="price" th:text="${product.productPrice}"> 28,000원</del>
       </div>
-    </article>
-    <article class="list-product">
-      <div class="sale-box">
-              <span>
-                <strong class="sale-percent">5</strong>%
-              </span>
-        <span>SALE</span>
-      </div>
-      <div class="main_img-box">
-        <img src="/imgs/product/product02.jpg" alt="">
-      </div>
-      <div class="title-box">
-        <p class="name">오연가+도수+용량</p>
-        <p class="sale-price">11,400원</p>
-        <del class="price"> 12,000원</del>
-      </div>
+      </a>
     </article>
     <!-- /반복 요소 -->
   </div>
@@ -146,31 +132,35 @@
 <!-- /페이징 처리 -->
 
 
-<!-- 페이징 처리 -->
-<!--<div class="page-container">-->
-<!--  <ul class="page-box" th:object="${pageInfo}">-->
-<!--    <a th:href="@{/store/main(page=*{startPage-1})}" class="page-a" th:if="*{prev}">-->
-<!--      <li class="page-num prev">&lt</li>-->
-<!--    </a>-->
+<!-- 페이징 처리-->
+<!--<div class="page-container">
+  <ul class="page-box" th:object="${pageInfo}">
+    <a th:href="@{/store/list(page=*{startPage-1})}" class="page-a" th:if="*{prev}">
+      <li class="page-num prev">&lt</li>
+    </a>
 
-<!--    &lt;!&ndash;    페이징 처리는 시작번호~끝번호 까지 반복을 돌려야 하므로 빠른 for문으로 처리 불가능하다.(시작과 끝이 정해졌기 때문)-->
-<!--          그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리해준다.-->
-<!--          #을 붙이면 타임리프에서 제공해주는 객체를 사용할 수 있으며 numbers라는 객체는 sequence(시작 값, 끝 값)라는 메소드를-->
-<!--          지원해준다.  sequence(1, 5) -> 1, 2, 3, 4, 5-->
-<!--    &ndash;&gt;-->
-<!--    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">-->
-<!--      <a th:href="@{/store/main(page=${i})}" class="page-a">-->
-<!--        <li class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></li>-->
-<!--      </a>-->
-<!--    </th:block>-->
+    &lt;!&ndash;    페이징 처리는 시작번호~끝번호 까지 반복을 돌려야 하므로 빠른 for문으로 처리 불가능하다.(시작과 끝이 정해졌기 때문)
+          그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리해준다.
+          #을 붙이면 타임리프에서 제공해주는 객체를 사용할 수 있으며 numbers라는 객체는 sequence(시작 값, 끝 값)라는 메소드를
+          지원해준다.  sequence(1, 5) -> 1, 2, 3, 4, 5
+    &ndash;&gt;
+    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
+      <a th:href="@{/store/list(page=${i})}" class="page-a">
+        <li class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></li>
+      </a>
+    </th:block>
 
 
-<!--    <a th:href="@{/store/main(page=*{endPage+1})}" class="page-a" th:if="*{next}">-->
-<!--      <li class="page-num next">&gt</li>-->
-<!--    </a>-->
-<!--  </ul>-->
-<!--</div>-->
+    <a th:href="@{/store/list(page=*{endPage+1})}" class="page-a" th:if="*{next}">
+      <li class="page-num next">&gt</li>
+    </a>
+  </ul>
+</div>-->
 <!-- /페이징 처리 -->
+
+<!--  <input type="hidden" class="product-num" th:value="${product.productNumber}">-->
+
+
 </main>
 
 <footer th:replace="~{/fragments/footer :: footer}"></footer>

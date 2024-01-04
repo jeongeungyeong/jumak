@@ -20,8 +20,8 @@ public class ProductService {
     private final ProductMapper productMapper;
 
 //    상품 조회(정렬기준 받기)
-    public List<ProductListVo> findByCond(String orderCond, String cate){
-        return productMapper.selectByOrderCond(orderCond, cate);
+    public List<ProductListVo> findByCond(String orderCond, String cate, Criteria criteria){
+        return productMapper.selectByOrderCond(orderCond, cate, criteria);
     }
 
 //    상품 번호 조회
