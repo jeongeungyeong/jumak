@@ -4,21 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
     <link rel="stylesheet" th:href="@{/css/user/join/join_info.css}" />
   </head>
   <body>
+  <header th:replace="~{/fragments/header :: header}"></header>
     <div id="wrap">
-      <div id="container" onclick="clickBody()">
+      <div id="container">
         <div id="contents">
-          <div class="location_wrap">
-            <div class="location_cont">
-              <em>
-                <!-- 회원정보입력 경로 -->
-                <a href="#" class="local_home">HOME</a>
-                > 회원가입 > 정보입력
-              </em>
-            </div>
-          </div>
           <div class="sub_content">
             <div class="content_box">
               <div class="join_base_wrap">
@@ -55,20 +51,8 @@
                   <form
                     id="formJoin"
                     name="formJoin"
-                    action="/user/joinInfo"
+                    action="/user/join"
                     method="post">
-<!--                    novalidate="novalidate"-->
-
-<!--                    <input type="hidden" name="rncheck" value="authCellphone" />-->
-<!--                    <input-->
-<!--                      type="hidden"-->
-<!--                      name="dupeinfo"-->
-<!--                      value="MC0GCCqGSIb3DQIJAyEAXho+eatigO+RGVkROX0NAJMbK8Lfyz64dv3n2G6yU2M="-->
-<!--                    />-->
-<!--                    <input type="hidden" name="pakey" value="" />-->
-<!--                    <input type="hidden" name="foreigner" value="0" />-->
-<!--                    <input type="hidden" name="adultFl" value="y" />-->
-<!--                    <input type="hidden" name="mode" value="join" />-->
                     <div class="base_info_box">
                       <h3>기본정보</h3>
                       <span class="important"
@@ -261,7 +245,7 @@
                               </th>
                               <td class="member_address">
                                 <div class="address_postcode">
-                                  <input type="text" name="userZipcode" value="" />
+                                  <input type="text" name="userZipcode" value="" id="zipcode"/>
                                   <button
                                     type="button"
                                     id="btnPostcode"
@@ -271,6 +255,7 @@
                                   </button>
                                   <input
                                     type="hidden"
+
                                     name="zipcode"
                                     value=""
                                   />
@@ -278,6 +263,7 @@
                                 <div class="address_input">
                                   <div class="member_warning">
                                     <input
+                                        id="address"
                                       type="text"
                                       name="userAddress"
                                       value=""
@@ -286,6 +272,7 @@
                                   <div class="member_warning js_address_sub">
                                     <input
                                       type="text"
+                                      id="addressDetail"
                                       name="userAddressDetail"
                                       value=""
                                     />
@@ -410,7 +397,11 @@
         </div>
       </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-    <script src="join.js"></script>
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script th:src="@{/js/fragments/header.js}"></script>
+
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script th:src="@{/js/user/join/join_info.js}"></script>
   </body>
 </html>

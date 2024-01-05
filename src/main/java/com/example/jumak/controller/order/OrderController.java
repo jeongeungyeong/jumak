@@ -48,10 +48,16 @@ public class OrderController {
         return "order/storeorderfail";
     }
 
+    //    임시 이동경로
+    @GetMapping("/cart")
+    public String cartPage(){
+        return "order/cart";
+    }
+
     @GetMapping("/success")
     public String orderSuccess(Model model){
         List<OrderFinishVo> orderFinList = orderService.findByNumber();
         model.addAttribute("finalorders",orderFinList);
-        return "order/storeordersucc";}
-
+        return "order/storeordersucc";
+    }
 }

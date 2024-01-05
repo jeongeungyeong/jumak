@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/madang/madang-detail.css}">
+
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<div class="madang-wrap">
+  <section class="top-banner">
+    <img src="/imgs/maDang/madang-banner.jpg" alt="">
+  </section>
+    <section class="title">
+      <h3>수상한 마당</h3>
+    </section>
+
+    <main>
+      <div class="content-wrap" th:object="${madang}">
+        <input type="hidden" id="madangNumber" th:value="*{madangNumber}">
+        <h3 class="content-title">
+          [<span th:text="*{madangCategoryName}"></span>] <span th:text="*{madangTitle}"></span>
+        </h3>
+        <section class="content-info">
+          <div class="content-info__left-box">
+            <strong th:text="*{userNickname}"></strong>
+            <span><em th:text="*{madangDate}"></em></span>
+          </div>
+          <div class="content-info__right-box">
+            <strong >조회수</strong>
+            <span th:text="*{madangCount}"></span>
+          </div>
+        </section>
+
+        <section class="content">
+          <!-- 컨텐츠 넣기 -->
+          <div class="content__text" th:utext="*{madangContent}">
+
+          </div>
+        </section>
+
+        <section class="user-info">
+          <div class="user-info__box">
+            <div class="user-info__left">
+              <!-- 닉네임 넣기 -->
+              <u class="user-info__name">
+                <strong th:text="*{userNickname}">닉네임</strong>님
+              </u>
+            </div>
+            <div class="user-info__right">
+              <ul class="user-info__info-ul">
+                <!-- 각 count 조회하여 넣기-->
+                <li>추천수 : <span class="user-info__recommend-count" th:text="*{recommendedCount}"></span></li>
+                <li>게시글 수 : <span class="user-info__board-count" th:text="*{writeCount}"></span></li>
+                <li>댓글 수 : <span class="user-info__reply-count" th:text="*{replyCount}"></span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <section class="reply">
+          <section class="reply__info">
+            <span class="reply__count">
+              총 댓글 <strong></strong>
+            </span>
+            <span class="reply__recommended-count">
+              추천 : <strong></strong>
+            </span>
+            <button type="button" class="reply__recommend-btn">추천하기</button>
+          </section>
+          <section class="reply__write">
+
+          </section>
+          <section class="reply__list">
+            <!-- 로그인 여부로 분기처리 하기-->
+            <!-- none 클래스가 display:none 처리 담당 -->
+            <section class="reply__write--not-login" th:classappend="${session.userNumber != null} ? 'none'">
+              로그인을 하셔야 댓글을 등록하실 수 있습니다.
+            </section>
+            <section class="reply__write--login" th:classappend="${session.userNumber == null} ? 'none'">
+              <div class="reply__write-box">
+                <textarea name="replyContent" id="reply-content"
+                          placeholder="댓글 내용을 입력하세요"></textarea>
+                <button type="button" class="reply__write-btn">
+                  확인
+                </button>
+              </div>
+            </section>
+            <ul class="reply__list-ul" th:data-num="${session.userNumber}">
+              <!-- 리플 반복 요소-->
+              <li>
+                <!--닉네임 넣기-->
+                <strong class="reply__writer">닉네임</strong>
+                <!-- 작성일 넣기 -->
+                <span class="reply__date">2023-12-12 20:31:11</span>
+                <!-- 컨텐츠 넣기 -->
+                <p class="reply__content">안녕하세요오오오
+ㅁㄴㅇㄹㄴㅁㅇㄹ</p>
+                <!--이 버튼은 로그인 한 회원만 보이기 -->
+                <!-- none 클래스 이용하기 -->
+                <button type="button" class="reply__modify-btn">수정</button>
+                <button type="button" class="reply__remove-btn">삭제</button>
+              </li>
+              <!-- /리플 반복 요소-->
+
+              <!-- 샘플-->
+              <li>
+                <strong class="reply__writer">닉네임</strong>
+                <span class="reply__date">2023-12-12 20:31:11</span>
+                <p class="reply__content">안녕하세요오오오
+                  ㅁㄴㅇㄹㄴㅁㅇㄹ</p>
+              </li>
+              <!-- /샘플-->
+            </ul>
+
+          </section>
+        </section>
+
+        <section class="go-back">
+          <button type="button">목록</button>
+        </section>
+      </div>
+    </main>
+</div>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+<script th:src="@{/js/madang/madang-detail.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

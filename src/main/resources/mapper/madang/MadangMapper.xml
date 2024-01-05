@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.madang.MadangMapper">
+    <insert id="insert" parameterType="madangDto">
+        <selectKey keyProperty="madangNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_MADANG.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO JUMAK_MADANG(MADANG_NUMBER, MADANG_TITLE, MADANG_CONTENT, USER_NUMBER, MADANG_CATEGORY_NUMBER)
+        VALUES (#{madangNumber}, #{madangTitle}, #{madangContent}, #{userNumber}, #{madangCategoryNumber})
+    </insert>
+
+    <select id="selectListByCate" resultType="madangVo">
+        SELECT MADANG_NUMBER, MADANG_CATEGORY_NUMBER, USER_NUMBER,
+               MADANG_TITLE, MADANG_COUNT, MADANG_DATE, MADANG_CATEGORY_NAME, USER_NICKNAME,
+               RECOMMENDED_COUNT
+        FROM(
+            SELECT ROWNUM RNUM, MADANG_NUMBER, MADANG_CATEGORY_NUMBER,
+            USER_NUMBER, MADANG_TITLE, MADANG_COUNT, MADANG_DATE,
+            MADANG_CATEGORY_NAME, USER_NICKNAME, RECOMMENDED_COUNT
+            FROM (
+            SELECT M.MADANG_NUMBER, M.MADANG_CATEGORY_NUMBER, M.USER_NUMBER, MADANG_TITLE, MADANG_COUNT,
+            TO_CHAR(MADANG_DATE,'YY/MM/DD') MADANG_DATE,
+            C.MADANG_CATEGORY_NAME,
+            U.USER_NICKNAME,
+            (SELECT COUNT(R.USER_NUMBER) FROM JUMAK_MADANG_RECOMMEND R WHERE R.MADANG_NUMBER = M.USER_NUMBER) RECOMMENDED_COUNT
+            FROM JUMAK_MADANG M JOIN JUMAK_MADANG_CATEGORY C
+            ON
+            <trim prefixOverrides="AND">
+                <if test="madangCategoryNumber != null">
+                    M.MADANG_CATEGORY_NUMBER = #{madangCategoryNumber}
+                </if>
+                AND M.MADANG_CATEGORY_NUMBER = C.MADANG_CATEGORY_NUMBER
+            </trim>
+            JOIN JUMAK_USER U
+            ON M.USER_NUMBER = U.USER_NUMBER
+            ORDER BY M.MADANG_NUMBER DESC
+            )
+            <![CDATA[
+            WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
+
+    <select id="selectTotal" resultType="int" parameterType="long">
+        SELECT COUNT(M.MADANG_NUMBER)
+        FROM JUMAK_MADANG M JOIN JUMAK_MADANG_CATEGORY C
+        ON
+        <trim prefixOverrides="AND">
+            <if test="madangCategoryNumber != null">
+                M.MADANG_CATEGORY_NUMBER = #{madangCategoryNumber}
+            </if>
+            AND M.MADANG_CATEGORY_NUMBER = C.MADANG_CATEGORY_NUMBER
+        </trim>
+    </select>
+
+    <select id="selectDetail" resultType="madangDetailVo" parameterType="long">
+        SELECT M.MADANG_NUMBER, M.MADANG_TITLE, M.MADANG_DATE, M.MADANG_CONTENT, M.USER_NUMBER,
+               M.MADANG_COUNT, U.USER_NICKNAME, C.MADANG_CATEGORY_NAME,
+               (SELECT COUNT(S1.MADANG_NUMBER) FROM JUMAK_MADANG S1 WHERE S1.USER_NUMBER = M.USER_NUMBER) WRITE_COUNT,
+               (SELECT COUNT(S2.MADANG_REPLY_NUMBER) FROM JUMAK_MADANG_REPLY S2 WHERE S2.USER_NUMBER = M.USER_NUMBER) REPLY_COUNT,
+               (SELECT COUNT(S3.USER_NUMBER) FROM JUMAK_MADANG_RECOMMEND S3 WHERE S3.USER_NUMBER = M.USER_NUMBER) RECOMMENDED_COUNT
+        FROM JUMAK_MADANG M JOIN JUMAK_USER U
+                                 ON M.USER_NUMBER = U.USER_NUMBER
+                            JOIN JUMAK_MADANG_CATEGORY C
+                                 ON M.MADANG_CATEGORY_NUMBER = C.MADANG_CATEGORY_NUMBER
+        WHERE M.MADANG_NUMBER = #{madangNumber}
+    </select>
+
+    <update id="updateViewCount" parameterType="long">
+        UPDATE JUMAK_MADANG
+        SET MADANG_COUNT = MADANG_COUNT + 1
+        WHERE MADANG_NUMBER = #{madangNumber}
+    </update>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+

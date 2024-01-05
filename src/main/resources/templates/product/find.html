@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/product/find.css}">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<main>
+  <!--  이 페이지 검색 기능은 비동기로 구현해야함-->
+  <section class="top-banner">
+    <div class="top-banner__background">
+      <h4>나에게 맞는 <strong>술 찾기</strong></h4>
+      <p>원하는 주종과 취향에 맞는 우리술을 검색해 보세요.</p>
+    </div>
+
+    <ul class="cate-circle">
+      <!--      카테고리 번호 넣기 -->
+      <li data-cate="" class="on">
+        <span class="cate-img"></span>
+        <span class="cate-title">전체</span>
+        <p class="cate-text">
+          우리술 전체로
+          <br>
+          검색해보세요.
+        </p>
+      </li>
+      <li data-cate="">
+        <span class="cate-img"></span>
+        <span class="cate-title">막걸리 / 탁주</span>
+        <p class="cate-text">
+          쌀을 발효해 탁하게 걸러낸
+          <br>
+          우리 전통술입니다.
+        </p>
+      </li>
+      <li data-cate="">
+        <span class="cate-img"></span>
+        <span class="cate-title">약주 / 청주</span>
+        <p class="cate-text">
+          쌀을 발효해 맑게 걸러낸
+          <br>
+          매력적인 우리술입니다.
+        </p>
+      </li>
+      <li data-cate="">
+        <span class="cate-img"></span>
+        <span class="cate-title">증류주 / 리큐르</span>
+        <p class="cate-text">
+          발효주를 증류해 얻어낸 술로,
+          <br>
+          알코올 도수가 높습니다.
+        </p>
+      </li>
+      <li data-cate="">
+        <span class="cate-img"></span>
+        <span class="cate-title">와인 / 과실주</span>
+        <p class="cate-text">
+          과일을 발효해 얻은 술입니다.
+          <br>
+          은은한 풍미가 가득합니다.
+        </p>
+      </li>
+    </ul>
+  </section>
+  <section class="keyword-select">
+    <p class="keyword-select__title">
+      원하는 키워드를 선택해 주세요.
+      <span>(최대 3개 선택)</span>
+    </p>
+    <div class="cate-btns-area">
+      <ul class="cate-list">
+        <!--        카테 번호 넣기 -->
+        <li date-cate=""><span>#새콤한</span></li>
+        <li date-cate=""><span>#상큼한</span></li>
+        <li date-cate=""><span>#고소한</span></li>
+        <li date-cate=""><span>#달콤한</span></li>
+        <li date-cate=""><span>#달지않은</span></li>
+        <li date-cate=""><span>#쌉사름한</span></li>
+        <li date-cate=""><span>#깔끔한</span></li>
+        <li date-cate=""><span>#탄산있는</span></li>
+        <li date-cate=""><span>#부드러운</span></li>
+        <li date-cate=""><span>#걸쭉한</span></li>
+        <li date-cate=""><span>#드라이한</span></li>
+        <li date-cate=""><span>#꽃향</span></li>
+        <li date-cate=""><span>#과일향</span></li>
+        <li date-cate=""><span>#도수낮은</span></li>
+        <li date-cate=""><span>#도수높은</span></li>
+      </ul>
+    </div>
+    <div class="search-btns">
+      <button type="button" class="reset-btn">다시 선택</button>
+      <button type="button" class="search-btn">결과보기</button>
+    </div>
+  </section>
+
+  <section class="result-list">
+    <ul class="result-list__grid">
+      <!-- 반복 요소 -->
+      <a href="">
+        <li>
+          <div class="img-box">
+            <img src="/imgs/main/find/sample-img.jpg" alt="">
+          </div>
+          <div class="text-box">
+            <p class="text-box__name">오메기맑은술 16도 500ml</p>
+            <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+          </div>
+        </li>
+      </a>
+    <!-- /반복 요소 -->
+
+<!--      샘플-->
+      <a href="">
+        <li>
+          <div class="img-box">
+            <img src="/imgs/main/find/sample-img.jpg" alt="">
+          </div>
+          <div class="text-box">
+            <p class="text-box__name">오메기맑은술 16도 500ml</p>
+            <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+          </div>
+        </li>
+      </a><a href="">
+      <li>
+        <div class="img-box">
+          <img src="/imgs/main/find/sample-img.jpg" alt="">
+        </div>
+        <div class="text-box">
+          <p class="text-box__name">오메기맑은술 16도 500ml</p>
+          <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+        </div>
+      </li>
+    </a><a href="">
+      <li>
+        <div class="img-box">
+          <img src="/imgs/main/find/sample-img.jpg" alt="">
+        </div>
+        <div class="text-box">
+          <p class="text-box__name">오메기맑은술 16도 500ml</p>
+          <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+        </div>
+      </li>
+    </a><a href="">
+      <li>
+        <div class="img-box">
+          <img src="/imgs/main/find/sample-img.jpg" alt="">
+        </div>
+        <div class="text-box">
+          <p class="text-box__name">오메기맑은술 16도 500ml</p>
+          <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+        </div>
+      </li>
+    </a>
+      </a><a href="">
+      <li>
+        <div class="img-box">
+          <img src="/imgs/main/find/sample-img.jpg" alt="">
+        </div>
+        <div class="text-box">
+          <p class="text-box__name">오메기맑은술 16도 500ml</p>
+          <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+        </div>
+      </li>
+    </a>
+      </a><a href="">
+      <li>
+        <div class="img-box">
+          <img src="/imgs/main/find/sample-img.jpg" alt="">
+        </div>
+        <div class="text-box">
+          <p class="text-box__name">오메기맑은술 16도 500ml</p>
+          <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+        </div>
+      </li>
+    </a>
+<!--      /샘플-->
+    </ul>
+  </section>
+  <section class="pagination">
+    <div class="pagination-wrap">
+      <ul class="page-ul">
+        <li class="active">
+          <a href="">1</a>
+        </li>
+        <li>
+          <a href="">2</a>
+        </li>
+        <li>
+          <a href="">3</a>
+        </li>
+        <li>
+          <a href="">4</a>
+        </li>
+        <li>
+          <a href="">5</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script th:src="@{/js/fragments/header.js}"></script>
+<script th:src="@{/js/product/find.js}"></script>
+</body>
+</html>

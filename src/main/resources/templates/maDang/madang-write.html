@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/madang/madang-write.css}">
+  <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<div class="madang-wrap">
+  <section class="top-banner">
+    <img src="/imgs/maDang/madang-banner.jpg" alt="">
+  </section>
+  <main>
+    <!-- 작성 url 넣기 -->
+    <form th:action="@{/madang/write}" method="post">
+      <section class="write">
+        <table class="write__table">
+          <colgroup>
+            <col style="width:15%">
+            <col style="width:85%">
+          </colgroup>
+          <tbody>
+          <tr>
+            <th scope="row">말머리</th>
+            <td>
+              <div class="write__category-select">
+                <!--name 속성 재설정 필요-->
+                <select name="madangCategoryNumber" id="category">
+                  <option value="">선택</option>
+                  <option th:each="cate : ${cateList}" th:value="${cate.madangCategoryNumber}" th:text="${cate.madangCategoryName}">도란도란</option>
+                </select>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">작성자</th>
+            <!-- 닉네임 넣기 -->
+            <td th:text="${session.userNickname}"></td>
+          </tr>
+          <tr>
+            <th scope="row">제목</th>
+            <td>
+              <!-- name 속성 재설정 필요-->
+              <input type="text" name="madangTitle" id="title">
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">본문</th>
+            <td>
+              <!-- name 속성 재설정 필요 -->
+              <textarea name="madangContent" id="summernote"></textarea>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="write-btns">
+        <button type="button" id="go-back">이전</button>
+        <button type="submit" id="submit">저장</button>
+      </section>
+    </form>
+
+  </main>
+
+
+</div>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script th:src="@{/js/madang/madang-write.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

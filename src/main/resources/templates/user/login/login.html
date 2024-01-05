@@ -1,102 +1,94 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" th:href="@{/css/user/login/login.css}" />
-  </head>
-  <body id="blContents" class="body-member body-login pc" oncontextmenu="return false">
-    <div id="wrap" class="paikSool banner-on">
-      <header>
-        <input type="hidden" id="freeIsNew" name="freeIsNew" value="Y">
-        <div class="gnb_wrap">
-        </div>
-        <div class="1nb_bg" style="display: none;"></div>
-      </header>
-      <div id="container" onclick="clickBody()">
-        <div id="contents">
-          <div class="location_wrap">
-            <div class="location_cont">
-              <em>
-                <a href="https://www.paiksool.com/member/login.php#" class="local_home">HOME</a>
-             > 로그인 </em>
-            </div>
-          </div>
-          <div class="sub_content">
-            <script>
-              function checkCapsLock(event){
-                if(event.getModifierState("CapsLock")){
-                  document.getElementById("message").innerText = "Caps Lock이 켜져 있습니다."
-                }else{
-                  document.getElementById("message").innerText = ""
-                }
-              }
-            </script>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/user/login/login.css}"/>
+</head>
+<body id="blContents" class="body-member body-login pc" oncontextmenu="return false">
+<header th:replace="~{/fragments/header :: header}"></header>
+
+<div id="container">
+  <div id="contents">
+    <div class="sub_content">
+      <script>
+        function checkCapsLock(event) {
+          if (event.getModifierState("CapsLock")) {
+            document.getElementById("message").innerText = "Caps Lock이 켜져 있습니다."
+          } else {
+            document.getElementById("message").innerText = ""
+          }
+        }
+      </script>
       <div class="content_box">
         <div class="wr_age">
           <p>
             이 정보내용은 청소년 유해매체물로서 정보통신망 이용촉진법 및
-            <br />
+            <br/>
             정보보호 등에 관한 법률 및 청소년 보호법의 규정에 의하여
-            <br />
+            <br/>
             <strong>19세 미만의 청소년</strong>
             은 사용할 수 없습니다.
           </p>
           <a href="https://www.paiksool.com/"> 19세 미만 나가기</a>
         </div>
-      <div class="member_wrap">
-        <div class="member_tit">
-          <h2>로그인</h2>
-        </div>
-        <div class="member_cont">
-          <!-- 로그인경로 설정하기 -->
-          <form id="formLogin" method="post" action="/user/login">
-<!--            novalidate="novalidate"-->
-            <input type="hidden" id="mode" name="mode" value="login" />
-            <input
-              type="hidden"
-              id="returnUrl"
-              name="returnUrl"
-              value="https://www.paiksool.com/"
-            />
-            <input type="hidden" id="secretKey" name="secretKey" />
-            <input type="hidden" id="encryptF1" name="encryptF1" value="Y" />
-            <div class="member_login_box">
-              <h3>회원 로그인</h3>
-              <div class="login_input_sec">
-                <div>
-                  <input
-                    type="text"
-                    id="loginId"
-                    name="userId"
-                    placeholder="아이디"
-                    onkeyup="checkCapsLock(event)"
-                    required="true"
-                    aria-required="true"
-                  />
-                  <input
-                    type="password"
-                    id="loginPwd"
-                    name="userPassword"
-                    placeholder="비밀번호"
-                    onkeyup="checkCapsLock(event)"
-                    required="true"
-                    aria-required="true"
-                  />
-                </div>
+        <div class="member_wrap">
+          <div class="member_tit">
+            <h2>로그인</h2>
+          </div>
+          <div class="member_cont">
+            <!-- 로그인경로 설정하기 -->
+            <form id="formLogin" method="post" th:action="@{/user/login}">
+              <!--            novalidate="novalidate"-->
+              <input type="hidden" id="mode" name="mode" value="login"/>
+              <input
+                  type="hidden"
+                  id="returnUrl"
+                  name="returnUrl"
+                  value="https://www.paiksool.com/"
+              />
+              <input type="hidden" id="secretKey" name="secretKey"/>
+              <input type="hidden" id="encryptF1" name="encryptF1" value="Y"/>
+              <div class="member_login_box">
+                <h3>회원 로그인</h3>
+                <div class="login_input_sec">
+                  <div>
+                    <input
+                        type="text"
+                        id="loginId"
+                        name="userId"
+                        placeholder="아이디"
+                        onkeyup="checkCapsLock(event)"
+                        required="true"
+                        aria-required="true"
+                    />
+                    <input
+                        type="password"
+                        id="loginPwd"
+                        name="userPassword"
+                        placeholder="비밀번호"
+                        onkeyup="checkCapsLock(event)"
+                        required="true"
+                        aria-required="true"
+                    />
+                  </div>
                   <button type="submit" class="member_login_order_btn">
                     로그인
                   </button>
                 </div>
                 <div class="id_chk">
                   <span class="form_element">
-                    <input type="checkbox"
-                      id="saveId"
-                      name="saveId"
-                      value="y"
-                      checked="true">
-                    <label for="saveId" class="on">아이디 저장</label>
+<!--                    <input type="checkbox"-->
+<!--                           id="saveId"-->
+<!--                           name="saveId"-->
+<!--                           value="y"-->
+<!--                           checked="true">-->
+<!--                    <label for="saveId" class="on">아이디 저장</label>-->
                   </span>
                   <p class="dn js_caution_msg1">
                     아이디, 비밀번호가 일치하지 않습니다. 다시 입력해 주세요.
@@ -109,36 +101,37 @@
               <!-- login_box -->
               <div class="member_sns_login"></div>
               <div class="btn_login_box">
-              <ul>
-                <li>
-                  <button id="btnJoinMember" class="btn_member_join">
-                    회원가입
-                  </button>
-                </li>
-                <li>
-                  <button id="btnFindId" class="btn_member_white">
-                    아이디 찾기
-                  </button>
-                </li>
-                <li>
-                  <button id="btnFindPwd" class="btn_member_white">
-                    비밀번호 찾기
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <!-- btn_login_box -->
-          </form>
-        </div>
+                <ul>
+                  <li>
+                    <button id="btnJoinMember" class="btn_member_join" onclick="location.href='/user/join/agree'">
+                      회원가입
+                    </button>
+                  </li>
+                  <li>
+                    <button id="btnFindId" class="btn_member_white" onclick="location.href='/user/find-id'">
+                      아이디 찾기
+                    </button>
+                  </li>
+                  <li>
+                    <button id="btnFindPwd" class="btn_member_white" onclick="location.href='/user/find-pwd'">
+                      비밀번호 찾기
+                    </button>
+                  </li>
+                </ul>
+              </div>
+              <!-- btn_login_box -->
+            </form>
+          </div>
         </div>
       </div>
       <script></script>
     </div>
   </div>
 </div>
-<div id="footer_wrap">
-  <meta name="format-detection" content="telephone=no">
-</div>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
 <!-- </div> -->
-  </body>
+</body>
 </html>

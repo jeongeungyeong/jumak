@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/madang/madang-list.css}">
+
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<div class="madang-wrap">
+  <section class="top-banner">
+    <img src="/imgs/maDang/madang-banner.jpg" alt="">
+  </section>
+  <main>
+    <section class="title">
+      <h3>수상한 마당</h3>
+    </section>
+    <section class="cate">
+      <ul class="cate-ul">
+        <a th:href="@{/madang/list}" class="active">
+          <li>전체보기</li>
+        </a>
+        <a th:href="@{/madang/list}">
+          <li>공지</li>
+        </a>
+        <a th:href="@{/madang/list(cateNumber=1)}">
+          <li>도란도란</li>
+        </a>
+        <a th:href="@{/madang/list(cateNumber=2)}">
+          <li>후기</li>
+        </a>
+        <a th:href="@{/madang/list(cateNumber=3)}">
+          <li>나만의 레시피</li>
+        </a>
+      </ul>
+      <button type="button" class="write-btn">글쓰기</button>
+    </section>
+
+    <section class="board-list">
+      <table class="board-list-table">
+        <colgroup>
+          <col style="width:5%">
+          <col style="width:10%">
+          <col style="width:13%">
+          <col>
+          <col style="width:6%">
+          <col style="width:6%">
+          <col style="width:7%">
+        </colgroup>
+        <thead>
+        <tr>
+          <th>번호</th>
+          <th>분류</th>
+          <th>작성자</th>
+          <th>제목</th>
+          <th>조회</th>
+          <th>추천</th>
+          <th>날짜</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--공지 반복 요소-->
+        <tr class="board-list-table__notice">
+          <td>
+            <img src="/imgs/maDang/icon_board_notice.png" alt="">
+          </td>
+          <td>[공지]</td>
+          <td class="board-list-table__writer">수상한 주막</td>
+          <td class="board-list-table__title">🎇신년맞이 우리술 파티🎇</td>
+          <td>100</td>
+          <td>5</td>
+          <td>23/12/12</td>
+        </tr>
+        <!--/공지 반복 요소-->
+        <!--일반글 반복 요소-->
+        <tr class="board-list-table__normal" th:each="madang : ${madangList}">
+          <td th:text="${madang.madangNumber}"></td>
+          <td th:text="${madang.madangCategoryName}"></td>
+          <td class="board-list-table__writer" th:text="${madang.userNickname}"></td>
+          <td class="board-list-table__title">
+            <a th:href="@{/madang/detail(madangNumber=${madang.madangNumber})}" th:text="${madang.madangTitle}"></a>
+          </td>
+          <td th:text="${madang.madangCount}"></td>
+          <td th:text="${madang.recommendedCount}"></td>
+          <td th:text="${madang.madangDate}"></td>
+        </tr>
+        <!--/일반글 반복 요소-->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <section class="pagination">
+    <div class="pagination-wrap">
+      <ul class="page-ul">
+        <li th:if="${pageInfo.prev}">
+          <a th:href="@{/madang/list(cateNumber=${param.cateNumber},page=${pageInfo.startPage - 1})}" class="arrow">
+            <img src="/imgs/maDang/icon_arrow_page_l.png" alt="">
+          </a>
+        </li>
+
+        <th:block th:each="i : ${#numbers.sequence(pageInfo.startPage, pageInfo.endPage)}">
+          <li th:classappend="${i == pageInfo.criteria.page ? 'active' : ''}">
+            <a th:href="@{/madang/list(cateNumber=${param.cateNumber},page=${i})}" th:text="${i}"></a>
+          </li>
+        </th:block>
+
+        <li th:if="${pageInfo.next}">
+          <a th:href="@{/madang/list(cateNumber=${param.cateNumber},page=${pageInfo.endPage + 1})}" class="arrow">
+            <img src="/imgs/maDang/icon_arrow_page_r.png" alt="">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+<script th:src="@{/js/maDang/madang-list.js}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
