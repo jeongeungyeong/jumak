@@ -70,49 +70,49 @@
                 <!--상품 주소 연결-->
                 <a href="">
                   <!--상품 이미지 연결-->
-                  <img
-                          src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004763/100004763_list_066.jpg"
-                          alt="">
+                  <img th:src="'/upload/' + ${productDetail.productImgMainPath} + '/'
+            + ${productDetail.productImgMainUuid} + '_' + ${productDetail.productImgMainName}" alt="">
                 </a>
               </span>
                                 <div class="product-info__box">
                                     <!-- 상품 설명 넣기-->
                                     <div class="product-info__detail" th:text="${productDetail.productName}+' '+${productDetail.productAlcoholicity}+'도'
               +' '+${productDetail.productNetWeight}+'ml'">
-                                        착한농부 만월세트 375mlx2병_24도1병,40도1병_김,고추부각 랜덤 증정
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td class="product-count">
                             <div class="product-count__content">
-                                <strong><span>1</span>개</strong>
+                                <strong><span th:text="${productCount}"></span>개</strong>
 
                             </div>
                         </td>
                         <td class="product-price">
                             <div class="product-price__content">
                                 <!--상품금액 넣기-->
-                                <strong><span>28,020</span>원</strong>
+                                <strong><span th:with="isEven=${productDetail.productPrice}"
+                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}">28,020</span>원</strong>
                             </div>
                         </td>
                         <td class="product-sale">
                             <div class="product-sale__content">
                                 <!--할인률 넣기-->
-                                <strong><span>20</span>% 할인</strong>
+                                <strong><span th:text="${productDetail.productDiscount}">20</span>% 할인</strong>
                             </div>
                         </td>
                         <td class="product-total-price">
                             <div class="product-total-price__content">
                                 <!--합계 금액 넣기-->
-                                <strong><span>28,020</span>원</strong>
+                                <strong><span th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}" ></span>원</strong>
                             </div>
                         </td>
                         <!-- 전체 리스트 사이즈를 rowspan에 넣기-->
                         <td class="delivery-charge" rowspan="">
                             <div class="delivery-charge__content">
                                 기본 - 고정배송비<br>
-                                2500원
+                                3000원
                                 <br>
                                 (택배-선결제)
                             </div>
@@ -137,22 +137,24 @@
         <div class="cart-total">
             <div class="cart-total__price">
                 <div class="cart-total__product">
-                    <span>총 <strong>3</strong>개의 상품금액</span>
-                    <span class="price-color"><strong>92,620</strong>원</span>
+                    <span>총 <strong th:text="${productCount}"></strong>개의 상품금액</span>
+                    <span class="price-color"><strong th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
                 </div>
                 <span class="plus-img">
           <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_plus.png" alt="">
         </span>
                 <div class="cart-total__delivery">
                     <span>배송비</span>
-                    <span class="price-color"><strong>2,500</strong>원</span>
+                    <span class="price-color"><strong>3,000</strong>원</span>
                 </div>
                 <span class="equals-img">
           <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_total.png" alt="">
         </span>
                 <div class="cart-total__sum">
                     <span>합계</span>
-                    <span class="price-color"><strong>92,620</strong>원</span>
+                    <span class="price-color"><strong th:with="isEven=${(totalPrice - (totalPrice * (productDetail.productDiscount/100.0)))+2500}"
+                                                      th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
                 </div>
             </div>
         </div>
@@ -275,6 +277,7 @@
                 </table>
             </div>
         </div>
+            </form>
         <!-- 주문자 정보 끝 -->
 
         <!--    배송지 정보-->
@@ -441,6 +444,8 @@
                             <strong
                                     id="totalGoodsPrice"
                                     class="order_payment_sum"
+                                    th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+                                    th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"
                             >3,200원</strong
                             >
                         </td>
@@ -448,7 +453,7 @@
                     <tr>
                         <th scope="row">배송비</th>
                         <td>
-                            <span id="totalDeliveryCharge">2,500</span>원
+                            <span id="totalDeliveryCharge">3,000</span>원
                         </td>
                     </tr>
 
@@ -462,35 +467,15 @@
                                         할인 :
                                         <strong
                                         >(-)
-                                            <b class="total-member-dc-price">0</b
+                                            <b class="total-goods-dc-price" th:with="isEven=${(totalPrice * (productDetail.productDiscount/100.0))}"
+                                               th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></b
                                             >원</strong
                                         >
                                         <span
-                                        >( 상품 0원 , 회원
-                                        <span class="member-dc-price">0원</span>
-                                        , 쿠폰
-                                        <span class="goods-coupon-dc-price"
-                                        >0</span
-                                        >원 )</span
+                                        >( 상품
+                                        <span class="goods-dc-price" th:with="isEven=${(totalPrice * (productDetail.productDiscount/100.0))}"
+                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></span>원)</span
                                         >
-                                    </em>
-                                    <em id="saleWithoutMember" class="dn">
-                                        할인 :
-                                        <strong
-                                        >(-)
-                                            <b
-                                                    class="total-member-dc-price-without-member"
-                                            >0</b
-                                            >원</strong
-                                        >
-                                        <span
-                                        >( 상품 0원 , 회원 0원 , 쿠폰
-                                        <span
-                                                class="goods-coupon-dc-price-without-member"
-                                        >0</span
-                                        >원</span
-                                        >
-                                        )
                                     </em>
                                 </li>
 
@@ -502,25 +487,10 @@
                     <tr>
                         <th scope="row">최종 결제 금액</th>
                         <td>
-                            <input
-                                    type="hidden"
-                                    name="settlePrice"
-                                    value="5700"
-                            />
-                            <input
-                                    type="hidden"
-                                    name="overseasSettlePrice"
-                                    value="0"
-                            />
-                            <input
-                                    type="hidden"
-                                    name="overseasSettleCurrency"
-                                    value="KRW"
-                            />
                             <strong
                                     id="totalSettlePrice"
                                     class="order_payment_sum"
-                            >5,700</strong
+                                    th:text="${#numbers.formatInteger(paymentTotal,0,'COMMA')}" ></strong
                             >원
                         </td>
                     </tr>
@@ -577,7 +547,8 @@
             <div class="cart-final_total__price">
                 <div class="cart-final_total__sum">
                     <span>최종 결제 금액</span>
-                    <span class="final_price-color"><strong>92,620</strong>원</span>
+                    <span class="final_price-color"><strong th:text="${#numbers.formatInteger(paymentTotal,0,'COMMA')}"></strong>원</span>
+                    <input type="hidden" class="price_total" name="paymentTotal" th:value="${paymentTotal}">
                 </div>
             </div>
         </div>
@@ -612,7 +583,7 @@
 
         </div>
 <!--            주문 하단 버튼-->
-            </form>
+
 
         </div>
 <!--        주문 info-->
