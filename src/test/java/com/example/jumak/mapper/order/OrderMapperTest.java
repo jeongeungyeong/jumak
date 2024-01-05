@@ -1,5 +1,6 @@
 package com.example.jumak.mapper.order;
 
+import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.order.OrderFinishVo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,6 +14,7 @@ class OrderMapperTest {
     OrderMapper orderMapper;
 
     OrderFinishVo orderFinishVo;
+    UserDto userDto;
 
     @BeforeEach
     void setUp(){
@@ -24,4 +26,8 @@ class OrderMapperTest {
       orderMapper.selectByNumber();
 
     }
+
+//    @Test
+//    void selectByUNumber() {
+//    }
 }

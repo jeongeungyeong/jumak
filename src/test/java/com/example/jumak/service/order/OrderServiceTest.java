@@ -1,5 +1,6 @@
 package com.example.jumak.service.order;
 
+import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.order.OrderFinishVo;
 import com.example.jumak.mapper.order.OrderMapper;
 import org.assertj.core.api.Assertions;
@@ -12,7 +13,10 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
+import java.util.Optional;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doReturn;
 
 @ExtendWith(MockitoExtension.class)
@@ -23,10 +27,12 @@ class OrderServiceTest {
     OrderService orderService;
 
     OrderFinishVo orderFinishVo;
+    UserDto userDto;
 
     @BeforeEach
     void setUp() {
         orderFinishVo = new OrderFinishVo();
+        userDto = new UserDto();
     }
 
     @Test
@@ -36,6 +42,16 @@ class OrderServiceTest {
         //when
         List<OrderFinishVo> orderNumberList = orderService.findByNumber();
         //then
-        Assertions.assertThat(orderNumberList).contains(orderFinishVo);
+        assertThat(orderNumberList).contains(orderFinishVo);
+    }
+
+    @Test
+    void findByUNumber() {
+        // given
+            doReturn(Optional.ofNullable(userDto)).when(orderMapper).selectByUNumber(any());
+        // when
+        UserDto byUNumber = orderService.findByUNumber(21L);
+        // then
+        assertThat(byUNumber).isEqualTo(userDto);
     }
 }

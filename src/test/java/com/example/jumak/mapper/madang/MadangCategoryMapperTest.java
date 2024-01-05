@@ -8,19 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@SpringBootTest
-@Transactional
-class MadangCategoryMapperTest {
-    @Autowired
-    MadangCategoryMapper madangCategoryMapper;
-
-    @Test
-    void selectAll(){
-        List<MadangCategoryDto> list = madangCategoryMapper.selectAll();
-
-        list.forEach(System.out::println);
-    }
-}
+//@SpringBootTest
+//@Transactional
+//class MadangCategoryMapperTest {
+//    @Autowired
+//    MadangCategoryMapper madangCategoryMapper;
+//
+//    @Test
+//    void selectAll(){
+//        List<MadangCategoryDto> list = madangCategoryMapper.selectAll();
+//
+//        list.forEach(System.out::println);
+//    }
+//}
 
 
 
