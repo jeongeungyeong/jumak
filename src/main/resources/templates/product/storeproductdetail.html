@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,6 +32,8 @@
         </section>
 
         <section class="product-info">
+          <form th:action="@{/order/next}" method="get">
+
           <div class="product-info__topHead-box">
             <div class="product-info__topHead__title">
               <h2 th:text="${detailproduct.productCategoryName}">와인/과실주</h2>
@@ -154,15 +156,11 @@
               <dt>배송비</dt>
               <dd>
                 <strong>2,500원</strong>
-                <input type="hidden" name="deliveryCollectFl" value="pre" />
+
                 <strong> / 주문시결제(선결제)</strong>
 
                 <div class="delivery-detail">
-                  <input
-                          type="hidden"
-                          name="deliveryMethodFl"
-                          value="delivery"
-                  />
+
                   <div class="delivery-division">택배</div>
                 </div>
               </dd>
@@ -203,16 +201,13 @@
                 </td>
                 <!-- //cart_prdt_name -->
 
-
-                <form th:action="@{/order/next}" method="get">
+<!--                order로 객체 넘겨주기-->
                 <td>
                   <p class="cartStock">
                 <span>
                 <button type="button" class="plus">+</button>
                 <input name="productCount" type="number" class="numBox" min="1" max="${view.gdsStock}" value="1" readonly="readonly"/>
                   <button type="button" class="minus">-</button>
-
-
 
                   </p>
 
@@ -253,8 +248,7 @@
                 <button type="submit" class="btn_add_order">바로 구매</button>
               </div>
             </div>
-
-          <input type="hidden" class="product-num" th:value="${detailproduct.productNumber}">
+          <input type="hidden" class="product-num" name="productNumber" th:value="${detailproduct.productNumber}">
 
           </form>
 
@@ -313,54 +307,6 @@
             </div>
           </div>
         </div>
-
-        <!-- /상품상세 -->
-        <!-- 추천상품 -->
-        <!--<h3>관련 상품</h3>
-        <div class="goods">
-          <div class="store-list product__list">
-            &lt;!&ndash; 반복 요소 &ndash;&gt;
-            <article class="list-product" >
-              <div class="sale-box">
-              <span>
-                <strong class="sale-percent" ></strong>%
-              </span>
-                <span>SALE</span>
-              </div>
-              <div class="main_img-box">
-               &lt;!&ndash; <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/' + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">&ndash;&gt;
-              </div>
-              <div class="title-box">
-                <p class="name" >마스브루어리+도수+용량</p>
-                <p class="sale-price" >26,600원</p>
-                <del class="price" > 28,000원</del>
-              </div>
-            </article>
-            <article class="list-product">
-              <div class="sale-box">
-              <span>
-                <strong class="sale-percent">5</strong>%
-              </span>
-                <span>SALE</span>
-              </div>
-              <div class="main_img-box">
-                <img src="/imgs/product/product02.jpg" alt="">
-              </div>
-              <div class="title-box">
-                <p class="name">오연가+도수+용량</p>
-                <p class="sale-price">11,400원</p>
-                <del class="price"> 12,000원</del>
-              </div>
-            </article>
-            &lt;!&ndash; /반복 요소 &ndash;&gt;
-          </div>
-
-
-        </div>
-        &lt;!&ndash; 추천상품 &ndash;&gt;
-      </div>
-    </div>-->
-
 
 
 
@@ -421,7 +367,7 @@
 <!--        이거 넘기는 처리 어디서 해 이다음페이지 -->
 <!--        이게 주문페이지로 넘어갈 겅미...ㅠ-->
 <!--그거 결국에 버튼 딸깍해서 넘어가는거아냐? ㅇㅇㅇ 맞음 폼태그로 가려고-
-그 부분 어딨어 찾아봐->
+그 부분 어딨어 찾아봐-->
 
 
 
@@ -431,6 +377,7 @@
     <!--   //top-box  -->
   </div>
   <!--  //product_content-wrap -->
+  </div>
   </div>
 </main>
 
