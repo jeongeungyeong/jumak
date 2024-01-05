@@ -18,22 +18,22 @@
             USER_NUMBER, MADANG_TITLE, MADANG_COUNT, MADANG_DATE,
             MADANG_CATEGORY_NAME, USER_NICKNAME, RECOMMENDED_COUNT
             FROM (
-            SELECT M.MADANG_NUMBER, M.MADANG_CATEGORY_NUMBER, M.USER_NUMBER, MADANG_TITLE, MADANG_COUNT,
-            TO_CHAR(MADANG_DATE,'YY/MM/DD') MADANG_DATE,
-            C.MADANG_CATEGORY_NAME,
-            U.USER_NICKNAME,
-            (SELECT COUNT(R.USER_NUMBER) FROM JUMAK_MADANG_RECOMMEND R WHERE R.MADANG_NUMBER = M.USER_NUMBER) RECOMMENDED_COUNT
-            FROM JUMAK_MADANG M JOIN JUMAK_MADANG_CATEGORY C
-            ON
-            <trim prefixOverrides="AND">
-                <if test="madangCategoryNumber != null">
-                    M.MADANG_CATEGORY_NUMBER = #{madangCategoryNumber}
-                </if>
-                AND M.MADANG_CATEGORY_NUMBER = C.MADANG_CATEGORY_NUMBER
-            </trim>
-            JOIN JUMAK_USER U
-            ON M.USER_NUMBER = U.USER_NUMBER
-            ORDER BY M.MADANG_NUMBER DESC
+                SELECT M.MADANG_NUMBER, M.MADANG_CATEGORY_NUMBER, M.USER_NUMBER, MADANG_TITLE, MADANG_COUNT,
+                TO_CHAR(MADANG_DATE,'YY/MM/DD') MADANG_DATE,
+                C.MADANG_CATEGORY_NAME,
+                U.USER_NICKNAME,
+                (SELECT COUNT(R.USER_NUMBER) FROM JUMAK_MADANG_RECOMMEND R WHERE R.MADANG_NUMBER = M.MADANG_NUMBER) RECOMMENDED_COUNT
+                FROM JUMAK_MADANG M JOIN JUMAK_MADANG_CATEGORY C
+                ON
+                <trim prefixOverrides="AND">
+                    <if test="madangCategoryNumber != null">
+                        M.MADANG_CATEGORY_NUMBER = #{madangCategoryNumber}
+                    </if>
+                    AND M.MADANG_CATEGORY_NUMBER = C.MADANG_CATEGORY_NUMBER
+                </trim>
+                JOIN JUMAK_USER U
+                ON M.USER_NUMBER = U.USER_NUMBER
+                ORDER BY M.MADANG_NUMBER DESC
             )
             <![CDATA[
             WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}

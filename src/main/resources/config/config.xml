@@ -42,10 +42,12 @@
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangDto" alias="madangDto"/>
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangCategoryDto" alias="madangCategoryDto"/>
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangReplyDto" alias="madangReplyDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.madang.MadangRecommendDto" alias="madangRecommendDto"/>
 
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangVo" alias="madangVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangDetailVo" alias="madangDetailVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyCountVo" alias="madangReplyCountVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyVo" alias="madangReplyVo"/>
+
     </typeAliases>
 </configuration>
