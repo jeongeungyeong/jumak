@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.jumak.mapper.mypage.CancelShippingMapper">
-    <select id="selectOrderDetail" resultType="orderDetailVo">
-        SELECT O.ORDER_NUMBER, O.USER_NUMBER, TO_CHAR(O.ORDER_DATE, 'YYYY-MM-DD') AS ORDER_DATE, O.ORDER_STATUS_NUMBER
-             , OD.ORDER_DETAIL_COUNT, OD.ORDER_DETAIL_NUMBER
-             , P.PRODUCT_NAME, P.PRODUCT_PRICE
-             , OS.ORDER_STATUS_NAME
-             , (SELECT COUNT(JOR.ORDER_REVIEW_NUMBER) FROM JUMAK_ORDER_REVIEW JOR WHERE JOR.ORDER_DETAIL_NUMBER = OD.ORDER_DETAIL_NUMBER
-                                                                                    AND JOR.USER_NUMBER = O.USER_NUMBER) REVIEW_COUNT
-        FROM JUMAK_ORDER O JOIN JUMAK_ORDER_DETAIL OD on O.ORDER_NUMBER = OD.ORDER_NUMBER
-                           JOIN JUMAK_PRODUCT P ON OD.PRODUCT_NUMBER = P.PRODUCT_NUMBER
-                           JOIN JUMAK_ORDER_STATUS OS on O.ORDER_STATUS_NUMBER = OS.ORDER_STATUS_NUMBER
-        WHERE TO_CHAR(ORDER_DATE, 'YYYY-MM-DD') BETWEEN #{startDate} AND #{endDate} AND USER_NUMBER = #{userNumber} AND O.ORDER_STATUS_NUMBER IN(7,8,9,10,11)
+<mapper namespace="com.example.jumak.mapper.mypage.InquiryMapper">
+    <select id="selectInquiry" resultType="inquiryVo">
+        SELECT QA.USER_NUMBER, QA.QA_TITLE, QA.QA_REPLY, QA.QA_REPLY_DATE, TO_CHAR(QA.QA_DATE, 'YYYY-MM-DD') AS QA_DATE,
+               JQC.QA_CATEGORY_NAME, QA.QA_NUMBER
+        FROM JUMAK_QA QA JOIN JUMAK_QA_CATEGORY JQC on JQC.QA_CATEGORY_NUMBER = QA.QA_CATEGORY_NUMBER
+        WHERE QA.USER_NUMBER = #{userNumber} AND TO_CHAR(QA.QA_DATE, 'YYYY-MM-DD') BETWEEN #{startDate} AND #{endDate}
     </select>
+
+    <select id="selectInquiryDetail" resultType="qaDto">
+        SELECT QA_NUMBER, QA_TITLE, QA_CONTENT, QA_DATE, QA_REPLY, USER_NUMBER, QA_CATEGORY_NUMBER, QA_REPLY_DATE
+        FROM JUMAK_QA
+        WHERE USER_NUMBER = #{userNumber} AND QA_NUMBER = #{qaNumber}
+    </select>
+
+    <insert id="insertInquiry" parameterType="qaDto">
+        <selectKey keyProperty="qaNumber" order="BEFORE" resultType="long">
+            SELECT SEQ_QA.nextval FROM DUAL
+        </selectKey>
+        INSERT INTO JUMAK_QA (QA_NUMBER, QA_TITLE, QA_CONTENT, QA_DATE, QA_CATEGORY_NUMBER, USER_NUMBER)
+        VALUES (#{qaNumber}, #{qaTitle}, #{qaContent}, SYSDATE, #{qaCategoryNumber}, #{userNumber})
+    </insert>
 </mapper>

@@ -24,6 +24,6 @@ class SearchShippingMapperTest {
 
     @Test
     void selectOrderDetail() {
-        shippingService.findOrderDetail(orderDetailVo);
+        shippingService.findSearchDetail(orderDetailVo);
     }
 }

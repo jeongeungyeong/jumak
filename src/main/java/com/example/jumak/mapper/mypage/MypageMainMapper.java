@@ -13,6 +13,9 @@ public interface MypageMainMapper {
     //회원 이름 조회
     String selectName(Long userNumber);
 
+//    회원 닉네임 조회
+    String selectNickName(Long userNumber);
+
 //    작성글 개수 조회
     Long selectBoardCount(Long userNumber);
 

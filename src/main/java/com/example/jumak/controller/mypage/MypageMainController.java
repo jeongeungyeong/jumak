@@ -1,25 +1,34 @@
 package com.example.jumak.controller.mypage;
 
+import com.example.jumak.domain.dto.qa.QaDto;
+import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
+import com.example.jumak.service.mypage.InquiryService;
+import com.example.jumak.service.mypage.MemberService;
 import com.example.jumak.service.mypage.MypageMainService;
 import com.example.jumak.service.mypage.ShippingService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 
 @Controller
+@Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/mypage")
 public class MypageMainController {
     private final MypageMainService mypageMainService;
     private final ShippingService shippingService;
     private final OrderDetailVo orderDetailVo;
+    private final InquiryService inquiryService;
+    private final MemberService memberService;
 
 
 //    메인
@@ -113,19 +122,127 @@ public class MypageMainController {
 
 //    환불
     @GetMapping("/refund-shipping")
-    public String refundShipping() {
+    public String refundShipping(Model model, HttpServletRequest req) {
+        //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+//       회원 이름 조회
+        String userName = mypageMainService.findUserName(userNumber);
+
+//        작성 게시물 조회
+        Long boardCount = mypageMainService.findBoardCount(userNumber);
+
+//        작성 댓글 조회
+        Long replyCount = mypageMainService.findReplyCount(userNumber);
+
+//        기간별 주문/배송 리스트 조회
+        orderDetailVo.setUserNumber(userNumber);
+//        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
+
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("boardCount", boardCount);
+        model.addAttribute("replyCount", replyCount);
         return "mypage/refund_shipping/refund_shipping";
     }
 
 //    1대1 문의
     @GetMapping("/inquiry")
-    public String inquiry () {
+    public String inquiry (Model model, HttpServletRequest req)
+    {
+        //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+//       회원 이름 조회
+        String userName = mypageMainService.findUserName(userNumber);
+
+//        작성 게시물 조회
+        Long boardCount = mypageMainService.findBoardCount(userNumber);
+
+//        작성 댓글 조회
+        Long replyCount = mypageMainService.findReplyCount(userNumber);
+
+//        1:1문의내역 조회
+        orderDetailVo.setUserNumber(userNumber);
+//        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
+
+
+        model.addAttribute("userName", userName);
+        model.addAttribute("boardCount", boardCount);
+        model.addAttribute("replyCount", replyCount);
         return "mypage/inquiry/inquiry";
+    }
+
+//    1대1문의 작성
+    @GetMapping("/inquiry-detail")
+    public String inquiryDetail(@SessionAttribute(value = "userNumber", required = false) Long userNumber) {
+
+//        return userNumber == null ? "user/login/login" : "mypage/inquiry_detail/inquiry_detail";
+        return "mypage/inquiry_detail/inquiry_detail";
+    }
+
+    @PostMapping("/inquiry-detail")
+    public RedirectView inquiryDetail(QaDto qaDto,
+//                                      @SessionAttribute("userNumber") Long userNumber,
+                                      RedirectAttributes redirectAttributes) {
+//        qaDto.setUserNumber(userNumber);
+    qaDto.setUserNumber(1L);
+    inquiryService.register(qaDto);
+//    Long qaNumber = qaDto.getQaNumber();
+
+
+    redirectAttributes.addFlashAttribute("qaNumber", qaDto.getQaNumber());
+
+    return new RedirectView("/mypage/inquiry");
+    }
+
+//    게시물 보기
+    @GetMapping("/inquiry-view")
+    public String inquiryView(Model model, HttpServletRequest req, Long qaNumber) {
+//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+        log.info("qaNumber : {}", qaNumber);
+
+        QaDto qaDto = new QaDto();
+        qaDto.setQaNumber(qaNumber);
+        qaDto.setUserNumber(userNumber);
+
+//        닉네임 가져오기
+        String userNickName = mypageMainService.findNickName(userNumber);
+
+        QaDto inquiryDetail = inquiryService.findInquiryDetail(qaDto);
+        String qaDate = inquiryDetail.getQaDate();
+        String qaContent = inquiryDetail.getQaContent();
+        String qaTitle = inquiryDetail.getQaTitle();
+        String qaReply = inquiryDetail.getQaReply();
+        String qaReplyDate = inquiryDetail.getQaReplyDate();
+
+
+        model.addAttribute("userNickName", userNickName);
+        model.addAttribute("qaDate", qaDate);
+        model.addAttribute("qaTitle", qaTitle);
+        model.addAttribute("qaContent", qaContent);
+        model.addAttribute("qaReply", qaReply);
+        model.addAttribute("qaReplyDate", qaReplyDate);
+
+
+        return "mypage/inquiry_detail/inquiry_view";
     }
 
 //    회원정보
     @GetMapping("/member-info")
-    public String memberInfo() {
+    public String memberInfo(Model model, HttpServletRequest req) {
+//      Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+
+//        정보 가져오기
+        UserDto memberDetail = memberService.findMemeber(userNumber);
+
+        model.addAttribute("member", memberDetail);
+
+
         return "mypage/member_info/member_info";
     }
 
