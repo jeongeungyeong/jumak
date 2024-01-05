@@ -83,8 +83,9 @@
 
 /* 컨텐츠 영역 */
 .content__text{
-    white-space: pre-wrap;
-    word-break: keep-all;
+    /*white-space: pre-wrap;*/
+    /*word-break: keep-all;*/
+    padding-top: 20px;
 }
 
 /* 작성자 정보 */
@@ -185,6 +186,37 @@
 }
 
 .reply__write-btn{
+    display: inline-block;
+    width: 82px;
+    height: 82px;
+    padding: 0 5px 0 5px;
+    color: #ffffff;
+    font-size: 14px;
+    border: 1px solid #c7c7c7;
+    background: #c7c7c7;
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 댓글 수정*/
+.reply__update{
+    padding: 15px 20px;
+    background: #f8f8f8;
+}
+
+.reply-update-content{
+    display: inline-block;
+    width: 91%;
+    height: 82px;
+    padding: 10px 10px 10px 10px;
+    font-size: 14px;
+    resize: none;
+    box-sizing: border-box;
+    border: 1px solid #d6d6d6;
+}
+
+.reply__update-btn{
     display: inline-block;
     width: 82px;
     height: 82px;

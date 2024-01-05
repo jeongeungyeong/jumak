@@ -4,20 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
     <link rel="stylesheet" th:href="@{/css/user/join/join_ok.css}" />
   </head>
   <body>
     <div id="wrap">
-      <div id="container" onclick="clickBody()">
+      <header th:replace="~{/fragments/header :: header}"></header>
+      <div id="container">
         <div id="contents">
-          <div class="location_wrap">
-            <div class="location_cont">
-              <em>
-                <!-- 가입완료 경로 -->
-                <a href="#" class="local_home">HOME</a>
-              </em>
-            </div>
-          </div>
           <div class="sub_content">
             <div class="content_box">
               <div class="member_wrap">
@@ -34,7 +31,7 @@
                       </p>
                       <p>
                         <!-- #이름 -->
-                        <span>OOO</span>
+                        <span th:text="${userNickname}"></span>
                         님의 회원가입을 축하합니다.
                         <br />
                         알차고 실속있는 서비스로 찾아뵙겠습니다.
@@ -43,10 +40,10 @@
                     <div class="btn_member_sec">
                       <ul>
                         <li>
-                          <button id="btnHome">홈으로</button>
+                          <button id="btnHome" type="button" onclick="location.href='/'">홈으로</button>
                         </li>
                         <li>
-                          <button class="btn_login">로그인</button>
+                          <button class="btn_login" type="button" onclick="location.href='/user/login'">로그인</button>
                         </li>
                       </ul>
                     </div>
@@ -58,5 +55,8 @@
         </div>
       </div>
     </div>
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script th:src="@{/js/fragments/header.js}"></script>
   </body>
 </html>

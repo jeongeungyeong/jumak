@@ -28,6 +28,12 @@
     });
 }
 
+{   //다음 단계
+    $('#btnNextStep').on('click', function () {
+       location.href = '/user/join';
+    });
+}
+
 function checkBoxOnOff(checkBoxEle){
     let $label = $(checkBoxEle).next('label');
     $label.toggleClass('checked');
