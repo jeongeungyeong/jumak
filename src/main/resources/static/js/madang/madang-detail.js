@@ -30,9 +30,9 @@ enterPage();
     });
 }
 
+
 {   // 댓글 수정
     let $replyUl = document.querySelector('.reply__list-ul');
-    let $modifyBtn = document.querySelector('.reply__modify-btn');
 
     // 댓글 수정 버튼 처리
     $replyUl.addEventListener('click', (e) => {
@@ -77,10 +77,61 @@ enterPage();
         // console.log(content);
         // console.log(replyNumber);
 
+        fetch(`/replies/${replyNumber}`,
+            {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    madangReplyContent: content
+                })
+            })
+            .then(enterPage)
+            .catch(console.log)
+    });
+}
+
+
+{   // 댓글 삭제
+
+    let $replyUl = document.querySelector('.reply__list-ul');
+
+    $replyUl.addEventListener('click', (e) => {
+        let replyNumber = e.target.dataset.num;
+
+        if (!e.target.classList.contains('reply__remove-btn')) {
+            return;
+        }
+
+        fetch(`/replies/${replyNumber}`, {
+            method: 'DELETE'
+        }).then(enterPage)
+            .catch(console.log);
 
     });
 }
 
+{   //추천하기 버튼
+    let $recommendBtn = document.querySelector('.reply__recommend-btn');
+
+    $recommendBtn.addEventListener('click', function (){
+       fetch(`/madangs/recommend/${madangNumber}`,{
+           method : 'POST'
+       }).then(resp =>resp.text())
+           .then(alert)
+           .catch(err => {
+               err.text().then(msg => alert(msg));
+           });
+    });
+}
+
+{   // 목록 버튼 처리
+    let $goBack = document.querySelector('.go-back > button');
+    $goBack.addEventListener('click', function () {
+       location.href = '/madang/list';
+    });
+}
 
 /**
  * 리플 count와 추천 count를 화면에 뿌리는 함수
