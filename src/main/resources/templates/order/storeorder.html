@@ -201,7 +201,6 @@
         </div>
         <!--    개인정보 동의 끝-->
         <div class="order_form-wrap">
-
             <form class="new-order-form">
         <!--   주문자 정보 -->
         <div class="order_info">
@@ -225,8 +224,8 @@
                                     type="text"
                                     name="userName"
                                     id="orderName"
-                                    value="정은경"
                                     maxlength="20"
+                                    value=""
                             />
                         </td>
                     </tr>
@@ -285,66 +284,43 @@
             <div class="order_zone_tit">
                 <h4>배송정보</h4>
             </div>
+            <form class="delivery-info-form">
+                <div class="order_table_type shipping_info">
 
-            <div class="order_table_type shipping_info">
-                <table class="table_left shipping_info_table">
-                    <colgroup>
-                        <col style="width: 15%" />
-                        <col style="width: 85%" />
-                    </colgroup>
-                    <tbody>
-                    <tr>
-                        <th scope="row">배송지 확인</th>
-                        <td>
-                            <div class="form_element">
-                                <ul>
-                                    <li>
-                                        <input
+                    <table class="table_left shipping_info_table">
+                        <colgroup>
+                            <col style="width: 15%" />
+                            <col style="width: 85%" />
+                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <th scope="row">배송지 확인</th>
+                            <td>
+                                <div class="form_element">
+                                    <ul>
+                                        <li>
+                                         <input
                                                 type="radio"
                                                 name="shipping"
                                                 id="shippingBasic"
-                                        />
-                                        <label
+                                            />
+                                            <label
                                                 for="shippingBasic"
                                                 class="choice_s on"
-                                        >기본 배송지</label
-                                        >
-                                    </li>
-                                    <li>
-                                        <input
-                                                type="radio"
-                                                name="shipping"
-                                                id="shippingRecently"
-                                        />
-                                        <label
-                                                for="shippingRecently"
-                                                class="choice_s"
-                                        >최근 배송지</label
-                                        >
-                                    </li>
-                                    <li>
-                                        <input
+                                                >기본 배송지</label
+                                                >
+                                            </li>
+                                        <li>
+                                            <input
                                                 type="radio"
                                                 name="shipping"
                                                 id="shippingNew"
-                                        />
-                                        <label for="shippingNew" class="choice_s"
-                                        >직접 입력</label
-                                        >
-                                    </li>
-                                    <li>
-                                        <input
-                                                type="radio"
-                                                name="shipping"
-                                                id="shippingSameCheck"
-                                        />
-                                        <label
-                                                for="shippingSameCheck"
-                                                class="choice_s"
-                                        >주문자정보와 동일</label
-                                        >
-                                    </li>
-                                </ul>
+                                            />
+                                            <label for="shippingNew" class="choice_s"
+                                            >직접 입력</label
+                                            >
+                                        </li>
+                                    </ul>
                               <!--  <span class="btn_gray_list"
                                 ><a
                                         href="#myShippingListLayer"
@@ -352,76 +328,77 @@
                                 ><span>배송지 관리</span></a
                                 ></span
                                 >-->
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <span class="important">받으실분</span>
-                        </th>
-                        <td>
-                            <input
-                                    type="text"
-                                    name="receiverName"
-                                    data-pattern="gdEngKor"
-                                    maxlength="20"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <span class="important">받으실 곳</span>
-                        </th>
-                        <td class="member_address">
-                            <div class="address_postcode">
-
-                                <input type="text" id="zipcode" placeholder="우편번호">
-                                <input type="button" onclick="searchAddress()" value="우편번호 찾기"><br>
-
-                            </div>
-                            <div class="address_input">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="important">받으실 분</span>
+                            </th>
+                            <td>
                                 <input
                                         type="text"
-                                        name="orderAddress"
-                                        id="address"
-                                        placeholder="주소"
+                                        name="receiverName"
+                                        data-pattern="gdEngKor"
+                                        maxlength="20"
                                 />
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="important">받으실 곳</span>
+                            </th>
+                            <td class="member_address">
+                                <div class="address_postcode">
+
+                                    <input type="text" id="zipcode" placeholder="우편번호">
+                                    <input type="button" onclick="searchAddress()" value="우편번호 찾기"><br>
+
+                                </div>
+                                <div class="address_input">
+                                    <input
+                                            type="text"
+                                            name="orderAddress"
+                                            id="address"
+                                            placeholder="주소"
+                                    />
+                                    <input
+                                            type="text"
+                                            name="orderAddressDetail"
+                                            id="addressDetail" placeholder="상세주소"
+                                    />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">전화번호</th>
+                            <td>
                                 <input
                                         type="text"
-                                        name="orderAddressDetail"
-                                        id="addressDetail" placeholder="상세주소"
+                                         id="receiverPhone"
+                                        name="receiverPhone"
                                 />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">전화번호</th>
-                        <td>
-                            <input
-                                    type="text"
-                                    id="receiverPhone"
-                                    name="receiverPhone"
-                            />
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <span class="important">휴대폰 번호</span>
-                        </th>
-                        <td>
-                            <input
-                                    type="text"
-                                    id="receiverCellPhone"
-                                    name="receiverCellPhone"
-                            />
-                        </td>
-                    </tr>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">
+                                <span class="important">휴대폰 번호</span>
+                            </th>
+                            <td>
+                                <input
+                                        type="text"
+                                        id="receiverCellPhone"
+                                        name="receiverCellPhone"
+                                />
+                            </td>
+                        </tr>
 
 
 
-                    </tbody>
-                </table>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
         </div>
         <!-- 배송지 정보 끝-->
 

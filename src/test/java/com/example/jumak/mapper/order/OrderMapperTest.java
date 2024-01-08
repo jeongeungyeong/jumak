@@ -19,6 +19,7 @@ class OrderMapperTest {
     @BeforeEach
     void setUp(){
         orderFinishVo = new OrderFinishVo();
+        userDto = new UserDto();
     }
 
      @Test
@@ -27,7 +28,6 @@ class OrderMapperTest {
 
     }
 
-//    @Test
-//    void selectByUNumber() {
-//    }
+
+
 }

@@ -3,14 +3,26 @@
 <mapper namespace="com.example.jumak.mapper.order.OrderMapper">
 
 <!--    주문자 정보 조회 -->
-    <select id="selectByUNumber" resultType="userDto">
+<!--    <select id="selectByUNumber" resultType="userDto">
         SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL,
                USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL,
                USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER
         FROM JUMAK_USER U
         WHERE USER_NUMBER=#{userNumber}
+    </select>-->
+
+
+    <select id="selectByUNumber" resultType="orderVo">
+        select ORDER_NUMBER, U.USER_NUMBER,USER_NAME,USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS,
+               USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER
+        from JUMAK_ORDER o join JUMAK_USER u on o.USER_NUMBER=u.USER_NUMBER
+        WHERE U.USER_NUMBER=#{userNumber}
     </select>
+
 <!--    배송 정보-->
+
+
+
 <!--    결제 정보-->
 
 
