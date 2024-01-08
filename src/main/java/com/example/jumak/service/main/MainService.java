@@ -18,4 +18,9 @@ public class MainService {
     public List<ProductSearchVo> findSearch(String keyword){
         return mainMapper.selectSearch(keyword);
     }
+
+//    상품 검색 카운트
+    public int countSearch(String keyword){
+        return mainMapper.countSearch(keyword);
+    }
 }

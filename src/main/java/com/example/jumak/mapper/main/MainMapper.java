@@ -10,4 +10,7 @@ import java.util.List;
 public interface MainMapper {
 // 상품 검색
     public List<ProductSearchVo> selectSearch(String keyword);
+
+// 상품 검색 카운트
+    public int countSearch(String keyword);
 }

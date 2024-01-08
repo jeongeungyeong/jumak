@@ -26,22 +26,22 @@
       <div class="search-box__popular">
         <strong>인기 검색어</strong>
         <ul>
-          <li><a href=""><span>#상큼한</span></a></li>
-          <li><a href=""><span>#시원한</span></a></li>
-          <li><a href=""><span>#추천술</span></a></li>
-          <li><a href=""><span>#선물하기좋은</span></a></li>
+          <li><a th:href="@{/search?keyword=상큼한}"><span>#상큼한</span></a></li>
+          <li><a th:href="@{/search?keyword=시원한}"><span>#시원한</span></a></li>
+          <li><a th:href="@{/search?keyword=도수높은}"><span>#도수높은</span></a></li>
+          <li><a th:href="@{/search?keyword=과일향}"><span>#과일향</span></a></li>
         </ul>
       </div>
     </section>
 
     <section class="search-result-msg">
-      <p>검색하신 <span th:text="${keyword}" id="result-keyword">"증류"</span>에 대한 <span id="result-count">111</span>개의 검색 결과가 있습니다.</p>
+      <p>검색하신 <span th:text="${keyword}" id="result-keyword"></span>에 대한 <span th:text="${count}" id="result-count"></span>개의 검색 결과가 있습니다.</p>
     </section>
 
     <section class="content">
       <div class="info">
         <div class="info-title content__title">
-          <span>우리술 정보(<span class="info-list-count">85</span>)</span>
+          <span>우리술 정보(<span th:text="${count}" class="info-list-count"></span>)</span>
         </div>
         <div class="info-list content__list">
           <!-- 반복요소-->
@@ -50,7 +50,7 @@
               <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
             </div>
             <div class="text-box">
-              <p th:text="${searchList.productName}" class="name">춘희 40</p>
+              <p th:text="${searchList.productName}" th:data="${searchList.productNumber}" class="name">춘희 40</p>
               <p th:text="${searchList.productSubtitle}" class="detail">숙성된 사과 증류주</p>
             </div>
           </article>
@@ -59,7 +59,7 @@
       </div>
       <div class="store">
         <div class="store-title content__title">
-          <span>우리술 장터(<span class="store-list-count">15</span>)</span>
+          <span>우리술 장터(<span th:text="${count}" class="store-list-count"></span>)</span>
         </div>
 
         <div class="store-list content__list">
@@ -67,16 +67,17 @@
           <article  th:each="searchList : ${searchList}" class="list-item">
             <div class="sale-box">
               <span>
-                <strong class="sale-percent">5</strong>%
+                <strong th:text="${searchList.productDiscount}" class="sale-percent">5</strong>%
               </span>
               <span>SALE</span>
             </div>
             <div class="img-box">
-              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/12/51/100004762/100004762_detail_042.jpg" alt="">
+              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+<!--              -->
             </div>
             <div class="text-box">
               <p th:text="${searchList.productName}" class="name">더한 서울의밤 매실증류주 어쩌고저쩌고</p>
-              <p class="sale-price">22,510원</p>
+              <p th:text="${searchList.productPrice}*((100-${searchList.productDiscount})/100)" class="sale-price">22,510원</p>
               <del th:text="${searchList.productPrice}" class="price"> 23,700원</del>
             </div>
           </article>

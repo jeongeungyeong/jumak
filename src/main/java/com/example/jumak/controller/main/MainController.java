@@ -26,9 +26,14 @@ public class MainController {
     @GetMapping("/search")
     public String searchPage(@RequestParam("keyword") String keyword, Model model){
         List<ProductSearchVo> searchList = mainService.findSearch(keyword);
+        int count = mainService.countSearch(keyword);
+
         model.addAttribute("searchList",searchList);
         model.addAttribute("keyword",keyword);
+        model.addAttribute("count",count);
         return "product/search";
     }
+
+
 
 }

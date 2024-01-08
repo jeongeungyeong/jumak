@@ -4,9 +4,9 @@
 
 <!-- 상품 검색 -->
     <select id="selectSearch" resultType="productSearchVo">
-        SELECT P.PRODUCT_NUMBER,P.PRODUCT_NAME,P.PRODUCT_SUBTITLE, P.PRODUCT_DISCOUNT, P.PRODUCT_PRICE,
+        SELECT DISTINCT P.PRODUCT_NUMBER,P.PRODUCT_NAME,P.PRODUCT_SUBTITLE, P.PRODUCT_DISCOUNT, P.PRODUCT_PRICE,
                JPIM.PRODUCT_IMG_MAIN_NUMBER, JPIM.PRODUCT_IMG_MAIN_NAME, JPIM.PRODUCT_IMG_MAIN_PATH,
-               JPIM.PRODUCT_IMG_MAIN_UUID, count(P.PRODUCT_NUMBER)
+               JPIM.PRODUCT_IMG_MAIN_UUID
         FROM JUMAK_PRODUCT P
                  LEFT JOIN JUMAK_PRODUCT_IMG_MAIN JPIM
                            ON P.PRODUCT_NUMBER = JPIM.PRODUCT_NUMBER
@@ -23,4 +23,22 @@
            OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
     </select>
 
+<!--상품검색 카운트-->
+    <select id="countSearch" resultType="_int">
+        SELECT COUNT(DISTINCT P.PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT P
+                 LEFT JOIN JUMAK_PRODUCT_IMG_MAIN JPIM
+                           ON P.PRODUCT_NUMBER = JPIM.PRODUCT_NUMBER
+                 JOIN JUMAK_PRODUCT_CATEGORY JPC
+                      ON P.PRODUCT_CATEGORY_NUMBER = JPC.PRODUCT_CATEGORY_NUMBER
+                 LEFT JOIN JUMAK_PRODUCT_TAG JPT
+                           ON P.PRODUCT_NUMBER = JPT.PRODUCT_NUMBER
+                 LEFT JOIN JUMAK_PRODUCT_KEYWORD JPK
+                           ON JPT.PRODUCT_KEYWORD_NUMBER = JPK.PRODUCT_KEYWORD_NUMBER
+        WHERE ( P.PRODUCT_NAME || P.PRODUCT_SUBTITLE || P.PRODUCT_ALCOHOLICITY
+            || P.PRODUCT_AREA || P.PRODUCT_DISTILLERY || P.PRODUCT_RAW_MATERIAL )
+            LIKE '%' || #{keyword} || '%'
+           OR JPC.PRODUCT_CATEGORY_NAME LIKE '%' || #{keyword} || '%'
+           OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
+    </select>
 </mapper>
