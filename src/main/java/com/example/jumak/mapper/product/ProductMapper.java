@@ -35,6 +35,8 @@ List<ProductDto> arrHPrice();
                                           @Param("cate") String cate,
                                           @Param("criteria")Criteria criteria);
 
+    Long selectTotalByCond(String cate);
+
 //     상품 디테일 페이지
 //    List<ProductDetailVo> selectByDetail();
 

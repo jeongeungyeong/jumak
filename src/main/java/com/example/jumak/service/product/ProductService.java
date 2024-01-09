@@ -24,6 +24,11 @@ public class ProductService {
         return productMapper.selectByOrderCond(orderCond, cate, criteria);
     }
 
+//    상품 카운트 조회
+    public Long findTotalByCond(String cate){
+        return productMapper.selectTotalByCond(cate);
+    }
+
 //    상품 번호 조회
     public ProductDto findByNumber(Long productNumber){
         return productMapper.selectByNumber(productNumber)

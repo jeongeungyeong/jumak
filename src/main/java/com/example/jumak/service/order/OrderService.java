@@ -2,6 +2,7 @@ package com.example.jumak.service.order;
 
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.order.OrderFinishVo;
+import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.mapper.order.OrderMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,9 +15,9 @@ public class OrderService {
     private final OrderMapper orderMapper;
 
 //    주문자 정보 조회
-    public UserDto findByUNumber(Long userNumber){
+    public OrderVo findByUNumber(Long userNumber){
         return orderMapper.selectByUNumber(userNumber)
-                .orElseThrow(()-> new IllegalStateException("주문자 조회 결과 없음!"));
+                .orElseThrow( ()->new IllegalStateException("주문자 정보 없음!"));
     }
 
 //    주문요약정보

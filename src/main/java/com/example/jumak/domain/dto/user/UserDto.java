@@ -1,5 +1,6 @@
 package com.example.jumak.domain.dto.user;
 
+import com.example.jumak.domain.vo.order.OrderVo;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;

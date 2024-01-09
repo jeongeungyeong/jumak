@@ -32,7 +32,7 @@ public class SearchUserMapperTests {
         search1.setSearchUserEmail( "mr.bal@localhost.net" );
         search1.setSearchUserAddress( "마포구" );
         System.out.println( search1 );
-        searchUserMapper.insertSearchUser( search1 );
+//        searchUserMapper.insertSearchUser( search1 );
 
         System.out.println("------------------------------");
         System.out.println("레코드가 추가 되었습니다.");

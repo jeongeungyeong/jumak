@@ -225,7 +225,7 @@
                                     name="userName"
                                     id="orderName"
                                     maxlength="20"
-                                    value=""
+                                    th:value="${orderUInfo.userName}"
                             />
                         </td>
                     </tr>
@@ -236,7 +236,7 @@
                                     type="text"
                                     name="userPhone"
                                     id="orderPhoneNumber"
-                                    value=""
+                                    th:value="${orderUInfo.userPhoneNumber}"
                                     maxlength="20"
                             />
                         </td>
@@ -250,7 +250,7 @@
                                     type="text"
                                     name="userCellPhone"
                                     id="orderCellPhoneNumber"
-                                    value=""
+                                    th:value="${orderUInfo.userCellphoneNumber}"
                                     maxlength="20"
                             />
                         </td>
@@ -260,15 +260,15 @@
                             <span class="important">이메일</span>
                         </th>
                         <td class="user_email">
-                            <input type="text" name="orderEmail" value="" />
+                            <input type="text" name="orderEmail" th:value="${orderUInfo.userEmail}" />
 
-                            <select class="chosen-select">
+                            <!--<select class="chosen-select">
                                 <option value="self"selected="selected">직접입력</option>
                                 <option value="naver.com">naver.com</option>
                                 <option value="hanmail.net">hanmail.net</option>
                                 <option value="daum.net">daum.net</option>
                                 <option value="gmail.com">gmail.com</option>
-                            </select>
+                            </select>-->
 
                         </td>
                     </tr>
@@ -297,37 +297,18 @@
                             <th scope="row">배송지 확인</th>
                             <td>
                                 <div class="form_element">
-                                    <ul>
-                                        <li>
-                                         <input
-                                                type="radio"
-                                                name="shipping"
-                                                id="shippingBasic"
-                                            />
-                                            <label
-                                                for="shippingBasic"
-                                                class="choice_s on"
-                                                >기본 배송지</label
-                                                >
-                                            </li>
-                                        <li>
-                                            <input
-                                                type="radio"
-                                                name="shipping"
-                                                id="shippingNew"
-                                            />
-                                            <label for="shippingNew" class="choice_s"
-                                            >직접 입력</label
-                                            >
-                                        </li>
-                                    </ul>
-                              <!--  <span class="btn_gray_list"
-                                ><a
-                                        href="#myShippingListLayer"
-                                        class="btn_gray_small btn_open_layer js_shipping"
-                                ><span>배송지 관리</span></a
-                                ></span
-                                >-->
+
+                                    <div class="delivery-wrap">
+                                        <label for="shippingBasic" class="delivery-box basic">
+                                            <span>기본 배송지</span>
+                                            <input type="radio" id="shippingBasic" name="userdelivery" value="B" />
+                                        </label>
+                                        <label for="shippingNew" class="delivery-box new">
+                                            <span>직접 입력</span>
+                                            <input type="radio" id="shippingNew" name="userdelivery" value="N" />
+                                        </label>
+                                    </div>
+
                                 </div>
                             </td>
                         </tr>
@@ -339,7 +320,7 @@
                                 <input
                                         type="text"
                                         name="receiverName"
-                                        data-pattern="gdEngKor"
+                                        id="receiverName"
                                         maxlength="20"
                                 />
                             </td>
@@ -551,10 +532,7 @@
             <!--          하단 버튼-->
 
             <div class="btn-box">
-                <button type="submit" class="order-btn">결제하기</button>
-     <!--           <div class="order-btn">
-                    결제하기
-                </div>-->
+                <button type="button" class="order-btn">결제하기</button>
             </div>
 
 

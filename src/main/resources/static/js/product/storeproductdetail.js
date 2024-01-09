@@ -37,13 +37,33 @@ let page = 1;
 // 장바구니 바로 가기
 
 // 바로구매 바로 가기
+// 유저넘버를 갖고 있으면, 전체 form 데이터를 submit으로 보내줌
+// 아니면 로그인 페이지로 이동
 $('.btn_add_order').on('click', function (){
 
-    window.location.href = '/order/next?';
+    if($(this).data('num')){
+        $('#product-form').submit();
+    }else{
+        alert('로그인 하세요');
+        location.href = "/user/login";
+    }
 })
 
 // ===========================================================
 // 상품 후기 리플
+
+// 로그인 유무
+$('#reply-content').on('click', function (){
+
+    if($(this).data('num')){
+        $('#product-form').submit();
+    }else{
+        alert('로그인 하세요');
+        location.href = "/user/login";
+    }
+})
+
+
 $('.reply-list-wrap').on('click', '.reply-btns', function () {
     let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
 
@@ -113,6 +133,8 @@ $(window).on('scroll', function (){
 reply.getListPage(productNumber, page, showReply);
 
  */
+
+
 
 
 

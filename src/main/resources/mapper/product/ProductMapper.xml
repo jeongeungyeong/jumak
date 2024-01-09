@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.product.ProductMapper">
 
-    <!--    상품 번호로 조회하기-->
+<!--    &lt;!&ndash;    상품 번호로 조회하기&ndash;&gt;
     <select id="selectByNumber" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -12,7 +12,7 @@
         WHERE PRODUCT_NUMBER=#{productNumber}
     </select>
 
-<!--    상품 카테고리로 조회하기-->
+&lt;!&ndash;    상품 카테고리로 조회하기&ndash;&gt;
     <select id="selectByCategory" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -22,7 +22,7 @@
         WHERE PRODUCT_CATEGORY_NUMBER = #{productCategoryNumber}
     </select>
 
-    <!--    전체 상품 조회하기-->
+    &lt;!&ndash;    전체 상품 조회하기&ndash;&gt;
     <select id="selectAll" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -31,13 +31,13 @@
         FROM JUMAK_PRODUCT
     </select>
 
-<!--    상품 총 개수-->
+&lt;!&ndash;    상품 총 개수&ndash;&gt;
         <select id="selectTotal" resultType="_int">
             SELECT COUNT(PRODUCT_NUMBER)
             FROM JUMAK_PRODUCT
         </select>
 
-<!--    판매량 베스트 상품-->
+&lt;!&ndash;    판매량 베스트 상품&ndash;&gt;
     <select id="selectSaleBest" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -47,7 +47,7 @@
         ORDER BY PRODUCT_SALES DESC
     </select>
 
-<!--    정렬 분류: 등록일순 -->
+&lt;!&ndash;    정렬 분류: 등록일순 &ndash;&gt;
     <select id="arrUpdate" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -56,7 +56,7 @@
         FROM JUMAK_PRODUCT
         ORDER BY PRODUCT_RELEASE_DATE DESC
     </select>
-<!--    정렬 분류: 판매인기순-->
+&lt;!&ndash;    정렬 분류: 판매인기순&ndash;&gt;
     <select id="arrSale" resultType="productListVo">
         SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_PRICE,
                P.PRODUCT_ALCOHOLICITY, P.PRODUCT_DISCOUNT, P.PRODUCT_NET_WEIGHT, P.PRODUCT_RELEASE_DATE,
@@ -66,7 +66,7 @@
                                        ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
         ORDER BY PRODUCT_SALES ASC
     </select>
-<!--    정렬 분류: 낮은 가격순-->
+&lt;!&ndash;    정렬 분류: 낮은 가격순&ndash;&gt;
     <select id="arrLPrice" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -75,7 +75,7 @@
         FROM JUMAK_PRODUCT
         ORDER BY PRODUCT_PRICE ASC
     </select>
-<!--    정렬 분류: 높은 가격순-->
+&lt;!&ndash;    정렬 분류: 높은 가격순&ndash;&gt;
     <select id="arrHPrice" resultType="productDto">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
                PRODUCT_RAW_MATERIAL, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY,
@@ -83,42 +83,8 @@
                PRODUCT_SALES, PRODUCT_DISCOUNT, PRODUCT_RELEASE_DATE, PRODUCT_DISTILLERY
         FROM JUMAK_PRODUCT
         ORDER BY PRODUCT_PRICE DESC
-    </select>
-
-
-  <!--  <select id="productsGetList" resultType="productVo">
-        SELECT PRODUCT_NUMBER, PRODUCT_NAME,
-               PRODUCT_CATEGORY_NUMBER,PRODUCT_CATEGORY_NAME,
-               PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
-        FROM (
-                 SELECT ROWNUM AS RNUM, PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_CATEGORY_NUMBER,PRODUCT_CATEGORY_NAME, PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME,
-                        PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
-                 FROM (
-                          SELECT P.PRODUCT_NUMBER, P.PRODUCT_NAME, P.PRODUCT_CATEGORY_NUMBER,
-                                 Y.PRODUCT_CATEGORY_NUMBER,Y.PRODUCT_CATEGORY_NAME,
-                                 J.PRODUCT_IMG_MAIN_NUMBER, J.PRODUCT_IMG_MAIN_NAME, J.PRODUCT_IMG_MAIN_PATH, J.PRODUCT_IMG_MAIN_UUID
-                          FROM JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_CATEGORY Y
-                                                ON P.PRODUCT_CATEGORY_NUMBER = Y.PRODUCT_CATEGORY_NUMBER                                   LEFT JOIN (
-
-                              SELECT PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID,
-                                     PRODUCT_NUMBER
-                              FROM (
-                                       SELECT PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID,
-                                              PRODUCT_NUMBER,
-                                              RANK() OVER(PARTITION BY PRODUCT_NUMBER ORDER BY PRODUCT_IMG_MAIN_NUMBER) RK
-                                       FROM JUMAK_PRODUCT_IMG_MAIN J
-                                   )
-                              WHERE RK = 1
-                          ) J
-                                                     ON J.PRODUCT_NUMBER= J.PRODUCT_NUMBER
-                          ORDER BY PRODUCT_NUMBER DESC
-                      )
-            <![CDATA[
-                 WHERE ROWNUM <= #{page} * #{amount}
-            ]]>
-        )
-        WHERE RNUM > (#{page} - 1) * #{amount}
     </select>-->
+
 
     <select id="selectByOrderCond" resultType="productListVo" parameterType="string">
         SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_ALCOHOLICITY, PRODUCT_DISCOUNT, PRODUCT_NET_WEIGHT, PRODUCT_RELEASE_DATE, PRODUCT_SALES, PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
@@ -177,21 +143,31 @@
 
     </select>
 
-<!--상품 디테일 페이지-->
-    
-<!--    <select id="selectByDetail" resultType="productDetailVo">
-        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME,P.PRODUCT_NET_WEIGHT,P.PRODUCT_ALCOHOLICITY,
-               P.PRODUCT_AREA, P.PRODUCT_PRICE, P.PRODUCT_DISCOUNT,P.PRODUCT_DISTILLERY,
-               PC.PRODUCT_CATEGORY_NAME,
-               I.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID,
-               PI.PRODUCT_IMG_NUMBER, PRODUCT_IMG_NAME, PRODUCT_IMG_PATH, PRODUCT_IMG_UUID
+    <select id="selectTotalByCond" resultType="long" parameterType="string">
+        SELECT COUNT(P.PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT P
+        <trim prefix="WHERE">
+            <choose>
+                <when test="'group1'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(1,2)
+                </when>
+                <when test="'group2'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(3,4)
+                </when>
+                <when test="'group3'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(5,6)
+                </when>
+                <when test="'group4'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(7,8)
+                </when>
+                <when test="'group5'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER = 9
+                </when>
+            </choose>
+        </trim>
+    </select>
 
 
-        FROM JUMAK_PRODUCT P INNER JOIN JUMAK_PRODUCT_CATEGORY PC
-                                        ON P.PRODUCT_CATEGORY_NUMBER = PC.PRODUCT_CATEGORY_NUMBER
-                             INNER JOIN JUMAK_PRODUCT_IMG_MAIN I ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
-                             INNER JOIN JUMAK_PRODUCT_IMG PI ON P.PRODUCT_NUMBER = PI.PRODUCT_NUMBER
-    </select>-->
 
 <!--    상품 info 디테일 페이지-->
     <select id="selectByDNumber" resultType="productDetailVo">

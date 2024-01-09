@@ -32,7 +32,7 @@
         </section>
 
         <section class="product-info">
-          <form th:action="@{/order/next}" method="get">
+          <form th:action="@{/order/next}" method="get" id="product-form">
 
           <div class="product-info__topHead-box">
             <div class="product-info__topHead__title">
@@ -245,7 +245,8 @@
                 <button id="cartBtn" type="submit" class="btn_add_cart">
                   장바구니
                 </button>
-                <button type="submit" class="btn_add_order">바로 구매</button>
+                  <!--     세션에서 유전 넘버 갖고 오기     -->
+                <button type="button" class="btn_add_order" th:data-num="${session.userNumber}">바로 구매</button>
               </div>
             </div>
           <input type="hidden" class="product-num" name="productNumber" th:value="${detailproduct.productNumber}">

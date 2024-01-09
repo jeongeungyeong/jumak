@@ -70,7 +70,7 @@
   <section class="products_pick_list">
     <div class="section-head">
       <div class="section-head__title">
-        총 641개의 상품
+        총 <span th:text="${pageInfo.total}"></span>개의 상품
       </div>
       <select class="section-head__more">
         <option value="date" th:selected="${'date' == orderCond}">등록일순</option>
@@ -105,60 +105,23 @@
   </section>
 <!-- 페이징 처리  -->
 <div class="page-container">
-  <ul class="page-box">
-    <a href="" class="page-a">
+  <ul class="page-box" th:object="${pageInfo}">
+    <a th:href="@{/store/list(orderCond=${orderCond},cate=${cate},page=*{startPage - 1})}" class="page-a" th:if="*{prev}">
       <li class="page-num prev">&lt</li>
     </a>
-    <a href="" class="page-a">
-      <li class="page-num active">1</li>
+
+    <a th:href="@{/store/list(orderCond=${orderCond},cate=${cate},page=${i})}" class="page-a" th:each="i : ${#numbers.sequence(pageInfo.startPage,pageInfo.endPage)}">
+      <li class="page-num" th:text="${i}" th:classappend="${i == pageInfo.criteria.page ? 'active' : '' }"></li>
     </a>
-    <a href="" class="page-a">
-      <li class="page-num">2</li>
-    </a>
-    <a href="" class="page-a">
-      <li class="page-num">3</li>
-    </a>
-    <a href="" class="page-a">
-      <li class="page-num">4</li>
-    </a>
-    <a href="" class="page-a">
-      <li class="page-num">5</li>
-    </a>
-    <a href="" class="page-a">
+
+
+    <a th:href="@{/store/list(orderCond=${orderCond},cate=${cate},page=*{endPage + 1})}" class="page-a" th:if="*{next}">
       <li class="page-num next">&gt</li>
     </a>
   </ul>
 </div>
 <!-- /페이징 처리 -->
 
-
-<!-- 페이징 처리-->
-<!--<div class="page-container">
-  <ul class="page-box" th:object="${pageInfo}">
-    <a th:href="@{/store/list(page=*{startPage-1})}" class="page-a" th:if="*{prev}">
-      <li class="page-num prev">&lt</li>
-    </a>
-
-    &lt;!&ndash;    페이징 처리는 시작번호~끝번호 까지 반복을 돌려야 하므로 빠른 for문으로 처리 불가능하다.(시작과 끝이 정해졌기 때문)
-          그렇기 때문에 타임리프에서 제공해주는 객체를 사용하여 처리해준다.
-          #을 붙이면 타임리프에서 제공해주는 객체를 사용할 수 있으며 numbers라는 객체는 sequence(시작 값, 끝 값)라는 메소드를
-          지원해준다.  sequence(1, 5) -> 1, 2, 3, 4, 5
-    &ndash;&gt;
-    <th:block th:each="i : *{#numbers.sequence(startPage, endPage)}">
-      <a th:href="@{/store/list(page=${i})}" class="page-a">
-        <li class="page-num" th:classappend="${i==pageInfo.criteria.page} ? 'active' : '' " th:text="${i}"></li>
-      </a>
-    </th:block>
-
-
-    <a th:href="@{/store/list(page=*{endPage+1})}" class="page-a" th:if="*{next}">
-      <li class="page-num next">&gt</li>
-    </a>
-  </ul>
-</div>-->
-<!-- /페이징 처리 -->
-
-<!--  <input type="hidden" class="product-num" th:value="${product.productNumber}">-->
 
 
 </main>

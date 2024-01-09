@@ -1,3 +1,57 @@
+// 배송 주문 정보
+let $deliveryBox = $('.delivery-box');
+//기본정보
+$deliveryBox.on('click',function (e){
+   let idx = $deliveryBox.index(this);
+   console.log(idx);
+
+   for(let i=0;i<$deliveryBox.length;i++){
+       if(i==idx){
+           $deliveryBox.eq(i).addClass('checked');
+       }else{
+           $deliveryBox.eq(i).removeClass('checked');
+       }
+   }
+});
+
+$('.basic').on('click', function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        url : '/orders/delivery',
+        type: 'get',
+        dataType: 'json',
+        success : function (resp){
+            console.log(resp);
+            $('#receiverName').val(resp.userName)
+            $('#address').val(resp.userAddress)
+            $('#zipcode').val(resp.userZipcode)
+            $('#addressDetail').val(resp.userAddressDetail)
+            $('#receiverPhone').val(resp.userPhoneNumber)
+            $('#receiverCellPhone').val(resp.userCellphoneNumber)
+
+        },
+        error : function (xhr, status, err) {
+            console.log(err);
+        }
+    });
+});
+
+$('.new').on('click', function (e) {
+    e.preventDefault();
+    $('#receiverName').val('');
+    $('#address').val('');
+    $('#zipcode').val('');
+    $('#addressDetail').val('');
+    $('#receiverPhone').val('');
+    $('#receiverCellPhone').val('');
+
+});
+
+
+
+//직접입력
+//배송지주소찾기
 function searchAddress() {
     new daum.Postcode({
         oncomplete: function(data) {

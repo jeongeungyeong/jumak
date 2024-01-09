@@ -194,14 +194,16 @@ main{
     overflow: hidden;
     position: relative;
 }
-.form_element input {
+/*.form_element input {
     position: absolute;
     top: 3px;
     left: 1px;
     width: 0;
     z-index: -1;
-}
+}*/
 input[type="checkbox"] {
+    position: relative;
+    top: 5px;
     width: 13px;
     height: 13px;
     vertical-align: top;
@@ -209,7 +211,7 @@ input[type="checkbox"] {
 .form_element label.check_s {
     min-width: 13px;
     padding: 0 0 0 22px;
-    background: url(../../img/common/input/check_off_small.png) no-repeat 1px 2px;
+   /* background: url(../../img/common/input/check_off_small.png) no-repeat 1px 2px;*/
     font-size: 12px;
     line-height: 20px;
 }
@@ -218,10 +220,10 @@ input[type="checkbox"] {
     top: 0;
     left: 0;
     display: inline-block;
-    min-width: 20px;
+    min-width: 100px;
     min-height: 20px;
-    padding: 0 0 0 27px;
-    background: url(../../img/common/input/check_off.png) no-repeat 1px top;
+    padding: 0 10px;
+    /*background: url(../../img/common/input/check_off.png) no-repeat 1px top;*/
 }
 .order_agree_cont strong {
     color: rgb(240, 200, 100);
@@ -306,7 +308,41 @@ input[type="checkbox"] {
     background: #ffffff;
 }
 
-/* 최총 가격 */
+.delivery-wrap {
+    display: flex;
+    justify-content: space-around;
+}
+
+.delivery-box {
+    border: 1px solid rgb(240,200,100);
+    width: 20%;
+    height: 20px;
+    color: rgb(240,200,100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+}
+
+.delivery-box:hover {
+    background-color: rgb(240,200,100);
+    color: white;
+}
+
+.checked {
+    color: white;
+    background-color: rgb(240,200,100);
+}
+
+input[type='radio'] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
+
+/* 최종 가격 */
 .cart-final_total{
     margin: 30px 0 0 0;
     padding: 20px 40px 25px 40px;
@@ -351,13 +387,13 @@ input[type="checkbox"] {
     position: relative;
 }
 
-.form_element input {
+/*.form_element input {
     position: absolute;
     top: 3px;
     left: 1px;
     width: 0;
     z-index: -1;
-}
+}*/
 .payment_final .form_element label.check_s em b {
     color: rgb(240, 200, 100);
 }

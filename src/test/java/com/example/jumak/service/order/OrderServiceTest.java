@@ -2,6 +2,7 @@ package com.example.jumak.service.order;
 
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.order.OrderFinishVo;
+import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.mapper.order.OrderMapper;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -50,7 +51,7 @@ class OrderServiceTest {
         // given
             doReturn(Optional.ofNullable(userDto)).when(orderMapper).selectByUNumber(any());
         // when
-        UserDto byUNumber = orderService.findByUNumber(21L);
+        OrderVo byUNumber = orderService.findByUNumber(21L);
         // then
         assertThat(byUNumber).isEqualTo(userDto);
     }

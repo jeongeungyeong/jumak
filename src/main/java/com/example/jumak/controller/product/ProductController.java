@@ -21,31 +21,30 @@ public class ProductController {
 
     @GetMapping("/list")
     public String productList(String orderCond, String cate, Criteria criteria, Model model){
-        criteria.setAmount(20);
+        criteria.setAmount(10);
         List<ProductListVo> productList = productService.findByCond(orderCond, cate, criteria);
         model.addAttribute("products", productList);
         model.addAttribute("orderCond", orderCond);
         model.addAttribute("cate", cate);
-//        model.addAttribute("pageInfo",new PageVo(productService.findByCond(orderCond,cate,criteria));
+        model.addAttribute("pageInfo",new PageVo(productService.findTotalByCond(cate).intValue(), criteria));
 
         return "product/storeproduct";
     }
 
 
     //    스토어 상품 전체 보기
-    @GetMapping("/all")
+/*    @GetMapping("/all")
     public String productall(Model model){
         List<ProductListVo> productlist = productService.findAll();
         model.addAttribute("products",productlist);
 
         return "product/storeproduct";
-    }
+    }*/
 
     //    상품 디테일
     @GetMapping("/view")
     public String detail(@RequestParam("productNumber") Long productNumber, Model model){
-/*        List<ProductDetailVo> prodcutDetailList = productService.findByDetail();
-        model.addAttribute("detailproducts",prodcutDetailList);*/
+
         ProductDetailVo prodcutDetails = productService.findByDNumber(productNumber);
         model.addAttribute("detailproduct",prodcutDetails);
 

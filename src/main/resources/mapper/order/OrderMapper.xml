@@ -15,7 +15,7 @@
     <select id="selectByUNumber" resultType="orderVo">
         select ORDER_NUMBER, U.USER_NUMBER,USER_NAME,USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS,
                USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER
-        from JUMAK_ORDER o join JUMAK_USER u on o.USER_NUMBER=u.USER_NUMBER
+        from JUMAK_ORDER o right join JUMAK_USER u on o.USER_NUMBER=u.USER_NUMBER
         WHERE U.USER_NUMBER=#{userNumber}
     </select>
 

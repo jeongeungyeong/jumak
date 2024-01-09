@@ -4,6 +4,7 @@ import com.example.jumak.domain.dto.order.OrderDto;
 import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.order.OrderFinishVo;
+import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.service.order.OrderService;
 import com.example.jumak.service.product.ProductService;
@@ -27,6 +28,7 @@ public class OrderController {
     @GetMapping("/next")
     public String orderMain(@RequestParam("productNumber") Long productNumber,
                             @RequestParam("productCount") Long productCount,
+                            HttpServletRequest req,
                             Model model){
 // productNumber 로 next페이지에 넘겨줄 정보 서비스에서 뽑아서 넘겨주고
 //        productCount 는 그냥 넘겨주기
@@ -41,21 +43,18 @@ public class OrderController {
         model.addAttribute("paymentTotal", (productCount *(productDetail.getProductPrice() - (productDetail.getProductPrice() *(productDetail.getProductDiscount()/100.0))))
                 +3000);
 
+        //주문자정보 사용자정보뿌리기 매퍼에서부터 찾아서
+        Object userNumber = req.getSession().getAttribute("userNumber");
 
-        //주문자정보 사용자정보뿌리기 그거이제매퍼에서부터 찾아서
+        //오더서비스연결해서 모델로 뿌리기
+        OrderVo byUNumber = null;
 
+        byUNumber = orderService.findByUNumber((Long) userNumber);
 
-
-        //여기다가 또 서비스연결해서 모델로 뿌리기
+        model.addAttribute("orderUInfo",byUNumber);
+        
         return "order/storeorder";
     }
-
-/*    @GetMapping("/ordertest")
-    public String orderTest(HttpServletRequest req){
-        Object userNumber = req.getSession().getAttribute("userNumber");
-        return userNumber == null ? "user/login" : "order/storeorder";
-    }*/
-
 
 
 
