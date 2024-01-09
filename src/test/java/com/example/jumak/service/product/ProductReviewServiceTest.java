@@ -37,9 +37,9 @@ class ProductReviewServiceTest {
     @Test
     void reviewRegister() {
         // given
-        doNothing().when(productReviewMapper).reviewInsert(any(ProductReviewDto.class));
+        doNothing().when(productReviewMapper).reviewInsert(any(ProductReviewVo.class));
         // when
-        productReviewService.reviewRegister(productReviewDto);
+        productReviewService.reviewRegister(productReviewVo);
         // then
         verify(productReviewMapper,times(1)).reviewInsert(any());
     }

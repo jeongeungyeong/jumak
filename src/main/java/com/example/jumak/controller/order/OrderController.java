@@ -57,10 +57,6 @@ public class OrderController {
     }
 
 
-
-
-
-
     @GetMapping("/fail")
     public String orderFail(Model model){
         List<OrderFinishVo> orderFinList = orderService.findByNumber();

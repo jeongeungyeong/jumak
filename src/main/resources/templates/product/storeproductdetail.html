@@ -242,7 +242,7 @@
 
             <div class="btn_choice_box">
               <div>
-                <button id="cartBtn" type="submit" class="btn_add_cart">
+                <button id="cartBtn" type="button" class="btn_add_cart" th:data-num="${session.userNumber}">
                   장바구니
                 </button>
                   <!--     세션에서 유전 넘버 갖고 오기     -->

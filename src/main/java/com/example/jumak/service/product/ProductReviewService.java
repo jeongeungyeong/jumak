@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductReviewService {
     private final ProductReviewMapper productReviewMapper;
 
-    public void reviewRegister(ProductReviewDto productReviewDto){
+    public void reviewRegister(ProductReviewVo productReviewDto){
         productReviewMapper.reviewInsert(productReviewDto);
     }
 

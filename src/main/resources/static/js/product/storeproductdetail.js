@@ -35,6 +35,18 @@ let page = 1;
 
 
 // 장바구니 바로 가기
+$('.btn_add_cart').on('click', function (){
+
+    if($(this).data('num')){
+        $('#product-form').submit();
+    }else{
+        alert('로그인 하세요');
+        location.href = "/user/login";
+    }
+})
+
+
+
 
 // 바로구매 바로 가기
 // 유저넘버를 갖고 있으면, 전체 form 데이터를 submit으로 보내줌
@@ -53,18 +65,18 @@ $('.btn_add_order').on('click', function (){
 // 상품 후기 리플
 
 // 로그인 유무
-$('#reply-content').on('click', function (){
+/*$('#reply-content').on('click', function (){
 
     if($(this).data('num')){
-        $('#product-form').submit();
+
     }else{
         alert('로그인 하세요');
         location.href = "/user/login";
     }
-})
+})*/
 
 
-$('.reply-list-wrap').on('click', '.reply-btns', function () {
+/*$('.reply-list-wrap').on('click', '.reply-btns', function () {
     let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
 
     $replyBtnBox.toggleClass('none');
@@ -108,14 +120,14 @@ $('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
 // 리플 수정 완료 처리
 $('.reply-list-wrap').on('click', '.modify-content-btn', function () {
     console.log('modify!!!');
-});
+});*/
 
-/*
+
 
 
 // =====================================================
 //무한 스크롤 페이징
-$(window).on('scroll', function (){
+/*$(window).on('scroll', function (){
     // 현재 브라우저의 스크롤 위치를 의미
     console.log(`ScrollTop : ${ $(window).scrollTop() }` )
     // 문서 전체의 높이를 의미
@@ -130,9 +142,9 @@ $(window).on('scroll', function (){
         reply.getListPage(boardNumber, page, appendReply);
     }
 });
-reply.getListPage(productNumber, page, showReply);
+reply.getListPage(productNumber, page, showReply);*/
 
- */
+
 
 
 

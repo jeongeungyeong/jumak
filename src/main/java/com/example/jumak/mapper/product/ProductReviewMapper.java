@@ -11,7 +11,7 @@ import java.util.List;
 @Mapper
 public interface ProductReviewMapper {
 //    상품 후기 작성
-    void reviewInsert(ProductReviewDto productReviewDto);
+    void reviewInsert(ProductReviewVo productReviewVo);
 //    상품 후기 조회
     List<ProductReviewVo> reviewList(Long productNumber);
 //    상품 후기 전체 조회

@@ -16,35 +16,34 @@ import java.util.List;
 public class ProductReviewController {
     private final ProductReviewService productReviewService;
 
-    @PostMapping
-    public void write(@RequestBody ProductReviewDto productReviewDto,
-                      HttpServletRequest req){
-        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+/*    @PostMapping
+    public void write(@RequestBody ProductReviewVo productReviewVo,
+                      @SessionAttribute("userNumber") Long userNumber){
 
-        productReviewDto.setUserNumber(userNumber);
-        System.out.println("productReviewDto = " + productReviewDto);
-        productReviewService.reviewRegister(productReviewDto);
-    }
+        productReviewVo.setUserNumber(userNumber);
+        System.out.println("productReviewDto = " + productReviewVo);
+        productReviewService.reviewRegister(productReviewVo);
+    }*/
 
-    //    url로 데이터를 넘겨받아 조회가 가능하다.
+/*    //    url로 데이터를 넘겨받아 조회가 가능하다.
     //     경로상의 데이터를 받기 위해서는 @PathVariable 을 사용한다.
     @GetMapping("/store/view/{productNumber}")
     public List<ProductReviewVo> replyList(@PathVariable("productNumber") Long productNumber){
         return productReviewService.findReviewList(productNumber);
-    }
+    }*/
 
-    @PatchMapping("/{productReviewNumber}")
+/*    @PatchMapping("/{productReviewNumber}")
     public void replyModify(@PathVariable("productReviewNumber") Long productReviewNumber,
                             @RequestBody ProductReviewDto productReviewDto){
         System.out.println("productReviewNumber = " + productReviewNumber + ", productReviewDto = " + productReviewDto);
         productReviewDto.setProductReviewNumber(productReviewNumber);
         productReviewService.reviewModify(productReviewDto);
-    }
+    }*/
 
-    @DeleteMapping("/{productReviewNumber}")
+/*    @DeleteMapping("/{productReviewNumber}")
     public void replyRemove(@PathVariable("productReviewNumber") Long productReviewNumber){
         productReviewService.reviewRemove(productReviewNumber);
-    }
+    }*/
 
 
 }
