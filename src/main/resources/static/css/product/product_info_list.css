@@ -1,0 +1,151 @@
+.content-wrap{
+    width: 1200px;
+    margin : 0 auto;
+    padding: 100px 0;
+    font-family: chosun;
+}
+
+main{
+    margin-bottom: 150px;
+}
+
+/*카테고리*/
+.category{
+    margin-top: 100px;
+    font-family: chosun;
+}
+.category > ul {
+    display: flex;
+    justify-content: center;
+}
+
+.category li{
+    width: 150px;
+    margin: 0 7px;
+    vertical-align: middle;
+}
+
+.category li a {
+    display: block;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    border-radius: 500px;
+    border: 1px solid #dedede;
+    font-size: 17px;
+    font-weight: 400;
+    color: #1A191E;
+    text-align: center;
+    line-height: 50px;
+}
+
+.category li.active a{
+    background-color: var(--main-color);
+    border-color: var(--main-color);
+    color: white;
+}
+
+/* 정렬 기준 */
+.sort{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.sort__box{
+    position: relative;
+    cursor: pointer;
+}
+
+.sort__picked{
+    font-weight: bold;
+}
+
+.sort__picked::after{
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 10px;
+    margin-left: 15px;
+
+    background-image: url("/imgs/product/sort-select-bg.png");
+    background-repeat: no-repeat;
+    background-position-y: center;
+    background-position-x: center;
+
+    transition: all 0.2s linear;
+}
+
+.sort__picked.active::after{
+    transform: rotate(180deg);
+}
+
+.sort__list{
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    top: 35px;
+    padding: 0;
+    background-color: #fff;
+    z-index: 1000;
+    border: 1px solid #404041;
+    padding: 15px;
+    border-radius: 5px;
+    width: 100px;
+    box-sizing: border-box;
+    display: none;
+}
+
+.sort__picked.active+.sort__list{
+    display: block;
+}
+
+.sort__list > li{
+    font-size: 14px;
+}
+
+.sort__list > li.active{
+    font-weight: bold;
+}
+
+.sort__list > li:not(li:first-child){
+    margin-top: 5px;
+}
+
+.sort__list > li > label{
+    cursor: pointer;
+}
+
+#sort1,
+#sort2,
+#sort3{
+    display: none;
+}
+
+/* 리스트 */
+.list-box__grid{
+    padding-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 70px 10px;
+}
+
+.item__img-box > img{
+    width: 100%;
+    height: 260px;
+    border-radius: 10px;
+}
+
+.item__info > h6 {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    color: #252525;
+}
+
+.item__info > p{
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
+    color: #acacac;
+}
