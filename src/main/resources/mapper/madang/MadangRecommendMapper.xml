@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.madang.MadangRecommendMapper">
+    <select id="selectCount" resultType="int" parameterType="madangRecommendDto">
+        SELECT COUNT(MADANG_NUMBER)
+        FROM JUMAK_MADANG_RECOMMEND
+        WHERE MADANG_NUMBER = #{madangNumber} AND USER_NUMBER = #{userNumber}
+    </select>
+
+    <insert id="insert" parameterType="madangRecommendDto">
+        INSERT INTO JUMAK_MADANG_RECOMMEND(MADANG_NUMBER, USER_NUMBER)
+        VALUES (#{madangNumber}, #{userNumber})
+    </insert>
+</mapper>

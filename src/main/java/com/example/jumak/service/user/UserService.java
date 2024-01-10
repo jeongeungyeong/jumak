@@ -15,9 +15,15 @@ public class UserService {
     private final UserMapper userMapper;
 
     // 회원 아이디,패스워드로 번호 조회
-    public Long findUserNumber(@Param("userId") String userId, @Param("userPassword") String userPassword){
-     return Optional.ofNullable(userMapper.selectUserNumber(userId, userPassword))
+    public Long findUserNumber(String userId, String userPassword){
+     return userMapper.selectUserNumber(userId, userPassword)
              .orElseThrow(()-> new IllegalStateException("존재하지 않는 회원 정보"));
+    }
+
+//    로그인 정보 조회
+    public UserDto findLoginInfo(String userId, String userPassword){
+        return userMapper.selectLoginInfo(userId, userPassword)
+                .orElseThrow(()-> new IllegalStateException("존재하지 않는 회원 정보"));
     }
 
     // 이름으로 회원 조회

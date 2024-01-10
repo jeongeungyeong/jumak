@@ -18,7 +18,7 @@
   </section>
   <main>
     <!-- 작성 url 넣기 -->
-    <form action="">
+    <form th:action="@{/madang/write}" method="post">
       <section class="write">
         <table class="write__table">
           <colgroup>
@@ -31,12 +31,9 @@
             <td>
               <div class="write__category-select">
                 <!--name 속성 재설정 필요-->
-                <select name="category" id="category">
-                  <!--option별 value 재설정 필요-->
+                <select name="madangCategoryNumber" id="category">
                   <option value="">선택</option>
-                  <option value="">도란도란</option>
-                  <option value="">후기</option>
-                  <option value="">나만의 레시피</option>
+                  <option th:each="cate : ${cateList}" th:value="${cate.madangCategoryNumber}" th:text="${cate.madangCategoryName}">도란도란</option>
                 </select>
               </div>
             </td>
@@ -44,20 +41,20 @@
           <tr>
             <th scope="row">작성자</th>
             <!-- 닉네임 넣기 -->
-            <td>닉네임</td>
+            <td th:text="${session.userNickname}"></td>
           </tr>
           <tr>
             <th scope="row">제목</th>
             <td>
               <!-- name 속성 재설정 필요-->
-              <input type="text" name="title" id="title">
+              <input type="text" name="madangTitle" id="title">
             </td>
           </tr>
           <tr>
             <th scope="row">본문</th>
             <td>
               <!-- name 속성 재설정 필요 -->
-              <textarea name="content" id="summernote"></textarea>
+              <textarea name="madangContent" id="summernote"></textarea>
             </td>
           </tr>
           </tbody>
