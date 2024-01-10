@@ -115,21 +115,29 @@ enterPage();
 {   //추천하기 버튼
     let $recommendBtn = document.querySelector('.reply__recommend-btn');
 
-    $recommendBtn.addEventListener('click', function (){
-       fetch(`/madangs/recommend/${madangNumber}`,{
-           method : 'POST'
-       }).then(resp =>resp.text())
-           .then(alert)
-           .catch(err => {
-               err.text().then(msg => alert(msg));
-           });
+    $recommendBtn.addEventListener('click', function () {
+        fetch(`/madangs/recommend/${madangNumber}`, {
+            method: 'POST'
+        }).then(resp => {
+            if (!resp.ok) {
+                return resp.text()
+                    .then(text => {
+                        throw new Error(text);
+                    });
+            }
+            return resp.text();
+        })
+            .then(alert)
+            .catch(err => {
+                alert(err.message);
+            });
     });
 }
 
 {   // 목록 버튼 처리
     let $goBack = document.querySelector('.go-back > button');
     $goBack.addEventListener('click', function () {
-       location.href = '/madang/list';
+        location.href = '/madang/list';
     });
 }
 
