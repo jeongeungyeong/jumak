@@ -20,4 +20,12 @@ class MainMapperTest {
     void selectSearch() {
         mainMapper.selectSearch("상큼");
     }
+
+    @Test
+    void selectTag() {
+        Integer[] tagArray = {1,2};
+        mainMapper.selectTag(tagArray,tagArray.length,1l,2L);
+
+    }
+
 }
