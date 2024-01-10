@@ -7,4 +7,25 @@
         FROM JUMAK_USER
         WHERE USER_NUMBER = #{userNumber}
     </select>
+
+    <select id="enterPassword" parameterType="memberVo" resultType="long">
+        SELECT COUNT(USER_NUMBER)
+        FROM JUMAK_USER
+        WHERE USER_NUMBER = #{userNumber} AND USER_PASSWORD = #{userPassword}
+    </select>
+
+    <update id="updateMember" parameterType="memberVo">
+        UPDATE JUMAK_USER
+        SET
+            <if test="newPassword != null and !newPassword.equals('')">
+                USER_PASSWORD = #{newPassword},
+            </if>
+            USER_NICKNAME = #{newNickname} ,
+            USER_EMAIL = #{newEmail},
+            USER_PHONENUMBER = #{newPhoneNumber},
+            USER_ADDRESS = #{newAddress},
+            USER_ADDRESS_DETAIL = #{newAddressDetail},
+            USER_ZIPCODE = #{newZipcode}
+        WHERE USER_NUMBER = #{userNumber}
+    </update>
 </mapper>

@@ -1,8 +1,10 @@
 package com.example.jumak.controller.mypage;
 
 import com.example.jumak.domain.vo.myPage.InquiryVo;
+import com.example.jumak.domain.vo.myPage.MemberVo;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.service.mypage.InquiryService;
+import com.example.jumak.service.mypage.MemberService;
 import com.example.jumak.service.mypage.ShippingService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +19,7 @@ public class MypageMainRestController {
 
     private final ShippingService shippingService;
     private final InquiryService inquiryService;
+    private final MemberService memberService;
 
 
     //    주문내역 배송상태 조회
@@ -84,5 +87,20 @@ public class MypageMainRestController {
         inquiryVo.setUserNumber(userNumber);
 
         return inquiryService.findInquiry(inquiryVo);
+    }
+
+    @GetMapping("/member-info")
+    public Long enterMember(HttpServletRequest req, @RequestParam String userPassword) {
+        //        Long userNumber = (Long) req.getSession().getAttribute("userNumber");
+        Long userNumber = 1L;
+
+        MemberVo memberVo = new MemberVo();
+        memberVo.setUserNumber(userNumber);
+        memberVo.setUserPassword(userPassword);
+
+
+
+
+        return memberService.enterPassword(memberVo);
     }
 }

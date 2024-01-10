@@ -2,6 +2,7 @@ package com.example.jumak.controller.mypage;
 
 import com.example.jumak.domain.dto.qa.QaDto;
 import com.example.jumak.domain.dto.user.UserDto;
+import com.example.jumak.domain.vo.myPage.MemberVo;
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.domain.vo.myPage.OrderStatusVo;
 import com.example.jumak.service.mypage.InquiryService;
@@ -9,6 +10,7 @@ import com.example.jumak.service.mypage.MemberService;
 import com.example.jumak.service.mypage.MypageMainService;
 import com.example.jumak.service.mypage.ShippingService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -244,6 +246,17 @@ public class MypageMainController {
 
 
         return "mypage/member_info/member_info";
+    }
+
+    @PostMapping("/member-info")
+    public RedirectView memberInfo(MemberVo memberVo) {
+        Long userNumber = 1L; // 임시 코드 -> 나중에 지워야함
+
+        memberVo.setUserNumber(userNumber);
+
+        memberService.modifyMember(memberVo);
+
+        return new RedirectView("/mypage/member-info");
     }
 
 //    회원탈퇴
