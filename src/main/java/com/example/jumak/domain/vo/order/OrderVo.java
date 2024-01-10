@@ -56,6 +56,8 @@ private String paymentDate;
 private Long paymentTotalAmount;
 //할인금액
 private Long paymentTotalDiscount;
+//배송비
+    private Long paymentDeliveryFee;
 //최종결제금액
 private Long paymentTotal;
 //여기서부터 추가

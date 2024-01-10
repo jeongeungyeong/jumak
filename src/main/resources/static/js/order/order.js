@@ -117,9 +117,11 @@ $("#order-btn").on("click", function () {
     function requestPay() {
         let totalPrice = $('.price_total').val();
         let productName =$('.product-info__detail').text();
-        let buyerName = $('#orderName').val();
+        let buyerName = $('#receiverName').text();
         let buyerCellPhone = $('#orderCellPhoneNumber').val();
         let buyerEmail = $('#orderEmail').val();
+        let address=$('#address').text()+$('#addressDetail').text();
+        let zipcode=$('#zipcode').text();
 
 
 
@@ -133,8 +135,8 @@ $("#order-btn").on("click", function () {
             buyer_email: buyerEmail,
             buyer_name: buyerName,
             buyer_tel: buyerCellPhone,
-            buyer_addr: "서울특별시 강남구 신사동",
-            buyer_postcode: "01181",
+            buyer_addr: address,
+            buyer_postcode: zipcode,
         },
         function (rsp) {
             // callback
@@ -153,13 +155,24 @@ $("#order-btn").on("click", function () {
 
     function paymentinfo(rsp) {
         let postData = {
-
+            paymentNumber: ,
+            paymentDate:new Date().getTime(),
+            paymentTotalAmount: ,
+            paymentTotalDiscount: ,
+            paymentDeliveryFee:3000,
+            paymentTotal: ,
+            addressRecipient: ,
+            address: ,
+            AddressDetail: ,
+            addressZipcode: ,
+            addressCellphoneNumber: ,
+            addressPhoneNumber: ,
 
         };
     $.ajax({
         url:'/orders/payment',
         type: 'post',
-        data: {},
+        data: postData,
         dataType:'json',
         success:function (resp){
         },
