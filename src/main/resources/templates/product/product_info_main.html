@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/product/product_info_main.css}">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<section class="category">
+  <ul>
+    <li class="active">
+      <a href="">NEW 우리술</a>
+    </li>
+    <li>
+      <a href="">전체상품</a>
+    </li>
+    <li>
+      <a href="">막걸리/탁주</a>
+    </li>
+    <li>
+      <a href="">약주/청주</a>
+    </li>
+    <li>
+      <a href="">증류주/리큐르</a>
+    </li>
+    <li>
+      <a href="">와인/과실주</a>
+    </li>
+    <li>
+      <a href="">기타주류</a>
+    </li>
+  </ul>
+</section>
+
+<section class="content-wrap">
+  <main>
+
+    <section class="list-box">
+      <h5>막걸리/탁주</h5>
+      <div class="list-box__grid">
+        <!-- 반복요소 (4개)-->
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <!-- /반복요소 -->
+        <!-- ------------------------------샘플------------------------------ -->
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <!--/------------------------------샘플------------------------------ -->
+      </div>
+      <div class="btn-box">
+        <button type="button" class="show-all-btn">
+          <!--링크 수정-->
+          <a href="">전체보기</a>
+        </button>
+      </div>
+    </section>
+
+
+    <section class="list-box">
+      <h5>약주/청주</h5>
+      <div class="list-box__grid">
+        <!-- 반복요소 (4개)-->
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <!-- /반복요소 -->
+      </div>
+      <div class="btn-box">
+        <button type="button" class="show-all-btn">
+          <!--링크 수정-->
+          <a href="">전체보기</a>
+        </button>
+      </div>
+    </section>
+
+    <section class="list-box">
+      <h5>증류주/리큐르</h5>
+      <div class="list-box__grid">
+        <!-- 반복요소 (4개)-->
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <!-- /반복요소 -->
+      </div>
+      <div class="btn-box">
+        <button type="button" class="show-all-btn">
+          <!--링크 수정-->
+          <a href="">전체보기</a>
+        </button>
+      </div>
+    </section>
+
+    <section class="list-box">
+      <h5>와인/과실주</h5>
+      <div class="list-box__grid">
+        <!-- 반복요소 (4개)-->
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <!-- /반복요소 -->
+      </div>
+      <div class="btn-box">
+        <button type="button" class="show-all-btn">
+          <!--링크 수정-->
+          <a href="">전체보기</a>
+        </button>
+      </div>
+    </section>
+
+    <section class="list-box">
+      <h5>기타주류</h5>
+      <div class="list-box__grid">
+        <!-- 반복요소 (4개)-->
+        <article class="item">
+          <a href=""><!--링크 수정-->
+            <div class="item__img-box">
+              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+            </div>
+            <div class="item__info">
+              <h6>지란지교 탁주</h6>
+              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+            </div>
+          </a>
+        </article>
+        <!-- /반복요소 -->
+      </div>
+      <div class="btn-box">
+        <button type="button" class="show-all-btn">
+          <!--링크 수정-->
+          <a href="">전체보기</a>
+        </button>
+      </div>
+    </section>
+
+  </main>
+</section>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+</body>
+</html>
