@@ -47,15 +47,6 @@ $(document).ready(function (){
     })
 })
 
-$('#enter_button').on('click', function (){
-
-    if(isTrue){
-        $("#member_update").submit();
-    }else {
-        alert("확인해!");
-    }
-});
-
 
 $("#enterPassword").on('keyup', function (){
     let newId = document.getElementById("newPassword").value;
@@ -67,6 +58,18 @@ $("#enterPassword").on('keyup', function (){
         document.getElementById("wrongPW").style.display = 'block'
     }
 })
+
+
+$('#enter_button').on('click', function (){
+    let newId = document.getElementById("newPassword").value;
+    let enterId = document.getElementById("enterPassword").value;
+
+    if(isTrue && newId === enterId){
+        $("#member_update").submit();
+    }else {
+        alert("확인해!");
+    }
+});
 
 
 
