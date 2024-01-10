@@ -77,3 +77,96 @@ function searchAddress() {
         }
     }).open();
 }
+
+// 결제하기
+
+var IMP = window.IMP;
+IMP.init("imp74253861");
+
+$("#order-btn").on("click", function () {
+
+    var inputValue1 = document.getElementById('receiverName').value.trim();
+    var inputValue2 = document.getElementById('zipcode').value.trim();
+    var inputValue3 = document.getElementById('address').value.trim();
+    var inputValue4 = document.getElementById('receiverPhone').value.trim();
+    var inputValue5 = document.getElementById('receiverCellPhone').value.trim();
+   var checkbox1Checked = document.getElementById('check-item1').checked;
+   var checkbox2Checked = document.getElementById('termAgree_orderCheck').checked;
+    if (inputValue1 !== '' && inputValue2 !== '' && inputValue3 !== '' && inputValue4 !== ''
+        && inputValue5 !== '' && checkbox1Checked && checkbox2Checked ) {
+        console.log('배송지가 모두 입력되었고, 체크표시도 됨');
+        requestPay();
+    } else if (inputValue1 !== '' && inputValue2 !== '' && inputValue3 !== '' && inputValue4 !== ''
+        && inputValue5 !== ''){
+        console.log('배송지가 입력되지 않음');
+        var msg1 = '개인정보를 모두 동의해주세요';
+        alert(msg1);
+    }else if (checkbox1Checked && checkbox2Checked ) {
+        console.log('모두 동의하지 않음');
+        var msg2 = '배송지가 입력되지 않았습니다. ';
+        alert(msg2);
+    }else{
+        console.log('암것도 안 함');
+        var msg3 = '배송지를 입력해주시고, 개인정보를 모두 동의해주세요';
+        alert(msg3);
+    }
+
+
+});
+
+    function requestPay() {
+        let totalPrice = $('.price_total').val();
+        let productName =$('.product-info__detail').text();
+        let buyerName = $('#orderName').val();
+        let buyerCellPhone = $('#orderCellPhoneNumber').val();
+        let buyerEmail = $('#orderEmail').val();
+
+
+
+    IMP.request_pay(
+        {
+            pg: "html5_inicis.INIBillTst",
+            pay_method: "card",
+            merchant_uid: "jumak_" + new Date().getTime(), // 주문번호
+            name: productName,
+            amount: parseInt(totalPrice), // 숫자 타입
+            buyer_email: buyerEmail,
+            buyer_name: buyerName,
+            buyer_tel: buyerCellPhone,
+            buyer_addr: "서울특별시 강남구 신사동",
+            buyer_postcode: "01181",
+        },
+        function (rsp) {
+            // callback
+            //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
+            console.log(rsp);
+            paymentinfo(rsp);
+            if(rsp.success){
+
+                location.href="/order/success?price="+parseInt(totalPrice);
+            } else {
+                location.href="/order/fail?price="+parseInt(totalPrice);
+            }
+        }
+    );
+}
+
+    function paymentinfo(rsp) {
+        let postData = {
+
+
+        };
+    $.ajax({
+        url:'/orders/payment',
+        type: 'post',
+        data: {},
+        dataType:'json',
+        success:function (resp){
+        },
+        error : function (xhr, status, err) {
+            console.log(err);
+
+        }
+
+    });
+}

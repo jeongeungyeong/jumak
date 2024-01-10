@@ -58,10 +58,18 @@ public class OrderController {
 
 
     @GetMapping("/fail")
-    public String orderFail(Model model){
+    public String orderFail(Model model, Integer price){
         List<OrderFinishVo> orderFinList = orderService.findByNumber();
         model.addAttribute("finalorders",orderFinList);
+        model.addAttribute("totalprice",price);
         return "order/storeorderfail";
+    }
+    @GetMapping("/success")
+    public String orderSuccess(Model model, Integer price){
+        List<OrderFinishVo> orderFinList = orderService.findByNumber();
+        model.addAttribute("finalorders",orderFinList);
+        model.addAttribute("totalprice",price);
+        return "order/storeordersucc";
     }
 
     //    임시 이동경로
@@ -70,10 +78,5 @@ public class OrderController {
         return "order/cart";
     }
 
-    @GetMapping("/success")
-    public String orderSuccess(Model model){
-        List<OrderFinishVo> orderFinList = orderService.findByNumber();
-        model.addAttribute("finalorders",orderFinList);
-        return "order/storeordersucc";
-    }
+
 }
