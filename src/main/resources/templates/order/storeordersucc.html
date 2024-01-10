@@ -79,7 +79,7 @@
                 <ul>
                   <li>
                     결제금액 :
-                    <strong class="deposit_money" th:text="${#numbers.formatInteger(finalorder.paymentTotal,0,'COMMA') + '원'}"
+                    <strong class="deposit_money" th:text="${#numbers.formatInteger(totalprice,0,'COMMA') + '원'}"
                     ></strong
                     >
                   </li>

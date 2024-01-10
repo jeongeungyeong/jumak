@@ -2,39 +2,68 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.product.ProductReviewMapper">
 
-<!--    리뷰 조회-->
-    <select id="reviewList" parameterType="int" resultType="productReviewVo">
-        SELECT PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_TITLE, PRODUCT_REVIEW_CONTENT,
-               PRODUCT_REVIEW_SCORE, PRODUCT_REVIEW_DATE, R.USER_NUMBER, R.PRODUCT_NUMBER,
+    <!--    후기 작성-->
+    <insert id="reviewInsert" parameterType="productReviewVo">
+        INSERT INTO JUMAK_PRODUCT_REVIEW (PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
+         PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER)
+        VALUES (SEQ_PRODUCT_REVIEW.nextval,#{productReviewContent},
+        sysdate,#{userNumber},#{productNumber})
+    </insert>
+
+
+<!--    상품 후기 조회-->
+    <select id="reviewList" resultType="productReviewVo">
+        SELECT PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
+               PRODUCT_REVIEW_DATE, R.USER_NUMBER, R.PRODUCT_NUMBER,
                U.USER_NICKNAME
-        FROM JUMAK_PRODUCT_REVIEW R JOIN JUMAK_USER U ON R.USER_NUMBER = U.USER_NUMBER
+        FROM JUMAK_USER U  JOIN JUMAK_PRODUCT_REVIEW R
+            ON  PRODUCT_NUMBER=#{productNumber} AND R.USER_NUMBER = U.USER_NUMBER
+        ORDER BY PRODUCT_REVIEW_NUMBER DESC
+    </select>
+
+<!--    상품 후기 전체 조회-->
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(PRODUCT_REVIEW_NUMBER) FROM JUMAK_PRODUCT_REVIEW
         WHERE PRODUCT_NUMBER=#{productNumber}
     </select>
 
-<!--    리뷰 작성-->
-    <insert id="reviewWrite" parameterType="productReviewVo">
-        <selectKey keyProperty="productReviewNumber" order="BEFORE" resultType="long">
-
-        </selectKey>
-       INSERT INTO JUMAK_PRODUCT_REVIEW (PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_TITLE, PRODUCT_REVIEW_CONTENT,
-                                          PRODUCT_REVIEW_SCORE, PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER)
-        VALUES (#{productReviewNumber},#{productReviewTitle},#{productReviewContent},{productReviewScore},
-                #{productReviewDate},#{userNumber},#{productNumber})
-    </insert>
-
-<!--    리뷰 수정-->
-    <update id="reviewModify" parameterType="productReviewVo">
+<!--    후기 수정-->
+    <update id="reviewUpdate">
         UPDATE JUMAK_PRODUCT_REVIEW
         SET PRODUCT_REVIEW_CONTENT =#{productReviewContent}
-        WHERE PRODUCT_NUMBER=#{productNumber} and PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
+        WHERE PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
     </update>
 
-<!--    리뷰 삭제-->
-    <delete id="reviewDelete" parameterType="productReviewVo">
+<!--    후기 삭제-->
+    <delete id="reviewDelete">
         DELETE FROM JUMAK_PRODUCT_REVIEW
-        WHERE PRODUCT_NUMBER=#{productNumber} and PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
+        WHERE PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
     </delete>
 
+<!--    후기 페이징 처리-->
+    <select id="selectListPage" resultType="productReviewVo">
+        SELECT PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
+               PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER,
+               USER_NICKNAME
+        FROM (
+                 SELECT ROWNUM RN,
+                        PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
+                        PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER,
+                        USER_NICKNAME
+                 FROM (
+                          SELECT R.PRODUCT_REVIEW_NUMBER, R.PRODUCT_REVIEW_CONTENT,
+                                R.PRODUCT_REVIEW_DATE, R.USER_NUMBER, R.PRODUCT_NUMBER,
+                                U.USER_NICKNAME
+                            FROM JUMAK_USER U  JOIN JUMAK_PRODUCT_REVIEW R
+                            ON  PRODUCT_NUMBER=#{productNumber} AND R.USER_NUMBER = U.USER_NUMBER
+                            ORDER BY PRODUCT_REVIEW_NUMBER DESC
+                      )
+            <![CDATA[
+                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+            ]]>
+        )
+        WHERE RN > (#{criteria.page} - 1) * #{criteria.amount}
+    </select>
 
 
 </mapper>

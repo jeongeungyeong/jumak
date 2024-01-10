@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.order.OrderMapper">
-    
+
+<!--    주문자 정보 조회 -->
+    <select id="selectByUNumber" resultType="orderVo">
+        select ORDER_NUMBER, U.USER_NUMBER,USER_NAME,USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS,
+               USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER
+        from JUMAK_ORDER o right join JUMAK_USER u on o.USER_NUMBER=u.USER_NUMBER
+        WHERE U.USER_NUMBER=#{userNumber}
+    </select>
+
+<!--    배송 정보-->
+    <insert id="deliveryInsert" parameterType="paymentVo">
+        insert into JUMAK_DELIVERY_ADDRESS (ADDRESS_NUMBER, USER_NUMBER, ADDRESS_NAME, ADDRESS_RECIPIENT, ADDRESS,
+                                            ADDRESS_DETAIL, ADDRESS_ZIPCODE, ADDRESS_CELLPHONENUMBER, ADDRESS_PHONENUMBER,
+                                            ADDRESS_DEFAULT)
+        values (SEQ_DELIVERY_ADDRESS.nextval,#{userNumber},#{addressNumber},#{addressName},#{addressRecipient},#{address},
+                #{AddressDetail},#{addressZipcode},#{addressCellphoneNumber},#{addressPhoneNumber},
+                #{addressDefault})
+    </insert>
+
+
+
+<!--    결제 정보-->
+    <insert id="paymentInsert" parameterType="paymentVo">
+        insert into JUMAK_PAYMENT (PAYMENT_NUMBER, PAYMENT_DATE, PAYMENT_TOTAL_AMOUNT, PAYMENT_TOTAL_DISCOUNT,
+                                   PAYMENT_DELIVERY_FEE, PAYMENT_TOTAL, ORDER_NUMBER)
+        values (SEQ_PAYMENT.nextval,SYSDATE,#{paymentTotalAmount},#{paymentTotalDiscount},#{paymentDeliveryFee},#{paymentTotal},
+                #{orderNumber})
+    </insert>
+
+
+
 
 
 <!--    주문 요약 정보-->
