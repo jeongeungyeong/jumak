@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.admin.aproduct.AProductMapper">
+
+<!--    단건조회-->
     <select id="selectOne" resultType="aProductVo">
         select P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
                P.PRODUCT_RAW_MATERIAL, P.PRODUCT_NET_WEIGHT, P.PRODUCT_ALCOHOLICITY, P.PRODUCT_AREA,
@@ -8,6 +10,13 @@
                P.PRODUCT_RELEASE_DATE, P.PRODUCT_DISTILLERY, PC.PRODUCT_CATEGORY_NAME
         from JUMAK_PRODUCT P JOIN JUMAK_PRODUCT_CATEGORY PC
         ON PRODUCT_NUMBER = #{productNumber} AND  P.PRODUCT_CATEGORY_NUMBER = PC.PRODUCT_CATEGORY_NUMBER
+    </select>
+
+<!--    단건 키워드 조회(리스트)-->
+    <select id="selectOneKeyword" resultType="productKeywordDto">
+        SELECT K.PRODUCT_KEYWORD_NUMBER, K.PRODCUT_KEYWORD_NAME
+        FROM JUMAK_PRODUCT_TAG T JOIN JUMAK_PRODUCT_KEYWORD K
+        ON PRODUCT_NUMBER= #{productNumber} AND T.PRODUCT_KEYWORD_NUMBER = K.PRODUCT_KEYWORD_NUMBER
     </select>
 
     <select id="selectAll" resultType="productDto">
@@ -104,6 +113,12 @@
                 #{productDescription},#{productPrice},#{productInventory},#{productSales},
                 #{productDiscount},SYSDATE,#{productDistillery})
 
+    </insert>
+
+<!--    상품키워드등록-->
+    <insert id="insertKeyword">
+        insert into JUMAK_PRODUCT_TAG (PRODUCT_KEYWORD_NUMBER, PRODUCT_NUMBER)
+        values (#{productKeywordNumber}, #{productNumber})
     </insert>
 
 

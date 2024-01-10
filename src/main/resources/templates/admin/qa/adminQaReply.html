@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
-    
-    <link rel="stylesheet" href="/css/contentLeft.css">
-    <link rel="stylesheet" href="/css/qa/adminQa_.css">
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/qa/adminQaDetail.css}">
 </head>
 
 <body>
@@ -19,37 +19,8 @@
     <div>
         <div></div>
         <div class="sub_content">
-            <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/productList.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/orderList.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
 
             <!-- ----------------------------------------- -->
             <div class="content">
@@ -66,23 +37,23 @@
                         <tbody>
                             <tr>
                                 <th>카테고리</th>
-                                <td>카테고리</td>
+                                <td th:text="${qaDetail.qaCategoryName}"></td>
                             </tr>
                             <tr>
                                 <th>작성자</th>
-                                <td>작성자</td>
+                                <td th:text="${qaDetail.userName}"></td>
                             </tr>
                             <tr>
                                 <th>작성일</th>
-                                <td>2020-02-02</td>
+                                <td th:text="${qaDetail.qaDate}"></td>
                             </tr>
                             <tr>
                                 <th>제목</th>
-                                <td>제목</td>
+                                <td th:text="${qaDetail.qaTitle}"></td>
                             </tr>
                             <tr class="qa_content">
                                 <th>본문</th>
-                                <td>본문</td>
+                                <td th:text="${qaDetail.qaContent}"></td>
                             </tr>
                             <tr>
                                 <th>첨부파일</th>
@@ -91,6 +62,8 @@
                         </tbody>
                     </table>                   
                     <br>
+
+                    <form th:action="@{/admin/qa/reply}" method="post">
                         <table class="qa_table"> 
                             <colgroup>
                                 <col style="width:15%;">
@@ -100,15 +73,17 @@
                             <tbody>
                                 <tr>
                                     <th>답변</th>
-                                    <td></td>
+                                    <td>
+                                        <textarea th:value="qaDetail.qaReply" name="qaReply">
+                                        </textarea>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button>이전</button>
-<!--                         
-                        <button type="button">수정</button>
-                        <button>저장</button> -->
-    
+                        <input type="hidden" name="qaNumber" th:value="${qaDetail.qaNumber}">
+                        <button type="button">이전</button>
+                        <button>저장</button>
+                    </form>
                    
                 </div>
                 <div>

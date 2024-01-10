@@ -4,15 +4,21 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.qa.QaDto" alias="qaDto"/>
+        <typeAlias type="com.example.jumak.domain.vo.myPage.MemberVo" alias="memberVo"/>
 
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderStatusVo" alias="orderStatusVo"/>
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderDetailVo" alias="orderDetailVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.myPage.InquiryVo" alias="inquiryVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.ASearchVo" alias="aSearchVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AProductVo" alias="aProductVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AOrderVo" alias="aOrderVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.ACriteria" alias="aCriteria"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.APageVo" alias="aPageVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AOrderDetailVo" alias="aOrderDetailVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.admin.AQaVo" alias="aQaVo"/>
+
+        <typeAlias type="com.example.jumak.domain.vo.main.ProductSearchVo" alias="productSearchVo"/>
 
         <typeAlias type="com.example.jumak.domain.dto.product.ProductDto" alias="productDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductImgMainDto" alias="productImgMainDto"/>
@@ -20,10 +26,9 @@
         <typeAlias type="com.example.jumak.domain.dto.product.ProductImgDto" alias="productImgDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductReviewDto" alias="productReviewDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductReviewImgDto" alias="productReviewImgDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.product.ProductKeywordDto" alias="productKeywordDto"/>
 
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
-
-
         <typeAlias type="com.example.jumak.domain.vo.product.ProductReviewVo" alias="productReviewVo"/>
         <typeAlias type="com.example.jumak.domain.vo.product.ProductDetailVo" alias="productDetailVo"/>
         <typeAlias type="com.example.jumak.domain.dto.order.OrderDto" alias="orderDto"/>
@@ -36,16 +41,19 @@
         <typeAlias type="com.example.jumak.domain.vo.order.OrderFinishVo" alias="orderFinishVo"/>
         <typeAlias type="com.example.jumak.domain.vo.order.OrderVo" alias="orderVo"/>
 
+
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO"/>
 
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangDto" alias="madangDto"/>
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangCategoryDto" alias="madangCategoryDto"/>
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangReplyDto" alias="madangReplyDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.madang.MadangRecommendDto" alias="madangRecommendDto"/>
 
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangVo" alias="madangVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangDetailVo" alias="madangDetailVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyCountVo" alias="madangReplyCountVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyVo" alias="madangReplyVo"/>
+
     </typeAliases>
 </configuration>

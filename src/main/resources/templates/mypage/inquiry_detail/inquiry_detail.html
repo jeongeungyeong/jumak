@@ -69,7 +69,7 @@
           <h1>1:1문의</h1>
         </div>
         <div class="board_zone_table">
-          <form action="">
+          <form th:action="@{/mypage/inquiry-detail}" method="post" enctype="multipart/form-data">
             <table class="deail_table">
               <colgroup>
                 <col style="width: 15%" />
@@ -80,15 +80,15 @@
                   <th scope="row">말머리</th>
                   <td>
                     <div class="table_text_box">
-                      <select name="category" class="table_text">
-                        <option value="">문의내용</option>
-                        <option value="">회원/정보관리</option>
-                        <option value="">주문/결제</option>
-                        <option value="">배송</option>
-                        <option value="">반품/환불/교환</option>
-                        <option value="">영수증/증빙서류</option>
-                        <option value="">상품/이벤트</option>
-                        <option value="">기타</option>
+                      <select name="qaCategoryNumber" class="table_text">
+                        <option value="0">문의내용</option>
+                        <option value="1">회원/정보관리</option>
+                        <option value="2">주문/결제</option>
+                        <option value="3">배송</option>
+                        <option value="4">반품/환불/교환</option>
+                        <option value="5">영수증/증빙서류</option>
+                        <option value="6">상품/이벤트</option>
+                        <option value="7">기타</option>
                       </select>
                     </div>
                   </td>
@@ -113,14 +113,14 @@
                 <tr>
                   <th scope="row">제목</th>
                   <td>
-                    <input type="text" class="table_text" />
+                    <input type="text" class="table_text" name="qaTitle"/>
                   </td>
                 </tr>
                 <tr>
                   <th scope="row">본문</th>
                   <td class="table_main_content">
                     <div class="table_text_box">
-                      <input type="text" class="table_text" />
+                      <input type="text" class="table_text" name="qaContent"/>
                     </div>
                   </td>
                 </tr>
@@ -141,6 +141,7 @@
                 </tr>
               </tbody>
             </table>
+            <button type="submit" class="inquriy_write_btn">게시물 작성</button>
           </form>
         </div>
       </div>

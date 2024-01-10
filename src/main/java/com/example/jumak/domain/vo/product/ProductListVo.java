@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-public class ProductListVo {
+public class    ProductListVo {
     private Long productImgMainNumber;
     private String productImgMainName;
     private String productImgMainPath;

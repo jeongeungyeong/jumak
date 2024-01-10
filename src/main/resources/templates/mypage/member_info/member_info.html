@@ -73,7 +73,7 @@
           <div class="basic_info_title">
             <h2>기본정보</h2>
           </div>
-          <form action="">
+          <form action="/mypage/member-info" method="post" id="member_update">
             <div>
               <table>
                 <colgroup>
@@ -83,38 +83,40 @@
                 <tbody>
                   <tr>
                     <th>아이디</th>
-                    <td>!회원아이디!</td>
+                    <td th:text="${member.userId}"></td>
                   </tr>
                   <tr>
                     <th>비밀번호</th>
                     <td>
                       <div class="password_content">
                         <p>현재 비밀번호</p>
-                        <input type="password" class="password_box" />
+                        <input type="password" class="password_box" id="userPassword" name="userPassword"/>
+                        <p id="wrongPassword">비밀번호가 일치하지 않습니다.</p>
                       </div>
                       <div class="password_content">
                         <p>새 비밀번호</p>
-                        <input type="password" class="password_box" />
+                        <input type="password" class="password_box" id="newPassword" name="newPassword"/>
                       </div>
                       <div class="password_content">
                         <p>새 비밀번호 확인</p>
-                        <input type="password" class="password_box" />
+                        <input type="password" class="password_box" id="enterPassword" name="enterPassword"/>
+                        <p id="wrongPW">비밀번호가 일치하지 않습니다.</p>
                       </div>
                     </td>
                   </tr>
                   <tr>
                     <th>이름</th>
-                    <td>!회원 이름!</td>
+                    <td th:text="${member.userName}"></td>
                   </tr>
                   <tr>
                     <th>생년월일</th>
-                    <td>!회원생년월일!</td>
+                    <td th:text="${member.userBirth}"></td>
                   </tr>
                   <tr>
                     <th>닉네임</th>
                     <td>
                       <div>
-                        <input type="text" placeholder="!회원닉네임!" />
+                        <input type="text" th:value="${member.userNickname}" name="newNickname"/>
                       </div>
                     </td>
                   </tr>
@@ -122,9 +124,9 @@
                     <th>이메일</th>
                     <td>
                       <div>
-                        <input type="text" placeholder="!회원이메일!" />
+                        <input type="text" th:value="${member.userEmail}" class="member-email" name="newEmail"/>
                         <select name="adress" id="select">
-                          <option value="직접입력">직접입력</option>
+                          <option value="">직접입력</option>
                           <option value="naver.com">naver.com</option>
                           <option value="hanmail.net">hanmail.net</option>
                           <option value="daum.net">daum.net</option>
@@ -138,7 +140,7 @@
                     <th>전화번호</th>
                     <td>
                       <div>
-                        <input type="text" placeholder="!회원전화번호!" />
+                        <input type="text" th:value="${member.userCellphoneNumber}" name="newPhoneNumber"/>
                       </div>
                     </td>
                   </tr>
@@ -146,15 +148,15 @@
                     <th class="adress_info">주소</th>
                     <td class="adress_info">
                       <div>
-                        <input type="text" placeholder="!우편번호!"/
-                        class="zip_number">
+                        <input type="text" th:value="${member.userZipcode}"
+                        class="zip_number" name="newZipcode">
                         <button type="button">우편번호 검색</button>
                       </div>
                       <div>
-                        <input type="text" placeholder="!메인주소!" />
+                        <input type="text" th:value="${member.userAddress}" name="newAddress"/>
                       </div>
                       <div>
-                        <input type="text" placeholder="!상세주소!" />
+                        <input type="text" th:value="${member.userAddressDetail}" name="newAddressDetail"/>
                       </div>
                     </td>
                   </tr>
@@ -163,19 +165,18 @@
             </div>
             <div class="button_content">
               <a href="" id="cancel">취소</a>
-              <button type="submit" id="button">정보수정</button>
+              <button type="button" id="enter_button">정보수정</button>
             </div>
           </form>
           <!-- 회원정보 변경 끝 -->
-          <!-- 날짜 선택 시작 -->
-          <!-- 날짜 선택 끝 -->
-          <!-- 조회 시작 -->
-          <!-- 조회 끝 -->
         </div>
       </div>
     </div>
     <footer>
       <h3>footer</h3>
     </footer>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+            crossorigin="anonymous"></script>
+  <script th:src="@{/js/mypage/member_info/member_info.js}"></script>
   </body>
 </html>

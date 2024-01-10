@@ -1,171 +1,178 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/mypage/refund_shipping/refund_shipping.css}" />
-  </head>
-  <header class="header">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/css/mypage/refund_shipping/refund_shipping.css}"/>
+</head>
+<header class="header">
     <h1>수상한주막</h1>
-  </header>
-  <body>
-    <div class="my_page">
-      <!-- 사이드 메뉴 시작 -->
-      <div class="sub_menu_box">
+</header>
+<body>
+<div class="my_page">
+    <!-- 사이드 메뉴 시작 -->
+    <div class="sub_menu_box">
         <div class="sub_menu_content">
-          <h2>마이페이지</h2>
-          <ul class="sub_menu_list">
-            <li>
-              <h2>쇼핑정보</h2>
-              <ul class="sub_menu_samll_list">
+            <h2>마이페이지</h2>
+            <ul class="sub_menu_list">
                 <li>
-                  <a href="/mypage/search-shipping">- 주문목록/배송조회</a>
+                    <h2>쇼핑정보</h2>
+                    <ul class="sub_menu_samll_list">
+                        <li>
+                            <a href="/mypage/search-shipping">- 주문목록/배송조회</a>
+                        </li>
+                        <li>
+                            <a href="/mypage/cancel-shipping">- 취소/반품/교환 내역</a>
+                        </li>
+                        <li>
+                            <a href="/mypage/refund-shipping">- 환불/입금 내역</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                  <a href="/mypage/cancel-shipping">- 취소/반품/교환 내역</a>
+                    <h2>고객샌터</h2>
+                    <ul class="sub_menu_samll_list">
+                        <li>
+                            <a href="/mypage/inquiry">- 1:1 문의</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                  <a href="/mypage/refund-shipping">- 환불/입금 내역</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h2>고객샌터</h2>
-              <ul class="sub_menu_samll_list">
-                <li>
-                  <a href="">- 1:1 문의</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h2>회원정보</h2>
-              <ul class="sub_menu_samll_list">
-                <li>
-                  <a href="">- 회원정보 변경</a>
+                    <h2>회원정보</h2>
+                    <ul class="sub_menu_samll_list">
+                        <li>
+                            <a href="">- 회원정보 변경</a>
+                        </li>
+                        <li>
+                            <a href="">- 회원 탈퇴</a>
+                        </li>
+                        <li>
+                            <a href="">- 배송지 관리</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                  <a href="">- 회원 탈퇴</a>
+                    <h2>커뮤니티</h2>
+                    <ul class="sub_menu_samll_list">
+                        <li>
+                            <a href="">- 작성글 확인</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                  <a href="">- 배송지 관리</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h2>커뮤니티</h2>
-              <ul class="sub_menu_samll_list">
-                <li>
-                  <a href="">- 작성글 확인</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
+            </ul>
         </div>
-      </div>
-      <!-- 사이드 메뉴 끝 -->
-      <!-- 메인 시작 -->
-      <div class="mypage_main_box">
+    </div>
+    <!-- 사이드 메뉴 끝 -->
+    <!-- 메인 시작 -->
+    <div class="mypage_main_box">
         <div class="mypage_main_content_box_1">
-          <!-- 유저 등급 -->
-          <div class="mypage_main_content_box_user_grade">
-            <div class="mypage_main_content_box_user_grade_1">
-              <p>유지수님의</p>
-              <p>회원등급은 일반회원등급 입니다.</p>
-              <span>
+            <!-- 유저 등급 -->
+            <div class="mypage_main_content_box_user_grade">
+                <div class="mypage_main_content_box_user_grade_1">
+                    <p th:text="${userName} + ' 님의'"></p>
+                    <p>회원등급은 일반회원등급 입니다.</p>
+                    <span>
                 <select name="" id="">
                   <option value="">등급해택보기</option>
                 </select>
               </span>
-            </div>
-            <div class="mypage_main_content_box_user_grade_2">
+                </div>
+                <div class="mypage_main_content_box_user_grade_2">
               <span>
                 <img
-                  src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/icon/mypage/icon_balance.png"
-                  alt="작성글"
+                        src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/icon/mypage/icon_balance.png"
+                        alt="작성글"
                 />
               </span>
-              <span class="board_comment">
+                    <span class="board_comment">
                 <em>작성글 / 댓글</em>
                 <a href="" class="user_comment">
-                  <strong>0 / 0</strong>
+                  <strong th:text="${boardCount} + '/' + ${replyCount}"></strong>
                 </a>
               </span>
+                </div>
             </div>
-          </div>
-          <!-- 유저 등급 끝 -->
-          <!-- 날짜 선택 시작 -->
-          <div class="date_name_box">
-            <span>환불/입금 내역</span>
-          </div>
-          <div class="date_cheak_box">
-            <form action="" class="date_cheak_content">
-              <h3>조회기간</h3>
-              <div class="date_target_name">
-                <button type="button">오늘</button>
-                <button type="button">7일</button>
-                <button type="button">15일</button>
-                <button type="button">1개월</button>
-                <button type="button">3개월</button>
-                <button type="button">1년</button>
-              </div>
-              <div>
-                <input type="text" name="wDate[]" class="" value="2023-12-11" />
-                ~
-                <input type="text" name="wDate[]" class="" value="2023-12-11" />
-              </div>
-              <div>
-                <button type="submit" class="search_button">
-                  검색
-                  <img
-                    src="../icon/free-icon-magnifier-2319177.png"
-                    class="search_icon"
-                  />
-                </button>
-              </div>
-            </form>
-          </div>
-          <!-- 날짜 선택 끝 -->
-          <!-- 조회 시작 -->
-          <div class="date_name_box">
-            <span>환불/입금 내역 총 </span>
-            <span id="shipping_total_search">0</span>
-            <span>건</span>
-          </div>
-          <div>
-            <table>
-              <colgroup>
-                <col style="width: 16%;">
-                <col style="width: 43%;">
-                <col style="width: 17.2%;">
-                <col style="width: 15%;">
-                <col style="width: 12%;">
-              </colgroup>
-              <thead>
-                <tr class="table_head">
-                  <th>날짜/주문번호</th>
-                  <th>상품명/옵션</th>
-                  <th>상품금액/수량</th>
-                  <th>주문상태</th>
-                  <th>확인/리뷰</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="table_data">
-                  <td>test1</td>
-                  <td>test1</td>
-                  <td>test1</td>
-                  <td>test1</td>
-                  <td>test1</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- 조회 끝 -->
+            <!-- 유저 등급 끝 -->
+            <!-- 날짜 선택 시작 -->
+            <div class="date_name_box">
+                <span>환불/입금 내역</span>
+            </div>
+            <div class="date_cheak_box">
+                <div class="date_cheak_content">
+                    <h3>조회기간</h3>
+                    <div class="date_target_name">
+                        <button type="button" data-value="0" class="today">오늘</button>
+                        <button type="button" data-value="7" class="week">7일</button>
+                        <button type="button" data-value="15" class="half_month">15일</button>
+                        <button type="button" data-value="30" class="month">1개월</button>
+                        <button type="button" data-value="90" class="three_month">3개월</button>
+                        <button type="button" data-value="365" class="year">1년</button>
+                    </div>
+                    <div class="date_picker_btn">
+                        <input type="text" id="datepicker_start" readonly="readonly">
+                        <input type="text" id="datepicker_end" readonly="readonly">
+                        <div>
+                            <button type="button" class="search_button">
+                                검색
+                                <img
+                                        src="../icon/free-icon-magnifier-2319177.png"
+                                        class="search_icon"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- 날짜 선택 끝 -->
+                <!-- 조회 시작 -->
+                <div class="date_name_box">
+                    <span>환불/입금 내역 총 </span>
+                    <span id="shipping_total_search">0</span>
+                    <span>건</span>
+                </div>
+                <div>
+                    <table>
+                        <colgroup>
+                            <col style="width: 16%;">
+                            <col style="width: 43%;">
+                            <col style="width: 17.2%;">
+                            <col style="width: 15%;">
+                            <col style="width: 12%;">
+                        </colgroup>
+                        <thead>
+                        <tr class="table_head">
+                            <th>날짜/주문번호</th>
+                            <th>상품명/옵션</th>
+                            <th>상품금액/수량</th>
+                            <th>주문상태</th>
+                            <th>확인/리뷰</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+<!--                        <th:block th:each="orderDetailVo : ${orderDetailList}">-->
+<!--                            <tr class="table_data">-->
+<!--                                <td th:text="${orderDetailVo.orderDate} + '/' + ${orderDetailVo.orderNumber}"></td>-->
+<!--                                <td th:text="${orderDetailVo.productName}"></td>-->
+<!--                                <td th:text="${orderDetailVo.productPrice} + '/' + ${orderDetailVo.orderDetailCount}"></td>-->
+<!--                                <td th:text="${orderDetailVo.orderStatusName}"></td>-->
+<!--                                <td th:text="${orderDetailVo.reviewCount}"></td>-->
+<!--                            </tr>-->
+<!--                        </th:block>-->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 조회 끝 -->
+            </div>
         </div>
-      </div>
     </div>
-    <footer>
-      <h3>footer</h3>
-    </footer>
-  </body>
+</div>
+<footer>
+    <h3>footer</h3>
+</footer>
+</body>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<!--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script th:src="@{/js/mypage/refund_shipping/refund_shipping.js}"></script>
 </html>

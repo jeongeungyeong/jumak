@@ -59,11 +59,16 @@ public class AProductController {
 
     @PostMapping("/add")
     public RedirectView productAdd(ProductDto productDto,@RequestParam("productImgMain") List<MultipartFile> fileMain,
-                                   @RequestParam("productImg") List<MultipartFile> file){
+                                   @RequestParam("productImg") List<MultipartFile> file,
+                                   @RequestParam("productKeywordNumber") List<Long> productKeywordNumber){
+        System.out.println("productKeywordNumber = " + productKeywordNumber);
         productDto.setProductSales(0L);
         productDto.setProductDescription("");
         aProductService.register(productDto);
         Long productNumber = productDto.getProductNumber();
+
+
+        aProductService.registerKeyword(productKeywordNumber,productNumber);
 
         try {
             aProductImgMainService.registerAndSaveFiles(fileMain, productNumber);

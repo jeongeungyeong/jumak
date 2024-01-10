@@ -22,15 +22,5 @@ class SearchShippingMapperTest {
         orderDetailVo.setUserNumber(1L);
     }
 
-/*<<<<<<< HEAD
-*//*    @Test
-    void selectOrderDetail() {
-        shippingService.findOrderDetail(orderDetailVo);
-    }*//*
-=======
-//    @Test
-//    void selectOrderDetail() {
-//        shippingService.findOrderDetail(orderDetailVo);
-//    }
->>>>>>> 31cc5c30bc4647bbb69e5296058546a24ae71886*/
+
 }

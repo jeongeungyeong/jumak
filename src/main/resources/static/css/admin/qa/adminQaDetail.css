@@ -37,7 +37,7 @@ h3{
 }
 
 button{
-    left: 810px;
+    left: 760px;
     display: block;
     position: relative;
     float: left;
@@ -55,4 +55,23 @@ button{
 
 button:hover{
     background-color: antiquewhite;
+}
+
+textarea{
+    width: 540px;
+    height: 250px;
+    font-size: 14px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    overflow: hidden;
+}
+
+.qa_reply_content{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    white-space: pre-wrap;
+    height: 250px;
+
 }

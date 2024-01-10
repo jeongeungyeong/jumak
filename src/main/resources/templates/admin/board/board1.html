@@ -20,42 +20,13 @@
     <div>
         <div></div>
         <div class="sub_content">
-            <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/productList.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/orderList.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
 
             <!-- ----------------------------------------- -->
             <div class="content">
                 <div>
-                    <h1>수상한 소식</h1>
+                    <h1>수상한 마당</h1>
                 </div>
                 <div class="user_search">
                     <select>                   
@@ -64,7 +35,6 @@
                         <option value="prdNumber">작성자</option>            
                         <option value="prdNumber">내용</option>
                     </select>
-                    <input type="text" id="" placeholder>
                     <button>검색</button>
                 </div>
                 <div>
@@ -74,7 +44,8 @@
                     <div class="admin_user_table">
                         <table>
                             <colgroup>
-                                <col style="width:15%;">
+                                <col style="width:10%;">
+                                <col style="width:15%">
                                 <col>
                                 <col style="width:15%;">
                                 <col style="width:15%;">
@@ -83,6 +54,7 @@
                             <thead>
                                 <tr>
                                     <th>게시글번호</th>
+                                    <th>카테고리</th>
                                     <th>제목</th>
                                     <th>작성자</th>
                                     <th>작성일</th>
@@ -92,12 +64,12 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
+                                    <td>ㅇㅇ</td>
                                     <td>얼어죽어도아이스아메리카노</td>
                                     <td>호비</td>
                                     <td>2023-01-01</td>
                                     <td>
                                         <button>상세</button>
-                                        <button>수정</button>
                                         <button>삭제</button>
                                     </td>
                                 </tr>

@@ -2,6 +2,7 @@ package com.example.jumak.mapper.admin.aproduct;
 
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.dto.product.ProductTagDto;
 import com.example.jumak.domain.vo.admin.ACriteria;
 import com.example.jumak.domain.vo.admin.AProductVo;
 import com.example.jumak.domain.vo.admin.ASearchVo;
@@ -34,6 +35,10 @@ public interface AProductMapper {
 
 //    물품 등록
     public void insert(ProductDto productDto);
+
+//    상품 키워드 등록
+    public void insertKeyword(@Param("productKeywordNumber")Long productKeywordNumber,
+                              @Param("productNumber")Long productNumber);
 
 //    물품 수정
     public void update(ProductDto productDto);

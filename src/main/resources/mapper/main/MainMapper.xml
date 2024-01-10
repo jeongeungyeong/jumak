@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.main.MainMapper">
+
+<!-- 상품 검색 -->
+    <select id="selectSearch" resultType="productSearchVo">
+        SELECT DISTINCT P.PRODUCT_NUMBER,P.PRODUCT_NAME,P.PRODUCT_SUBTITLE, P.PRODUCT_DISCOUNT, P.PRODUCT_PRICE,
+               JPIM.PRODUCT_IMG_MAIN_NUMBER, JPIM.PRODUCT_IMG_MAIN_NAME, JPIM.PRODUCT_IMG_MAIN_PATH,
+               JPIM.PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P
+                 LEFT JOIN JUMAK_PRODUCT_IMG_MAIN JPIM
+                           ON P.PRODUCT_NUMBER = JPIM.PRODUCT_NUMBER
+                 JOIN JUMAK_PRODUCT_CATEGORY JPC
+                      ON P.PRODUCT_CATEGORY_NUMBER = JPC.PRODUCT_CATEGORY_NUMBER
+                 LEFT JOIN JUMAK_PRODUCT_TAG JPT
+                           ON P.PRODUCT_NUMBER = JPT.PRODUCT_NUMBER
+                 LEFT JOIN JUMAK_PRODUCT_KEYWORD JPK
+                           ON JPT.PRODUCT_KEYWORD_NUMBER = JPK.PRODUCT_KEYWORD_NUMBER
+        WHERE ( P.PRODUCT_NAME || P.PRODUCT_SUBTITLE || P.PRODUCT_ALCOHOLICITY
+            || P.PRODUCT_AREA || P.PRODUCT_DISTILLERY || P.PRODUCT_RAW_MATERIAL )
+                  LIKE '%' || #{keyword} || '%'
+           OR JPC.PRODUCT_CATEGORY_NAME LIKE '%' || #{keyword} || '%'
+           OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
+    </select>
+
+<!--상품검색 카운트-->
+    <select id="countSearch" resultType="_int">
+        SELECT COUNT(DISTINCT P.PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT P
+                 LEFT JOIN JUMAK_PRODUCT_IMG_MAIN JPIM
+                           ON P.PRODUCT_NUMBER = JPIM.PRODUCT_NUMBER
+                 JOIN JUMAK_PRODUCT_CATEGORY JPC
+                      ON P.PRODUCT_CATEGORY_NUMBER = JPC.PRODUCT_CATEGORY_NUMBER
+                 LEFT JOIN JUMAK_PRODUCT_TAG JPT
+                           ON P.PRODUCT_NUMBER = JPT.PRODUCT_NUMBER
+                 LEFT JOIN JUMAK_PRODUCT_KEYWORD JPK
+                           ON JPT.PRODUCT_KEYWORD_NUMBER = JPK.PRODUCT_KEYWORD_NUMBER
+        WHERE ( P.PRODUCT_NAME || P.PRODUCT_SUBTITLE || P.PRODUCT_ALCOHOLICITY
+            || P.PRODUCT_AREA || P.PRODUCT_DISTILLERY || P.PRODUCT_RAW_MATERIAL )
+            LIKE '%' || #{keyword} || '%'
+           OR JPC.PRODUCT_CATEGORY_NAME LIKE '%' || #{keyword} || '%'
+           OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
+    </select>
+
+<!--    나만의 술찾기-->
+        <select id="selectTag" resultType="productDto">
+            SELECT PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_ALCOHOLICITY, PRODUCT_NET_WEIGHT,
+            PRODUCT_SUBTITLE
+            FROM JUMAK_PRODUCT
+            <if test="count != 0">
+            WHERE PRODUCT_NUMBER = ANY(
+                SELECT T.PRODUCT_NUMBER
+                FROM JUMAK_PRODUCT_TAG T
+                LEFT JOIN JUMAK_PRODUCT P
+                ON P.PRODUCT_CATEGORY_NUMBER IN (#{productCategoryNumber1}, #{productCategoryNumber2})
+                AND T.PRODUCT_NUMBER = P.PRODUCT_NUMBER
+                WHERE T.PRODUCT_KEYWORD_NUMBER IN
+
+            <foreach collection="arr" item="tag" open="(" close=")" separator=",">
+                #{tag}
+            </foreach>
+                GROUP BY T.PRODUCT_NUMBER
+                HAVING COUNT(DISTINCT PRODUCT_KEYWORD_NUMBER) = #{count}
+                      )
+
+            </if>
+        </select>
+
+</mapper>
