@@ -19,92 +19,71 @@
     <div>
         <div></div>
         <div class="sub_content">
-            <div class="side_cont">
-                <div class="sub_menu_box">
-                    <h2> <a href="../main/adminMain.html">관리자페이지</a></h2>
-                    <ul class="sub_menu_mypage">
-                        <li>
-                            <a href="../user/userList.html">
-                                회원관리</a>
-                        </li>
-                        <li>
-                            <a href="../product/productList.html">
-                                상품관리</a>
-                        </li>
-                        <li>
-                            <a href="../order/orderList.html">
-                                주문관리
-                            </a>
-                        </li>
-                        <li>게시글관리
-                            <ul class="sub_depth">
-                                <li><a href="../board/board1.html">수상한소식</a> </li>
-                                <li><a href="../board/board2.html">수상한마당</a></li>
-                                <li><a href="../board/board3.html">우리술칵테일</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="../qa/adminQa.html">
-                            고객센터
-                        </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
 
             <!-- ----------------------------------------- -->
             <div class="content">
                 <div>
-                    <h1>수상한 마당</h1>
+                    <h1>주문관리</h1>
                 </div>
-                <div class="user_search">
-                    <select>                   
-                        <option value="prdName">전체</option>
-                        <option value="prdName">제목</option>
-                        <option value="prdNumber">작성자</option>            
-                        <option value="prdNumber">내용</option>
-                    </select>
-                    <input type="text" id="" placeholder>
-                    <button>검색</button>
-                </div>
-                <div>
-                   
-                </div>
-                <div>
-                    <div class="admin_user_table">
-                        <table>
-                            <colgroup>
-                                <col style="width:15%;">
-                                <col>
-                                <col style="width:15%;">
-                                <col style="width:15%;">
-                                <col style="width:15%;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>게시글번호</th>
-                                    <th>제목</th>
-                                    <th>작성자</th>
-                                    <th>작성일</th>
-                                    <th>관리</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>얼어죽어도아이스아메리카노</td>
-                                    <td>호비</td>
-                                    <td>2023-01-01</td>
-                                    <td>
-                                        <button>상세</button>
-                                        <button>수정</button>
-                                        <button>삭제</button>
-                                    </td>
-                                </tr>
 
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+
+                <section class="cate">
+
+                    <button type="button" class="write-btn">글쓰기</button>
+                </section>
+
+                <section class="board-list">
+                    <table class="board-list-table">
+                        <colgroup>
+                            <col style="width:5%">
+                            <col style="width:6%">
+                            <col style="width:13%">
+                            <col>
+                            <col style="width:6%">
+                            <col style="width:6%">
+                            <col style="width:7%">
+                        </colgroup>
+                        <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>분류</th>
+                            <th>작성자</th>
+                            <th>제목</th>
+                            <th>조회</th>
+                            <th>추천</th>
+                            <th>날짜</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--공지 반복 요소-->
+                        <tr class="board-list-table__notice">
+                            <td>
+                                <img src="/imgs/maDang/icon_board_notice.png" alt="">
+                            </td>
+                            <td>[공지]</td>
+                            <td class="board-list-table__writer">수상한 주막</td>
+                            <td class="board-list-table__title">🎇신년맞이 우리술 파티🎇</td>
+                            <td>100</td>
+                            <td>5</td>
+                            <td>23/12/12</td>
+                        </tr>
+                        <!--/공지 반복 요소-->
+                        <!--일반글 반복 요소-->
+                        <tr class="board-list-table__normal">
+                            <td>1539</td>
+                            <td>일상</td>
+                            <td class="board-list-table__writer">크리스탈</td>
+                            <td class="board-list-table__title">CU편의점에서 겟한 크라운 땅콩카라멜 막걸리</td>
+                            <td>24</td>
+                            <td>0</td>
+                            <td>23/12/26</td>
+                        </tr>
+                        <!--/일반글 반복 요소-->
+                        </tbody>
+                    </table>
+                </section>
 
             </div>
         </div>
