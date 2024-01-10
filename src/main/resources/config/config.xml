@@ -4,9 +4,12 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.qa.QaDto" alias="qaDto"/>
+        <typeAlias type="com.example.jumak.domain.vo.myPage.MemberVo" alias="memberVo"/>
 
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderStatusVo" alias="orderStatusVo"/>
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderDetailVo" alias="orderDetailVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.myPage.InquiryVo" alias="inquiryVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.ASearchVo" alias="aSearchVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AProductVo" alias="aProductVo"/>
         <typeAlias type="com.example.jumak.domain.vo.admin.AOrderVo" alias="aOrderVo"/>
@@ -37,6 +40,7 @@
 
         <typeAlias type="com.example.jumak.domain.vo.order.OrderFinishVo" alias="orderFinishVo"/>
         <typeAlias type="com.example.jumak.domain.vo.order.OrderVo" alias="orderVo"/>
+
 
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO"/>

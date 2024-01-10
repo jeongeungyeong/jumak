@@ -152,3 +152,43 @@
     text-align: center;
     margin: 10px 0;
   }
+
+.btn_wrap{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 20px;
+}
+
+.add_post_btn {
+  background-color: rgb(240, 200, 100);
+  border: 0px;
+  color: white;
+  width: 100px;
+  height: 30px;
+}
+
+#datepicker_start, #datepicker_end{
+  width: 120px;
+}
+
+.date_picker_btn {
+  display: flex;
+}
+
+.date_picker_btn > input {
+  margin-right: 10px;
+}
+
+
+
+.table_data td {
+  border-bottom: #b4b4b4 solid 1px;
+  padding: 5px;
+  font-size: 14px;
+  height: 30px;
+}
+
+.table_data td a {
+  text-decoration: none;
+  color: black;
+}

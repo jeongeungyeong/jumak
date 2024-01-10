@@ -7,6 +7,12 @@
         WHERE USER_NUMBER = #{userNumber}
     </select>
 
+    <select id="selectNickName">
+        SELECT USER_NICKNAME
+        FROM JUMAK_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </select>
+
     <select id="selectBoardCount" resultType="long">
         SELECT COUNT (*)
         FROM JUMAK_MADANG
