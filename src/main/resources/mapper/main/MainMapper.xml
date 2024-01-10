@@ -41,4 +41,29 @@
            OR JPC.PRODUCT_CATEGORY_NAME LIKE '%' || #{keyword} || '%'
            OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
     </select>
+
+<!--    나만의 술찾기-->
+        <select id="selectTag" resultType="productDto">
+            SELECT PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_ALCOHOLICITY, PRODUCT_NET_WEIGHT,
+            PRODUCT_SUBTITLE
+            FROM JUMAK_PRODUCT
+            <if test="count != 0">
+            WHERE PRODUCT_NUMBER = ANY(
+                SELECT T.PRODUCT_NUMBER
+                FROM JUMAK_PRODUCT_TAG T
+                LEFT JOIN JUMAK_PRODUCT P
+                ON P.PRODUCT_CATEGORY_NUMBER IN (#{productCategoryNumber1}, #{productCategoryNumber2})
+                AND T.PRODUCT_NUMBER = P.PRODUCT_NUMBER
+                WHERE T.PRODUCT_KEYWORD_NUMBER IN
+
+            <foreach collection="arr" item="tag" open="(" close=")" separator=",">
+                #{tag}
+            </foreach>
+                GROUP BY T.PRODUCT_NUMBER
+                HAVING COUNT(DISTINCT PRODUCT_KEYWORD_NUMBER) = #{count}
+                      )
+
+            </if>
+        </select>
+
 </mapper>
