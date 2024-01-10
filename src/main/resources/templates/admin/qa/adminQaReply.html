@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자페이지</title>
+
+    <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
+    <link rel="stylesheet" th:href="@{/css/admin/qa/adminQaDetail.css}">
+</head>
+
+<body>
+    <header>
+        <div class="header_">
+            <img src="" alt="">
+        </div>
+    </header>
+    <div>
+        <div></div>
+        <div class="sub_content">
+            <!--사이드-->
+            <div th:Replace="~{/admin/layout/nav :: sideCont}"></div>
+
+            <!-- ----------------------------------------- -->
+            <div class="content">
+                <div>
+                    <h3>1:1문의</h3>
+                </div>
+                <div>
+                    <table class="qa_table">
+                        <colgroup>
+                            <col style="width:15%;">
+                            <col style="width:85%;">
+                            
+                        </colgroup>
+                        <tbody>
+                            <tr>
+                                <th>카테고리</th>
+                                <td th:text="${qaDetail.qaCategoryName}"></td>
+                            </tr>
+                            <tr>
+                                <th>작성자</th>
+                                <td th:text="${qaDetail.userName}"></td>
+                            </tr>
+                            <tr>
+                                <th>작성일</th>
+                                <td th:text="${qaDetail.qaDate}"></td>
+                            </tr>
+                            <tr>
+                                <th>제목</th>
+                                <td th:text="${qaDetail.qaTitle}"></td>
+                            </tr>
+                            <tr class="qa_content">
+                                <th>본문</th>
+                                <td th:text="${qaDetail.qaContent}"></td>
+                            </tr>
+                            <tr>
+                                <th>첨부파일</th>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>                   
+                    <br>
+
+                    <form th:action="@{/admin/qa/reply}" method="post">
+                        <table class="qa_table"> 
+                            <colgroup>
+                                <col style="width:15%;">
+                                <col style="width:85%;">
+                                
+                            </colgroup>
+                            <tbody>
+                                <tr>
+                                    <th>답변</th>
+                                    <td>
+                                        <textarea th:value="qaDetail.qaReply" name="qaReply">
+                                        </textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <input type="hidden" name="qaNumber" th:value="${qaDetail.qaNumber}">
+                        <button type="button">이전</button>
+                        <button>저장</button>
+                    </form>
+                   
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

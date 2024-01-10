@@ -1,6 +1,7 @@
 package com.example.jumak.service.admin.aproduct;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.dto.product.ProductTagDto;
 import com.example.jumak.domain.vo.admin.ACriteria;
 import com.example.jumak.domain.vo.admin.AProductVo;
 import com.example.jumak.domain.vo.admin.ASearchVo;
@@ -51,6 +52,14 @@ public class AProductService {
     //    물품 등록
     public void register(ProductDto productDto){
         aProductMapper.insert(productDto);
+    }
+
+    //  상품 키워드 등록
+    public void registerKeyword(List<Long> productKeywordNumber,Long productNumber){
+        System.out.println("productNumber="+productNumber);
+        for(Long number : productKeywordNumber){
+            aProductMapper.insertKeyword(number,productNumber);
+        }
     }
 
 //    물품 수정

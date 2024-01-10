@@ -66,8 +66,25 @@
       <div class="cart-icon-box icon-box">
         <img th:src="@{/imgs/main/icon/ico_top_cart.png}" alt="">
       </div>
-      <div class="login-icon-box icon-box">
+
+      <div class="login-icon-box icon-box" th:classappend="${session.userNumber != null ? 'header--none' : ''}">
         <img th:src="@{/imgs/main/icon/ico_top_user.png}" alt="">
+        <div class="user-box header--none">
+          <div>
+            <a th:href="@{/user/login}">로그인</a>
+          </div>
+          <div>
+            <a th:href="@{/user/join/agree}">회원가입</a>
+          </div>
+        </div>
+      </div>
+      <div class="header__login-info" th:classappend="${session.userNumber == null ? 'header--none' : ''}">
+        <a href="">
+          <span class="header__user-info" th:text="${session.userNickname}"></span>
+        </a>
+        <a th:href="@{/user/logout}">
+          <span class="header__user-info">로그아웃</span>
+        </a>
       </div>
     </div>
     <div class="sub-menu__bg header--none"></div>
@@ -76,7 +93,7 @@
   <article class="header__search-top-menu header--none">
 <!--    검색 url 넣기 -->
 <!--    submit버튼으로 처리함-->
-    <form action="" method="">
+    <form action="/search" method="get">
       <div class="header__search-top-box">
         <div class="header__search__x-btn">
           <img th:src="@{/imgs/main/icon/ico_top_close.png}" alt="">

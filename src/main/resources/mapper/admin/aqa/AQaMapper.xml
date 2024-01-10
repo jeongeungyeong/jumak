@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.jumak.mapper.admin.aqa.AQaMapper">
+    <select id="selectList" resultType="aQaVo">
+    SELECT QA_NUMBER, QA_TITLE, QA_DATE, USER_NAME, QA_CATEGORY_NAME,
+           QA_REPLY
+    FROM(
+            SELECT ROWNUM AS RNUM, QA_NUMBER, QA_TITLE, QA_DATE, USER_NAME, QA_CATEGORY_NAME,
+                   QA_REPLY
+            FROM(select Q.QA_NUMBER, Q.QA_TITLE, Q.QA_DATE, U.USER_NAME, QC.QA_CATEGORY_NAME,
+                        Q.QA_REPLY
+                 from JUMAK_QA Q
+                          JOIN JUMAK_QA_CATEGORY QC
+                               ON Q.QA_CATEGORY_NUMBER = QC.QA_CATEGORY_NUMBER
+                          JOIN JUMAK_USER U
+                               ON Q.USER_NUMBER = U.USER_NUMBER
+                 ORDER BY QA_NUMBER DESC
+                    )
+            <![CDATA[
+            WHERE ROWNUM <= #{page} * #{amount}
+            ]]>
+        )
+    WHERE RNUM > (#{page} - 1) * #{amount}
+    </select>
+
+    <select id="selectTotal" resultType="_int">
+        SELECT COUNT(QA_NUMBER)
+        FROM JUMAK_QA
+    </select>
+
+    <select id="selectOne" resultType="aQaVo">
+        select Q.QA_NUMBER, Q.QA_TITLE, Q.QA_DATE, U.USER_NAME, QC.QA_CATEGORY_NAME,
+               Q.QA_REPLY, Q.QA_CONTENT
+        from JUMAK_QA Q
+                 JOIN JUMAK_QA_CATEGORY QC
+                      ON Q.QA_CATEGORY_NUMBER = QC.QA_CATEGORY_NUMBER
+                 JOIN JUMAK_USER U
+                      ON Q.USER_NUMBER = U.USER_NUMBER
+        where Q.QA_NUMBER = #{qaNumber}
+    </select>
+
+    <update id="updateReply">
+        UPDATE JUMAK_QA
+        SET QA_REPLY = #{qaReply}
+        WHERE QA_NUMBER = #{qaNumber}
+    </update>
+</mapper>

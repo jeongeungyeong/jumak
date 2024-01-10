@@ -14,4 +14,5 @@ public class QaDto {
     private String qaDate;
     private String qaReply;
     private Long userNumber;
+    private Long qaCategoryNumber;
 }

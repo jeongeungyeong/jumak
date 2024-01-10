@@ -6,6 +6,11 @@
             WHERE  USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
         </select>
 
+        <select id="selectLoginInfo" resultType="userDto">
+            SELECT USER_NUMBER, USER_NICKNAME FROM JUMAK_USER
+            WHERE  USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
+        </select>
+
         <select id="selectByName" resultType="userDto">
             SELECT USER_NUMBER, USER_ID, USER_PASSWORD, USER_NAME, USER_NICKNAME, USER_EMAIL,
                    USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS, USER_ADDRESS_DETAIL, USER_ZIPCODE,
@@ -32,7 +37,7 @@
                         USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER)
             VALUES (#{userNumber}, #{userId}, #{userPassword}, #{userName},
                     #{userNickname}, #{userEmail}, #{userCellphoneNumber}, #{userPhoneNumber},
-                    #{userAddress}, #{userAddressDetail}, #{userZipcode}, #{userBirth}, #{userGradeNumber})
+                    #{userAddress}, #{userAddressDetail}, #{userZipcode}, #{userBirth}, 1)
         </insert>
 
         <delete id="delete">
