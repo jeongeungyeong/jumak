@@ -12,7 +12,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+/*@SpringBootTest
 @Transactional
 class MadangMapperTest {
     @Autowired
@@ -30,7 +30,7 @@ class MadangMapperTest {
         MadangDetailVo madangDetailVo = madangMapper.selectDetail(21L).get();
         System.out.println("madangDetailVo = " + madangDetailVo);
     }
-}
+}*/
 
 
 

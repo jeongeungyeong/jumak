@@ -8,15 +8,14 @@ import org.springframework.stereotype.Component;
 @Data
 @NoArgsConstructor
 public class ProductReviewVo {
+    //    상품 리뷰
     private Long productReviewNumber;
     private String productReviewTitle;
     private String productReviewContent;
     private Long productReviewScore;
     private String productReviewDate;
+    //    회원번호
     private Long userNumber;
-    private Long productNumber;
-    private Long productReviewImgNumber;
-    private String productReviewImgName;
-    private String productReviewImgPath;
-    private String productReviewImgUuid;
+    //    회원 닉네임
+    private String userNickname;
 }

@@ -2,6 +2,7 @@ package com.example.jumak.service.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.vo.product.Criteria;
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductListVo;
 import com.example.jumak.domain.vo.product.ProductVo;
 import com.example.jumak.mapper.product.ProductMapper;
@@ -19,8 +20,13 @@ public class ProductService {
     private final ProductMapper productMapper;
 
 //    상품 조회(정렬기준 받기)
-    public List<ProductListVo> findByCond(String orderCond, String cate){
-        return productMapper.selectByOrderCond(orderCond, cate);
+    public List<ProductListVo> findByCond(String orderCond, String cate, Criteria criteria){
+        return productMapper.selectByOrderCond(orderCond, cate, criteria);
+    }
+
+//    상품 카운트 조회
+    public Long findTotalByCond(String cate){
+        return productMapper.selectTotalByCond(cate);
     }
 
 //    상품 번호 조회
@@ -39,6 +45,20 @@ public class ProductService {
    public List<ProductListVo> findAll(){return productMapper.arrSale();}
 
 //    상품 상세정보 조회
+/*  public List<ProductDetailVo> findByDetail(){
+       return productMapper.selectByDetail();
+  };*/
 
+//    상품 번호 상세 조회
+    public ProductDetailVo findByDNumber(Long productNumber){
+        return productMapper.selectByDNumber(productNumber)
+                .orElseThrow( ()-> new IllegalStateException("상품 조회 결과 없음!"));
+    }
+
+//    상품 디테일 이미지 조회
+    public List<ProductDetailVo> findByDImg(Long productNumber){
+        return Optional.ofNullable(productMapper.selectByDImg(productNumber))
+                .orElseThrow( ()-> new IllegalStateException("상품 이미지 조회 결과 없음!"));
+    }
 
 }

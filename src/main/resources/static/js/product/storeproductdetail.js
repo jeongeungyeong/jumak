@@ -1,119 +1,155 @@
-// 추천순
-$(".products_pick_list").on("click", ".pick_list_btns", function () {
-    let $replyBtnBox = $(this)
-        .closest(".pick_list_box")
-        .find(".pick_list_btns__box");
+/*
+import * as reply from '../module/preply.js';
+*/
 
-    $replyBtnBox.toggleClass("none");
-});
-// 정렬순서
-// $("body").click(function (e) {
-//     if ($(e.target).hasClass("pick_list_btns")) {
-//         //console.log('aa');
-//         return;
-//     }
-//     if (!$(".pick_list_btns__box").has(e.target).length) {
-//         $(".pick_list_btns__box").addClass("none");
-//     }
-// });
+let productNumber = $('.product-num').val();
+let page = 1;
 
-// 카테고리
-let $categoryBox = $(".category-box");
+// 옵션 숫자 계산
+{
+    let priceText = $('#result-price').text();
+    let price = +priceText.replaceAll(',', '');
+    let $numBox = $('.numBox');
 
-$categoryBox.on("click", function (e) {
-    let idx = $categoryBox.index(this);
-    console.log(idx);
-    for (let i = 0; i < $categoryBox.length; i++) {
-        if (i == idx) {
-            $categoryBox.eq(i).addClass("checked");
-        } else {
-            $categoryBox.eq(i).removeClass("checked");
-        }
-    }
-});
+    let $displayPrice01 = $('.option_price_display_0');
+    let $displayPrice02 = $('.total_price--display');
 
-// 보드
-$(".add-post-btn").on("click", function () {
-    window.location.href = "/board/write";
-});
+    $('.plus').on('click', function () {
+        let count = $numBox.val();
 
-//슬라이드
-$(".slide_div_wrap").ready(function(){
-    $(".slide_div").slick();
-});
+        $numBox.val(++count);
+        let totalPrice = count * price;
+        $displayPrice01.text(totalPrice.toLocaleString());
+        $displayPrice02.text(totalPrice.toLocaleString());
+    });
 
-
-// 리뷰 파일처리
-
-//후기 파일처리
-
-let $input = $('#post-image');
-let $imgList = $('.img-list');
-// console.log($input);
-
-// file change이벤트로 미리보기 갱신하기
-$input.on('change', function () {
-    let files = this.files;
-    //   console.log(files);
-
-    // 길이 체크함수 (files, 원하는 길이)
-    let newFiles = checkLength(files, 4);
-
-    appendImg(newFiles);
-});
-
-// 클릭 이벤트로 이미지 지우고 미리보기 갱신하기
-$imgList.on('click', function (e) {
-    let name = $(e.target).data('name');
-    removeImg(name);
-    appendImg($input[0].files);
-});
-
-//미리보기 삭제 함수
-function removeImg(name) {
-    let dt = new DataTransfer();
-
-    let files = $input[0].files;
-
-    for (let i = 0; i < files.length; i++) {
-        if (files[i].name !== name) {
-            dt.items.add(files[i]);
-        }
-    }
-    $input[0].files = dt.files;
+    $('.minus').on('click', function () {
+        let count = $numBox.val();
+        if(count < 2) { return; }
+        $numBox.val(--count);
+        let totalPrice = count * price;
+        $displayPrice01.text(totalPrice.toLocaleString());
+        $displayPrice02.text(totalPrice.toLocaleString());
+    });
 }
 
-//파일 길이 체크 함수(체크할 files객체, 제한할 길이)
-function checkLength(files, num) {
-    if (files.length > num) {
-        alert(`파일은 최대 ${num}개까지만 첨부 가능합니다.`);
-        // 최대 수를 넘으면 비어있는 files객체 반환
-        return new DataTransfer().files;
+
+// 장바구니 바로 가기
+$('.btn_add_cart').on('click', function (){
+
+    if($(this).data('num')){
+        $('#product-form').submit();
+    }else{
+        alert('로그인 하세요');
+        location.href = "/user/login";
     }
-    return files;
-}
+})
 
-// 이미지 미리보기 처리 함수
-// 이미지 수가 4개보다 적으면 기본이미지로 대체함
-function appendImg(files) {
-    for (let i = 0; i < 4; i++) {
-        if (i < files.length) {
-            let src = URL.createObjectURL(files[i]);
 
-            $imgList.eq(i).css('background-image', `url(${src})`).css('background-size', 'cover').data('name', `${files[i].name}`);
 
-            $imgList.eq(i).addClass('x-box');
-        } else {
-            $imgList
-                .eq(i)
-                .css(
-                    'background',
-                    'url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzNiIgaGVpZ2h0PSIzNiI+PGcgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj48ZyBzdHJva2U9IiNCNUI1QjUiIHN0cm9rZS13aWR0aD0iMS41IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0IDQpIj48cmVjdCB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHJ4PSIzLjUiLz48Y2lyY2xlIGN4PSI4LjU1NiIgY3k9IjguNTU2IiByPSIyLjMzMyIvPjxwYXRoIGQ9Ik0yOCAxOC42NjdsLTcuNzc3LTcuNzc4TDMuMTExIDI4Ii8+PC9nPjxwYXRoIGQ9Ik0wIDBoMzZ2MzZIMHoiLz48L2c+PC9zdmc+) no-repeat 50% #f2f2f2'
-                )
-                .data('name', null);
-            $imgList.eq(i).removeClass('x-box');
-        }
+
+// 바로구매 바로 가기
+// 유저넘버를 갖고 있으면, 전체 form 데이터를 submit으로 보내줌
+// 아니면 로그인 페이지로 이동
+$('.btn_add_order').on('click', function (){
+
+    if($(this).data('num')){
+        $('#product-form').submit();
+    }else{
+        alert('로그인 하세요');
+        location.href = "/user/login";
     }
-}
+})
+
+// ===========================================================
+// 상품 후기 리플
+
+// 로그인 유무
+/*$('#reply-content').on('click', function (){
+
+    if($(this).data('num')){
+
+    }else{
+        alert('로그인 하세요');
+        location.href = "/user/login";
+    }
+})*/
+
+
+/*$('.reply-list-wrap').on('click', '.reply-btns', function () {
+    let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
+
+    $replyBtnBox.toggleClass('none');
+});
+
+$('body').click(function (e) {
+    if ($(e.target).hasClass('reply-btns')) {
+        //console.log('aa');
+        return;
+    }
+    if (!$('.reply-btns__box').has(e.target).length) {
+        $('.reply-btns__box').addClass('none');
+    }
+});
+
+//리플 작성 완료 처리
+$('.btn-reply').on('click', function (){
+//      컨트롤러에 전해줘야할 것
+//     productNumber userNumber productReviewContent
+
+    let productNumber = $('.prod')
+});
+
+// 리플 삭제 버튼 처리
+$('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
+    $('.reply-btns__box').addClass('none');
+});
+
+// 리플 수정 버튼 처리
+$('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
+    let $content = $(this).closest('.reply').find('.reply-box__content');
+    $content.replaceWith(`
+  <div class='modify-box'>
+    <textarea class='modify-content'>${$content.text()}</textarea>
+    <button type='button' class='modify-content-btn'>수정 완료</button>
+  </div>
+  `);
+    $('.reply-btns__box').addClass('none');
+});
+
+// 리플 수정 완료 처리
+$('.reply-list-wrap').on('click', '.modify-content-btn', function () {
+    console.log('modify!!!');
+});*/
+
+
+
+
+// =====================================================
+//무한 스크롤 페이징
+/*$(window).on('scroll', function (){
+    // 현재 브라우저의 스크롤 위치를 의미
+    console.log(`ScrollTop : ${ $(window).scrollTop() }` )
+    // 문서 전체의 높이를 의미
+    console.log(`document height : ${ $(document).height() }` )
+    // 브라우저 화면의 높이를 의미
+    console.log(`window height : ${ $(window).height() }` )
+
+//    [현재 브라우저 스크롤의 위치 == 문서높이 - 화면 높이] -> 문서 마지막에 스크롤이 도착함
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+        console.log(++page);
+        reply.getListPage(boardNumber, page, appendReply);
+    }
+});
+reply.getListPage(productNumber, page, showReply);*/
+
+
+
+
+
+
+
+
 
 
