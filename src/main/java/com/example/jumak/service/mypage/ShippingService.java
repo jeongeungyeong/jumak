@@ -2,6 +2,7 @@ package com.example.jumak.service.mypage;
 
 import com.example.jumak.domain.vo.myPage.OrderDetailVo;
 import com.example.jumak.mapper.mypage.CancelShippingMapper;
+import com.example.jumak.mapper.mypage.RefundShippingMapper;
 import com.example.jumak.mapper.mypage.SearchShippingMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,10 +16,11 @@ import java.util.List;
 public class ShippingService {
     private final SearchShippingMapper searchShippingMapper;
     private final CancelShippingMapper cancelShippingMapper;
+    private final RefundShippingMapper refundShippingMapper;
 
 
 //    기간별 주문 배송내역 조회
-    public List<OrderDetailVo> findSearchShipping(OrderDetailVo orderDetailVo) {
+    public List<OrderDetailVo> findSearchDetail(OrderDetailVo orderDetailVo) {
         List<OrderDetailVo> orderDetailList = searchShippingMapper.selectOrderDetail(orderDetailVo);
 
         return orderDetailList;
@@ -31,5 +33,10 @@ public class ShippingService {
         return orderDetailList;
     }
 
-//    기간별 
+//    기간별 환불/입금 내역 조회
+    public List<OrderDetailVo> findRefundDetail(OrderDetailVo orderDetailVo) {
+        List<OrderDetailVo> orderDetailList = refundShippingMapper.selectOrderDetail(orderDetailVo);
+
+        return orderDetailList;
+    }
 }

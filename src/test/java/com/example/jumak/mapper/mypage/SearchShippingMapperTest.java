@@ -26,4 +26,5 @@ class SearchShippingMapperTest {
 //    void selectOrderDetail() {
 //        shippingService.findOrderDetail(orderDetailVo);
 //    }
+
 }

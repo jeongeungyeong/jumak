@@ -22,6 +22,11 @@ public class MypageMainService {
         return mypageMainMapper.selectName(userNumber);
     }
 
+//    회원 닉네임 조회
+    public String findNickName(Long userNumber) {
+        return mypageMainMapper.selectNickName(userNumber);
+    }
+
 //    보드 작성 개수 조회
     public Long findBoardCount(Long userNumber) {
         return mypageMainMapper.selectBoardCount(userNumber);

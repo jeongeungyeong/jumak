@@ -147,3 +147,15 @@
     text-align: center;
     margin: 10px 0;
   }
+
+#datepicker_start, #datepicker_end{
+  width: 120px;
+}
+
+.date_picker_btn {
+  display: flex;
+}
+
+.date_picker_btn > input {
+  margin-right: 10px;
+}
