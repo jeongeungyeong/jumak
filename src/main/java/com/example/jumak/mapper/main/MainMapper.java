@@ -1,13 +1,12 @@
 package com.example.jumak.mapper.main;
 
 import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.dto.user.UserDto;
+import com.example.jumak.domain.vo.main.BreweryVo;
+import com.example.jumak.domain.vo.main.MadangListVo;
 import com.example.jumak.domain.vo.main.ProductSearchVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
 
 @Mapper
@@ -17,6 +16,12 @@ public interface MainMapper {
 
 // 상품 검색 카운트
     public int countSearch(String keyword);
+
+//    양조장 탐방기
+    public List<BreweryVo> brewery();
+
+//    수상한 마당
+    public List<MadangListVo> madang();
 
 // 나만의 술찾기
 //    public List<ProductDto> selectTag(@Param("tag1") Long tag1,@Param("tag2") Long tag2

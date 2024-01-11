@@ -1,5 +1,7 @@
 package com.example.jumak.controller.main;
 
+import com.example.jumak.domain.vo.main.BreweryVo;
+import com.example.jumak.domain.vo.main.MadangListVo;
 import com.example.jumak.domain.vo.main.ProductSearchVo;
 import com.example.jumak.service.main.MainService;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +20,19 @@ public class MainController {
     private final MainService mainService;
 
     @GetMapping("/")
-    public String mainPage(){
+    public String mainPage(Model model){
+
+
+//        양조장 탐방기
+        List<BreweryVo> breweryList = mainService.brewery();
+
+//        수상한 마당
+        List<MadangListVo> madangList = mainService.madang();
+
+
+        model.addAttribute("breweryList", breweryList);
+        model.addAttribute("madangList", madangList);
+
         return "main/main";
     }
 

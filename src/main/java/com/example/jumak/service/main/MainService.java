@@ -1,5 +1,7 @@
 package com.example.jumak.service.main;
 
+import com.example.jumak.domain.vo.main.BreweryVo;
+import com.example.jumak.domain.vo.main.MadangListVo;
 import com.example.jumak.domain.vo.main.ProductSearchVo;
 import com.example.jumak.mapper.main.MainMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,4 +25,10 @@ public class MainService {
     public int countSearch(String keyword){
         return mainMapper.countSearch(keyword);
     }
+
+//    양조장탐방기
+    public List<BreweryVo> brewery() { return mainMapper.brewery(); }
+
+//    수상한 마당
+    public List<MadangListVo> madang() { return mainMapper.madang(); }
 }
