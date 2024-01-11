@@ -19,9 +19,12 @@ public class OrderRestController {
     }
 
     @PostMapping("/payment")
-    public void paymentOrder(@RequestBody PaymentVo paymentVo){
-        orderService.deliveryRegister(paymentVo);
-        orderService.paymentRegister(paymentVo);
+    public void paymentOrder(@RequestBody OrderVo orderVo,
+                             @SessionAttribute("userNumber") Long userNumber){
+        orderVo.setUserNumber(userNumber);
+
+        orderService.orderRegister(orderVo);
+        orderService.paymentRegister(orderVo);
     }
 
 

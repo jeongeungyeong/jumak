@@ -2,28 +2,30 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.order.OrderMapper">
 
+<!--주문 정보 삽입-->
+    <insert id="orderInsert" parameterType="orderVo">
+        <selectKey keyProperty="orderNumber" order="BEFORE" resultType="long">
+            select SEQ_ORDER.nextval from dual
+        </selectKey>
+        insert into JUMAK_ORDER (ORDER_NUMBER, USER_NUMBER, ORDER_RECIPIENT, ORDER_ZIPCODE, ORDER_ADDRESS, ORDER_ADDRESS_DETAIL,
+                                 ORDER_CELLPHONENUMBER, ORDER_PHONENUMBER, ORDER_DATE, ORDER_STATUS_NUMBER)
+        values (#{orderNumber},#{userNumber},#{orderRecipient},#{orderZipcode},#{orderAddress},#{orderAddressDetail},
+          #{orderCellphoneNumber},#{orderPhoneNumber},SYSDATE,#{orderStatusNumber})
+
+    </insert>
+
 <!--    주문자 정보 조회 -->
     <select id="selectByUNumber" resultType="orderVo">
-        select ORDER_NUMBER, U.USER_NUMBER,USER_NAME,USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS,
+        select U.USER_NUMBER,USER_NAME,USER_EMAIL, USER_CELLPHONENUMBER, USER_PHONENUMBER, USER_ADDRESS,
                USER_ADDRESS_DETAIL, USER_ZIPCODE, USER_BIRTH, USER_GRADE_NUMBER
-        from JUMAK_ORDER o right join JUMAK_USER u on o.USER_NUMBER=u.USER_NUMBER
+        from JUMAK_USER u
         WHERE U.USER_NUMBER=#{userNumber}
     </select>
-
-<!--    배송 정보-->
-    <insert id="deliveryInsert" parameterType="paymentVo">
-        insert into JUMAK_DELIVERY_ADDRESS (ADDRESS_NUMBER, USER_NUMBER, ADDRESS_NAME, ADDRESS_RECIPIENT, ADDRESS,
-                                            ADDRESS_DETAIL, ADDRESS_ZIPCODE, ADDRESS_CELLPHONENUMBER, ADDRESS_PHONENUMBER,
-                                            ADDRESS_DEFAULT)
-        values (SEQ_DELIVERY_ADDRESS.nextval,#{userNumber},#{addressNumber},#{addressName},#{addressRecipient},#{address},
-                #{AddressDetail},#{addressZipcode},#{addressCellphoneNumber},#{addressPhoneNumber},
-                #{addressDefault})
-    </insert>
 
 
 
 <!--    결제 정보-->
-    <insert id="paymentInsert" parameterType="paymentVo">
+    <insert id="paymentInsert" parameterType="orderVo">
         insert into JUMAK_PAYMENT (PAYMENT_NUMBER, PAYMENT_DATE, PAYMENT_TOTAL_AMOUNT, PAYMENT_TOTAL_DISCOUNT,
                                    PAYMENT_DELIVERY_FEE, PAYMENT_TOTAL, ORDER_NUMBER)
         values (SEQ_PAYMENT.nextval,SYSDATE,#{paymentTotalAmount},#{paymentTotalDiscount},#{paymentDeliveryFee},#{paymentTotal},
@@ -35,13 +37,17 @@
 
 
 <!--    주문 요약 정보-->
-    <select id="selectByNumber" resultType="orderFinishVo" >
-    SELECT JP.PAYMENT_NUMBER, JP.PAYMENT_TOTAL,
-               JO.ORDER_DATE, JO.USER_NUMBER, JO.ORDER_NUMBER,
-               OS.ORDER_STATUS_NUMBER,OS.ORDER_STATUS_NAME
-    FROM  JUMAK_ORDER JO INNER JOIN JUMAK_PAYMENT JP
-                                        ON JO.ORDER_NUMBER = JP.ORDER_NUMBER
-                             INNER JOIN JUMAK_ORDER_STATUS OS ON JO.ORDER_STATUS_NUMBER = OS.ORDER_STATUS_NUMBER
+    <select id="selectByNumber" resultType="orderVo" >
+        SELECT PAYMENT_NUMBER, PAYMENT_TOTAL, ORDER_DATE, USER_NUMBER, ORDER_NUMBER
+        FROM (
+                 SELECT JP.PAYMENT_NUMBER, JP.PAYMENT_TOTAL,
+                        JO.ORDER_DATE, JO.USER_NUMBER, JO.ORDER_NUMBER
+                 FROM  JUMAK_ORDER JO INNER JOIN JUMAK_PAYMENT JP
+                     ON JO.USER_NUMBER=#{userNumber} AND JO.ORDER_NUMBER = JP.ORDER_NUMBER
+                 ORDER BY JO.ORDER_NUMBER DESC
+             )
+        WHERE ROWNUM = 1
+
     </select>
 
 </mapper>

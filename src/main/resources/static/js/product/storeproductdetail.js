@@ -36,7 +36,7 @@ let page = 1;
 
 // 장바구니 바로 가기
 $('.btn_add_cart').on('click', function (){
-
+    $('#product-form').attr('action', '/');
     if($(this).data('num')){
         $('#product-form').submit();
     }else{
@@ -52,7 +52,7 @@ $('.btn_add_cart').on('click', function (){
 // 유저넘버를 갖고 있으면, 전체 form 데이터를 submit으로 보내줌
 // 아니면 로그인 페이지로 이동
 $('.btn_add_order').on('click', function (){
-
+    $('#product-form').attr('action', '/order/next');
     if($(this).data('num')){
         $('#product-form').submit();
     }else{

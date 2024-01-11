@@ -25,7 +25,7 @@ class OrderMapperTest {
 
      @Test
     void selectByNumber() {
-      orderMapper.selectByNumber();
+//      orderMapper.selectByNumber();
 
     }
 

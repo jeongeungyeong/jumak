@@ -28,6 +28,8 @@ private Long userNumber;
     private String orderDate;
 //    주문상태번호
     private Long orderStatusNumber;
+    //    주문 상태 이름
+    private String orderStatusName;
 //    주문자 이름
 private String userName;
 //주문자 이메일
@@ -60,25 +62,6 @@ private Long paymentTotalDiscount;
     private Long paymentDeliveryFee;
 //최종결제금액
 private Long paymentTotal;
-//여기서부터 추가
-//    배송지 번호
-private Long addressNumber;
-    //    배송지 이름
-    private String addressName;
-    //    수령인
-    private String addressRecipient;
-    //    주소
-    private String address;
-    //    상세주소
-    private String AddressDetail;
-    //    우편번호
-    private Long addressZipcode;
-    //    전화번호
-    private String addressCellphoneNumber;
-    //    휴대폰번호
-    private String addressPhoneNumber;
-    //    기본배송지여부
-    private String addressDefault;
 
 
 }

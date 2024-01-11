@@ -10,6 +10,7 @@ import com.example.jumak.service.order.OrderService;
 import com.example.jumak.service.product.ProductService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -58,16 +59,16 @@ public class OrderController {
 
 
     @GetMapping("/fail")
-    public String orderFail(Model model, Integer price){
-        List<OrderFinishVo> orderFinList = orderService.findByNumber();
-        model.addAttribute("finalorders",orderFinList);
+    public String orderFail(Model model, Integer price, @SessionAttribute("userNumber") Long userNumber){
+        OrderVo orderFin = orderService.findByNumber(userNumber);
+        model.addAttribute("finalorder",orderFin);
         model.addAttribute("totalprice",price);
         return "order/storeorderfail";
     }
     @GetMapping("/success")
-    public String orderSuccess(Model model, Integer price){
-        List<OrderFinishVo> orderFinList = orderService.findByNumber();
-        model.addAttribute("finalorders",orderFinList);
+    public String orderSuccess(Model model, Integer price, @SessionAttribute("userNumber") Long userNumber){
+        OrderVo orderFin = orderService.findByNumber(userNumber);
+        model.addAttribute("finalorder",orderFin);
         model.addAttribute("totalprice",price);
         return "order/storeordersucc";
     }

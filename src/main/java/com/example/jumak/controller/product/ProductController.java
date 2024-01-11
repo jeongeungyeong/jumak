@@ -55,6 +55,10 @@ public class ProductController {
         return "product/storeproductdetail" ;
     }
 
+    @GetMapping("/test")
+    public String testing(){
+        return "product/product_info_main";
+    }
 
 
 

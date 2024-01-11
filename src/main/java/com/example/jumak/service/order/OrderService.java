@@ -8,6 +8,7 @@ import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.domain.vo.order.PaymentVo;
 import com.example.jumak.mapper.order.OrderMapper;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,11 @@ import java.util.List;
 public class OrderService {
     private final OrderMapper orderMapper;
 
+//    주문자 정보 삽입
+    public void orderRegister(OrderVo orderVo){
+        orderMapper.orderInsert(orderVo);
+    }
+
 //    주문자 정보 조회
     public OrderVo findByUNumber(Long userNumber){
         return orderMapper.selectByUNumber(userNumber)
@@ -24,19 +30,15 @@ public class OrderService {
     }
 
 //    주문요약정보
-public List<OrderFinishVo> findByNumber(){
-        return orderMapper.selectByNumber();
-    }
-
-//        배송지 삽입
-    public void deliveryRegister(PaymentVo paymentVo){
-        orderMapper.deliveryInsert(paymentVo);
+public OrderVo findByNumber(Long userNumber){
+        return orderMapper.selectByNumber(userNumber)
+                .orElseThrow(() -> new IllegalStateException("주문 정보 없음"));
     }
 
 
 //     결제정보 삽입
-    public void paymentRegister(PaymentVo paymentVo){
-        orderMapper.paymentInsert(paymentVo);
+    public void paymentRegister(OrderVo orderVo){
+        orderMapper.paymentInsert(orderVo);
     }
 
 
