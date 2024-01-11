@@ -1,6 +1,3 @@
-/*
-import * as reply from '../module/preply.js';
-*/
 
 let productNumber = $('.product-num').val();
 let page = 1;
@@ -36,7 +33,7 @@ let page = 1;
 
 // 장바구니 바로 가기
 $('.btn_add_cart').on('click', function (){
-    $('#product-form').attr('action', '/');
+    $('#product-form').attr('action', '/order/cart');
     if($(this).data('num')){
         $('#product-form').submit();
     }else{
@@ -64,64 +61,65 @@ $('.btn_add_order').on('click', function (){
 // ===========================================================
 // 상품 후기 리플
 
-// 로그인 유무
-/*$('#reply-content').on('click', function (){
+//    댓글 작성
 
-    if($(this).data('num')){
+let $writeBtn = document.querySelector('.btn-reply');
 
-    }else{
-        alert('로그인 하세요');
-        location.href = "/user/login";
-    }
-})*/
+$writeBtn.addEventListener('click',function (){
+    let $replyContent = document.getElementById('reply-content');
+    let content = $replyContent.value;
+    console.log(content);
 
+    fetch("/reviews",{
+        method:"POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            productReviewContent: content,
+            productNumber: productNumber
+        }),
+    })
+        .then(response => response.json())
+        .then(data => {
+            // 성공적으로 전송
+            console.log('댓글 작성 성공: ', data);
+            // 화면에 뿌리기
+            displayComment(data);
 
-/*$('.reply-list-wrap').on('click', '.reply-btns', function () {
-    let $replyBtnBox = $(this).closest('.reply-btn-box').find('.reply-btns__box');
+            //작성한 댓글 화면에 표시한 후, 입력창 초기화
+            $replyContent.value = '';
 
-    $replyBtnBox.toggleClass('none');
+        })
+        .catch(error => {
+            console.error('댓글 작성 실패',error);
+        });
 });
 
-$('body').click(function (e) {
-    if ($(e.target).hasClass('reply-btns')) {
-        //console.log('aa');
-        return;
-    }
-    if (!$('.reply-btns__box').has(e.target).length) {
-        $('.reply-btns__box').addClass('none');
-    }
-});
+// 댓글을 화면에 추가하는 함수
+/*function displayComment(comment) {
+    // 새로운 댓글을 보여줄 DOM 요소 생성
+    let commentElement = document.createElement('div');
+    commentElement.className = 'reply';
 
-//리플 작성 완료 처리
-$('.btn-reply').on('click', function (){
-//      컨트롤러에 전해줘야할 것
-//     productNumber userNumber productReviewContent
+    // 댓글 작성자 정보 추가
+    let writerElement = document.createElement('div');
+    writerElement.className = 'reply-box__writer';
+    writerElement.textContent = comment.userNickname; // 댓글 작성자 이름 또는 정보
+    commentElement.appendChild(writerElement);
 
-    let productNumber = $('.prod')
-});
+    // 댓글 내용 추가
+    let contentElement = document.createElement('div');
+    contentElement.className = 'reply-box__content';
+    contentElement.textContent = comment.productReviewContent;
+    commentElement.appendChild(contentElement);
 
-// 리플 삭제 버튼 처리
-$('.reply-list-wrap').on('click', '.reply-remove-btn', function () {
-    $('.reply-btns__box').addClass('none');
-});
+    // 댓글 버튼 및 기타 옵션을 추가하는 부분도 필요하다면 추가하시면 됩니다.
 
-// 리플 수정 버튼 처리
-$('.reply-list-wrap').on('click', '.reply-modify-btn', function () {
-    let $content = $(this).closest('.reply').find('.reply-box__content');
-    $content.replaceWith(`
-  <div class='modify-box'>
-    <textarea class='modify-content'>${$content.text()}</textarea>
-    <button type='button' class='modify-content-btn'>수정 완료</button>
-  </div>
-  `);
-    $('.reply-btns__box').addClass('none');
-});
-
-// 리플 수정 완료 처리
-$('.reply-list-wrap').on('click', '.modify-content-btn', function () {
-    console.log('modify!!!');
-});*/
-
+    // 원하는 위치에 새로운 댓글 요소를 추가
+    let commentsContainer = document.querySelector('.reply-list-wrap');
+    commentsContainer.appendChild(commentElement);
+}*/
 
 
 

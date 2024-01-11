@@ -2,68 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.product.ProductReviewMapper">
 
-    <!--    후기 작성-->
-    <insert id="reviewInsert" parameterType="productReviewVo">
-        INSERT INTO JUMAK_PRODUCT_REVIEW (PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
-         PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER)
-        VALUES (SEQ_PRODUCT_REVIEW.nextval,#{productReviewContent},
-        sysdate,#{userNumber},#{productNumber})
+<!--    상품후기리스트 조회-->
+    <select id="selectListByProductNumber" parameterType="long" resultType="productReviewVo">
+        SELECT PRV.PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT, PRODUCT_REVIEW_DATE, U.USER_NUMBER, PRODUCT_NUMBER,
+               U.USER_NICKNAME
+        FROM JUMAK_PRODUCT_REVIEW PRV JOIN JUMAK_USER U
+                                           ON PRV.PRODUCT_NUMBER=#{productNumber} AND PRV.USER_NUMBER = U.USER_NUMBER
+        ORDER BY PRV.PRODUCT_REVIEW_NUMBER DESC
+    </select>
+    
+    <insert id="insert" parameterType="productReviewDto">
+        <selectKey keyProperty="productReviewNumber" order="BEFORE" resultType="long">
+                SELECT SEQ_PRODUCT_REVIEW.nextval FROM DUAL
+        </selectKey>
+        insert into JUMAK_PRODUCT_REVIEW (PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
+                                          USER_NUMBER,PRODUCT_NUMBER)
+        values (#{productReviewNumber},#{productReviewContent},#{userNumber},#{productNumber})
     </insert>
 
 
-<!--    상품 후기 조회-->
-    <select id="reviewList" resultType="productReviewVo">
-        SELECT PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
-               PRODUCT_REVIEW_DATE, R.USER_NUMBER, R.PRODUCT_NUMBER,
-               U.USER_NICKNAME
-        FROM JUMAK_USER U  JOIN JUMAK_PRODUCT_REVIEW R
-            ON  PRODUCT_NUMBER=#{productNumber} AND R.USER_NUMBER = U.USER_NUMBER
-        ORDER BY PRODUCT_REVIEW_NUMBER DESC
-    </select>
 
-<!--    상품 후기 전체 조회-->
-    <select id="selectTotal" resultType="_int">
-        SELECT COUNT(PRODUCT_REVIEW_NUMBER) FROM JUMAK_PRODUCT_REVIEW
-        WHERE PRODUCT_NUMBER=#{productNumber}
-    </select>
 
-<!--    후기 수정-->
-    <update id="reviewUpdate">
-        UPDATE JUMAK_PRODUCT_REVIEW
-        SET PRODUCT_REVIEW_CONTENT =#{productReviewContent}
-        WHERE PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
-    </update>
 
-<!--    후기 삭제-->
-    <delete id="reviewDelete">
-        DELETE FROM JUMAK_PRODUCT_REVIEW
-        WHERE PRODUCT_REVIEW_NUMBER=#{productReviewNumber}
-    </delete>
 
-<!--    후기 페이징 처리-->
-    <select id="selectListPage" resultType="productReviewVo">
-        SELECT PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
-               PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER,
-               USER_NICKNAME
-        FROM (
-                 SELECT ROWNUM RN,
-                        PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
-                        PRODUCT_REVIEW_DATE, USER_NUMBER, PRODUCT_NUMBER,
-                        USER_NICKNAME
-                 FROM (
-                          SELECT R.PRODUCT_REVIEW_NUMBER, R.PRODUCT_REVIEW_CONTENT,
-                                R.PRODUCT_REVIEW_DATE, R.USER_NUMBER, R.PRODUCT_NUMBER,
-                                U.USER_NICKNAME
-                            FROM JUMAK_USER U  JOIN JUMAK_PRODUCT_REVIEW R
-                            ON  PRODUCT_NUMBER=#{productNumber} AND R.USER_NUMBER = U.USER_NUMBER
-                            ORDER BY PRODUCT_REVIEW_NUMBER DESC
-                      )
-            <![CDATA[
-                 WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
-            ]]>
-        )
-        WHERE RN > (#{criteria.page} - 1) * #{criteria.amount}
-    </select>
+
+
 
 
 </mapper>

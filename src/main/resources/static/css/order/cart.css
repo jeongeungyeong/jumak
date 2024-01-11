@@ -40,6 +40,7 @@ main{
     border-spacing: 0;
     border: none;
     text-align: center;
+    width: 100%;
 }
 .cart-list > table th{
     padding: 9px 10px 10px 10px;
@@ -74,7 +75,8 @@ main{
 }
 
 .product-info__box{
-    padding-left: 10px;
+    padding-left: 100px;
+    margin: 10px;
 }
 
 .product-info__coupon img{

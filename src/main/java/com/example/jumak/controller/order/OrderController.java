@@ -25,13 +25,34 @@ public class OrderController {
     private final OrderService orderService;
     private final ProductService productService;
 
+    
+    //    장바구니
+    @GetMapping("/cart")
+    public String cartPage(@RequestParam("productNumber") Long productNumber,
+                           @RequestParam(name="productCount",required = true) Long productCount,
+                           HttpServletRequest req,
+                           Model model){
+        ProductDetailVo productCDetail = productService.findByDNumber(productNumber);
+        model.addAttribute("productDetail",productCDetail);
+        model.addAttribute("productCount",productCount);
+        //        상품 토탈 가격
+        model.addAttribute("totalPrice", productCount * productCDetail.getProductPrice());
+//        페이먼트 토탈 가격 (배송비+3000원)
+        model.addAttribute("paymentTotal", (productCount *(productCDetail.getProductPrice() - (productCDetail.getProductPrice() *(productCDetail.getProductDiscount()/100.0))))
+                +3000);
 
+
+
+        return "order/cart";
+    }
+
+//    바로구매
     @GetMapping("/next")
     public String orderMain(@RequestParam("productNumber") Long productNumber,
                             @RequestParam("productCount") Long productCount,
                             HttpServletRequest req,
                             Model model){
-// productNumber 로 next페이지에 넘겨줄 정보 서비스에서 뽑아서 넘겨주고
+// productNumber 로 next페이지에 넘겨줄 정 보 서비스에서 뽑아서 넘겨주고
 //        productCount 는 그냥 넘겨주기
         ProductDetailVo productDetail = productService.findByDNumber(productNumber);
 
@@ -73,11 +94,7 @@ public class OrderController {
         return "order/storeordersucc";
     }
 
-    //    임시 이동경로
-    @GetMapping("/cart")
-    public String cartPage(){
-        return "order/cart";
-    }
+
 
 
 }

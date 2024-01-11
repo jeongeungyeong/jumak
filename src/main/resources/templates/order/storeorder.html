@@ -92,13 +92,13 @@
                             <div class="product-price__content">
                                 <!--상품금액 넣기-->
                                 <strong><span th:with="isEven=${productDetail.productPrice}"
-                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}">28,020</span>원</strong>
+                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></span>원</strong>
                             </div>
                         </td>
                         <td class="product-sale">
                             <div class="product-sale__content">
                                 <!--할인률 넣기-->
-                                <strong><span th:text="${productDetail.productDiscount}">20</span>% 할인</strong>
+                                <strong><span th:text="${productDetail.productDiscount}"></span>% 할인</strong>
                             </div>
                         </td>
                         <td class="product-total-price">
@@ -112,7 +112,7 @@
                         <td class="delivery-charge" rowspan="">
                             <div class="delivery-charge__content">
                                 기본 - 고정배송비<br>
-                                3000원
+                                3,000원
                                 <br>
                                 (택배-선결제)
                             </div>

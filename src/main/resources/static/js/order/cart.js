@@ -43,3 +43,15 @@ function checkBox($ele, isChecked) {
         $ele.next().css('background', `url('/imgs/order/check_off_small.png') no-repeat 1px 2px`);
     }
 }
+
+//버튼 작업
+//바로구매 바로 가기
+$('.all-order-btn').on('click', function (){
+    $('#cart-form').attr('action', '/order/next');
+    if($(this).data('num')){
+        $('#cart-form').submit();
+    }else{
+        alert('상품을 선택해주세요');
+    }
+})
+

@@ -32,14 +32,6 @@ public class ProductController {
     }
 
 
-    //    스토어 상품 전체 보기
-/*    @GetMapping("/all")
-    public String productall(Model model){
-        List<ProductListVo> productlist = productService.findAll();
-        model.addAttribute("products",productlist);
-
-        return "product/storeproduct";
-    }*/
 
     //    상품 디테일
     @GetMapping("/view")
@@ -55,10 +47,6 @@ public class ProductController {
         return "product/storeproductdetail" ;
     }
 
-    @GetMapping("/test")
-    public String testing(){
-        return "product/product_info_main";
-    }
 
 
 
