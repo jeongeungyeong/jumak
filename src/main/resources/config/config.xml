@@ -40,6 +40,7 @@
         <typeAlias type="com.example.jumak.domain.vo.product.PageVo" alias="pageVo"/>
         <typeAlias type="com.example.jumak.domain.vo.product.ProductImgVo" alias="productImgVo"/>
         <typeAlias type="com.example.jumak.domain.vo.product.ProductListVo" alias="productListVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.product.ProductInfoVo" alias="productInfoVo"/>
 
         <typeAlias type="com.example.jumak.domain.vo.order.OrderFinishVo" alias="orderFinishVo"/>
         <typeAlias type="com.example.jumak.domain.vo.order.OrderVo" alias="orderVo"/>

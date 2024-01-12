@@ -29,11 +29,11 @@ public class ProductService {
         return productMapper.selectTotalByCond(cate);
     }
 
-//    상품 번호 조회
+/*//    상품 번호 조회
     public ProductDto findByNumber(Long productNumber){
         return productMapper.selectByNumber(productNumber)
                 .orElseThrow( () -> new IllegalStateException( "상품 조회 결과 없음!"));
-    }
+    }*/
 
 //    상품 카테고리로 조회
 /*    List<ProductDto> findByCategory(Long productCategoryNumber){
@@ -41,8 +41,7 @@ public class ProductService {
                 .orElseThrow( () -> new IllegalStateException("카테고리 조회 결과 없음!"));
     }*/
 
-//    전체 상품 조회
-   public List<ProductListVo> findAll(){return productMapper.arrSale();}
+
 
 //    상품 상세정보 조회
 /*  public List<ProductDetailVo> findByDetail(){

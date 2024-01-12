@@ -66,4 +66,76 @@
             </if>
         </select>
 
+<!--    우리술 전체보기-->
+    <select id="selectByOrderCond" resultType="productInfoVo" parameterType="string">
+        SELECT PRODUCT_NUMBER, PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
+        PRODUCT_PRICE, PRODUCT_RELEASE_DATE, PRODUCT_SALES,
+        PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM (
+        SELECT ROWNUM RNUM, P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
+        P.PRODUCT_PRICE, P.PRODUCT_RELEASE_DATE, P.PRODUCT_SALES,
+        I.PRODUCT_IMG_MAIN_NUMBER, I.PRODUCT_IMG_MAIN_NAME, I.PRODUCT_IMG_MAIN_PATH, I.PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P
+        LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        <trim prefix="WHERE">
+            <choose>
+                <when test="'group1'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(1,2)
+                </when>
+                <when test="'group2'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(3,4)
+                </when>
+                <when test="'group3'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(5,6)
+                </when>
+                <when test="'group4'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(7,8)
+                </when>
+                <when test="'group5'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER = 9
+                </when>
+            </choose>
+        </trim>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+        <choose>
+            <when test="'date'.equals(orderCond)">
+                ORDER BY PRODUCT_RELEASE_DATE DESC
+            </when>
+            <when test="'sale'.equals(orderCond) or orderCond == null">
+                ORDER BY PRODUCT_SALES DESC
+            </when>
+            <when test="'rowPrice'.equals(orderCond)">
+                ORDER BY PRODUCT_PRICE
+            </when>
+            <when test="'highPrice'.equals(orderCond)">
+                ORDER BY PRODUCT_PRICE DESC
+            </when>
+        </choose>
+    </select>
+
+    <select id="selectTotalByCond" resultType="long" parameterType="string">
+        SELECT COUNT(P.PRODUCT_NUMBER)
+        FROM JUMAK_PRODUCT P
+        <trim prefix="WHERE">
+            <choose>
+                <when test="'group1'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(1,2)
+                </when>
+                <when test="'group2'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(3,4)
+                </when>
+                <when test="'group3'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(5,6)
+                </when>
+                <when test="'group4'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER IN(7,8)
+                </when>
+                <when test="'group5'.equals(cate)">
+                    PRODUCT_CATEGORY_NUMBER = 9
+                </when>
+            </choose>
+        </trim>
+    </select>
+
 </mapper>

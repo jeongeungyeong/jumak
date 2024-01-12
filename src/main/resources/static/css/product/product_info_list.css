@@ -45,6 +45,52 @@ main{
     color: white;
 }
 
+/*카테고리 추가*/
+/* 카테고리 */
+.category-area {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.category-wrap {
+    display: inline-block;
+    min-height: 100px;
+    padding: 20px 50px;
+    text-align: center;
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+}
+
+.category-box {
+    display: inline-block;
+    padding: 10px 30px;
+    border: solid 1px gray;
+    border-radius: 30px;
+    color: black;
+    text-align: center;
+}
+
+.category-box:hover {
+    background-color: rgb(240, 200, 100);
+    color: white;
+}
+
+.checked {
+    color: white;
+    background-color: rgb(240, 200, 100);
+}
+
+input[type="radio"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+}
 /* 정렬 기준 */
 .sort{
     display: flex;
@@ -148,4 +194,37 @@ main{
     font-size: 14px;
     text-align: center;
     color: #acacac;
+}
+.page-a {
+    text-decoration: none;
+    color: black;
+    padding-top: 0px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.page-box {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 30px;
+}
+
+.page-num {
+    width: 35px;
+    height: 35px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    margin: 0 10px;
+    text-align: center;
+    line-height: 40px;
+    background-color: white;
+    cursor: pointer;
+}
+
+.page-box > .active,
+.page-num:hover {
+    background-color: rgb(240, 200, 100);
+    color: white;
 }

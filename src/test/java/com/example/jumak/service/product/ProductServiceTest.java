@@ -41,15 +41,7 @@ class ProductServiceTest {
         productDetailVo = new ProductDetailVo();
     }
 
-    @Test
-    void findByNumber() {
-        // given
-        doReturn(Optional.ofNullable(productDto)).when(productMapper).selectByNumber(any());
-        // when
-        ProductDto foundProduct = productService.findByNumber(30L);
-        // then
-        assertThat(foundProduct).isEqualTo(productDto);
-    }
+
 
 /*    @Test
     void findByCategory() {

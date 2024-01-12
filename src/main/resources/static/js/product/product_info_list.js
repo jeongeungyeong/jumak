@@ -1,4 +1,4 @@
-{
+    let cateValue = $('input[name=shopCategory]:checked').val();
     let $sortBox = document.querySelector('.sort__box');
     let $sortPicked = document.querySelector(".sort__picked");
     let $sortList = document.querySelector('.sort__list');
@@ -26,4 +26,23 @@
            $sortPicked.innerText = e.target.innerText;
        }
     });
-}
+
+//    카테고리 정렬
+    {
+        let $checkedBtn = $('input[name=shopCategory]:checked');
+        console.log($checkedBtn)
+
+        $('label').removeClass('checked');
+        $checkedBtn.closest('label').addClass('checked');
+    }
+
+    $('input[name=shopCategory]').on('change', function () {
+        let $label = $(this).closest('label')
+
+        $('.category-box').removeClass('checked');
+        $label.addClass('checked');
+
+        cateValue = $(this).val();
+
+        window.location.href = `/productlist?orderCond=${orderValue}&cate=${cateValue}`;
+    });

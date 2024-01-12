@@ -144,7 +144,7 @@ $("#order-btn").on("click", function () {
                 paymentinfo(rsp);
 
             } else {
-                //location.href="/order/fail?price="+parseInt(totalPrice);
+                location.href="/order/fail?price="+parseInt(totalPrice);
             }
         }
     );
@@ -189,6 +189,7 @@ $("#order-btn").on("click", function () {
         },
         error : function (xhr, status, err) {
             console.log(err);
+            location.href="/order/fail?price="+parseInt(totalPrice);
 
         }
 
