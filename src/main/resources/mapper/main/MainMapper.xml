@@ -66,17 +66,30 @@
             </if>
         </select>
 
+<!--    우리술 신상보기-->
+    <select id="selectByOrder" resultType="productInfoVo" parameterType="string">
+
+
+
+    </select>
+
 <!--    우리술 전체보기-->
+
     <select id="selectByOrderCond" resultType="productInfoVo" parameterType="string">
-        SELECT PRODUCT_NUMBER, PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_SUBTITLE,
-        PRODUCT_PRICE, PRODUCT_RELEASE_DATE, PRODUCT_SALES,
-        PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
-        FROM (
-        SELECT ROWNUM RNUM, P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
-        P.PRODUCT_PRICE, P.PRODUCT_RELEASE_DATE, P.PRODUCT_SALES,
-        I.PRODUCT_IMG_MAIN_NUMBER, I.PRODUCT_IMG_MAIN_NAME, I.PRODUCT_IMG_MAIN_PATH, I.PRODUCT_IMG_MAIN_UUID
-        FROM JUMAK_PRODUCT P
-        LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        SELECT PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SUBTITLE,
+               PRODUCT_ALCOHOLICITY, PRODUCT_NET_WEIGHT, PRODUCT_RELEASE_DATE, PRODUCT_SALES, PRODUCT_IMG_MAIN_NUMBER,
+               PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM(
+        SELECT ROWNUM RNUM, PRODUCT_NUMBER, PRODUCT_CATEGORY_NUMBER, PRODUCT_NAME, PRODUCT_PRICE, PRODUCT_SUBTITLE,
+               PRODUCT_ALCOHOLICITY,  PRODUCT_NET_WEIGHT, PRODUCT_RELEASE_DATE, PRODUCT_SALES,
+               PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM(
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_PRICE, P.PRODUCT_SUBTITLE,
+        P.PRODUCT_ALCOHOLICITY, P.PRODUCT_NET_WEIGHT, P.PRODUCT_RELEASE_DATE,
+        P.PRODUCT_SALES,
+        I.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG_MAIN I
+        ON P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
         <trim prefix="WHERE">
             <choose>
                 <when test="'group1'.equals(cate)">
@@ -96,8 +109,7 @@
                 </when>
             </choose>
         </trim>
-        )
-        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+
         <choose>
             <when test="'date'.equals(orderCond)">
                 ORDER BY PRODUCT_RELEASE_DATE DESC
@@ -112,8 +124,19 @@
                 ORDER BY PRODUCT_PRICE DESC
             </when>
         </choose>
+        )
+        <![CDATA[
+            WHERE ROWNUM <= #{criteria.page} * #{criteria.amount}
+        ]]>
+        )
+        WHERE RNUM > (#{criteria.page} - 1) * #{criteria.amount}
+
+
+
+
     </select>
 
+    <!--상품 전체 수량-->
     <select id="selectTotalByCond" resultType="long" parameterType="string">
         SELECT COUNT(P.PRODUCT_NUMBER)
         FROM JUMAK_PRODUCT P

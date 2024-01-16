@@ -120,7 +120,7 @@ $("#order-btn").on("click", function () {
         let address=$('#address').text();
         let addressDetail = $('#addressDetail').text();
         let zipcode=$('#zipcode').text();
-
+        let totalPrice = $('.price_total').val();
 
 
     IMP.request_pay(
@@ -144,7 +144,7 @@ $("#order-btn").on("click", function () {
                 paymentinfo(rsp);
 
             } else {
-                location.href="/order/fail?price="+parseInt(totalPrice);
+                window.location.href="/order/fail?price="+parseInt(totalPrice);
             }
         }
     );
@@ -189,7 +189,7 @@ $("#order-btn").on("click", function () {
         },
         error : function (xhr, status, err) {
             console.log(err);
-            location.href="/order/fail?price="+parseInt(totalPrice);
+            window.location.href="/order/fail?price="+parseInt(totalPrice);
 
         }
 

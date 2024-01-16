@@ -1,4 +1,6 @@
     let cateValue = $('input[name=shopCategory]:checked').val();
+    let sortRadio = $('.sort_radio');
+
     let $sortBox = document.querySelector('.sort__box');
     let $sortPicked = document.querySelector(".sort__picked");
     let $sortList = document.querySelector('.sort__list');
@@ -19,13 +21,18 @@
     // 정렬 기준 선택시 이벤트
     $sortList.addEventListener('click', (e)=>{
        if(e.target.closest('li')){
-           e.preventDefault();
+           // e.preventDefault();
 
            document.querySelector('.sort__list > li.active').classList.remove('active')
            e.target.closest('li').classList.add('active');
-           $sortPicked.innerText = e.target.innerText;
+
+           if(e.target.tagName == 'LABEL'){
+            $sortPicked.innerText = e.target.innerText;
+           }
        }
     });
+
+
 
 //    카테고리 정렬
     {
@@ -44,5 +51,35 @@
 
         cateValue = $(this).val();
 
-        window.location.href = `/productlist?orderCond=${orderValue}&cate=${cateValue}`;
+        window.location.href = `/productlist?cate=${cateValue}`;
     });
+
+    sortRadio.on('change',function (){
+        if(!$(this).is(':checked')){
+            return;
+        }
+
+        let orderCond = $(this).val();
+        console.log(orderCond);
+
+        let cate = $('input[name=shopCategory]:checked').val();
+        console.log(cate)
+
+        $.ajax({
+            url: '/productlist',
+            type: 'get',
+            data: {
+                orderCond: orderCond,
+                cate: cate
+            },
+            success: function (data){
+                console.log(data);
+            },
+            error : function (xhr, status, err) {
+                console.log(err);
+            }
+        })
+
+
+
+    })

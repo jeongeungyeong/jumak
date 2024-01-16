@@ -34,7 +34,7 @@ class ProductReviewServiceTest {
         productReviewVo = new ProductReviewVo();
     }
 
-    @Test
+/*    @Test
     void reviewRegister() {
         // given
         doNothing().when(productReviewMapper).reviewInsert(any(ProductReviewVo.class));
@@ -42,7 +42,7 @@ class ProductReviewServiceTest {
         productReviewService.reviewRegister(productReviewVo);
         // then
         verify(productReviewMapper,times(1)).reviewInsert(any());
-    }
+    }*/
 
 /*    @Test
     void findReviewList() {

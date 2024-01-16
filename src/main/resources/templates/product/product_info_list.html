@@ -40,16 +40,11 @@
 <form>
   <div class="category-area">
     <div class="category-wrap">
-      <label for="category-best" class="category-box">
-        <span>베스트 상품🏆</span>
-        <input
-                type="radio"
-                id="category-best"
-                name="shopCategory"
-                value="best"
-                th:checked="${'best' == cate || cate == null}"
-        />
+      <a th:href="@{/product}">
+      <label class="product-new-box">
+        <span>NEW 우리술</span>
       </label>
+      </a>
       <label for="category-all" class="category-box">
         <span>전체상품</span>
         <input
@@ -87,19 +82,19 @@
 <section class="content-wrap">
   <section class="sort">
     <div class="sort__box">
-      <p class="sort__picked">평점높은순</p>
+      <p class="sort__picked">판매인기순</p>
       <ul class="sort__list">
         <li class="active">
-          <input type="radio" name="sort" id="sort1" value="wish">
-          <label for="sort1">평점높은순</label>
+          <input type="radio" name="sort" class="sort_radio" id="sort1" value="sale" th:checked="${'sale' == orderCond}">
+          <label for="sort1">판매인기순</label>
         </li>
-        <li>
-          <input type="radio" name="sort" id="sort2" value="wish">
+ <!--       <li>
+          <input type="radio" name="sort" id="sort2" value="manyReviews">
           <label for="sort2">리뷰 많은순</label>
-        </li>
+        </li>-->
         <li>
-          <input type="radio" name="sort" id="sort3" value="wish">
-          <label for="sort3">등록일순</label>
+          <input type="radio" name="sort" class="sort_radio" id="sort2" value="date" th:checked="${'date' == orderCond}">
+          <label for="sort2">등록일순</label>
         </li>
       </ul>
     </div>
@@ -115,8 +110,8 @@
               <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="item__info">
-              <h6 th:text="${product.productName}">지란지교 탁주</h6>
-              <p th:text="${product.productSubtitle}">순창 누룩으로 빚어낸 고급 탁주</p>
+              <h6 th:text="${product.productName}"></h6>
+              <p th:text="${product.productSubtitle}"></p>
             </div>
           </a>
         </article>
