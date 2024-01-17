@@ -1,17 +1,17 @@
-.product-content_box{
-    background-color: #00b5a6;
+.product_content-wrap{
+    background-color: rgb(240,200,100);
     padding: 40px 0;
     box-sizing: border-box;
     color: #fff;
 }
 
-.product_content-wrap{
+.product-main_box{
     width: 1200px;
     margin : 0 auto;
     padding: 100px 0px;
 }
 
-.product-content_box{
+.product-main_box{
     display: flex;
     justify-content: space-between;
 }
