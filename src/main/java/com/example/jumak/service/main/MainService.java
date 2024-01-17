@@ -26,13 +26,4 @@ public class MainService {
         return mainMapper.countSearch(keyword);
     }
 
-//    우리술 상품리스트
-    public List<ProductInfoVo> findByCond(String orderCond, String cate, Criteria criteria){
-        return mainMapper.selectByOrderCond(orderCond,cate,criteria);
-    }
-
-//    우리술 상품카운트
-    public Long findTotalByCond(String cate){
-        return mainMapper.selectTotalByCond(cate);
-    }
 }

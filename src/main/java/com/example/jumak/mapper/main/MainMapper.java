@@ -28,11 +28,5 @@ public interface MainMapper {
                                       @Param("productCategoryNumber1") Long productCategoryNumber1,
                                       @Param("productCategoryNumber2") Long productCategoryNumber2);
 
-// 우리술 전체보기
-    List<ProductInfoVo> selectByOrderCond(@Param("orderCond") String orderCond,
-                                          @Param("cate") String cate,
-                                          @Param("criteria")Criteria criteria);
-
-    Long selectTotalByCond(String cate);
 
 }

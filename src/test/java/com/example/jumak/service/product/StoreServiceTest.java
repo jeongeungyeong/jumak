@@ -2,9 +2,7 @@ package com.example.jumak.service.product;
 
 import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.vo.product.ProductDetailVo;
-import com.example.jumak.domain.vo.product.ProductListVo;
-import com.example.jumak.mapper.product.ProductMapper;
-import org.assertj.core.api.Assertions;
+import com.example.jumak.mapper.product.StoreMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,25 +10,22 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.ui.Model;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
 
 @ExtendWith(MockitoExtension.class)
-class ProductServiceTest {
+class StoreServiceTest {
     @Mock
-    ProductMapper productMapper;
+    StoreMapper storeMapper;
     @InjectMocks
-    ProductService productService;
+    StoreService storeService;
 
     ProductDto productDto;
     ProductDetailVo productDetailVo;
@@ -66,9 +61,9 @@ class ProductServiceTest {
     @Test
     void findByDNumber() {
         //given
-        doReturn(Optional.ofNullable(productDetailVo)).when(productMapper).selectByDNumber(any());
+        doReturn(Optional.ofNullable(productDetailVo)).when(storeMapper).selectByDNumber(any());
         //when
-        ProductDetailVo foundDNumber = productService.findByDNumber(26L);
+        ProductDetailVo foundDNumber = storeService.findByDNumber(26L);
         //then
         assertThat(foundDNumber).isEqualTo(productDetailVo);
     }
@@ -76,9 +71,9 @@ class ProductServiceTest {
     @Test
     void findByDImg() {
         // given
-        Mockito.doReturn(List.of(productDetailVo)).when(productMapper).selectByDImg(26L);
+        Mockito.doReturn(List.of(productDetailVo)).when(storeMapper).selectByDImg(26L);
         // when
-        List<ProductDetailVo> byDImgList = productService.findByDImg(26L);
+        List<ProductDetailVo> byDImgList = storeService.findByDImg(26L);
         // then
         assertThat(byDImgList).contains(productDetailVo);
     }

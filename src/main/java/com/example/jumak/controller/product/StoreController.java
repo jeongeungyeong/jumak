@@ -1,8 +1,7 @@
 package com.example.jumak.controller.product;
 
-import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.vo.product.*;
-import com.example.jumak.service.product.ProductService;
+import com.example.jumak.service.product.StoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -17,16 +16,16 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/store")
 public class StoreController {
-    private final ProductService productService;
+    private final StoreService storeService;
 
     @GetMapping("/list")
     public String productList(String orderCond, String cate, Criteria criteria, Model model){
         criteria.setAmount(10);
-        List<ProductListVo> productList = productService.findByCond(orderCond, cate, criteria);
+        List<ProductListVo> productList = storeService.findByCond(orderCond, cate, criteria);
         model.addAttribute("products", productList);
         model.addAttribute("orderCond", orderCond);
         model.addAttribute("cate", cate);
-        model.addAttribute("pageInfo",new PageVo(productService.findTotalByCond(cate).intValue(), criteria));
+        model.addAttribute("pageInfo",new PageVo(storeService.findTotalByCond(cate).intValue(), criteria));
 
         return "product/storeproduct";
     }
@@ -37,10 +36,10 @@ public class StoreController {
     @GetMapping("/view")
     public String detail(@RequestParam("productNumber") Long productNumber, Model model){
 
-        ProductDetailVo prodcutDetails = productService.findByDNumber(productNumber);
+        ProductDetailVo prodcutDetails = storeService.findByDNumber(productNumber);
         model.addAttribute("detailproduct",prodcutDetails);
 
-        List<ProductDetailVo> byDImgList = productService.findByDImg(productNumber);
+        List<ProductDetailVo> byDImgList = storeService.findByDImg(productNumber);
         model.addAttribute("dimgs",byDImgList);
 
 
