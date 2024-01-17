@@ -66,7 +66,7 @@
         console.log(cate)
 
         $.ajax({
-            url: '/productlist',
+            url: '/products/listview',
             type: 'get',
             data: {
                 orderCond: orderCond,

@@ -44,7 +44,7 @@
       <h5>막걸리/탁주</h5>
       <div class="list-box__grid">
         <!-- 반복요소 (4개)-->
-        <article class="item">
+        <article class="item" th:each="groupone: ${groupone}">
           <a href=""><!--링크 수정-->
             <div class="item__img-box">
               <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">

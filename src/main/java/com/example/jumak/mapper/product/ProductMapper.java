@@ -9,6 +9,11 @@ import java.util.List;
 
 @Mapper
 public interface ProductMapper {
+//    우리술 메인 페이지
+    List<ProductInfoVo> selectGroupOne();
+
+
+
     // 우리술 전체보기
     List<ProductInfoVo> selectByOrderCond(@Param("orderCond") String orderCond,
                                           @Param("cate") String cate,

@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.jumak.mapper.product.StoreMapper">
+<mapper namespace="com.example.jumak.mapper.product.ProductMapper">
+
+<!--우리술 메인화면-->
+<select id="selectGroupOne" resultType="productInfoVo" >
+    SELECT ROWNUM RNUM,P.PRODUCT_NUMBER,P.PRODUCT_CATEGORY_NUMBER,P.PRODUCT_NAME,
+    P.PRODUCT_SUBTITLE,P.PRODUCT_DESCRIPTION,P.PRODUCT_PRICE,P.PRODUCT_SALES,
+    P.PRODUCT_RELEASE_DATE,PRODUCT_IMG_NUMBER,PRODUCT_IMG_NAME,PRODUCT_IMG_PATH,
+    PRODUCT_IMG_UUID
+    FROM (
+    SELECT P.PRODUCT_NUMBER,P.PRODUCT_CATEGORY_NUMBER,P.PRODUCT_NAME,P.PRODUCT_SUBTITLE,
+    P.PRODUCT_DESCRIPTION,P.PRODUCT_PRICE,P.PRODUCT_SALES,P.PRODUCT_RELEASE_DATE,
+    JPI.PRODUCT_IMG_NUMBER,JPI.PRODUCT_IMG_NAME,JPI.PRODUCT_IMG_PATH,
+    JPI.PRODUCT_IMG_UUID
+    FROM JUMAK_PRODUCT P
+    LEFT JOIN JUMAK_PRODUCT_IMG JPI ON P.PRODUCT_NUMBER = JPI.PRODUCT_NUMBER
+    WHERE P.PRODUCT_CATEGORY_NUMBER IN (1, 2)
+    ORDER BY P.PRODUCT_RELEASE_DATE DESC
+    ) P
+    <![CDATA[
+    WHERE ROWNUM <= 5
+    ]]>
+
+</select>
 
 
-    <!--    우리술 신상보기-->
-    <select id="selectByOrder" resultType="productInfoVo" parameterType="string">
-
-
-
-    </select>
 
     <!--    우리술 전체보기-->
 

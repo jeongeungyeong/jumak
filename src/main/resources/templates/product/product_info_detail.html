@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주모's store</title>
+  <link rel="stylesheet" th:href="@{/css/product/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/storeproductdetail.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<main>
+  <div class="main-content">
+<!--    상품 메인 설명-->
+    <div class="product-content_box">
+      <section class="product-img">
+        <div class="product-img__content-box">
+         <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/10/44/100000919/100000919_detail_074.jpg">
+        </div>
+
+      </section>
+
+      <section class="product-info">
+        <form>
+
+          <div class="product-info__topHead-box">
+            <div class="product-info__topHead__title">
+              <h2>와인/과실주</h2>
+              <br>
+              <h3>시나브로 피에스 화이트스파클링와인 5도 750ml</h3>
+              <h4>달콤상큼 매력적인 화이트와인</h4>
+            </div>
+          </div>
+          <!--                    //product-info__topHead-box-->
+          <div class="product-info__price-box">
+
+              <div class="sale-price disib">
+                <strong
+                ><strong><em></em>주원료</strong></strong
+                >
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- //product-info__price-box-->
+
+          <div class="product-info__table-box">
+
+            <table
+                    class="tbl"
+                    style="
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        table-layout: fixed;
+                        width: 100%;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #dedede;
+                      "
+            >
+              <colgroup>
+                <col width="" />
+                <col width="" />
+                <col width="" />
+                <col width="" />
+              </colgroup>
+              <thead>
+              <tr>
+                <th scope="col">용량(ml)</th>
+                <th scope="col">도수(%)</th>
+                <th scope="col">양조장</th>
+                <th scope="col">생산지역</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+
+                >
+                  750
+                </td>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+
+                >
+                  5
+                </td>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+
+                >
+                  시나브로와이너리
+                </td>
+                <td
+                        style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+
+                >
+                  충청북도 영동군
+                </td>
+              </tr>
+              </tbody>
+            </table>
+
+
+
+          </div>
+          <!--    //product-info__table-box-->
+
+        </form>
+
+
+      </section>
+    </div>
+
+  </div>
+
+</main>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+<script th:src="@{/js/product/storeproductdetail.js}"></script>
+</body>
+</html>

@@ -15,6 +15,11 @@ import java.util.List;
 public class ProductService {
     private final ProductMapper productMapper;
 
+//    우리술 메인
+    public List<ProductInfoVo> findGroupOne(){
+        return productMapper.selectGroupOne();
+    }
+
     //    우리술 상품리스트
     public List<ProductInfoVo> findByCond(String orderCond, String cate, Criteria criteria){
         return productMapper.selectByOrderCond(orderCond,cate,criteria);
