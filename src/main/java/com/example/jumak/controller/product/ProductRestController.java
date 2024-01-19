@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/products")
 public class ProductRestController {
-    private final ProductService productService;
+/*    private final ProductService productService;
 
 //    카테고리, 정렬 넘겨주기
     @GetMapping("/listview")
@@ -26,6 +26,6 @@ public class ProductRestController {
         List<ProductInfoVo> productlist = productService.findByCond(orderCond, cate, criteria);
 
         return (ProductInfoVo) productlist;
-    }
+    }*/
 
 }

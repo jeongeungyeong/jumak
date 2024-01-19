@@ -1,6 +1,7 @@
 package com.example.jumak.service.product;
 
 import com.example.jumak.domain.vo.product.Criteria;
+import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.domain.vo.product.ProductInfoVo;
 import com.example.jumak.mapper.product.ProductMapper;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +18,8 @@ public class ProductService {
     private final ProductMapper productMapper;
 
 //    우리술 메인
-    public List<ProductInfoVo> findGroupOne(){
-        return productMapper.selectGroupOne();
+    public List<ProductInfoVo> findGroupOne(Long categoryNumber){
+        return productMapper.selectGroupOne(categoryNumber);
     }
 
 /*    public List<ProductInfoVo> findGroupCate(Long productCategoryNumber){
@@ -34,4 +35,17 @@ public class ProductService {
     public Long findTotalByCond(String cate){
         return productMapper.selectTotalByCond(cate);
     }
+
+//    우리술 상품 번호 상세 조회
+public ProductInfoVo findByDNumber(Long productNumber){
+    return productMapper.selectByDNumber(productNumber)
+            .orElseThrow( ()-> new IllegalStateException("상품 조회 결과 없음!"));
+}
+
+    //    우리술 상품 디테일 이미지 조회
+    public List<ProductInfoVo> findByDImg(Long productNumber){
+        return Optional.ofNullable(productMapper.selectByDImg(productNumber))
+                .orElseThrow( ()-> new IllegalStateException("상품 이미지 조회 결과 없음!"));
+    }
+
 }

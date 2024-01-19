@@ -15,43 +15,31 @@
     JPI.PRODUCT_IMG_UUID
     FROM JUMAK_PRODUCT P
     LEFT JOIN JUMAK_PRODUCT_IMG JPI ON P.PRODUCT_NUMBER = JPI.PRODUCT_NUMBER
-    WHERE P.PRODUCT_CATEGORY_NUMBER IN (1, 2)
+    <if test="categoryNumber == 1">
+        WHERE P.PRODUCT_CATEGORY_NUMBER IN (1, 2)
+    </if>
+    <if test="categoryNumber == 3">
+        WHERE P.PRODUCT_CATEGORY_NUMBER IN (3, 4)
+    </if>
+    <if test="categoryNumber == 5">
+        WHERE P.PRODUCT_CATEGORY_NUMBER IN (5, 6)
+    </if>
+    <if test="categoryNumber == 7">
+        WHERE P.PRODUCT_CATEGORY_NUMBER IN (7, 8)
+    </if>
+    <if test="categoryNumber == 9">
+        WHERE P.PRODUCT_CATEGORY_NUMBER == 9
+    </if>
+
     ORDER BY P.PRODUCT_RELEASE_DATE DESC
     ) P
     <![CDATA[
-    WHERE ROWNUM <= 5
+WHERE ROWNUM <= 5
     ]]>
+
+
 
 </select>
-
-<!--    <select id="selectGroupCate" resultType="productInfoVo">
-        SELECT ROWNUM RNUM, P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME,
-        P.PRODUCT_SUBTITLE, P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_SALES,
-        P.PRODUCT_RELEASE_DATE, PRODUCT_IMG_NUMBER, PRODUCT_IMG_NAME, PRODUCT_IMG_PATH,
-        PRODUCT_IMG_UUID
-        FROM (
-        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
-        P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_SALES, P.PRODUCT_RELEASE_DATE,
-        JPI.PRODUCT_IMG_NUMBER, JPI.PRODUCT_IMG_NAME, JPI.PRODUCT_IMG_PATH,
-        JPI.PRODUCT_IMG_UUID
-        FROM JUMAK_PRODUCT P
-        LEFT JOIN JUMAK_PRODUCT_IMG JPI ON P.PRODUCT_NUMBER = JPI.PRODUCT_NUMBER
-        &lt;!&ndash; 동적 조건 추가 &ndash;&gt;
-        <where>
-            <if test="productCategoryNumbers != null and productCategoryNumbers.size() > 0">
-                AND P.PRODUCT_CATEGORY_NUMBER IN
-                <foreach collection="productCategoryNumbers" item="categoryNumber" open="(" separator="," close=")">
-                    #{productCategoryNumber}
-                </foreach>
-            </if>
-        </where>
-        ORDER BY P.PRODUCT_RELEASE_DATE DESC
-        ) P
-        <![CDATA[
-    WHERE ROWNUM <= 5
-    ]]>
-    </select>-->
-
 
 
 
@@ -141,6 +129,28 @@
                 </when>
             </choose>
         </trim>
+    </select>
+
+<!--    우리술 상품 디테일-->
+    <select id="selectByDNumber" resultType="productInfoVo">
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_RAW_MATERIAL, P.PRODUCT_NET_WEIGHT,
+               P.PRODUCT_ALCOHOLICITY,P.PRODUCT_AREA, P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_DISCOUNT, P.PRODUCT_DISTILLERY,
+               P.PRODUCT_SUBTITLE,
+               PC.PRODUCT_CATEGORY_NAME,
+               IM.PRODUCT_IMG_MAIN_NUMBER, PRODUCT_IMG_MAIN_NAME, PRODUCT_IMG_MAIN_PATH, PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG_MAIN IM on P.PRODUCT_NUMBER = IM.PRODUCT_NUMBER
+                             INNER JOIN JUMAK_PRODUCT_CATEGORY PC ON P.PRODUCT_CATEGORY_NUMBER = PC.PRODUCT_CATEGORY_NUMBER
+        WHERE P.PRODUCT_NUMBER=#{productNumber}
+    </select>
+
+<!--    우리술 상품 디테일 이미지-->
+    <select id="selectByDImg" resultType="productInfoVo">
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_RAW_MATERIAL, P.PRODUCT_NET_WEIGHT,
+               P.PRODUCT_ALCOHOLICITY,P.PRODUCT_AREA, P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_DISCOUNT, P.PRODUCT_DISTILLERY,
+               I.PRODUCT_IMG_NUMBER, PRODUCT_IMG_NAME, PRODUCT_IMG_PATH, PRODUCT_IMG_UUID
+        FROM JUMAK_PRODUCT P LEFT JOIN JUMAK_PRODUCT_IMG I on P.PRODUCT_NUMBER = I.PRODUCT_NUMBER
+        WHERE P.PRODUCT_NUMBER=#{productNumber}
+
     </select>
 
 </mapper>
