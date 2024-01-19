@@ -11,6 +11,7 @@ import java.util.List;
 public interface ProductMapper {
 //    우리술 메인 페이지
     List<ProductInfoVo> selectGroupOne();
+//public List<ProductInfoVo> selectGroupCate(@Param("productCategoryNumbers") Long productCategoryNumbers);
 
 
 

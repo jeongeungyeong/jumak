@@ -21,7 +21,17 @@ public class ProductController {
     public String productInfo(Model model){
         List<ProductInfoVo> groupOneList = productService.findGroupOne();
         model.addAttribute("groupone",groupOneList);
-        return "product/product_info_main";}
+        return "product/product_info_main";
+    }
+
+/*    @GetMapping("/list")
+    public String productInfo(Model model,Long productCategoryNumber){
+        List<ProductInfoVo> productCateList = productService.findGroupCate(productCategoryNumber);
+        model.addAttribute("cateproduct",productCateList);
+
+        return "product/product_info_main";
+
+    }*/
 
     // 우리술 상품보기
     @GetMapping("/view")

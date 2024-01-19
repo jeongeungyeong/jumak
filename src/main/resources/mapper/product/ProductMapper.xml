@@ -24,6 +24,35 @@
 
 </select>
 
+<!--    <select id="selectGroupCate" resultType="productInfoVo">
+        SELECT ROWNUM RNUM, P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME,
+        P.PRODUCT_SUBTITLE, P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_SALES,
+        P.PRODUCT_RELEASE_DATE, PRODUCT_IMG_NUMBER, PRODUCT_IMG_NAME, PRODUCT_IMG_PATH,
+        PRODUCT_IMG_UUID
+        FROM (
+        SELECT P.PRODUCT_NUMBER, P.PRODUCT_CATEGORY_NUMBER, P.PRODUCT_NAME, P.PRODUCT_SUBTITLE,
+        P.PRODUCT_DESCRIPTION, P.PRODUCT_PRICE, P.PRODUCT_SALES, P.PRODUCT_RELEASE_DATE,
+        JPI.PRODUCT_IMG_NUMBER, JPI.PRODUCT_IMG_NAME, JPI.PRODUCT_IMG_PATH,
+        JPI.PRODUCT_IMG_UUID
+        FROM JUMAK_PRODUCT P
+        LEFT JOIN JUMAK_PRODUCT_IMG JPI ON P.PRODUCT_NUMBER = JPI.PRODUCT_NUMBER
+        &lt;!&ndash; 동적 조건 추가 &ndash;&gt;
+        <where>
+            <if test="productCategoryNumbers != null and productCategoryNumbers.size() > 0">
+                AND P.PRODUCT_CATEGORY_NUMBER IN
+                <foreach collection="productCategoryNumbers" item="categoryNumber" open="(" separator="," close=")">
+                    #{productCategoryNumber}
+                </foreach>
+            </if>
+        </where>
+        ORDER BY P.PRODUCT_RELEASE_DATE DESC
+        ) P
+        <![CDATA[
+    WHERE ROWNUM <= 5
+    ]]>
+    </select>-->
+
+
 
 
     <!--    우리술 전체보기-->
