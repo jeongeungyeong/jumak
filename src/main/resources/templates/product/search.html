@@ -47,7 +47,8 @@
           <!-- 반복요소-->
           <article th:each="searchList : ${searchList}" class="list-item">
             <div class="img-box">
-              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+              <img th:src="'/upload/' + ${searchList.productImgMainPath} + '/'
+            + ${searchList.productImgMainUuid} + '_' + ${searchList.productImgMainName}" alt="">
             </div>
             <div class="text-box">
               <p th:text="${searchList.productName}" th:data="${searchList.productNumber}" class="name">춘희 40</p>
@@ -72,7 +73,8 @@
               <span>SALE</span>
             </div>
             <div class="img-box">
-              <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/goods/23/11/48/500000837/500000837_detail_061.jpg" alt="">
+              <img th:src="'/upload/' + ${searchList.productImgMainPath} + '/'
+            + ${searchList.productImgMainUuid} + '_' + ${searchList.productImgMainName}" alt="">
 <!--              -->
             </div>
             <div class="text-box">
