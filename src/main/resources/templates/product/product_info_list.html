@@ -34,7 +34,7 @@
                     id="category-all"
                     name="shopCategory"
                     value="all"
-                    th:checked="${'all' == cate}"
+                    th:checked="${'all' == cate || cate == null}"
             />
           </label>
           <label for="category-a" class="category-box">

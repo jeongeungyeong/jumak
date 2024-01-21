@@ -120,7 +120,7 @@ $("#order-btn").on("click", function () {
         let address=$('#address').text();
         let addressDetail = $('#addressDetail').text();
         let zipcode=$('#zipcode').text();
-        let totalPrice = $('.price_total').val();
+        let totalPrice = parseInt($('.price_total').val());
 
 
     IMP.request_pay(
@@ -129,7 +129,7 @@ $("#order-btn").on("click", function () {
             pay_method: "card",
             merchant_uid: "jumak_" + new Date().getTime(), // 주문번호
             name: productName,
-            amount: 100, // 숫자 타입
+            amount: totalPrice, // 숫자 타입
             buyer_email: buyerEmail,
             buyer_name: buyerName,
             buyer_tel: buyerCellPhone,

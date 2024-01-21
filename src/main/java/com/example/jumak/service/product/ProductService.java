@@ -18,14 +18,18 @@ public class ProductService {
     private final ProductMapper productMapper;
 
 //    우리술 메인
-    public List<ProductInfoVo> findGroupOne(Long categoryNumber){
-        return productMapper.selectGroupOne(categoryNumber);
+/*    public List<ProductInfoVo> findGroup(Long categoryNumber){
+        return productMapper.selectGroup(categoryNumber);
+    }*/
+
+// 우리술 메인 test
+
+    public List<ProductInfoVo> findByCate(){
+        return productMapper.selectByCate();
     }
 
-/*    public List<ProductInfoVo> findGroupCate(Long productCategoryNumber){
-        return Optional.ofNullable(productMapper.selectGroupCate(productCategoryNumber))
-                .orElseThrow(()->new IllegalStateException("카테고리 상품 조회결과 없음!"));
-    }*/
+
+
     //    우리술 상품리스트
     public List<ProductInfoVo> findByCond(String orderCond, String cate, Criteria criteria){
         return productMapper.selectByOrderCond(orderCond,cate,criteria);

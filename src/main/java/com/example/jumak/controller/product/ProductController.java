@@ -21,10 +21,21 @@ public class ProductController {
     private final ProductService productService;
 
     //    우리술 전체보기
-    @GetMapping("/list")
+/*    @GetMapping("/list")
     public String productInfo(Model model,Long categoryNumber){
-        List<ProductInfoVo> groupOneList = productService.findGroupOne(categoryNumber);
-        model.addAttribute("groupone",groupOneList);
+        List<ProductInfoVo> groupList = productService.findGroup(categoryNumber);
+        model.addAttribute("products",groupList);
+        return "product/product_info_main";
+    }*/
+
+//    우리술 전체보기
+    @GetMapping("/list")
+    public String productMain(Model model){
+
+        List<ProductInfoVo> cateList = productService.findByCate();
+        model.addAttribute("products",cateList);
+
+
         return "product/product_info_main";
     }
 
