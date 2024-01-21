@@ -31,6 +31,19 @@
 
     $('.search-btn').on('click', function (){
     //    비동기 통신 사용하기 !!!!!!!!!!!!!!!!!!
+
+        $.ajax({
+            url: '/find/tag',
+            type: 'get',
+            data: {arr: $tag,
+                    },
+            success: function (resp) {
+                console.log(resp);
+                },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
     });
 }
 
