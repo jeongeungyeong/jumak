@@ -87,6 +87,7 @@ public class OrderController {
 //        productCount 는 그냥 넘겨주기
         ProductDetailVo productDetail = storeService.findByDNumber(productNumber);
 
+
         model.addAttribute("productDetail",productDetail);
         model.addAttribute("productCount",productCount);
         // productCount는 ${productCount}로 html에 사용

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" th:href="@{/css/order/order.css}">
+    <link rel="stylesheet" th:href="@{/css/order/cart_order.css}">
     <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
     <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
     <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
@@ -84,7 +84,7 @@
                         </td>
                         <td class="product-count">
                             <div class="product-count__content">
-                                <strong><span class="product-count" th:text="${productCount}"></span>개</strong>
+                                <strong><span th:text="${productCount}"></span>개</strong>
 
                             </div>
                         </td>
@@ -532,7 +532,6 @@
             <!--          하단 버튼-->
 
             <div class="btn-box">
-                <input type="hidden" class="product_number" name="productNumber" th:value="${productDetail.productNumber}">
                 <button type="button" class="order-btn" id="order-btn">결제하기</button>
             </div>
 
@@ -552,6 +551,6 @@
 <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script th:src="@{/js/fragments/header.js}"></script>
-<script th:src="@{/js/order/order.js}"></script>
+<script th:src="@{/js/order/cart_order.js}"></script>
 </body>
 </html>

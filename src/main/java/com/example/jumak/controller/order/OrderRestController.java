@@ -1,5 +1,6 @@
 package com.example.jumak.controller.order;
 
+import com.example.jumak.domain.vo.order.OrderDetailPayVo;
 import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.domain.vo.order.PaymentVo;
 import com.example.jumak.service.order.OrderService;
@@ -22,11 +23,8 @@ public class OrderRestController {
     public void paymentOrder(@RequestBody OrderVo orderVo,
                              @SessionAttribute("userNumber") Long userNumber){
         orderVo.setUserNumber(userNumber);
-
-        orderService.orderRegister(orderVo);
-        orderService.paymentRegister(orderVo);
-
-
+        System.out.println(orderVo);
+        orderService.paymentProcess(orderVo);
 
 
     }

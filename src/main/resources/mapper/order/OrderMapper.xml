@@ -41,7 +41,7 @@
     </insert>
 
 <!--    주문 정보 디테일-->
-    <insert id="orderDetailInsert">
+    <insert id="orderDetailInsert" parameterType="orderDetailPayVo">
         insert into JUMAK_ORDER_DETAIL (ORDER_DETAIL_NUMBER, ORDER_DETAIL_COUNT, PRODUCT_NUMBER, ORDER_NUMBER)
         values (SEQ_ORDER_DETAIL.nextval,#{orderDetailCount},#{productNumber},#{orderNumber})
     </insert>

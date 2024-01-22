@@ -161,8 +161,6 @@ $("#order-btn").on("click", function () {
         let orderAddressDetail = $('#addressDetail').val();
         let orderZipcode=$('#zipcode').val();
         let totalPrice = $('.price_total').val();
-        let orderDetailCount = $('.product-count').text();
-        let productNumber=$('.product_number').val();
 
         let postData = {
             paymentTotalAmount: parseInt(priceAmount),
@@ -176,18 +174,15 @@ $("#order-btn").on("click", function () {
             orderCellphoneNumber:orderCellphoneNumber ,
             orderPhoneNumber:orderPhoneNumber,
             orderStatusNumber: 2,
-            orderDetailCount: parseInt(orderDetailCount),
-            productNumber: productNumber
         };
-
 
 
         console.log(postData);
         $.ajax({
         url:'/orders/payment',
         type: 'post',
-        data:  JSON.stringify(postData),
-            contentType:'application/json; charset=utf-8',
+        data: JSON.stringify(postData),
+        contentType:'application/json; charset=utf-8',
         async : false,
         success:function (resp){
             console.log('성공!');
