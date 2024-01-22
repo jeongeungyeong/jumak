@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @NoArgsConstructor
 @Data
-@Component
+
 public class QaDto {
     private Long qaNumber;
     private String qaTitle;

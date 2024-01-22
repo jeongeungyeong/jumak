@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component
+
 @NoArgsConstructor
 public class ProductTagDto {
     private Long productKeywordNumber;

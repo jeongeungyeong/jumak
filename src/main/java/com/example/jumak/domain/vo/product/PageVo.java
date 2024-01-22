@@ -3,7 +3,7 @@ package com.example.jumak.domain.vo.product;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Data
 public class PageVo {
     //    페이지 세트당 표시될 페이지 수
