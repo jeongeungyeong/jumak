@@ -30,7 +30,29 @@
     });
 
     $('.search-btn').on('click', function (){
+        let tagNumberArr = [];
     //    비동기 통신 사용하기 !!!!!!!!!!!!!!!!!!
+        let $tagList = $('.cate-list .active').closest('li');
+        $tagList.each((i, li) => {
+            let tagNumber = $(li).data('tag');
+            tagNumberArr.push(tagNumber);
+        })
+
+        let cateList = $('.on').data('cate');
+        console.log(cateList);
+        console.log(tagNumberArr)
+
+        $.ajax({
+            url: '/find/tag',
+            type: 'get',
+            data: {arr: tagNumberArr,
+                    productCategoryNumber1: cateList},
+            success: function (resp) {
+                },
+            error: function (xhr, status, error) {
+                console.error(error);
+            }
+        });
     });
 }
 

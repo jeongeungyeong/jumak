@@ -3,7 +3,7 @@ package com.example.jumak.domain.vo.product;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Data
 public class Criteria {
     private int page; // 현재 페이지

@@ -40,7 +40,7 @@ public class MainController {
 
     //    임시 이동경로
     @GetMapping("/find")
-    public String findPage(){
+    public String findPage(Model model){
         return "product/find";
     }
 
