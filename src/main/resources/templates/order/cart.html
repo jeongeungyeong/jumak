@@ -67,11 +67,11 @@
           </thead>
           <tbody>
           <!--반복 요소-->
-          <tr>
+          <tr th:each="productDetail : ${cartList}">
             <td>
               <div>
                 <!-- id는 중복되면 안되므로 상품정보의 고유값을 연결하여 사용하기-->
-                <input type="checkbox" id="check-item1" class="check-box check-box__children" checked="checked">
+                <input type="checkbox" id="check-item1" class="check-box check-box__children" checked="checked" th:value="${productDetail.productNumber}">
                 <!-- 위에서 설정한 id를 label의 for에 동일하게 설정하기-->
                 <label for="check-item1" class="check-box__label check-box__label--checked"></label>
               </div>
@@ -101,7 +101,7 @@
             </td>
             <td class="product-count">
               <div class="product-count__content">
-                <strong><span th:text="${productCount}"></span>개</strong>
+                <strong><span th:text="${productDetail.productCount}"></span>개</strong>
               <!--  <div class="count-change-btn">
                   <span>옵션/수량변경</span>
                 </div>-->
@@ -123,7 +123,7 @@
             <td class="product-total-price">
               <div class="product-total-price__content">
                 <!--합계 금액 넣기-->
-                <strong><span th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+                <strong><span th:with="isEven=${productDetail.salePrice}"
                               th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></span>원</strong>
               </div>
             </td>
@@ -151,8 +151,8 @@
     <div class="cart-total">
       <div class="cart-total__price">
         <div class="cart-total__product">
-          <span>총 <strong th:text="${productCount}"></strong>개의 상품금액</span>
-          <span class="price-color"><strong th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+          <span>총 <strong th:text="${totalCount}"></strong>개의 상품금액</span>
+          <span class="price-color"><strong th:with="isEven=${salePrice}"
                                             th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
         </div>
         <span class="plus-img">
@@ -167,7 +167,7 @@
         </span>
         <div class="cart-total__sum">
           <span>합계</span>
-          <span class="price-color"><strong th:with="isEven=${(totalPrice - (totalPrice * (productDetail.productDiscount/100.0)))+2500}"
+          <span class="price-color"><strong th:with="isEven=${salePrice + 3000}"
                                             th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
         </div>
       </div>
@@ -188,8 +188,10 @@
         </button>
       </div>
     </div>
-      <input type="hidden" class="product-num" name="productNumber" th:value="${productDetail.productNumber}">
-      <input type="hidden" name="productCount" th:value="${productCount}">
+      <th:block th:each="productDetail : ${cartList}">
+        <input type="hidden" class="product-num" name="productNumber" th:value="${productDetail.productNumber}">
+        <input type="hidden" name="productCount" th:value="${productDetail.productCount}">
+      </th:block>
     </form>
   </div>
 </main>

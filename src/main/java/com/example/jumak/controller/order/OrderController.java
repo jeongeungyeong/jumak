@@ -1,6 +1,8 @@
 package com.example.jumak.controller.order;
 
 import com.example.jumak.domain.dto.order.OrderDto;
+import com.example.jumak.domain.dto.order.ShoppingListDto;
+import com.example.jumak.domain.vo.order.CartVo;
 import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.service.order.OrderService;
@@ -10,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -25,15 +29,35 @@ public class OrderController {
     public String cartPage(@RequestParam("productNumber") Long productNumber,
                            @RequestParam(name="productCount",required = true) Long productCount,
                            HttpServletRequest req,
+                           @SessionAttribute("userNumber") Long userNumber,
                            Model model){
-        ProductDetailVo productCDetail = storeService.findByDNumber(productNumber);
-        model.addAttribute("productDetail",productCDetail);
-        model.addAttribute("productCount",productCount);
-        //        상품 토탈 가격
-        model.addAttribute("totalPrice", productCount * productCDetail.getProductPrice());
-//        페이먼트 토탈 가격 (배송비+3000원)
-        model.addAttribute("paymentTotal", (productCount *(productCDetail.getProductPrice() - (productCDetail.getProductPrice() *(productCDetail.getProductDiscount()/100.0))))
-                +3000);
+        ShoppingListDto shoppingListDto = new ShoppingListDto();
+        shoppingListDto.setProductCount(productCount);
+        shoppingListDto.setProductNumber(productNumber);
+        shoppingListDto.setUserNumber(userNumber);
+
+        List<CartVo> cartList = orderService.cartRegister(shoppingListDto);
+
+        long totalPrice = cartList.stream().mapToLong(item -> item.getProductPrice() * item.getProductCount()).sum();
+        long totalCount = cartList.stream().mapToLong(item -> item.getProductCount()).sum();
+        long salePrice = cartList.stream().mapToLong(item -> (int)item.getSalePrice()).sum();
+
+
+        model.addAttribute("cartList", cartList);
+
+        model.addAttribute("salePrice", salePrice);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("totalCount", totalCount);
+        model.addAttribute("paymentTotal", totalPrice + 3000);
+
+//        ProductDetailVo productCDetail = storeService.findByDNumber(productNumber);
+//        model.addAttribute("productDetail",productCDetail);
+//        model.addAttribute("productCount",productCount);
+//        //        상품 토탈 가격
+//        model.addAttribute("totalPrice", productCount * productCDetail.getProductPrice());
+////        페이먼트 토탈 가격 (배송비+3000원)
+//        model.addAttribute("paymentTotal", (productCount *(productCDetail.getProductPrice() - (productCDetail.getProductPrice() *(productCDetail.getProductDiscount()/100.0))))
+//                +3000);
 
 
 

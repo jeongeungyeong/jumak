@@ -45,7 +45,8 @@
         <typeAlias type="com.example.jumak.domain.vo.order.OrderFinishVo" alias="orderFinishVo"/>
         <typeAlias type="com.example.jumak.domain.vo.order.OrderVo" alias="orderVo"/>
         <typeAlias type="com.example.jumak.domain.vo.order.PaymentVo" alias="paymentVo"/>
-
+        <typeAlias type="com.example.jumak.domain.dto.order.ShoppingListDto" alias="shoppingListDto"/>
+        <typeAlias type="com.example.jumak.domain.vo.order.CartVo" alias="cartVo"/>
 
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO"/>
