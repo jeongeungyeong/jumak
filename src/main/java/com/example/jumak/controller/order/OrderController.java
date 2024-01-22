@@ -86,7 +86,8 @@ public class OrderController {
         Object userNumber = req.getSession().getAttribute("userNumber");
 
         //오더서비스연결해서 모델로 뿌리기
-        OrderVo byUNumber = null;
+
+        OrderVo byUNumber = null ;
 
         byUNumber = orderService.findByUNumber((Long) userNumber);
 
@@ -98,8 +99,8 @@ public class OrderController {
 
     @GetMapping("/fail")
     public String orderFail(Model model, Integer price, @SessionAttribute("userNumber") Long userNumber){
-        OrderVo orderFin = orderService.findByNumber(userNumber);
-        model.addAttribute("finalorder",orderFin);
+//        OrderVo orderFin = orderService.findByNumber(userNumber);
+//        model.addAttribute("finalorder",orderFin);
         model.addAttribute("totalprice",price);
         return "order/storeorderfail";
     }
