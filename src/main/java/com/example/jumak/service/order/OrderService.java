@@ -57,12 +57,13 @@ public class OrderService {
     }
 
 
-
     //    주문자 정보 조회
     public OrderVo findByUNumber(Long userNumber){
         return orderMapper.selectByUNumber(userNumber)
                 .orElseThrow( ()->new IllegalStateException("주문자 정보 없음!"));
     }
+
+
 
     //    주문 정보 디테일
 /*    public void orderDetailRegister(List<OrderDetailPayVo> orderDetailPayVo){

@@ -47,7 +47,7 @@ function checkBox($ele, isChecked) {
 //버튼 작업
 //바로구매 바로 가기
 $('.all-order-btn').on('click', function (){
-    $('#cart-form').attr('action', '/order/next');
+    $('#cart-form').attr('action', '/order/cart_next');
     if($(this).data('num')){
         $('#cart-form').submit();
     }else{

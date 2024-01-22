@@ -63,7 +63,7 @@
                     </thead>
                     <tbody>
                     <!--반복 요소-->
-                    <tr>
+                    <tr th:each="productDetail : ${cartList}">
                         <td class="product-info">
                             <div class="product-info__content">
               <span>
@@ -84,7 +84,7 @@
                         </td>
                         <td class="product-count">
                             <div class="product-count__content">
-                                <strong><span th:text="${productCount}"></span>개</strong>
+                                <strong><span th:text="${productDetail.productCount}"></span>개</strong>
 
                             </div>
                         </td>
@@ -104,7 +104,7 @@
                         <td class="product-total-price">
                             <div class="product-total-price__content">
                                 <!--합계 금액 넣기-->
-                                <strong><span th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+                                <strong><span th:with="isEven=${productDetail.salePrice}"
                                               th:text="${#numbers.formatInteger(isEven,0,'COMMA')}" ></span>원</strong>
                             </div>
                         </td>
@@ -137,9 +137,9 @@
         <div class="cart-total">
             <div class="cart-total__price">
                 <div class="cart-total__product">
-                    <span>총 <strong th:text="${productCount}"></strong>개의 상품금액</span>
-                    <span class="price-color"><strong th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
-                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
+                    <span>총 <strong th:text="${totalCount}"></strong>개의 상품금액</span>
+                    <span class="price-color"><strong th:with="isEven=${salePrice}"
+                                                      th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
                 </div>
                 <span class="plus-img">
           <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/a_sr01/img/order/order_price_plus.png" alt="">
@@ -153,7 +153,7 @@
         </span>
                 <div class="cart-total__sum">
                     <span>합계</span>
-                    <span class="price-color"><strong th:with="isEven=${(totalPrice - (totalPrice * (productDetail.productDiscount/100.0)))+2500}"
+                    <span class="price-color"><strong th:with="isEven=${salePrice + 3000}"
                                                       th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></strong>원</span>
                 </div>
             </div>
@@ -402,7 +402,7 @@
                             <strong
                                     id="totalGoodsPrice"
                                     class="order_payment_sum pricebasic"
-                                    th:with="isEven=${totalPrice - (totalPrice * (productDetail.productDiscount/100.0))}"
+                                    th:with="isEven=${salePrice}"
                                     th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"
                             ></strong
                             >
@@ -425,14 +425,12 @@
                                         할인 :
                                         <strong
                                         >(-)
-                                            <b class="total-goods-dc-price" th:with="isEven=${(totalPrice * (productDetail.productDiscount/100.0))}"
-                                               th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></b
+                                            <b class="total-goods-dc-price" th:text="${productDetail.productDiscount}"></b
                                             >원</strong
                                         >
                                         <span
                                         >( 상품
-                                        <span class="goods-dc-price" th:with="isEven=${(totalPrice * (productDetail.productDiscount/100.0))}"
-                                              th:text="${#numbers.formatInteger(isEven,0,'COMMA')}"></span>원)</span
+                                        <span class="goods-dc-price" th:text="${productDetail.productDiscount}"></span>원)</span
                                         >
                                     </em>
                                 </li>
@@ -448,7 +446,8 @@
                             <strong
                                     id="totalSettlePrice"
                                     class="order_payment_sum final"
-                                    th:text="${#numbers.formatInteger(paymentTotal,0,'COMMA')}" ></strong
+                                    th:with="isEven=${salePrice + 3000}"
+                                    th:text="${#numbers.formatInteger(isEven,0,'COMMA')}" ></strong
                             >원
                         </td>
                     </tr>
@@ -505,8 +504,8 @@
             <div class="cart-final_total__price">
                 <div class="cart-final_total__sum">
                     <span>최종 결제 금액</span>
-                    <span class="final_price-color"><strong th:text="${#numbers.formatInteger(paymentTotal,0,'COMMA')}"></strong>원</span>
-                    <input type="hidden" class="price_total" name="paymentTotal" th:value="${paymentTotal}">
+                    <span class="final_price-color"><strong th:text="${#numbers.formatInteger(productDetail.paymentTotal,0,'COMMA')}"></strong>원</span>
+                    <input type="hidden" class="price_total" name="paymentTotal" th:value="${productDetail.paymentTotal}">
                 </div>
             </div>
         </div>
