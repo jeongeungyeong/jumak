@@ -19,7 +19,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("order")
 public class OrderController {
-    private final OrderDto orderDto;
     private final OrderService orderService;
     private final StoreService storeService;
 

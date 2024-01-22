@@ -28,7 +28,7 @@ import java.util.List;
 public class MypageMainController {
     private final MypageMainService mypageMainService;
     private final ShippingService shippingService;
-    private final OrderDetailVo orderDetailVo;
+
     private final InquiryService inquiryService;
     private final MemberService memberService;
 
@@ -110,6 +110,8 @@ public class MypageMainController {
 //        작성 댓글 조회
         Long replyCount = mypageMainService.findReplyCount(userNumber);
 
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+
 //        기간별 주문/배송 리스트 조회
         orderDetailVo.setUserNumber(userNumber);
 //        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
@@ -137,6 +139,8 @@ public class MypageMainController {
 //        작성 댓글 조회
         Long replyCount = mypageMainService.findReplyCount(userNumber);
 
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
+
 //        기간별 주문/배송 리스트 조회
         orderDetailVo.setUserNumber(userNumber);
 //        List<OrderDetailVo> orderDetailList = searchShippingService.findOrderDetail(orderDetailVo);
@@ -163,6 +167,8 @@ public class MypageMainController {
 
 //        작성 댓글 조회
         Long replyCount = mypageMainService.findReplyCount(userNumber);
+
+        OrderDetailVo orderDetailVo = new OrderDetailVo();
 
 //        1:1문의내역 조회
         orderDetailVo.setUserNumber(userNumber);
