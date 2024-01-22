@@ -25,6 +25,10 @@ public class OrderRestController {
 
         orderService.orderRegister(orderVo);
         orderService.paymentRegister(orderVo);
+
+
+
+
     }
 
 

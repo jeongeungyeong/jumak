@@ -173,8 +173,10 @@ $("#order-btn").on("click", function () {
             orderZipcode: parseInt(orderZipcode),
             orderCellphoneNumber:orderCellphoneNumber ,
             orderPhoneNumber:orderPhoneNumber,
-            orderStatusNumber: 1,
+            orderStatusNumber: 2,
         };
+
+
         console.log(postData);
         $.ajax({
         url:'/orders/payment',

@@ -14,7 +14,9 @@
         WHERE PRODUCT_NUMBER = #{productNumber} AND USER_NUMBER = #{userNumber}
     </delete>
 
-<!--    장바구니 리스트 조회-->
+
+
+<!--    장바구니 리스트 조회/장바구니에서 바로 구매-->
     <select id="cartListSelect" parameterType="long" resultType="cartVo">
         SELECT CART.PRODUCT_NUMBER, USER_NUMBER, PRODUCT_COUNT,
                P.PRODUCT_NAME, PRODUCT_NET_WEIGHT, PRODUCT_ALCOHOLICITY, PRODUCT_PRICE, PRODUCT_DISCOUNT,
@@ -23,6 +25,8 @@
                  JOIN JUMAK_PRODUCT P ON CART.USER_NUMBER = #{userNumber} AND CART.PRODUCT_NUMBER = P.PRODUCT_NUMBER
                  LEFT JOIN JUMAK_PRODUCT_IMG_MAIN IMG ON P.PRODUCT_NUMBER = IMG.PRODUCT_NUMBER
     </select>
+
+
 
 <!--주문 정보 삽입-->
     <insert id="orderInsert" parameterType="orderVo">
@@ -34,6 +38,12 @@
         values (#{orderNumber},#{userNumber},#{orderRecipient},#{orderZipcode},#{orderAddress},#{orderAddressDetail},
           #{orderCellphoneNumber},#{orderPhoneNumber},SYSDATE,#{orderStatusNumber})
 
+    </insert>
+
+<!--    주문 정보 디테일-->
+    <insert id="orderDetailInsert">
+        insert into JUMAK_ORDER_DETAIL (ORDER_DETAIL_NUMBER, ORDER_DETAIL_COUNT, PRODUCT_NUMBER, ORDER_NUMBER)
+        values (SEQ_ORDER_DETAIL.nextval,#{orderDetailCount},#{productNumber},#{orderNumber})
     </insert>
 
 
@@ -54,8 +64,6 @@
         values (SEQ_PAYMENT.nextval,SYSDATE,#{paymentTotalAmount},#{paymentTotalDiscount},#{paymentDeliveryFee},#{paymentTotal},
                 #{orderNumber})
     </insert>
-
-
 
 
 

@@ -43,6 +43,13 @@ public class OrderService {
                 .orElseThrow( ()->new IllegalStateException("주문자 정보 없음!"));
     }
 
+    //    주문 정보 디테일
+    void orderDetailInsert(Long orderDetailCount,
+                           Long productNumber,
+                           Long orderNumber){
+
+    }
+
 //    주문요약정보
 public OrderVo findByNumber(Long userNumber){
         return orderMapper.selectByNumber(userNumber)

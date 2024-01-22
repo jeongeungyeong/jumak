@@ -27,6 +27,7 @@
         <typeAlias type="com.example.jumak.domain.dto.product.ProductReviewDto" alias="productReviewDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductReviewImgDto" alias="productReviewImgDto"/>
         <typeAlias type="com.example.jumak.domain.dto.product.ProductKeywordDto" alias="productKeywordDto"/>
+        <typeAlias type="com.example.jumak.domain.dto.order.OrderDetailDto" alias="orderDetailDto"/>
 
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
 

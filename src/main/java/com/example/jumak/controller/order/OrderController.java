@@ -63,6 +63,20 @@ public class OrderController {
         return "order/cart";
     }
 
+//    장바구니 바로구매
+    @GetMapping("/cart_next")
+    public String cartMain(@RequestParam("productNumber") Long productNumber,
+                           @RequestParam("productCount") Long productCount,
+                           HttpServletRequest req,
+                           Model model){
+        OrderVo productDetail = orderService.findByUNumber(productNumber);
+
+        model.addAttribute("productDetail",productDetail);
+        return "order/storeorder";
+    }
+
+
+
 //    바로구매
     @GetMapping("/next")
     public String orderMain(@RequestParam("productNumber") Long productNumber,
