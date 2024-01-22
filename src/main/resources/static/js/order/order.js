@@ -15,7 +15,6 @@ $deliveryBox.on('click',function (e){
 });
 
 $('.basic').on('click', function (e) {
-    e.preventDefault();
 
     $.ajax({
         url : '/orders/delivery',
@@ -38,7 +37,6 @@ $('.basic').on('click', function (e) {
 });
 
 $('.new').on('click', function (e) {
-    e.preventDefault();
     $('#receiverName').val('');
     $('#address').val('');
     $('#zipcode').val('');
@@ -115,12 +113,14 @@ $("#order-btn").on("click", function () {
 });
 
     function requestPay() {
-        let totalPrice = $('.price_total').val();
         let productName =$('.product-info__detail').text();
-        let buyerName = $('#orderName').val();
+        let buyerName = $('#receiverName').text();
         let buyerCellPhone = $('#orderCellPhoneNumber').val();
         let buyerEmail = $('#orderEmail').val();
-
+        let address=$('#address').text();
+        let addressDetail = $('#addressDetail').text();
+        let zipcode=$('#zipcode').text();
+        let totalPrice = parseInt($('.price_total').val());
 
 
     IMP.request_pay(
@@ -129,42 +129,67 @@ $("#order-btn").on("click", function () {
             pay_method: "card",
             merchant_uid: "jumak_" + new Date().getTime(), // 주문번호
             name: productName,
-            amount: parseInt(totalPrice), // 숫자 타입
+            amount: totalPrice, // 숫자 타입
             buyer_email: buyerEmail,
             buyer_name: buyerName,
             buyer_tel: buyerCellPhone,
-            buyer_addr: "서울특별시 강남구 신사동",
-            buyer_postcode: "01181",
+            buyer_addr: address + addressDetail,
+            buyer_postcode: zipcode,
         },
         function (rsp) {
             // callback
             //rsp.imp_uid 값으로 결제 단건조회 API를 호출하여 결제결과를 판단합니다.
             console.log(rsp);
-            paymentinfo(rsp);
             if(rsp.success){
+                paymentinfo(rsp);
 
-                location.href="/order/success?price="+parseInt(totalPrice);
             } else {
-                location.href="/order/fail?price="+parseInt(totalPrice);
+                window.location.href="/order/fail?price="+parseInt(totalPrice);
             }
         }
     );
 }
 
     function paymentinfo(rsp) {
+        let priceAmount= $('.pricebasic').text().replaceAll(',','');
+        let discount = $('.total-goods-dc-price').text().replaceAll(',','');
+        let paymentTotal = $('.price_total').val().replaceAll(',','');
+        let orderRecipient = $('#receiverName').val();
+        let orderCellphoneNumber = $('#orderCellPhoneNumber').val();
+        let orderPhoneNumber = $('#orderPhoneNumber').val();
+        let orderAddress=$('#address').val();
+        let orderAddressDetail = $('#addressDetail').val();
+        let orderZipcode=$('#zipcode').val();
+        let totalPrice = $('.price_total').val();
+
         let postData = {
-
-
+            paymentTotalAmount: parseInt(priceAmount),
+            paymentTotalDiscount: parseInt(discount),
+            paymentDeliveryFee:3000,
+            paymentTotal: parseInt(paymentTotal),
+            orderRecipient: orderRecipient,
+            orderAddress: orderAddress,
+            orderAddressDetail: orderAddressDetail,
+            orderZipcode: parseInt(orderZipcode),
+            orderCellphoneNumber:orderCellphoneNumber ,
+            orderPhoneNumber:orderPhoneNumber,
+            orderStatusNumber: 1,
         };
-    $.ajax({
+        console.log(postData);
+        $.ajax({
         url:'/orders/payment',
         type: 'post',
-        data: {},
-        dataType:'json',
+        data: JSON.stringify(postData),
+        contentType:'application/json; charset=utf-8',
+        async : false,
         success:function (resp){
+            console.log('성공!');
+            location.href="/order/success?price="+parseInt(totalPrice);
+
         },
         error : function (xhr, status, err) {
             console.log(err);
+            window.location.href="/order/fail?price="+parseInt(totalPrice);
 
         }
 

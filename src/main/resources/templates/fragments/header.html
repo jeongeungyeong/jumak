@@ -9,55 +9,105 @@
   <nav class="nav">
     <h1>
       <a href="/">
-        <img
-            src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/common/logo.png"
+        <img th:src="@{/imgs/main/logo/jumak_main_logo.png}"
+            style="width: 150px"
             alt="">
       </a>
     </h1>
 
     <ul>
+
       <li>
-        우리술 정보&리뷰
+        수상한 정보
         <ul class="header__sub-menu header--none">
-          <li>우리술 전체보기</li>
-          <li>양조장 탐방기</li>
-          <li>술 취향 테스트</li>
+          <li>
+            <a th:href="@{/product/list}">
+            우리술 전체보기
+            </a>
+          </li>
           <li>나에게 맞는 술 찾기</li>
         </ul>
       </li>
+
+
+
       <li>
-        백술 NEWS
+        수상한 소식
         <ul class="header__sub-menu header--none">
-          <li>백술 NEWS</li>
+          <li>수상한 소식</li>
         </ul>
       </li>
+
+
+
       <li>
-        우리술 빚기
+        주모의 비밀레시피
         <ul class="header__sub-menu header--none">
-          <li>백종원의 술비책</li>
+          <li>칵테일 비밀레시피</li>
         </ul>
       </li>
+
+
+
       <li>
-        커뮤니티
+        <a th:href="@{/madang/list}">
+        수상한 마당
+        </a>
         <ul class="header__sub-menu header--none">
-          <li>백술놀이터</li>
-          <li>모임공지</li>
+          <li>
+            <a th:href="@{/madang/list}">
+              수상한 마당
+            </a>
+          </li>
         </ul>
       </li>
+
+
+
       <li>
-        우리술 장터
+        <a th:href="@{/store/list}">
+        주모's store
+        </a>
         <ul class="header__sub-menu header__sub-market header--none">
-          <li>전체상품</li>
-          <li>술빚기용품</li>
-          <li>막걸리/탁주</li>
-          <li>증류주/리큐르</li>
-          <li>약주/청주</li>
-          <li>완인/과실주</li>
-          <li>기타주류/기타</li>
-          <li>선물하기 좋은 우리술🎁</li>
-          <li>통합배송🚚</li>
+          <li>
+            <a th:href="@{/store/list}">
+              베스트 상품🏆
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/store/list?orderCond=date&cate=all}">
+              전체상품
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/store/list?orderCond=date&cate=group1}">
+              막걸리/탁주
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/store/list?orderCond=date&cate=group2}">
+              증류주/리큐르
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/store/list?orderCond=date&cate=group3}">
+              약주/청주
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/store/list?orderCond=date&cate=group4}">
+              와인/과실주
+            </a>
+          </li>
+          <li>
+            <a th:href="@{/store/list?orderCond=date&cate=group5}">
+              기타주류/기타
+            </a>
+          </li>
         </ul>
       </li>
+
+
     </ul>
     <div class="icon-box">
       <div class="search-icon-box icon-box">

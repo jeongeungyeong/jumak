@@ -1,13 +1,12 @@
 package com.example.jumak.controller.order;
 
 import com.example.jumak.domain.dto.order.OrderDto;
-import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.dto.user.UserDto;
-import com.example.jumak.domain.vo.order.OrderFinishVo;
+import com.example.jumak.domain.dto.order.ShoppingListDto;
+import com.example.jumak.domain.vo.order.CartVo;
 import com.example.jumak.domain.vo.order.OrderVo;
 import com.example.jumak.domain.vo.product.ProductDetailVo;
 import com.example.jumak.service.order.OrderService;
-import com.example.jumak.service.product.ProductService;
+import com.example.jumak.service.product.StoreService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -22,17 +21,58 @@ import java.util.List;
 public class OrderController {
     private final OrderDto orderDto;
     private final OrderService orderService;
-    private final ProductService productService;
+    private final StoreService storeService;
+
+    
+    //    장바구니
+    @GetMapping("/cart")
+    public String cartPage(@RequestParam("productNumber") Long productNumber,
+                           @RequestParam(name="productCount",required = true) Long productCount,
+                           HttpServletRequest req,
+                           @SessionAttribute("userNumber") Long userNumber,
+                           Model model){
+        ShoppingListDto shoppingListDto = new ShoppingListDto();
+        shoppingListDto.setProductCount(productCount);
+        shoppingListDto.setProductNumber(productNumber);
+        shoppingListDto.setUserNumber(userNumber);
+
+        List<CartVo> cartList = orderService.cartRegister(shoppingListDto);
+
+        long totalPrice = cartList.stream().mapToLong(item -> item.getProductPrice() * item.getProductCount()).sum();
+        long totalCount = cartList.stream().mapToLong(item -> item.getProductCount()).sum();
+        long salePrice = cartList.stream().mapToLong(item -> (int)item.getSalePrice()).sum();
 
 
+        model.addAttribute("cartList", cartList);
+
+        model.addAttribute("salePrice", salePrice);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("totalCount", totalCount);
+        model.addAttribute("paymentTotal", totalPrice + 3000);
+
+//        ProductDetailVo productCDetail = storeService.findByDNumber(productNumber);
+//        model.addAttribute("productDetail",productCDetail);
+//        model.addAttribute("productCount",productCount);
+//        //        상품 토탈 가격
+//        model.addAttribute("totalPrice", productCount * productCDetail.getProductPrice());
+////        페이먼트 토탈 가격 (배송비+3000원)
+//        model.addAttribute("paymentTotal", (productCount *(productCDetail.getProductPrice() - (productCDetail.getProductPrice() *(productCDetail.getProductDiscount()/100.0))))
+//                +3000);
+
+
+
+        return "order/cart";
+    }
+
+//    바로구매
     @GetMapping("/next")
     public String orderMain(@RequestParam("productNumber") Long productNumber,
                             @RequestParam("productCount") Long productCount,
                             HttpServletRequest req,
                             Model model){
-// productNumber 로 next페이지에 넘겨줄 정보 서비스에서 뽑아서 넘겨주고
+// productNumber 로 next페이지에 넘겨줄 정 보 서비스에서 뽑아서 넘겨주고
 //        productCount 는 그냥 넘겨주기
-        ProductDetailVo productDetail = productService.findByDNumber(productNumber);
+        ProductDetailVo productDetail = storeService.findByDNumber(productNumber);
 
         model.addAttribute("productDetail",productDetail);
         model.addAttribute("productCount",productCount);
@@ -58,25 +98,21 @@ public class OrderController {
 
 
     @GetMapping("/fail")
-    public String orderFail(Model model, Integer price){
-        List<OrderFinishVo> orderFinList = orderService.findByNumber();
-        model.addAttribute("finalorders",orderFinList);
+    public String orderFail(Model model, Integer price, @SessionAttribute("userNumber") Long userNumber){
+        OrderVo orderFin = orderService.findByNumber(userNumber);
+        model.addAttribute("finalorder",orderFin);
         model.addAttribute("totalprice",price);
         return "order/storeorderfail";
     }
     @GetMapping("/success")
-    public String orderSuccess(Model model, Integer price){
-        List<OrderFinishVo> orderFinList = orderService.findByNumber();
-        model.addAttribute("finalorders",orderFinList);
+    public String orderSuccess(Model model, Integer price, @SessionAttribute("userNumber") Long userNumber){
+        OrderVo orderFin = orderService.findByNumber(userNumber);
+        model.addAttribute("finalorder",orderFin);
         model.addAttribute("totalprice",price);
         return "order/storeordersucc";
     }
 
-    //    임시 이동경로
-    @GetMapping("/cart")
-    public String cartPage(){
-        return "order/cart";
-    }
+
 
 
 }

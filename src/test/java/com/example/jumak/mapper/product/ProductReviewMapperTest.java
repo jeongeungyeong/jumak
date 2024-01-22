@@ -31,19 +31,5 @@ class ProductReviewMapperTest {
         productReviewDto = new ProductReviewDto();
     }
 
-    @Test
-    void reviewList() {
-        List<ProductReviewVo> productReviewList = productReviewMapper.reviewList(26L);
-    }
 
-/*    @Test
-    void reviewUpdate() {
-        // given
-            productReviewMapper.reviewInsert(productReviewDto);
-            productReviewDto.setProductReviewContent("update content");
-        // when
-            productReviewMapper.reviewUpdate(productReviewDto);
-            productReviewMapper.
-        // then
-    }*/
 }

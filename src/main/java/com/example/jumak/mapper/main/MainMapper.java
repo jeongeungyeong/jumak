@@ -3,6 +3,8 @@ package com.example.jumak.mapper.main;
 import com.example.jumak.domain.dto.product.ProductDto;
 import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.main.ProductSearchVo;
+import com.example.jumak.domain.vo.product.Criteria;
+import com.example.jumak.domain.vo.product.ProductInfoVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,4 +27,6 @@ public interface MainMapper {
     public List<ProductDto> selectTag(@Param("arr") Integer[] arr,@Param("count") int count,
                                       @Param("productCategoryNumber1") Long productCategoryNumber1,
                                       @Param("productCategoryNumber2") Long productCategoryNumber2);
+
+
 }

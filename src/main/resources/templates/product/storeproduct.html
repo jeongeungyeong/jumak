@@ -70,7 +70,8 @@
   <section class="products_pick_list">
     <div class="section-head">
       <div class="section-head__title">
-        총 <span th:text="${pageInfo.total}"></span>개의 상품
+        총 <span th:text="${pageInfo.total}"
+                th:style="'font-weight: bold; color: rgb(240, 200, 100);'"></span>개의 상품
       </div>
       <select class="section-head__more">
         <option value="date" th:selected="${'date' == orderCond}">등록일순</option>
@@ -79,7 +80,7 @@
         <option value="highPrice" th:selected="${'highPrice' == orderCond}">높은가격순</option>
       </select>
     </div>
-</div>
+
   <div class="store-list product__list">
     <!-- 반복 요소 -->
     <article class="list-product" th:each="product: ${products}">

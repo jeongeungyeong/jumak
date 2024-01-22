@@ -16,29 +16,13 @@ import java.util.List;
 public class ProductReviewService {
     private final ProductReviewMapper productReviewMapper;
 
-    public void reviewRegister(ProductReviewVo productReviewDto){
-        productReviewMapper.reviewInsert(productReviewDto);
+//상품 후기 리스트 조회
+    public List<ProductReviewVo> findListByProductNumber(Long productNumber){
+        return productReviewMapper.selectListByProductNumber(productNumber);
     }
 
-    public List<ProductReviewVo> findReviewList(Long productNumber){
-        return productReviewMapper.reviewList(productNumber);
-    }
-
-    public void reviewModify(ProductReviewDto productReviewDto){
-        productReviewMapper.reviewUpdate(productReviewDto);
-    }
-
-    public void reviewRemove(Long productReviewNumber){
-        productReviewMapper.reviewDelete(productReviewNumber);
-    }
-
-    public int findTotal(Long productNumber){
-        return productReviewMapper.selectTotal(productNumber);
-    }
-
-    public List<ProductReviewVo> findListPage(Criteria criteria, Long productNumber){
-        return productReviewMapper.selectListPage(criteria, productNumber);
-    }
+//    상품 후기 작성
+    public void register(ProductReviewDto productReviewDto){productReviewMapper.insert(productReviewDto);}
 
 
 

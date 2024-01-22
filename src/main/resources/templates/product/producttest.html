@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" th:href="@{/css/product/product_info_list.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/storeproduct.css}" />
   <link rel="stylesheet" th:href="@{/css/product/common.css}" />
   <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
   <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
@@ -34,7 +34,7 @@
                     id="category-all"
                     name="shopCategory"
                     value="all"
-                    th:checked="${'all' == cate || cate == null}"
+                    th:checked="${'all' == cate}"
             />
           </label>
           <label for="category-a" class="category-box">
@@ -65,8 +65,7 @@
     <section class="products_pick_list">
       <div class="section-head">
         <div class="section-head__title">
-          총 <span th:text="${pageInfo.total}"
-                  th:style="'font-weight: bold; color: rgb(240, 200, 100);'"></span>개의 상품
+          총 <span th:text="${pageInfo.total}"></span>개의 상품
         </div>
         <select class="section-head__more">
           <option value="date" th:selected="${'date' == orderCond}">등록일순</option>
@@ -77,13 +76,20 @@
       <div class="store-list product__list">
         <!-- 반복 요소 -->
         <article class="list-product" th:each="product: ${products}">
-          <a th:href="@{/product/detail(productNumber=${product.productNumber})}">
+          <div class="sale-box">
+              <span>
+                <strong class="sale-percent" th:text="${product.productDiscount}"></strong>%
+              </span>
+            <span>SALE</span>
+          </div>
+          <a th:href="@{/store/view(productNumber=${product.productNumber})}">
             <div class="main_img-box">
               <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="title-box">
               <p class="name" th:text="${product.productName + product.productAlcoholicity + '도' + product.productNetWeight + 'ml'}">마스브루어리+도수+용량</p>
-              <p class="exple_box" th:text="${product.productSubtitle}">임금님 진상 쌀로 만든 명품 막걸리</p>
+              <p class="sale-price" th:with="isEven=${product.productPrice - (product.productPrice * (product.productDiscount/100.0))}" th:text="${#numbers.formatInteger(isEven,0,'COMMA') + '원'}">26,600원</p>
+              <del class="price" th:text="${product.productPrice}"> 28,000원</del>
             </div>
           </a>
         </article>
@@ -118,7 +124,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
 <script th:src="@{/js/fragments/header.js}"></script>
-<script th:src="@{/js/product/product_info_list.js}"></script>
+<script th:src="@{/js/product/storeproduct.js}"></script>
 </body>
 
 </html>

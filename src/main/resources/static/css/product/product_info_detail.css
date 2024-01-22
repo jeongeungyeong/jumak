@@ -1,0 +1,121 @@
+.top-box{
+    background-color: rgb(240,200,100);
+
+}
+.product_content-wrap{
+    width: 1200px;
+    margin : 0 auto;
+    padding: 100px 0px;
+}
+
+.product-content_box{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-img__content-box{
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.product-img__content-box img{
+    border-radius: 250px;
+    width: 400px;
+    height: 400px;
+    margin-right: 60px;
+}
+
+/* 상품 info*/
+
+/* 상품 info title*/
+.product-info__topHead-box {
+    border-bottom: 1px solid #dedede;
+    padding-bottom: 24px;
+    position: relative;
+    padding: 0 0 10px 0;
+
+}
+
+.product-info__topHead-box h3 {
+    font-size: 30px;
+    font-weight: 500;
+    color: black;
+    text-align: left;
+    width: 100%;
+}
+
+.product-info__topHead__title > p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: 200;
+}
+
+/* 상품 info 주원료 */
+.ingredient {
+    padding: 20px 0;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.ingredient strong {
+    padding-right: 25px;
+    font-weight: 400;
+}
+
+.ingredient span {
+    font-weight: 200;
+}
+
+/* 상품 정보 테이블*/
+
+colgroup {
+    display: table-column-group;
+}
+.tbl th {
+    padding: 10px 0;
+    font-weight: 600;
+    background-color: #f0f0f0;
+    font-size: 13px;
+}
+.product-info__table-box dl {
+    padding: 0;
+    padding: 6px 0;
+    min-height: auto;
+    display: flex;
+}
+.product-info__table-box dl dt {
+    width: 108px;
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: #1a191e;
+    text-align: left;
+}
+
+
+
+
+
+
+/*상품 디테일*/
+.txt-manual{
+    margin: 65px 0 100px;
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

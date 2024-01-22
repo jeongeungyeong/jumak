@@ -17,22 +17,22 @@
       <a href="">NEW 우리술</a>
     </li>
     <li>
-      <a href="">전체상품</a>
+      <a href="/product/view">전체상품</a>
     </li>
     <li>
-      <a href="">막걸리/탁주</a>
+      <a href="/product/view?orderCond=date&cate=group1">막걸리/탁주</a>
     </li>
     <li>
-      <a href="">약주/청주</a>
+      <a href="/product/view?orderCond=date&cate=group2">약주/청주</a>
     </li>
     <li>
-      <a href="">증류주/리큐르</a>
+      <a href="/product/view?orderCond=date&cate=group3">증류주/리큐르</a>
     </li>
     <li>
-      <a href="">와인/과실주</a>
+      <a href="/product/view?orderCond=date&cate=group4">와인/과실주</a>
     </li>
     <li>
-      <a href="">기타주류</a>
+      <a href="/product/view?orderCond=date&cate=group5">기타주류</a>
     </li>
   </ul>
 </section>
@@ -44,58 +44,23 @@
       <h5>막걸리/탁주</h5>
       <div class="list-box__grid">
         <!-- 반복요소 (4개)-->
-        <article class="item">
-          <a href=""><!--링크 수정-->
+        <article class="item"  th:each="product: ${products}" th:if="${product.productCategoryNumber == 1 or product.productCategoryNumber == 2}">
+          <a th:href="@{/product/detail(productNumber=${product.productNumber})}"><!--링크 수정-->
             <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+              <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+              <h6 th:text="${product.productName}"></h6>
+              <p th:text="${product.productSubtitle}"></p>
             </div>
           </a>
         </article>
         <!-- /반복요소 -->
-        <!-- ------------------------------샘플------------------------------ -->
-        <article class="item">
-          <a href=""><!--링크 수정-->
-            <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
-            </div>
-            <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a href=""><!--링크 수정-->
-            <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
-            </div>
-            <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
-            </div>
-          </a>
-        </article>
-        <article class="item">
-          <a href=""><!--링크 수정-->
-            <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
-            </div>
-            <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
-            </div>
-          </a>
-        </article>
-        <!--/------------------------------샘플------------------------------ -->
       </div>
       <div class="btn-box">
         <button type="button" class="show-all-btn">
           <!--링크 수정-->
-          <a href="">전체보기</a>
+          <a href="/product/view?orderCond=date&cate=group1">전체보기</a>
         </button>
       </div>
     </section>
@@ -105,14 +70,14 @@
       <h5>약주/청주</h5>
       <div class="list-box__grid">
         <!-- 반복요소 (4개)-->
-        <article class="item">
-          <a href=""><!--링크 수정-->
+        <article class="item" th:each="product: ${products}" th:if="${product.productCategoryNumber == 3 or product.productCategoryNumber == 4}">
+          <a th:href="@{/product/detail(productNumber=${product.productNumber})}"><!--링크 수정-->
             <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+              <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+              <h6 th:text="${product.productName}"></h6>
+              <p th:text="${product.productSubtitle}"></p>
             </div>
           </a>
         </article>
@@ -121,7 +86,7 @@
       <div class="btn-box">
         <button type="button" class="show-all-btn">
           <!--링크 수정-->
-          <a href="">전체보기</a>
+          <a href="/product/view?orderCond=date&cate=group2">전체보기</a>
         </button>
       </div>
     </section>
@@ -130,14 +95,14 @@
       <h5>증류주/리큐르</h5>
       <div class="list-box__grid">
         <!-- 반복요소 (4개)-->
-        <article class="item">
-          <a href=""><!--링크 수정-->
+        <article class="item" th:each="product : ${products}" th:if="${product.productCategoryNumber == 5 or product.productCategoryNumber == 6}">
+          <a th:href="@{/product/detail(productNumber=${product.productNumber})}"><!--링크 수정-->
             <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+              <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+              <h6 th:text="${product.productName}"></h6>
+              <p th:text="${product.productSubtitle}"></p>
             </div>
           </a>
         </article>
@@ -146,7 +111,7 @@
       <div class="btn-box">
         <button type="button" class="show-all-btn">
           <!--링크 수정-->
-          <a href="">전체보기</a>
+          <a href="/product/view?orderCond=date&cate=group3">전체보기</a>
         </button>
       </div>
     </section>
@@ -155,14 +120,14 @@
       <h5>와인/과실주</h5>
       <div class="list-box__grid">
         <!-- 반복요소 (4개)-->
-        <article class="item">
-          <a href=""><!--링크 수정-->
+        <article class="item" th:each="product : ${products}" th:if="${product.productCategoryNumber == 7 or product.productCategoryNumber == 8}">
+          <a th:href="@{/product/detail(productNumber=${product.productNumber})}"><!--링크 수정-->
             <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+              <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+              <h6 th:text="${product.productName }"></h6>
+              <p th:text="${product.productSubtitle}"></p>
             </div>
           </a>
         </article>
@@ -171,7 +136,7 @@
       <div class="btn-box">
         <button type="button" class="show-all-btn">
           <!--링크 수정-->
-          <a href="">전체보기</a>
+          <a href="/product/view?orderCond=date&cate=group4">전체보기</a>
         </button>
       </div>
     </section>
@@ -180,14 +145,14 @@
       <h5>기타주류</h5>
       <div class="list-box__grid">
         <!-- 반복요소 (4개)-->
-        <article class="item">
-          <a href=""><!--링크 수정-->
+        <article class="item" th:each="product : ${products}" th:if="${product.productCategoryNumber == 9}">
+          <a th:href="@{/product/detail(productNumber=${product.productNumber})}"><!--링크 수정-->
             <div class="item__img-box">
-              <img th:src="@{/imgs/product/500000124_list_027.jpg}" alt="">
+              <img th:src="'/upload/' + ${product.productImgMainPath} + '/' + ${product.productImgMainUuid} + '_' + ${product.productImgMainName}" alt="">
             </div>
             <div class="item__info">
-              <h6>지란지교 탁주</h6>
-              <p>순창 누룩으로 빚어낸 고급 탁주</p>
+              <h6 th:text="${product.productName}"></h6>
+              <p th:text="${product.productSubtitle}"></p>
             </div>
           </a>
         </article>
@@ -196,10 +161,12 @@
       <div class="btn-box">
         <button type="button" class="show-all-btn">
           <!--링크 수정-->
-          <a href="">전체보기</a>
+          <a href="/product/view?orderCond=date&cate=group5">전체보기</a>
         </button>
       </div>
     </section>
+
+    <input type="hidden" name="orderCond" th:value="${'date' == orderCond  } ? 'date' : ''">
 
   </main>
 </section>

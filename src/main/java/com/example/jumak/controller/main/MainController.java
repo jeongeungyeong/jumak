@@ -1,6 +1,9 @@
 package com.example.jumak.controller.main;
 
 import com.example.jumak.domain.vo.main.ProductSearchVo;
+import com.example.jumak.domain.vo.product.Criteria;
+import com.example.jumak.domain.vo.product.PageVo;
+import com.example.jumak.domain.vo.product.ProductInfoVo;
 import com.example.jumak.service.main.MainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -43,3 +46,6 @@ public class MainController {
 
 
 }
+
+
+

@@ -10,18 +10,10 @@ import java.util.List;
 
 @Mapper
 public interface ProductReviewMapper {
+//    상품 후기 리스트 조회
+    List<ProductReviewVo> selectListByProductNumber(Long productNumber);
 //    상품 후기 작성
-    void reviewInsert(ProductReviewVo productReviewVo);
-//    상품 후기 조회
-    List<ProductReviewVo> reviewList(Long productNumber);
-//    상품 후기 전체 조회
-int selectTotal(Long productNumber);
-//상품 후기 수정
-void reviewUpdate(ProductReviewDto productReviewDto);
-//상품 후기 삭제
-void reviewDelete(Long productReviewNumber);
-//상품 후기 페이징 처리
-    List<ProductReviewVo> selectListPage(@Param("criteria") Criteria criteria,
-                                         @Param("productNumber") Long productNumber);
+    void insert(ProductReviewDto productReviewDto);
+
 
 }

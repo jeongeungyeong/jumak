@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>주모's store</title>
+  <link rel="stylesheet" th:href="@{/css/product/common.css}" />
+  <link rel="stylesheet" th:href="@{/css/product/product_info_detail.css}" />
+  <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+  <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+</head>
+<body>
+<header th:replace="~{/fragments/header :: header}"></header>
+<main>
+
+
+  <div class="top-box">
+
+
+    <div class="product_content-wrap">
+
+     <!--  상품 상단 정보-->
+      <div class="product-content_box">
+        <!-- 상품 이미지 상단 -->
+
+        <section class="product-img">
+          <div class="product-img__content-box">
+          <img th:src="'/upload/' + ${detailproduct.productImgMainPath} + '/'
+            + ${detailproduct.productImgMainUuid} + '_' + ${detailproduct.productImgMainName}" alt="">
+          </div>
+
+        </section>
+
+        <section class="product-info">
+
+
+            <div class="product-info__topHead-box">
+              <div class="product-info__topHead__title">
+                <h2 th:text="${detailproduct.productCategoryName}">와인/과실주</h2>
+                <br>
+                <h3 th:text="${detailproduct.productName}+' '+${detailproduct.productAlcoholicity}+'도'
+              +' '+${detailproduct.productNetWeight}+'ml'">시나브로 피에스 화이트스파클링와인 5도 750ml</h3>
+                <p th:text="${detailproduct.productSubtitle}">서브타이틀</p>
+              </div>
+            </div>
+            <!--                    //product-info__topHead-box-->
+            <div class="ingredient">
+            <strong>주원료</strong>
+            <span th:text="${detailproduct.productRawMaterial}" >물, 쌀, 국, 효모</span>
+            </div>
+
+            <!-- //product-info__price-box-->
+
+            <div class="product-info__table-box">
+
+              <table
+                      class="tbl"
+                      style="
+                        border-collapse: collapse;
+                        border-spacing: 0;
+                        table-layout: fixed;
+                        width: 100%;
+                        margin-top: 20px;
+                        margin-bottom: 20px;
+                        border-bottom: 1px solid #dedede;
+                      "
+              >
+                <colgroup>
+                  <col width="" />
+                  <col width="" />
+                  <col width="" />
+                  <col width="" />
+                </colgroup>
+                <thead>
+                <tr>
+                  <th scope="col">용량(ml)</th>
+                  <th scope="col">도수(%)</th>
+                  <th scope="col">양조장</th>
+                  <th scope="col">생산지역</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td
+                          style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+                  >
+                    750
+                  </td>
+                  <td
+                          style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+                  >
+                    5
+                  </td>
+                  <td
+                          style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+                  >
+                    시나브로와이너리
+                  </td>
+                  <td
+                          style="
+                              text-align: center;
+                              padding: 20px 0;
+                              font-weight: 300;
+                            "
+                  >
+                    충청북도 영동군
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+
+
+
+
+
+            </div>
+            <!--    //product-info__table-box-->
+
+
+
+
+
+
+
+
+
+        </section>
+      </div>
+
+    </div>
+
+      <!--    //product-content_box   -->
+
+
+      <!--            상품 디테일 이미지 -->
+
+      <!--  //product_content-wrap -->
+
+  </div>
+
+  <div class="item_goods_sec">
+
+    <div class="detail_cont">
+      <div class="detail_explain_box go01">
+        <div class="image-manual"><!-- 이미지 --></div>
+        <div class="txt-manual" th:each="dimg: ${dimgs}">
+          <img th:src="'/upload/' + ${dimg.productImgPath} + '/'
+            + ${dimg.productImgUuid} + '_' + ${dimg.productImgName}" alt=""
+          />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</main>
+
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
+<script th:src="@{/js/product/storeproductdetail.js}"></script>
+</body>
+</html>
