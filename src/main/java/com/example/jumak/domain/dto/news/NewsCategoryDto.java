@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 
 @Data
 @NoArgsConstructor
-@Component
 public class NewsCategoryDto {
     private Long newsCategoryNumber;
     private String newsCategoryName;

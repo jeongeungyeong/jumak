@@ -16,7 +16,8 @@ public class AOrderRestController {
 
 //    회원등급수정
     @PatchMapping("/update")
-    public void modifyOrderStatus(@RequestParam("orderNumber") Long orderNumber, @RequestParam("orderStatusNumber") Long orderStatusNumber){
+    public void modifyOrderStatus(@RequestParam("orderNumber") Long orderNumber,
+                                  @RequestParam("orderStatusNumber") Long orderStatusNumber){
 //        System.out.println("orderNumber = " + orderNumber + ", orderStatusNumber = " + orderStatusNumber);
         aOrderService.modifyOrderStatus(orderNumber,orderStatusNumber);
     }

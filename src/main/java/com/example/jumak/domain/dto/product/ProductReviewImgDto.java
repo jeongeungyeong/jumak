@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @NoArgsConstructor
 @Data
-@Component
+
 public class ProductReviewImgDto {
     private Long productReviewImgNumber;
     private String productReviewImgName;

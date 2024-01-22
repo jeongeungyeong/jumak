@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Data
-@Component
 @NoArgsConstructor
 public class NewsImgDto {
     private Long newsImgNumber;

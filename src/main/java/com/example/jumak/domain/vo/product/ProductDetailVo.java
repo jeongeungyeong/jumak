@@ -3,7 +3,7 @@ package com.example.jumak.domain.vo.product;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 
-@Component
+
 @Data
 public class ProductDetailVo {
 //    상품 번호
