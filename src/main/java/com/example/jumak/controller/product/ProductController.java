@@ -20,14 +20,6 @@ import java.util.List;
 public class ProductController {
     private final ProductService productService;
 
-    //    우리술 전체보기
-/*    @GetMapping("/list")
-    public String productInfo(Model model,Long categoryNumber){
-        List<ProductInfoVo> groupList = productService.findGroup(categoryNumber);
-        model.addAttribute("products",groupList);
-        return "product/product_info_main";
-    }*/
-
 //    우리술 전체보기
     @GetMapping("/list")
     public String productMain(Model model){

@@ -63,6 +63,47 @@ public class OrderController {
         return "order/cart";
     }
 
+//    장바구니 바로구매
+    @GetMapping("/cart_next")
+    public String cartMain(@RequestParam("productNumber") Long productNumber,
+                           @RequestParam(name="productCount",required = true) Long productCount,
+                           HttpServletRequest req,
+                           @SessionAttribute("userNumber") Long userNumber,
+                           Model model){
+
+        ShoppingListDto shoppingListDto = new ShoppingListDto();
+        shoppingListDto.setProductCount(productCount);
+        shoppingListDto.setProductNumber(productNumber);
+        shoppingListDto.setUserNumber(userNumber);
+
+        List<CartVo> cartList = orderService.cartRegister(shoppingListDto);
+
+        long totalPrice = cartList.stream().mapToLong(item -> item.getProductPrice() * item.getProductCount()).sum();
+        long totalCount = cartList.stream().mapToLong(item -> item.getProductCount()).sum();
+        long salePrice = cartList.stream().mapToLong(item -> (int)item.getSalePrice()).sum();
+        long totalDiscount = totalPrice - salePrice;
+
+
+
+        model.addAttribute("cartList", cartList);
+
+        model.addAttribute("salePrice", salePrice);
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("totalCount", totalCount);
+        model.addAttribute("totalDiscount", totalDiscount);
+        model.addAttribute("paymentTotal", totalPrice + 3000);
+
+        Object getUserNumber = req.getSession().getAttribute("userNumber");
+        OrderVo byUNumber = null ;
+
+        byUNumber = orderService.findByUNumber((Long) getUserNumber);
+        model.addAttribute("orderUInfo",byUNumber);
+
+        return "order/store_cart_order";
+    }
+
+
+
 //    바로구매
     @GetMapping("/next")
     public String orderMain(@RequestParam("productNumber") Long productNumber,
@@ -72,6 +113,7 @@ public class OrderController {
 // productNumber 로 next페이지에 넘겨줄 정 보 서비스에서 뽑아서 넘겨주고
 //        productCount 는 그냥 넘겨주기
         ProductDetailVo productDetail = storeService.findByDNumber(productNumber);
+
 
         model.addAttribute("productDetail",productDetail);
         model.addAttribute("productCount",productCount);
@@ -86,7 +128,8 @@ public class OrderController {
         Object userNumber = req.getSession().getAttribute("userNumber");
 
         //오더서비스연결해서 모델로 뿌리기
-        OrderVo byUNumber = null;
+
+        OrderVo byUNumber = null ;
 
         byUNumber = orderService.findByUNumber((Long) userNumber);
 
@@ -98,8 +141,8 @@ public class OrderController {
 
     @GetMapping("/fail")
     public String orderFail(Model model, Integer price, @SessionAttribute("userNumber") Long userNumber){
-        OrderVo orderFin = orderService.findByNumber(userNumber);
-        model.addAttribute("finalorder",orderFin);
+//        OrderVo orderFin = orderService.findByNumber(userNumber);
+//        model.addAttribute("finalorder",orderFin);
         model.addAttribute("totalprice",price);
         return "order/storeorderfail";
     }
