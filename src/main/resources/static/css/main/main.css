@@ -50,6 +50,8 @@
 
 .news__img-box > img{
     border-radius: 15px;
+    width: 300px;
+    height: 180px;
 }
 
 .news__info{
@@ -68,13 +70,17 @@
 }
 
 .madang__img-box{
-    width: 70px;
-    height: 70px;
+    width: 119px;
+    height: 65px;
     overflow: hidden;
     border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+.madang__img-box > img{
+    width: 119px;
+    height: 65px;
 }
 .madang__list-ul > li > a{
     display: flex;

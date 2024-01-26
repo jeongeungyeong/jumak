@@ -129,7 +129,7 @@
         </div>
       </div>
       <div class="header__login-info" th:classappend="${session.userNumber == null ? 'header--none' : ''}">
-        <a href="">
+        <a href="/mypage/main">
           <span class="header__user-info" th:text="${session.userNickname}"></span>
         </a>
         <a th:href="@{/user/logout}">

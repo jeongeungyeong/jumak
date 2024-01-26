@@ -3,12 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
     <link rel="stylesheet" th:href="@{/css/mypage/main/main.css}" />
   </head>
-  <header class="header">
-    <h1>수상한주막</h1>
   </header>
   <body>
+    <header th:replace="~{/fragments/header :: header}"></header>
     <div class="my_page">
       <!-- 사이드 메뉴 시작 -->
       <div class="sub_menu_box">
@@ -44,18 +47,7 @@
                   <a href="/mypage/member-info">- 회원정보 변경</a>
                 </li>
                 <li>
-                  <a href="">- 회원 탈퇴</a>
-                </li>
-                <li>
-                  <a href="">- 배송지 관리</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <h2>커뮤니티</h2>
-              <ul class="sub_menu_samll_list">
-                <li>
-                  <a href="">- 작성글 확인</a>
+                  <a href="/mypage/member-delete">- 회원 탈퇴</a>
                 </li>
               </ul>
             </li>
@@ -143,7 +135,7 @@
           </div>
           <!-- 진행주문상태 끝-->
           <!-- 진행주문상태 리스트-->
-          <div>
+          <div class="recent_order_details">
             <table>
               <colgroup>
                 <col style="width: 183px;">
@@ -215,10 +207,9 @@
         </div>
       </div>
     </div>
-    <footer>
-      <h3>footer</h3>
-    </footer>
+    <footer th:replace="~{/fragments/footer :: footer}"></footer>
   </body>
   <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
   <script th:src="@{/js/mypage/main/main.js}"></script>
+  <script th:src="@{/js/fragments/header.js}"></script>
 </html>
