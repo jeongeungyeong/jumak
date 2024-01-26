@@ -93,7 +93,11 @@ public class UserController {
         session.setAttribute("userNumber", userDto.getUserNumber());
         session.setAttribute("userNickname", userDto.getUserNickname());
 
-        return new RedirectView("/");  //메인화면경로 설정하기
+        if(userDto.getUserGradeNumber() == 2) {
+            return new RedirectView("/admin/user");  //메인화면경로 설정하기
+        }
+            return new RedirectView("/");  //메인화면경로 설정하기
+
     }
 
 // 로그아웃 처리
