@@ -6,16 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>관리자페이지</title>
 
+    <link rel="stylesheet" th:href="@{/css/admin/layout/header.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
     <link rel="stylesheet" th:href="@{/css/admin/contentLeft.css}">
     <link rel="stylesheet" th:href="@{/css/admin/qa/adminQaDetail.css}">
 </head>
 
 <body>
-    <header>
-        <div class="header_">
-            <img src="" alt="">
-        </div>
-    </header>
+<header th:replace="~{/admin/layout/header :: header}"></header>
     <div>
         <div></div>
         <div class="sub_content">
@@ -94,6 +93,7 @@
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
     <script th:src="@{/js/admin/qa/adminQaDetail.js}"></script>
+    <script th:src="@{/js/fragments/header.js}"></script>
 </body>
 
 </html>
