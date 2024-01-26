@@ -45,6 +45,14 @@ function checkBox($ele, isChecked) {
 }
 
 //버튼 작업
+
+//선택 삭제하기
+$('.delete-btn').on('click',function (){
+
+})
+
+
+
 //바로구매 바로 가기
 $('.all-order-btn').on('click', function (){
     $('#cart-form').attr('action', '/order/cart_next');
