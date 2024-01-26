@@ -81,6 +81,8 @@ public class OrderController {
         long totalPrice = cartList.stream().mapToLong(item -> item.getProductPrice() * item.getProductCount()).sum();
         long totalCount = cartList.stream().mapToLong(item -> item.getProductCount()).sum();
         long salePrice = cartList.stream().mapToLong(item -> (int)item.getSalePrice()).sum();
+        long totalDiscount = totalPrice - salePrice;
+
 
 
         model.addAttribute("cartList", cartList);
@@ -88,6 +90,7 @@ public class OrderController {
         model.addAttribute("salePrice", salePrice);
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("totalCount", totalCount);
+        model.addAttribute("totalDiscount", totalDiscount);
         model.addAttribute("paymentTotal", totalPrice + 3000);
 
         Object getUserNumber = req.getSession().getAttribute("userNumber");

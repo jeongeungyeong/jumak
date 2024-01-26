@@ -425,12 +425,12 @@
                                         할인 :
                                         <strong
                                         >(-)
-                                            <b class="total-goods-dc-price" th:text="${productDetail.productDiscount}"></b
+                                            <b class="total-goods-dc-price" th:text="${totalDiscount}"></b
                                             >원</strong
                                         >
                                         <span
                                         >( 상품
-                                        <span class="goods-dc-price" th:text="${productDetail.productDiscount}"></span>원)</span
+                                        <span class="goods-dc-price" th:text="${totalDiscount}"></span>원)</span
                                         >
                                     </em>
                                 </li>
@@ -504,8 +504,8 @@
             <div class="cart-final_total__price">
                 <div class="cart-final_total__sum">
                     <span>최종 결제 금액</span>
-                    <span class="final_price-color"><strong th:text="${#numbers.formatInteger(productDetail.paymentTotal,0,'COMMA')}"></strong>원</span>
-                    <input type="hidden" class="price_total" name="paymentTotal" th:value="${productDetail.paymentTotal}">
+                    <span class="final_price-color"><strong th:text="${#numbers.formatInteger(paymentTotal,0,'COMMA')}"></strong>원</span>
+                    <input type="hidden" class="price_total" name="paymentTotal" th:value="${paymentTotal}">
                 </div>
             </div>
         </div>
