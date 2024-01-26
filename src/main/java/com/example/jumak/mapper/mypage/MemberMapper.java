@@ -14,4 +14,7 @@ public interface MemberMapper {
 
 //    맴버정보업데이트
    void updateMember(MemberVo memberVo);
+
+//   맴버정보삭제
+    void memberDelete(MemberVo memberVo);
 }

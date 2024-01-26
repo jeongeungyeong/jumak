@@ -67,7 +67,7 @@ $('#enter_button').on('click', function (){
     if(isTrue && newId === enterId){
         $("#member_update").submit();
     }else {
-        alert("확인해!");
+        alert("입력하신 정보를 다시 확인하여 주세요");
     }
 });
 
