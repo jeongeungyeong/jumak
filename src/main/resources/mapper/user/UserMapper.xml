@@ -7,7 +7,7 @@
         </select>
 
         <select id="selectLoginInfo" resultType="userDto">
-            SELECT USER_NUMBER, USER_NICKNAME FROM JUMAK_USER
+            SELECT USER_NUMBER, USER_NICKNAME, USER_GRADE_NUMBER FROM JUMAK_USER
             WHERE  USER_ID = #{userId} AND USER_PASSWORD = #{userPassword}
         </select>
 
