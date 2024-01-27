@@ -24,7 +24,6 @@ public interface OrderMapper {
 //    장바구니 리스트 조회
     List<CartVo> cartListSelect(Long userNumber);
 
-
 //    주문자 정보 삽입
     void orderInsert(OrderVo orderVo);
 

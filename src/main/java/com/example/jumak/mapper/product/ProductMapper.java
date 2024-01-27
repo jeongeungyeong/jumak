@@ -11,10 +11,8 @@ import java.util.Optional;
 
 @Mapper
 public interface ProductMapper {
-//    우리술 메인 페이지
-/*    List<ProductInfoVo> selectGroup(@Param("categoryNumber") Long categoryNumber);*/
 
-    //  우리술 메인 페이지 test
+    //  우리술 메인 페이지
     List<ProductInfoVo> selectByCate();
 
 

@@ -17,12 +17,8 @@ import java.util.Optional;
 public class ProductService {
     private final ProductMapper productMapper;
 
-//    우리술 메인
-/*    public List<ProductInfoVo> findGroup(Long categoryNumber){
-        return productMapper.selectGroup(categoryNumber);
-    }*/
 
-// 우리술 메인 test
+// 우리술 메인
 
     public List<ProductInfoVo> findByCate(){
         return productMapper.selectByCate();

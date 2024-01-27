@@ -34,7 +34,6 @@ public class OrderService {
         orderMapper.orderInsert(orderVo);
     }
 //    주문 상세 정보 삽입
-
     public void orderDetailRegister(OrderDetailPayVo orderDetailPayVo){
         orderMapper.orderDetailInsert(orderDetailPayVo);
 
@@ -62,18 +61,6 @@ public class OrderService {
         return orderMapper.selectByUNumber(userNumber)
                 .orElseThrow( ()->new IllegalStateException("주문자 정보 없음!"));
     }
-
-
-
-    //    주문 정보 디테일
-/*    public void orderDetailRegister(List<OrderDetailPayVo> orderDetailPayVo){
-
-//        빠른 for문
-*//*        for (OrderDetailPayVo detailVo : orderDetailPayVo) {
-            orderMapper.orderDetailInsert(detailVo);
-        }*//*
-
-    }*/
 
 
 

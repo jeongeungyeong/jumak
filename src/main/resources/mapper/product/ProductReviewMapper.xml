@@ -2,23 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.product.ProductReviewMapper">
 
-<!--    상품후기리스트 조회-->
-    <select id="selectListByProductNumber" parameterType="long" resultType="productReviewVo">
-        SELECT PRV.PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT, PRODUCT_REVIEW_DATE, U.USER_NUMBER, PRODUCT_NUMBER,
-               U.USER_NICKNAME
-        FROM JUMAK_PRODUCT_REVIEW PRV JOIN JUMAK_USER U
-                                           ON PRV.PRODUCT_NUMBER=#{productNumber} AND PRV.USER_NUMBER = U.USER_NUMBER
-        ORDER BY PRV.PRODUCT_REVIEW_NUMBER DESC
-    </select>
-    
-    <insert id="insert" parameterType="productReviewDto">
-        <selectKey keyProperty="productReviewNumber" order="BEFORE" resultType="long">
-                SELECT SEQ_PRODUCT_REVIEW.nextval FROM DUAL
-        </selectKey>
-        insert into JUMAK_PRODUCT_REVIEW (PRODUCT_REVIEW_NUMBER, PRODUCT_REVIEW_CONTENT,
-                                          USER_NUMBER,PRODUCT_NUMBER)
-        values (#{productReviewNumber},#{productReviewContent},#{userNumber},#{productNumber})
-    </insert>
 
 
 

@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Document</title>
-  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
-  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/user/login/login.css}"/>
   <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
   <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
-  <link rel="stylesheet" th:href="@{/css/user/login/login.css}"/>
+  <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+  <link rel="stylesheet" th:href="@{/css/commons/default.css}">
 </head>
-<body id="blContents" class="body-member body-login pc" oncontextmenu="return false">
+
+<body>
 <header th:replace="~{/fragments/header :: header}"></header>
 
 <div id="container">

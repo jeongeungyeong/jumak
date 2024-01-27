@@ -20,8 +20,6 @@ public interface StoreMapper {
 
     Long selectTotalByCond(String cate);
 
-//     상품 디테일 페이지
-//    List<ProductDetailVo> selectByDetail();
 
 //    상품 디테일 번호로 조회
     Optional<ProductDetailVo> selectByDNumber(Long productNumber);

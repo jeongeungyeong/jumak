@@ -3,9 +3,7 @@
 <mapper namespace="com.example.jumak.mapper.product.SearchUserMapper">
     <insert id="insertSearchUser" parameterType="SearchUserDTO">
         INSERT INTO SEARCH_USER (
-                              SEARCH_USER_NUM
-                           ,  SEARCH_USER_NAME
-                           ,  SEARCH_USER_ID
+                              SEARCH_USER_NUM,SEARCH_USER_NAME,SEARCH_USER_ID
                            ,  SEARCH_USER_PASSWORD
                            ,  SEARCH_USER_PHONE
                            ,  SEARCH_USER_GENDER
