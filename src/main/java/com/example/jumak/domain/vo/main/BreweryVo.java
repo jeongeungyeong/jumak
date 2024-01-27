@@ -2,7 +2,6 @@ package com.example.jumak.domain.vo.main;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.stereotype.Component;
 
 @Data
 @NoArgsConstructor
