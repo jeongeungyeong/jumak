@@ -4,11 +4,13 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" th:href="@{/css/commons/default.css}">
+    <link rel="stylesheet" th:href="@{/css/commons/fonts.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/header.css}">
+    <link rel="stylesheet" th:href="@{/css/fragments/footer.css}">
     <link rel="stylesheet" th:href="@{/css/mypage/search_shipping/search_shipping.css}"/>
 </head>
-<header class="header">
-    <h1>수상한주막</h1>
-</header>
+<header th:replace="~{/fragments/header :: header}"></header>
 <body>
 <div class="my_page">
     <!-- 사이드 메뉴 시작 -->
@@ -42,21 +44,10 @@
                     <h2>회원정보</h2>
                     <ul class="sub_menu_samll_list">
                         <li>
-                            <a href="">- 회원정보 변경</a>
+                            <a href="/mypage/member-info">- 회원정보 변경</a>
                         </li>
                         <li>
-                            <a href="">- 회원 탈퇴</a>
-                        </li>
-                        <li>
-                            <a href="">- 배송지 관리</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <h2>커뮤니티</h2>
-                    <ul class="sub_menu_samll_list">
-                        <li>
-                            <a href="">- 작성글 확인</a>
+                            <a href="/mypage/member-delete">- 회원 탈퇴</a>
                         </li>
                     </ul>
                 </li>
@@ -166,13 +157,12 @@
         </div>
     </div>
 </div>
-    <footer>
-        <h3>footer</h3>
-    </footer>
+<footer th:replace="~{/fragments/footer :: footer}"></footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
         crossorigin="anonymous"></script>
 <!--  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script th:src="@{/js/mypage/search_shipping/search_shipping.js}"></script>
+<script th:src="@{/js/fragments/header.js}"></script>
 </html>

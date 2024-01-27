@@ -22,4 +22,7 @@ public class MemberService {
 
 //    맴버 정보 업데이트
     public void modifyMember(MemberVo memberVo) { memberMapper.updateMember(memberVo);}
+
+//    맴버 정보 삭제
+    public void removeMember(MemberVo memberVo) {memberMapper.memberDelete(memberVo);}
 }
