@@ -28,4 +28,10 @@
             USER_ZIPCODE = #{newZipcode}
         WHERE USER_NUMBER = #{userNumber}
     </update>
+
+    <delete id="memberDelete" parameterType="memberVo">
+        DELETE
+        FROM JUMAK_USER
+        WHERE USER_NUMBER = #{userNumber}
+    </delete>
 </mapper>

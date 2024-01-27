@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.jumak.mapper.main.MainMapper">
 
-<!-- 상품 검색 -->
+    <!-- 상품 검색 -->
     <select id="selectSearch" resultType="productSearchVo">
         SELECT DISTINCT P.PRODUCT_NUMBER,P.PRODUCT_NAME,P.PRODUCT_SUBTITLE, P.PRODUCT_DISCOUNT, P.PRODUCT_PRICE,
-               JPIM.PRODUCT_IMG_MAIN_NUMBER, JPIM.PRODUCT_IMG_MAIN_NAME, JPIM.PRODUCT_IMG_MAIN_PATH,
-               JPIM.PRODUCT_IMG_MAIN_UUID
+                        JPIM.PRODUCT_IMG_MAIN_NUMBER, JPIM.PRODUCT_IMG_MAIN_NAME, JPIM.PRODUCT_IMG_MAIN_PATH,
+                        JPIM.PRODUCT_IMG_MAIN_UUID
         FROM JUMAK_PRODUCT P
                  LEFT JOIN JUMAK_PRODUCT_IMG_MAIN JPIM
                            ON P.PRODUCT_NUMBER = JPIM.PRODUCT_NUMBER
@@ -18,12 +18,12 @@
                            ON JPT.PRODUCT_KEYWORD_NUMBER = JPK.PRODUCT_KEYWORD_NUMBER
         WHERE ( P.PRODUCT_NAME || P.PRODUCT_SUBTITLE || P.PRODUCT_ALCOHOLICITY
             || P.PRODUCT_AREA || P.PRODUCT_DISTILLERY || P.PRODUCT_RAW_MATERIAL )
-                  LIKE '%' || #{keyword} || '%'
+            LIKE '%' || #{keyword} || '%'
            OR JPC.PRODUCT_CATEGORY_NAME LIKE '%' || #{keyword} || '%'
            OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
     </select>
 
-<!--상품검색 카운트-->
+    <!--상품검색 카운트-->
     <select id="countSearch" resultType="_int">
         SELECT COUNT(DISTINCT P.PRODUCT_NUMBER)
         FROM JUMAK_PRODUCT P
@@ -42,29 +42,55 @@
            OR JPK.PRODCUT_KEYWORD_NAME LIKE '%' || #{keyword} || '%'
     </select>
 
-<!--    나만의 술찾기-->
-        <select id="selectTag" resultType="productDto">
-            SELECT PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_ALCOHOLICITY, PRODUCT_NET_WEIGHT,
-            PRODUCT_SUBTITLE
-            FROM JUMAK_PRODUCT
-            <if test="count != 0">
+    <!--    나만의 술찾기-->
+    <select id="selectTag" resultType="productDto">
+        SELECT PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_ALCOHOLICITY, PRODUCT_NET_WEIGHT,
+        PRODUCT_SUBTITLE
+        FROM JUMAK_PRODUCT
+        <if test="count != 0">
             WHERE PRODUCT_NUMBER = ANY(
-                SELECT T.PRODUCT_NUMBER
-                FROM JUMAK_PRODUCT_TAG T
-                LEFT JOIN JUMAK_PRODUCT P
-                ON P.PRODUCT_CATEGORY_NUMBER IN (#{productCategoryNumber1}, #{productCategoryNumber2})
-                AND T.PRODUCT_NUMBER = P.PRODUCT_NUMBER
-                WHERE T.PRODUCT_KEYWORD_NUMBER IN
+            SELECT T.PRODUCT_NUMBER
+            FROM JUMAK_PRODUCT_TAG T
+            LEFT JOIN JUMAK_PRODUCT P
+            ON P.PRODUCT_CATEGORY_NUMBER IN (#{productCategoryNumber1}, #{productCategoryNumber2})
+            AND T.PRODUCT_NUMBER = P.PRODUCT_NUMBER
+            WHERE T.PRODUCT_KEYWORD_NUMBER IN
 
             <foreach collection="arr" item="tag" open="(" close=")" separator=",">
                 #{tag}
             </foreach>
-                GROUP BY T.PRODUCT_NUMBER
-                HAVING COUNT(DISTINCT PRODUCT_KEYWORD_NUMBER) = #{count}
-                      )
+            GROUP BY T.PRODUCT_NUMBER
+            HAVING COUNT(DISTINCT PRODUCT_KEYWORD_NUMBER) = #{count}
+            )
 
-            </if>
+        </if>
+    </select>
+
+<!--        양조장탐방기-->
+        <select id="brewery" resultType="breweryVo">
+            SELECT NEWS_TITLE, NEWS_DATE,NEWS_IMG_PATH, NEWS_IMG_UUID, NEWS_IMG_NAME
+            FROM (
+                SELECT NEWS.NEWS_TITLE, NEWS.NEWS_DATE ,I.NEWS_IMG_PATH, I.NEWS_IMG_UUID, I.NEWS_IMG_NAME
+                FROM JUMAK_NEWS NEWS JOIN JUMAK_NEWS_IMG I on NEWS.NEWS_NUMBER = I.NEWS_NUMBER
+                ORDER BY NEWS.NEWS_DATE DESC
+            )
+            <![CDATA[
+            WHERE ROWNUM <= 4
+            ]]>
         </select>
 
-
+        <select id="madang" resultType="madangListVo">
+            SELECT MADANG_NUMBER, MADANG_TITLE, MADANG_DATE, MADANG_IMG_NAME, MADANG_IMG_PATH, MADANG_IMG_UUID, MADANG_CATEGORY_NAME
+            FROM(
+                    SELECT M.MADANG_NUMBER, M.MADANG_TITLE, M.MADANG_DATE,
+                           JMI.MADANG_IMG_NAME, JMI.MADANG_IMG_PATH, JMI.MADANG_IMG_UUID,
+                           JMC.MADANG_CATEGORY_NAME
+                    FROM JUMAK_MADANG M LEFT JOIN JUMAK_MADANG_IMG JMI on M.MADANG_NUMBER = JMI.MADANG_NUMBER
+                                        JOIN JUMAK_MADANG_CATEGORY JMC on JMC.MADANG_CATEGORY_NUMBER = M.MADANG_CATEGORY_NUMBER
+                    ORDER BY M.MADANG_DATE DESC
+            )
+            <![CDATA[
+            WHERE ROWNUM <= 6
+            ]]>
+        </select>
 </mapper>

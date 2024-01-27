@@ -6,6 +6,8 @@
         <typeAlias type="com.example.jumak.domain.dto.order.PaymentDto" alias="paymentDto"/>
         <typeAlias type="com.example.jumak.domain.dto.qa.QaDto" alias="qaDto"/>
         <typeAlias type="com.example.jumak.domain.vo.myPage.MemberVo" alias="memberVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.main.BreweryVo" alias="breweryVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.main.MadangListVo" alias="madangListVo"/>
 
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderStatusVo" alias="orderStatusVo"/>
         <typeAlias type="com.example.jumak.domain.vo.myPage.OrderDetailVo" alias="orderDetailVo"/>
@@ -62,6 +64,9 @@
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangDetailVo" alias="madangDetailVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyCountVo" alias="madangReplyCountVo"/>
         <typeAlias type="com.example.jumak.domain.vo.madang.MadangReplyVo" alias="madangReplyVo"/>
+
+        <typeAlias type="com.example.jumak.domain.vo.main.MadangListVo" alias="madangListVo"/>
+        <typeAlias type="com.example.jumak.domain.vo.main.BreweryVo" alias="breweryVo"/>
 
     </typeAliases>
 </configuration>

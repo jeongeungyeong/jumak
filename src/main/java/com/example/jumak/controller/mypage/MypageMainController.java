@@ -36,8 +36,7 @@ public class MypageMainController {
 //    메인
     @GetMapping("/main")
     public String main(Model model, HttpServletRequest req) {
-//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
 //       회원 이름 조회
         String userName = mypageMainService.findUserName(userNumber);
@@ -70,8 +69,7 @@ public class MypageMainController {
 //    주문목록/배송조회
     @GetMapping("/search-shipping")
     public String searchShipping(Model model, HttpServletRequest req, OrderDetailVo orderDetailVo) {
-//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
 //       회원 이름 조회
         String userName = mypageMainService.findUserName(userNumber);
@@ -98,8 +96,7 @@ public class MypageMainController {
 //    주문 취소 페이지
     @GetMapping("/cancel-shipping")
     public String cancelShipping(Model model, HttpServletRequest req) {
-        //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+                Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
 //       회원 이름 조회
         String userName = mypageMainService.findUserName(userNumber);
@@ -127,8 +124,7 @@ public class MypageMainController {
 //    환불
     @GetMapping("/refund-shipping")
     public String refundShipping(Model model, HttpServletRequest req) {
-        //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+                Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
 //       회원 이름 조회
         String userName = mypageMainService.findUserName(userNumber);
@@ -156,8 +152,7 @@ public class MypageMainController {
     @GetMapping("/inquiry")
     public String inquiry (Model model, HttpServletRequest req)
     {
-        //        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+                Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
 //       회원 이름 조회
         String userName = mypageMainService.findUserName(userNumber);
@@ -185,21 +180,19 @@ public class MypageMainController {
     @GetMapping("/inquiry-detail")
     public String inquiryDetail(@SessionAttribute(value = "userNumber", required = false) Long userNumber) {
 
-//        return userNumber == null ? "user/login/login" : "mypage/inquiry_detail/inquiry_detail";
-        return "mypage/inquiry_detail/inquiry_detail";
+        return userNumber == null ? "user/login/login" : "mypage/inquiry_detail/inquiry_detail";
     }
 
     @PostMapping("/inquiry-detail")
     public RedirectView inquiryDetail(QaDto qaDto,
-//                                      @SessionAttribute("userNumber") Long userNumber,
+                                      @SessionAttribute("userNumber") Long userNumber,
                                       RedirectAttributes redirectAttributes) {
-//        qaDto.setUserNumber(userNumber);
-    qaDto.setUserNumber(1L);
+        qaDto.setUserNumber(userNumber);
     inquiryService.register(qaDto);
-//    Long qaNumber = qaDto.getQaNumber();
+    Long qaNumber = qaDto.getQaNumber();
 
 
-    redirectAttributes.addFlashAttribute("qaNumber", qaDto.getQaNumber());
+    redirectAttributes.addFlashAttribute("qaNumber", qaNumber);
 
     return new RedirectView("/mypage/inquiry");
     }
@@ -207,8 +200,7 @@ public class MypageMainController {
 //    게시물 보기
     @GetMapping("/inquiry-view")
     public String inquiryView(Model model, HttpServletRequest req, Long qaNumber) {
-//        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
         log.info("qaNumber : {}", qaNumber);
 
@@ -241,8 +233,8 @@ public class MypageMainController {
 //    회원정보
     @GetMapping("/member-info")
     public String memberInfo(Model model, HttpServletRequest req) {
-//      Long userNumber = (Long)req.getSession().getAttribute("userNumber");
-        Long userNumber = 1L;
+      Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+
 
 
 //        정보 가져오기
@@ -255,8 +247,8 @@ public class MypageMainController {
     }
 
     @PostMapping("/member-info")
-    public RedirectView memberInfo(MemberVo memberVo) {
-        Long userNumber = 1L; // 임시 코드 -> 나중에 지워야함
+    public RedirectView memberInfo(MemberVo memberVo, HttpServletRequest req) {
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
 
         memberVo.setUserNumber(userNumber);
 
@@ -269,6 +261,18 @@ public class MypageMainController {
     @GetMapping("/member-delete")
     public String memberDelete() {
         return "mypage/member_delete/member_delete";
+    }
+
+    @PostMapping("/member-delete")
+    public RedirectView memberDelete(Model model, HttpServletRequest req,
+                                     MemberVo memberVo) {
+        Long userNumber = (Long)req.getSession().getAttribute("userNumber");
+
+        memberVo.setUserNumber(userNumber);
+
+        memberService.removeMember(memberVo);
+
+        return new RedirectView("/mypage/member-delete");
     }
 
 //    배송지 관리
