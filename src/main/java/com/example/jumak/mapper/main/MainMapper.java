@@ -27,7 +27,7 @@ public interface MainMapper {
 //    public List<ProductDto> selectTag(@Param("tag1") Long tag1,@Param("tag2") Long tag2
 //            ,@Param("tag3") Long tag3);
 
-    public List<ProductDto> selectTag(@Param("arr") Integer[] arr,@Param("count") int count,
+    public List<ProductSearchVo> selectTag(@Param("arr") Integer[] arr,@Param("count") int count,
                                       @Param("productCategoryNumber1") Long productCategoryNumber1,
                                       @Param("productCategoryNumber2") Long productCategoryNumber2);
 }

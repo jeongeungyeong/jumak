@@ -43,12 +43,15 @@
     </select>
 
     <!--    나만의 술찾기-->
-    <select id="selectTag" resultType="productDto">
-        SELECT PRODUCT_NUMBER, PRODUCT_NAME, PRODUCT_ALCOHOLICITY, PRODUCT_NET_WEIGHT,
-        PRODUCT_SUBTITLE
-        FROM JUMAK_PRODUCT
+    <select id="selectTag" resultType="productSearchVo">
+        SELECT P.PRODUCT_NUMBER,P.PRODUCT_NAME,P.PRODUCT_SUBTITLE,
+        JPIM.PRODUCT_IMG_MAIN_NUMBER, JPIM.PRODUCT_IMG_MAIN_NAME, JPIM.PRODUCT_IMG_MAIN_PATH,
+        JPIM.PRODUCT_IMG_MAIN_UUID
+        FROM JUMAK_PRODUCT P
+        LEFT JOIN JUMAK_PRODUCT_IMG_MAIN JPIM
+        ON P.PRODUCT_NUMBER = JPIM.PRODUCT_NUMBER
         <if test="count != 0">
-            WHERE PRODUCT_NUMBER = ANY(
+            WHERE P.PRODUCT_NUMBER = ANY(
             SELECT T.PRODUCT_NUMBER
             FROM JUMAK_PRODUCT_TAG T
             LEFT JOIN JUMAK_PRODUCT P

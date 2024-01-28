@@ -53,7 +53,7 @@
         <typeAlias type="com.example.jumak.domain.vo.order.CartVo" alias="cartVo"/>
 
         <typeAlias type="com.example.jumak.domain.dto.user.UserDto" alias="userDto"/>
-        <typeAlias type="com.example.jumak.domain.dto.product.SearchUserDTO" alias="searchUserDTO"/>
+        <typeAlias type="com.example.jumak.domain.dto.user.SearchUserDTO" alias="searchUserDTO"/>
 
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangDto" alias="madangDto"/>
         <typeAlias type="com.example.jumak.domain.dto.madang.MadangCategoryDto" alias="madangCategoryDto"/>

@@ -1,6 +1,7 @@
 package com.example.jumak.controller.main;
 
 import com.example.jumak.domain.dto.product.ProductDto;
+import com.example.jumak.domain.vo.main.ProductSearchVo;
 import com.example.jumak.service.main.MainService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,11 +19,11 @@ public class MainRestController {
     private final MainService mainService;
 
     @GetMapping("/tag")
-    public List<ProductDto> tagFind(@RequestParam("arr")Integer[] arr,
+    public List<ProductSearchVo> tagFind(@RequestParam("arr")Integer[] arr,
                                     @RequestParam("productCategoryNumber1")Long productCategoryNumber1){
 
 //        System.out.println("arr = " + Arrays.deepToString(arr) + ", productCategoryNumber1 = " + productCategoryNumber1);
-        List<ProductDto> productList = mainService.findTag(arr, productCategoryNumber1);
+        List<ProductSearchVo> productList = mainService.findTag(arr, productCategoryNumber1);
 
         return productList;
     }
