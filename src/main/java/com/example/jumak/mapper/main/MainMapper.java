@@ -1,7 +1,7 @@
 package com.example.jumak.mapper.main;
 
+import com.example.jumak.domain.dto.madang.MadangDto;
 import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.vo.main.BreweryVo;
 import com.example.jumak.domain.vo.main.MadangListVo;
 import com.example.jumak.domain.vo.main.ProductSearchVo;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,8 +17,8 @@ public interface MainMapper {
     // 상품 검색 카운트
     public int countSearch(String keyword);
 
-    //    양조장 탐방기
-    public List<BreweryVo> brewery();
+    //    공지사항
+    public List<MadangDto> announcement();
 
     //    수상한 마당
     public List<MadangListVo> madang();
