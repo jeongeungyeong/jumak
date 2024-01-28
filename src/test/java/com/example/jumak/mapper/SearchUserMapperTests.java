@@ -1,6 +1,6 @@
 package com.example.jumak.mapper;
 
-import com.example.jumak.domain.dto.product.SearchUserDTO;
+import com.example.jumak.domain.dto.user.SearchUserDTO;
 import com.example.jumak.mapper.product.SearchUserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
