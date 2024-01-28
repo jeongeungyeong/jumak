@@ -34,7 +34,7 @@ public class MainService {
     public List<MadangListVo> madang() { return mainMapper.madang(); }
 
     //    나만의 술찾기
-    public List<ProductDto> findTag(Integer[] arr,
+    public List<ProductSearchVo> findTag(Integer[] arr,
                                     Long productCategoryNumber1){
         int count = arr.length;
         Long productCategoryNumber2 = productCategoryNumber1+1L;

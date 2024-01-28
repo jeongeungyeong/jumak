@@ -70,15 +70,16 @@ function displayList(resp) {
             <a href="">
                 <li>
                   <div class="img-box">
-                    <img src="/imgs/main/find/sample-img.jpg" alt="">
+                    <img src="/upload/${item.productImgMainPath}/${item.productImgMainUuid}_${item.productImgMainName}" alt="">
                   </div>
                   <div class="text-box">
                     <p class="text-box__name">${item.productName}</p>
-                    <p class="text-box__explain">명인이 빚어낸 황금빛 제주의 자산</p>
+                    <p class="text-box__explain">${item.productSubtitle}</p>
                   </div>
                 </li>
               </a>
         `;
     })
+    $('.result-list__grid').html(text)
 
 }

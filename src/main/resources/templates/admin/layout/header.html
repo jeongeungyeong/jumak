@@ -18,36 +18,31 @@
         <ul>
 
             <li>
-                수상한 정보
+                <a th:href="@{/product/list}">
+                    수상한 소식
+                </a>
                 <ul class="header__sub-menu header--none">
                     <li>
                         <a th:href="@{/product/list}">
                             우리술 전체보기
                         </a>
                     </li>
-                    <li>나에게 맞는 술 찾기</li>
                 </ul>
             </li>
 
 
 
             <li>
-                수상한 소식
+                <a th:href="@{/find}">
+                    수상한 정보
+                </a>
                 <ul class="header__sub-menu header--none">
-                    <li>수상한 소식</li>
+                    <li>
+                        <a th:href="@{/find}">
+                            나에게 맞는 술찾기
+                        </a></li>
                 </ul>
             </li>
-
-
-
-            <li>
-                주모의 비밀레시피
-                <ul class="header__sub-menu header--none">
-                    <li>칵테일 비밀레시피</li>
-                </ul>
-            </li>
-
-
 
             <li>
                 <a th:href="@{/madang/list}">
@@ -113,10 +108,6 @@
             <div class="search-icon-box icon-box">
                 <img th:src="@{/imgs/main/icon/ico_top_search.png}" alt="">
             </div>
-            <div class="cart-icon-box icon-box">
-                <img th:src="@{/imgs/main/icon/ico_top_cart.png}" alt="">
-            </div>
-
             <div class="login-icon-box icon-box" th:classappend="${session.userNumber != null ? 'header--none' : ''}">
                 <img th:src="@{/imgs/main/icon/ico_top_user.png}" alt="">
                 <div class="user-box header--none">
@@ -129,7 +120,7 @@
                 </div>
             </div>
             <div class="header__login-info" th:classappend="${session.userNumber == null ? 'header--none' : ''}">
-                <a href="">
+                <a th:href="@{/mypage/main}">
                     <span class="header__user-info" th:text="${session.userNickname}"></span>
                 </a>
                 <a th:href="@{/user/logout}">
@@ -157,7 +148,6 @@
             </div>
         </form>
     </article>
-
 </header>
 </body>
 </html>
