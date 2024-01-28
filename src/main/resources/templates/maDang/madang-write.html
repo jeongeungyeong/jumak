@@ -32,8 +32,11 @@
               <div class="write__category-select">
                 <!--name 속성 재설정 필요-->
                 <select name="madangCategoryNumber" id="category">
-                  <option value="">선택</option>
-                  <option th:each="cate : ${cateList}" th:value="${cate.madangCategoryNumber}" th:text="${cate.madangCategoryName}">도란도란</option>
+                  <option value="0">선택</option>
+                  <option value="1" th:if="${session.userGradeNumber == 2}" >공지사항</option>
+                  <option value="2">도란도란</option>
+                  <option value="3">후기</option>
+                  <option value="4">나만의 레시피</option>
                 </select>
               </div>
             </td>

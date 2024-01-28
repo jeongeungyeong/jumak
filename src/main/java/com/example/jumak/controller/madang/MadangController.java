@@ -2,6 +2,7 @@ package com.example.jumak.controller.madang;
 
 import com.example.jumak.domain.dto.madang.MadangCategoryDto;
 import com.example.jumak.domain.dto.madang.MadangDto;
+import com.example.jumak.domain.dto.user.UserDto;
 import com.example.jumak.domain.vo.madang.MadangDetailVo;
 import com.example.jumak.domain.vo.madang.MadangVo;
 import com.example.jumak.domain.vo.product.Criteria;
@@ -55,6 +56,8 @@ public class MadangController {
         if (userNumber == null) {
             return "user/login/login";
         }
+
+
 
         List<MadangCategoryDto> allCategory = madangService.findAllCategory();
         model.addAttribute("cateList", allCategory);

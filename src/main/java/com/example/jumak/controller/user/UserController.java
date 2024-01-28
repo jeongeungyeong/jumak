@@ -92,6 +92,7 @@ public class UserController {
         HttpSession session = req.getSession();
         session.setAttribute("userNumber", userDto.getUserNumber());
         session.setAttribute("userNickname", userDto.getUserNickname());
+        session.setAttribute("userGradeNumber", userDto.getUserGradeNumber());
 
         if(userDto.getUserGradeNumber() == 2) {
             return new RedirectView("/admin/user");  //메인화면경로 설정하기

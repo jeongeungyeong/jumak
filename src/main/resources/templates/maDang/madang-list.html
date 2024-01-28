@@ -25,16 +25,16 @@
         <a th:href="@{/madang/list}" class="active">
           <li>전체보기</li>
         </a>
-        <a th:href="@{/madang/list}">
+        <a th:href="@{/madang/list(cateNumber=1)}">
           <li>공지</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=1)}">
+        <a th:href="@{/madang/list(cateNumber=2)}">
           <li>도란도란</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=2)}">
+        <a th:href="@{/madang/list(cateNumber=3)}">
           <li>후기</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=3)}">
+        <a th:href="@{/madang/list(cateNumber=4)}">
           <li>나만의 레시피</li>
         </a>
       </ul>
@@ -65,16 +65,17 @@
         </thead>
         <tbody>
         <!--공지 반복 요소-->
-        <tr class="board-list-table__notice">
+        <tr class="board-list-table__notice" th:each="madang : ${madangList}" th:if="${madang.madangCategoryNumber} == 1">
           <td>
             <img src="/imgs/maDang/icon_board_notice.png" alt="">
           </td>
-          <td>[공지]</td>
-          <td class="board-list-table__writer">수상한 주막</td>
-          <td class="board-list-table__title">🎇신년맞이 우리술 파티🎇</td>
-          <td>100</td>
-          <td>5</td>
-          <td>23/12/12</td>
+          <td th:text="${madang.madangCategoryName}"></td>
+          <td class="board-list-table__writer" th:text="${madang.userNickname}" ></td>
+          <td class="board-list-table__title" >
+            <a th:href="@{/madang/detail(madangNumber=${madang.madangNumber})}" th:text="${madang.madangTitle}"></a></td>
+          <td th:text="${madang.madangCount}"></td>
+          <td th:text="${madang.recommendedCount}"></td>
+          <td th:text="${madang.madangDate}"></td>
         </tr>
         <!--/공지 반복 요소-->
         <!--일반글 반복 요소-->
