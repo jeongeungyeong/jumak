@@ -14,15 +14,7 @@ import java.util.List;
 @Transactional
 @RequiredArgsConstructor
 public class ProductReviewService {
-    private final ProductReviewMapper productReviewMapper;
 
-//상품 후기 리스트 조회
-    public List<ProductReviewVo> findListByProductNumber(Long productNumber){
-        return productReviewMapper.selectListByProductNumber(productNumber);
-    }
-
-//    상품 후기 작성
-    public void register(ProductReviewDto productReviewDto){productReviewMapper.insert(productReviewDto);}
 
 
 

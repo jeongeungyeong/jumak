@@ -10,10 +10,6 @@ import java.util.List;
 
 @Mapper
 public interface ProductReviewMapper {
-//    상품 후기 리스트 조회
-    List<ProductReviewVo> selectListByProductNumber(Long productNumber);
-//    상품 후기 작성
-    void insert(ProductReviewDto productReviewDto);
 
 
 }

@@ -10,22 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequiredArgsConstructor
-@RequestMapping("/reviews")
 public class ProductReviewRestController {
-    private final ProductReviewService productReviewService;
-
-    @GetMapping("/store/view/{productNumber}")
-    public List<ProductReviewVo> reviewList(@PathVariable("productNumber") Long productNumber){
-        return productReviewService.findListByProductNumber(productNumber);
-    }
-
-    @PostMapping
-    public void replyWrite(@RequestBody ProductReviewDto productReviewDto,
-                           @SessionAttribute("userNumber") Long userNumber){
-        productReviewDto.setUserNumber(userNumber);
-        productReviewService.register(productReviewDto);
-    }
 
 }
