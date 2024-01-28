@@ -38,6 +38,9 @@ public class MadangController {
         model.addAttribute("madangList", madangList);
         model.addAttribute("pageInfo", pageInfo);
 
+
+        model.addAttribute("cateNumber",cateNumber);
+
         return "madang/madang-list";
     }
 

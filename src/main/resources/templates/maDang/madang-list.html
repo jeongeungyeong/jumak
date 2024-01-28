@@ -22,19 +22,19 @@
     </section>
     <section class="cate">
       <ul class="cate-ul">
-        <a th:href="@{/madang/list}" class="active">
+        <a th:class="${cateNumber == empty?'active' : ''}" th:href="@{/madang/list}" class="active">
           <li>전체보기</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=1)}">
+        <a th:class="${cateNumber == 1?'active' : ''}" th:href="@{/madang/list(cateNumber=1)}">
           <li>공지</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=2)}">
+        <a th:class="${cateNumber == 2?'active' : ''}" th:href="@{/madang/list(cateNumber=2)}">
           <li>도란도란</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=3)}">
+        <a th:class="${cateNumber == 3?'active' : ''}" th:href="@{/madang/list(cateNumber=3)}">
           <li>후기</li>
         </a>
-        <a th:href="@{/madang/list(cateNumber=4)}">
+        <a th:class="${cateNumber == 4?'active' : ''}" th:href="@{/madang/list(cateNumber=4)}">
           <li>나만의 레시피</li>
         </a>
       </ul>
