@@ -66,18 +66,21 @@
         </if>
     </select>
 
-<!--        양조장탐방기-->
-        <select id="brewery" resultType="breweryVo">
-            SELECT NEWS_TITLE, NEWS_DATE,NEWS_IMG_PATH, NEWS_IMG_UUID, NEWS_IMG_NAME
-            FROM (
-                SELECT NEWS.NEWS_TITLE, NEWS.NEWS_DATE ,I.NEWS_IMG_PATH, I.NEWS_IMG_UUID, I.NEWS_IMG_NAME
-                FROM JUMAK_NEWS NEWS JOIN JUMAK_NEWS_IMG I on NEWS.NEWS_NUMBER = I.NEWS_NUMBER
-                ORDER BY NEWS.NEWS_DATE DESC
-            )
-            <![CDATA[
+<!--        공지사항 -->
+    <select id="announcement" parameterType="madangDto">
+        SELECT MADANG_DATE, MADANG_TITLE, MADANG_CONTENT, MADANG_NUMBER
+        FROM(
+                SELECT MADANG_TITLE, MADANG_CONTENT, MADANG_DATE, MADANG_NUMBER
+                FROM JUMAK_MADANG
+                WHERE MADANG_CATEGORY_NUMBER = 1
+                ORDER BY MADANG_DATE DESC
+                )
+        <![CDATA[
             WHERE ROWNUM <= 4
-            ]]>
-        </select>
+        ]]>
+    </select>
+
+
 
         <select id="madang" resultType="madangListVo">
             SELECT MADANG_NUMBER, MADANG_TITLE, MADANG_DATE, MADANG_IMG_NAME, MADANG_IMG_PATH, MADANG_IMG_UUID, MADANG_CATEGORY_NAME

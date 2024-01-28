@@ -41,10 +41,10 @@
         <section class="news">
           <div class="section-head">
             <div class="section-head__title">
-              양조장 탐방기
+              공지사항
             </div>
             <div class="section-head__more">
-              <a href=""><!-- 뉴스 더 보기 링크 설정하기 -->
+              <a href="/madang/list">
                 <span>+</span>
                 <span>more</span>
               </a>
@@ -52,13 +52,14 @@
           </div>
           <div class="news__content-box">
             <!-- 아이템 반복요소 샘플 (4개만 넣기)-->
-            <article class="news__item" th:each="brewery : ${breweryList}">
-              <a href=""> <!--아이템 링크 설정하기-->
+            <article class="news__item" th:each="announcement : ${announcementList}">
+              <a th:href="@{/madang/detail(madangNumber=${announcement.madangNumber})}"> <!--아이템 링크 설정하기-->
                 <div class="news__img-box">
-                  <img th:src="'/upload/' + ${brewery.newsImgPath} + '/' + ${brewery.newsImgUuid} + '_' + ${brewery.newsImgName}" alt="">
+                  <img th:src="@{/imgs/main/announcement/nonotice.jpg}" alt="">
                 </div>
                 <div class="news__info">
-                  <p th:text="${brewery.newsTitle}"></p>
+                  <p th:text="${announcement.madangTitle}"></p>
+                  <P th:text="${announcement.madangContent}"></P>
                 </div>
               </a>
             </article>
@@ -70,10 +71,10 @@
         <section class="madang">
           <div class="section-head">
             <div class="section-head__title">
-              베스트 상품
+              수상한 마당
             </div>
             <div class="section-head__more">
-              <a href=""><!-- 마당 더 보기 링크 설정하기 -->
+              <a href="/madang/list"><!-- 마당 더 보기 링크 설정하기 -->
                 <span>+</span>
                 <span>more</span>
               </a>
@@ -85,8 +86,7 @@
               <li>
                 <a href=""> <!--바로가기 링크-->
                   <div class="madang__img-box">
-                    <img th:if="${madang.madangImgPath != null}" th:src="'/upload/' + ${madang.madangImgPath} + '/' + ${madang.madangImgUuid} + '_' + ${madang.madangImgName}" alt="">
-                    <img th:unless="${madang.madangImgPath != null}" src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/commonimg/re_pc_no_image.jpg" alt="">
+                    <img th:src="@{/imgs/main/announcement/noimg.jpg}" alt="">
                   </div>
                   <div class="madang__info">
                     <span th:text="${madang.madangCategoryName}"></span>
@@ -100,8 +100,8 @@
 
       </div>
       <section class="middle-banner-box">
-        <a href=""> <!-- 링크, 이미지 설정-->
-          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/worldcup.jpg" alt="">
+        <a href="/find"> <!-- 링크, 이미지 설정-->
+          <img th:src="@{/imgs/main/achol_test/achol_test.jpg}" alt="">
         </a>
       </section>
 
@@ -114,14 +114,14 @@
               이달의 술 <!-- 문구 수정하기 -->
             </div>
             <div class="section-head__more">
-              <a href=""><!-- 더 보기 링크 설정하기 -->
+              <a th:href="@{/product/list}" ><!-- 더 보기 링크 설정하기 -->
                 <span>+</span>
                 <span>more</span>
               </a>
             </div>
           </div>
           <div class="monthly-sul__content-box">
-            <a href=""></a> <!--여기에 링크 설정(위치 변경X)-->
+            <a th:href="@{/product/list}"></a> <!--여기에 링크 설정(위치 변경X)-->
             <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/monthly_paiksool_v231204.jpg" alt="">
             <div class="monthly-sul__text-box">
               <span>이달의 술</span>
@@ -137,6 +137,10 @@
               장터 직행템🚕 <!-- 문구 수정하기 -->
             </div>
             <div class="section-head__more">
+                <a th:href="@{/store/list}" ><!-- 더 보기 링크 설정하기 -->
+                  <span>+</span>
+                  <span>more</span>
+                </a>
             </div>
           </div>
 
@@ -146,11 +150,6 @@
         </section>
 
       </div>
-      <section class="find-sul-banner">
-        <a href=""> <!--링크 설정하기-->
-          <img src="https://cdn-pro-web-251-112.cdn-nhncommerce.com/motioneye1_godomall_com/data/skin/front/pub/images/main/find.jpg" alt="">
-        </a>
-      </section>
     </div>
   </main>
 </div>

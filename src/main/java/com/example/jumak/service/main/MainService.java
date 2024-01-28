@@ -1,7 +1,7 @@
 package com.example.jumak.service.main;
 
+import com.example.jumak.domain.dto.madang.MadangDto;
 import com.example.jumak.domain.dto.product.ProductDto;
-import com.example.jumak.domain.vo.main.BreweryVo;
 import com.example.jumak.domain.vo.main.MadangListVo;
 import com.example.jumak.domain.vo.main.ProductSearchVo;
 import com.example.jumak.mapper.main.MainMapper;
@@ -27,8 +27,10 @@ public class MainService {
         return mainMapper.countSearch(keyword);
     }
 
-    //    양조장탐방기
-    public List<BreweryVo> brewery() { return mainMapper.brewery(); }
+    //    공지사항
+    public List<MadangDto> announcement() {
+        return mainMapper.announcement();
+    }
 
     //    수상한 마당
     public List<MadangListVo> madang() { return mainMapper.madang(); }
