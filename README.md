@@ -18,13 +18,46 @@
 ERD 설계, 관리자 페이지(회원관리/상품관리/주문관리/고객센터), 나에게 맞는 술 찾기, 우리술 검색, ID/PW 찾기
 
 🐬  <img src="https://img.shields.io/badge/팀원: 정은경-skyblue?style=flat&logo=java&logoColor=000000">
-로그인, 회원가입, 수상한 소식(우리술 전체보기), 주모's store(상품페이지), 장바구니, 결제페이지(아임포트 API)
+포트폴리오 PDF, 로그인, 회원가입, 수상한 소식(우리술 전체보기), 주모's store(우리술 쇼핑몰), 장바구니, 결제페이지
 
 
 ## ⚙️ 개발 환경
 <img src="https://img.shields.io/badge/Java 17-skyblue?style=flat&logo=java&logoColor=F80000"> <img src="https://img.shields.io/badge/JDK 17 -pink?style=flat&logo=JDK&logoColor=F80000"> <img src="https://img.shields.io/badge/intellijidea-white?style=flat&logo=intellijidea&logoColor=000000"> <img src="https://img.shields.io/badge/springboot(3.2.2)-white?style=flat&logo=springboot&logoColor=6DB33F"> <img src="https://img.shields.io/badge/oracle DB(11xe)-red?style=flat&logo=oracle&logoColor=F80000"> <img src="https://img.shields.io/badge/Mybatis-orange?style=flat&logo=mybatis&logoColor=F80000"> 
 
 ## 🍹 수상한 주막 포트폴리오(PDF)
+
+## 📌 내가 맡은 기능
+
+#### 로그인/회원가입
+● 약관 동의 </br>
+● 정보 입력 </br>
+● 다음 주소 api 사용 
+
+#### 수상한 소식(우리술 전체보기)
+● NEW 우리술: 카테고리별 신상품 </br>
+● 카테고리별 상품 정렬 </br>
+● 등록일순/판매인기순 상품 정렬 </br>
+● 상품 상세 페이지 이동
+
+#### 주모's store (우리술 쇼핑몰)
+● 카테고리별 상품 정렬 </br>
+● 등록일순/판매인기순/낮은가격순/높은가격순 상품 정렬 </br>
+● 상품 상세페이지 이동 </br>
+● 장바구니 이동 </br>
+● 바로구매 이동
+
+#### 장바구니
+● 회원 장바구니 상품 리스트 </br>
+● 장바구니 목록 바로 구매 
+
+#### 결제페이지
+● 주문서 작성 </br>
+● 다음 주소 api 사용 </br>
+● 아임포트 결제 api 사용 </br>
+● 상품/배송/결제 정보 저장 </br>
+● 성공/실패 페이지 이동
+
+
 
 
 
