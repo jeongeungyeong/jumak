@@ -25,7 +25,8 @@ ERD 설계, 관리자 페이지(회원관리/상품관리/주문관리/고객센
 <img src="https://img.shields.io/badge/Java 17-skyblue?style=flat&logo=java&logoColor=F80000"> <img src="https://img.shields.io/badge/JDK 17 -pink?style=flat&logo=JDK&logoColor=F80000"> <img src="https://img.shields.io/badge/intellijidea-white?style=flat&logo=intellijidea&logoColor=000000"> <img src="https://img.shields.io/badge/springboot(3.2.2)-white?style=flat&logo=springboot&logoColor=6DB33F"> <img src="https://img.shields.io/badge/oracle DB(11xe)-red?style=flat&logo=oracle&logoColor=F80000"> <img src="https://img.shields.io/badge/Mybatis-orange?style=flat&logo=mybatis&logoColor=F80000"> 
 
 ## 🍹 수상한 주막 포트폴리오(PDF)
-[수상한주막.pdf](https://github.com/jeongeungyeong/jumak/files/14187535/default.pdf)
+[수상한주막.pdf](https://github.com/jeongeungyeong/jumak/files/14219942/default.pdf)
+
 
 # 📍내가 맡은 기능
 ### 👨‍👩‍👧‍👦 회원가입 로그인 [상세보기- WIKI페이지](https://github.com/jeongeungyeong/jumak/wiki/%F0%9F%91%A8%E2%80%8D%F0%9F%91%A9%E2%80%8D%F0%9F%91%A7%E2%80%8D%F0%9F%91%A6-%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85-%EB%A1%9C%EA%B7%B8%EC%9D%B8)
